@@ -1,6 +1,6 @@
 # Algebraic number theory in Lean 4
 
-[![Lean build](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml/badge.svg)](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml)
+[![Lean build](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml/badge.svg)](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24047657.svg)](https://doi.org/10.5281/zenodo.24047657)
 
 A Lean 4 library (built on Mathlib v4.35.0) that formalizes five texts of algebraic number theory item by item:
 Milne's *Algebraic Number Theory*, Weil's *Basic Number Theory* (number fields and function fields over finite
@@ -153,9 +153,9 @@ untrustworthy until checked against the literature. Corrections and reports of m
 
 ## Releases
 
-Releases are tagged with semantic versions; `main` continues to develop.
+Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24047657](https://doi.org/10.5281/zenodo.24047657) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
-- **v0.1.0** (Lean and Mathlib v4.35.0): the first release: five book maps and the 20 headline statements above.
+- **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and the 20 headline statements above.
 
 **Not in this release** (planned for a later release): Milne's *Class Field Theory* and the rest of *Elliptic Curves*
 as books; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
