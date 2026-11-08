@@ -1,0 +1,30 @@
+name = "algebraic_number_theory_lean"
+version = "0.1.0"
+defaultTargets = ["NumberFieldKB", "Challenge", "Solution"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"
+
+# The quadratic-forms library: local Fourier analysis and self-dual measures at every place, adelic Poisson
+# summation, local zeta integrals, and the `@[kb]` citation attribute (`QuadFormsKB.Citation`).
+[[require]]
+name = "QuadFormsKB"
+git = "https://github.com/jonhanke/quadratic-forms-lean.git"
+rev = "v0.3.0"
+
+[[lean_lib]]
+name = "NumberFieldKB"
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]

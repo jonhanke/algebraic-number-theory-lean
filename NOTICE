@@ -1,0 +1,8 @@
+NumberFieldKB
+Copyright 2026 Jonathan Hanke
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The files under NumberFieldKB/TauCetiPort/ are derived from Tau Ceti (https://github.com/TauCetiProject/TauCeti),
+Copyright the Tau Ceti contributors, licensed under the Apache License, Version 2.0. Their headers name their
+authors; NumberFieldKB/TauCetiPort/README.md lists the source commits and the changes made in porting them.

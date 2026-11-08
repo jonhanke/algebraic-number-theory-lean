@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it as below. NumberFieldKB was developed
+  with AI assistance (Claude Code, Anthropic), designed and directed by
+  Jonathan Hanke; every proof is checked by the Lean kernel.
+title: "Algebraic number theory in Lean 4 (NumberFieldKB)"
+type: software
+authors:
+  - family-names: Hanke
+    given-names: Jonathan
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-11-07"
+repository-code: "https://github.com/jonhanke/algebraic-number-theory-lean"
+keywords:
+  - Lean 4
+  - Mathlib
+  - formalization
+  - number fields
+  - Tate's thesis
+  - Hecke L-functions
+  - Pontryagin duality
+  - function fields
+  - modular curves

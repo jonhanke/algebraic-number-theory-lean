@@ -1,0 +1,231 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "algebraic-number-theory-lean (NumberFieldKB): number fields, Tate's thesis and Hecke L-functions"
+  description: >-
+    A Lean 4 + Mathlib formalization of five texts of algebraic number theory, item by item: Milne's Algebraic
+    Number Theory; Weil's Basic Number Theory, Chapters I-VII (number fields and function fields over finite
+    fields); Tate's thesis (Cassels-Frohlich, Chapter XV) over every number field; Pontryagin duality for locally
+    compact abelian groups (Folland, Chapter 4; Weil II.5 and VII.2); and the modular curves X_0(N) (Milne,
+    Elliptic Curves, Chapter V, sections 1-3). Principal results: Kummer's theorem for regular primes; Dedekind's
+    factorization theorem over every number field; Ostrowski's theorem for number fields; self-duality of the
+    adeles; the zeta function and the Hecke L-functions of a function field over a finite field; Tate's main
+    theorem (continuation, functional equation and residues of the global zeta integral), the functional
+    equation of Hecke L-functions with root number, and the continuation and functional equation of the
+    Dedekind zeta function over every number field; Pontryagin duality, Fourier inversion with the dual measure
+    and the annihilator correspondences; the genus of X_0(N), the modular polynomial over Q, the function field
+    C(j, j_N) and dim S_2(Gamma_0(N)) = g. Each item of the books is mapped to its Lean declaration and status in
+    docs/results/books/.
+  authors:
+    - "Jonathan Hanke"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Jonathan Hanke"
+
+classification:
+  arxiv: ["math.NT"]
+  # 11R04 algebraic numbers, rings of algebraic integers; 11R42 zeta functions and L-functions of number fields;
+  # 11R56 adele rings and groups; 11S40 zeta functions and L-functions of local fields; 11R58 arithmetic theory of
+  # algebraic function fields; 43A40 character groups and dual objects; 11F03 modular and automorphic functions;
+  # 03B35 mechanization of proofs and logical operations.
+  msc2020: ["11R04", "11R42", "11R56", "11S40", "11R58", "43A40", "11F03", "03B35"]
+
+sources:
+  - title: "Algebraic Number Theory (version 3.08)"
+    authors:
+      - "James S. Milne"
+    type: "lecture-notes"
+    location: "jmilne.org, 2020; every item mapped in docs/results/books/milne-ant.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Basic Number Theory"
+    authors:
+      - "André Weil"
+    type: "book"
+    location: "3rd edition, Springer, 1974; Chapters I-VII mapped in docs/results/books/weil-bnt.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Fourier analysis in number fields and Hecke's zeta-functions"
+    authors:
+      - "John Tate"
+    type: "book-chapter"
+    location: "J. W. S. Cassels and A. Fröhlich (eds.), Algebraic Number Theory, Academic Press, 1967, Chapter XV; locators [unverified]; docs/results/books/tate-thesis.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "A Course in Abstract Harmonic Analysis"
+    authors:
+      - "Gerald B. Folland"
+    type: "book"
+    location: "2nd edition, CRC Press, 2016, Chapter 4 (Theorems 4.18, 4.32, 4.33); docs/results/books/pontryagin.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Elliptic Curves (2nd edition)"
+    authors:
+      - "James S. Milne"
+    type: "book"
+    location: "2020, Chapter V, sections 1-3 and 7; docs/results/books/modular-curves.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Further references"
+    type: "bibliography"
+    location: "references.bib in this repository; each result is tagged with @[kb \"<key>\" \"<locator>\"]"
+    relationship: "background"
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "builds-on"
+    note: "Built on Mathlib v4.35.0. docs/results/comparison.md says what each headline adds to Mathlib master (df6966d0d, 2026-11-07)."
+  - id: "https://github.com/jonhanke/quadratic-forms-lean"
+    relationship: "builds-on"
+    note: "A Lake dependency (tag v0.3.0): local Fourier analysis, self-dual measures, adelic Poisson summation, local zeta integrals and the @[kb] citation attribute."
+  - id: "https://github.com/TauCetiProject/TauCeti"
+    relationship: "builds-on"
+    note: >-
+      Files of Tau Ceti that this library needs (among them Bochner's theorem, the Peter-Weyl theorem and the
+      Riemann-Roch theorem for function fields) are ported to Lean and Mathlib v4.35.0 in NumberFieldKB/TauCetiPort/,
+      with their headers, license and authors kept (see NOTICE). Tau Ceti also has, independently, Chebotarev's
+      theorem with natural density, the S-unit theorem and Hermite-Minkowski with ramification in S; these are
+      proved here too but are not headlines. docs/results/comparison.md compares each headline with Tau Ceti main
+      (d7b47803c, 2026-11-07).
+
+status:
+  scope: >-
+    Formalized (the 20 statements of Challenge.lean, proved in Solution.lean): Milne ANT 3, Weil 4 (number fields 2,
+    function fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The book maps give the
+    status of every item of the five texts. The library also ships the files of its class field theory, elliptic
+    curve, Chebotarev, non-vanishing and Hilbert class field topics that these books import; those topics are not
+    part of this release's books, and some of their files state named results without proof (no headline uses them).
+  sorry_count: 0
+  sorry_in_definitions: 0
+  # No custom axioms; the standard axioms used (checked by scripts/check_axioms.lean and lake comparator):
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5", "Claude Sonnet 5.5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code orchestrating parallel agents, each in its own git branch, with Lean kernel builds (lake build)
+        as the check and pull requests merged into the main branch; human direction throughout.
+      prompting_notes: >-
+        Human-chosen books and results; agents worked item by item from coverage tables of each book, with
+        handoff notes between sessions. The human chose the books, the conventions and the proof routes (Tate's
+        adelic route for the zeta and L-functions; the Fourier inversion route, through Bochner's theorem, for
+        Pontryagin duality; an algebraic genus via Riemann-Roch for X_0(N)).
+  notes: >-
+    Jonathan Hanke designed and directed the project; the Lean code was written almost entirely by Claude Opus 5.5,
+    with a share by Claude Sonnet 5.5, in October and November 2026. All proofs are checked by the Lean kernel; the
+    headline statements are collected in Challenge.lean for human review.
+
+fidelity:
+  divergences: >-
+    (1) Where the library states a result as a named structure (for example Prop2_4 and Thm2_3 of Milne, Elliptic
+    Curves, V), Challenge.lean unfolds the structure into its field. (2) Continuations defined by cases in the library (global zeta integral, Dedekind zeta,
+    completed Dedekind zeta) are stated in Challenge.lean as "there exists a continuation with these properties", so
+    that no headline depends on how the library chose the values at the poles. (3) The genus of X_0(N) is the genus
+    of the function field Q(X_0(N)) in the sense of Riemann's theorem (Milne, Elliptic Curves, I, Theorem 4.13),
+    not of a compact Riemann surface; nu_2 and nu_3 are given by their closed forms. (4) Weil's additive notation for
+    locally compact abelian groups is written multiplicatively, with Mathlib's PontryaginDual. (5) Milne EC V,
+    Theorem 2.3 is stated as equality of functions off a discrete subset of the upper half plane (values at poles are
+    Lean default values). (6) Literature locators marked [unverified] have not been checked against the sources;
+    the Tate's thesis map is built from the library's citations of Chapter XV, not from an audit of the text.
+
+review:
+  status: "not yet reviewed: the 20 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
+  reviewers: []
+  notes: >-
+    The headline statements and the definitions they use have not yet been reviewed by a human; that review is
+    planned. The rest of the library has not been reviewed by a human, and there has been no external review. Lean
+    checks the proofs; lake comparator checks that Solution.lean proves exactly the Challenge.lean statements using
+    only the standard axioms.
+
+alignment:
+  namespace: "NumberFieldKB"
+  statements:
+    - source: "Milne, Algebraic Number Theory, Theorem 6.8"
+      lean: "NumberFieldKB.Headlines.kummer_regular"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Algebraic Number Theory, Theorem 8.23"
+      lean: "NumberFieldKB.Headlines.dedekind_factorizationType"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "Over every number field, for every prime at which f is squarefree."
+    - source: "Milne, Algebraic Number Theory, Theorem 7.14"
+      lean: "NumberFieldKB.Headlines.ostrowski_numberField"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, IV.2, Theorem 3"
+      lean: "NumberFieldKB.Headlines.adeles_selfDual"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, IV.4, Theorem 7"
+      lean: "NumberFieldKB.Headlines.idele_classes_finite"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, VII.6, Theorem 4"
+      lean: "NumberFieldKB.Headlines.zeta_functionField"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, VII.7, Theorem 6"
+      lean: "NumberFieldKB.Headlines.heckeL_functionField_polynomial"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Tate, Cassels-Frohlich XV, Main Theorem 4.4.1 [unverified locator]"
+      lean: "NumberFieldKB.Headlines.tate_globalZeta_functionalEquation"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Tate, Cassels-Frohlich XV, Main Theorem 4.4.1 [unverified locator]"
+      lean: "NumberFieldKB.Headlines.tate_globalZeta_residues"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Tate, Cassels-Frohlich XV, section 4.5 [unverified locator]"
+      lean: "NumberFieldKB.Headlines.heckeL_functionalEquation"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Tate, Cassels-Frohlich XV, section 4.4; Neukirch, Algebraic Number Theory, VII.5.11 [unverified locator]"
+      lean: "NumberFieldKB.Headlines.dedekindZeta_continuation"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Neukirch, Algebraic Number Theory, VII.5.11 [unverified locator]"
+      lean: "NumberFieldKB.Headlines.completedDedekindZeta_functionalEquation"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Folland, A Course in Abstract Harmonic Analysis, Theorem 4.32; Weil II.5"
+      lean: "NumberFieldKB.Headlines.pontryaginDuality"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, VII.2, p. 105; Folland, Theorem 4.33"
+      lean: "NumberFieldKB.Headlines.fourierInversion_dualMeasure"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, II.5, pp. 38-39"
+      lean: "NumberFieldKB.Headlines.pontryagin_closedSubgroups"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Weil, Basic Number Theory, II.5, p. 38"
+      lean: "NumberFieldKB.Headlines.compact_iff_dual_discrete"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, V.2 (genus formula)"
+      lean: "NumberFieldKB.Headlines.genus_X0"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, V, Proposition 2.4"
+      lean: "NumberFieldKB.Headlines.modularPolynomial_rational"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, V, Theorem 2.3"
+      lean: "NumberFieldKB.Headlines.modularFunctions_Gamma0"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, V, Corollary 3.4"
+      lean: "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank"
+      module: "Challenge / Solution"
+      status: "proved"
+
+acknowledgements: >-
+  Mathlib and its contributors; the Tau Ceti contributors, whose files are ported in NumberFieldKB/TauCetiPort/; the
+  Lean FRO for Lean, Lake and lake comparator; Claude Code (Anthropic).

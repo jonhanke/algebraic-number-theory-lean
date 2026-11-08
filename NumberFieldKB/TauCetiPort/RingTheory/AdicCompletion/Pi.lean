@@ -1,0 +1,118 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Tau Ceti contributors
+-/
+module
+
+public import Mathlib.RingTheory.AdicCompletion.Functoriality
+
+/-!
+# Adic completeness of finite products
+
+For an ideal `I` of a commutative ring `R` and a family of `R`-modules `M i`, the product `∀ i, M i`
+is `I`-adically Hausdorff as soon as every factor is. If the family is finite, the analogous result
+holds for adic precompleteness and completeness. In particular a finite free module `Fin n → R`
+over an `I`-adically complete ring is `I`-adically complete, which is what the complete Nakayama
+lemma (`surjective_of_mkQ_comp_surjective`) requires of the source of a map out of a finite free
+module. For a principal ideal `(π)`, the `(π)`-adic filtration of a product `ι → R` is read off
+coordinatewise: `x ∈ (π)^n • ⊤` exactly when `π ^ n` divides every coordinate of `x`. Hence
+`π`-adic limits and separation of finite coordinate families can be stated with divisibility alone.
+
+## Main results
+
+* `TauCeti.mem_span_singleton_pow_smul_top_iff`: membership in `(π)^n • ⊤` on a product module is
+  coordinatewise divisibility by `π ^ n`.
+* `AdicCompletion.pi_of`: the product of the completions of the factors receives the canonical
+  map from the product as the product of the canonical maps.
+* `IsHausdorff.pi`: adic Hausdorffness passes to products.
+* `IsPrecomplete.pi`, `IsAdicComplete.pi`: adic precompleteness and completeness pass to finite
+  products.
+* `TauCeti.exists_forall_pow_dvd_sub`: a `π`-adically Cauchy sequence of finite coordinate families
+  over a precomplete ring has a limit.
+* `TauCeti.eq_zero_of_forall_pow_dvd`: over a Hausdorff ring, a coordinate family divisible by every
+  power of `π` vanishes.
+-/
+
+public section
+
+open AdicCompletion
+
+namespace TauCeti
+
+/-- On a product module, membership in `(π)^n • ⊤` is coordinatewise divisibility by `π ^ n`. -/
+theorem mem_span_singleton_pow_smul_top_iff {R : Type*} [CommSemiring R] {ι : Type*} (π : R)
+    (x : ι → R) (n : ℕ) :
+    x ∈ ((Ideal.span {π}) ^ n • ⊤ : Submodule R (ι → R)) ↔ ∀ i, π ^ n ∣ x i := by
+  rw [Ideal.span_singleton_pow, Submodule.ideal_span_singleton_smul,
+    Submodule.mem_smul_pointwise_iff_exists]
+  constructor
+  · rintro ⟨y, -, rfl⟩ i
+    exact ⟨y i, rfl⟩
+  · intro h
+    choose y hy using h
+    exact ⟨y, Submodule.mem_top, funext fun i ↦ (hy i).symm⟩
+
+end TauCeti
+
+variable {R : Type*} [CommRing R] (I : Ideal R) {ι : Type*} (M : ι → Type*)
+  [∀ i, AddCommGroup (M i)] [∀ i, Module R (M i)]
+
+/-- The canonical map from a product to its adic completion, followed by the comparison map
+`AdicCompletion.pi` to the product of the completions, is the product of the canonical maps of the
+factors. -/
+@[simp]
+theorem AdicCompletion.pi_of (x : ∀ i, M i) (j : ι) :
+    AdicCompletion.pi I M (of I (∀ i, M i) x) j = of I (M j) (x j) := by
+  simp [AdicCompletion.pi, map_of]
+
+/-- A product of `I`-adically Hausdorff modules is `I`-adically Hausdorff. -/
+instance IsHausdorff.pi [∀ i, IsHausdorff I (M i)] : IsHausdorff I (∀ i, M i) := by
+  refine of_injective_iff.mp fun x y hxy ↦ _root_.funext fun j ↦ (of_injective I (M j)) ?_
+  rw [← pi_of, ← pi_of, hxy]
+
+/-- A finite product of `I`-adically precomplete modules is `I`-adically precomplete. -/
+instance IsPrecomplete.pi [Finite ι] [∀ i, IsPrecomplete I (M i)] : IsPrecomplete I (∀ i, M i) := by
+  classical
+  have := Fintype.ofFinite ι
+  refine of_surjective_iff.mp fun y ↦ ?_
+  choose x hx using fun j ↦ of_surjective I (M j) (AdicCompletion.pi I M y j)
+  refine ⟨x, (piEquivOfFintype I M).injective (_root_.funext fun j ↦ ?_)⟩
+  rw [piEquivOfFintype_apply, piEquivOfFintype_apply, pi_of, hx]
+
+/-- A finite product of `I`-adically complete modules is `I`-adically complete. -/
+instance IsAdicComplete.pi [Finite ι] [∀ i, IsAdicComplete I (M i)] :
+    IsAdicComplete I (∀ i, M i) where
+
+namespace TauCeti
+
+variable {R : Type*} [CommRing R] {ι : Type*}
+
+/-- **Limits of coordinate families.** Over a `π`-adically precomplete ring, a sequence of finite
+coordinate families whose consecutive terms are congruent modulo `π ^ (m + 1)` has a limit,
+congruent to the `m`-th term modulo `π ^ m`. -/
+theorem exists_forall_pow_dvd_sub [Finite ι] (π : R) [IsPrecomplete (Ideal.span {π}) R]
+    (x : ℕ → ι → R) (hx : ∀ m i, π ^ (m + 1) ∣ x (m + 1) i - x m i) :
+    ∃ L : ι → R, ∀ m i, π ^ m ∣ L i - x m i := by
+  have hcauchy {m m' : ℕ} (hm : m ≤ m') (i : ι) : π ^ m ∣ x m' i - x m i := by
+    induction m', hm using Nat.le_induction with
+    | base => simp
+    | succ m' hm ih =>
+      rw [← sub_add_sub_cancel]
+      exact dvd_add ((pow_dvd_pow π (by omega)).trans (hx m' i)) ih
+  obtain ⟨L, hL⟩ := IsPrecomplete.prec (I := Ideal.span {π}) inferInstance (f := x)
+    fun {m m'} hm ↦ by
+      rw [SModEq.sub_mem, mem_span_singleton_pow_smul_top_iff]
+      exact fun i ↦ dvd_sub_comm.mp (hcauchy hm i)
+  exact ⟨L, fun m i ↦ dvd_sub_comm.mp
+    ((mem_span_singleton_pow_smul_top_iff π _ m).1 (SModEq.sub_mem.1 (hL m)) i)⟩
+
+/-- Over a `π`-adically Hausdorff ring, a coordinate family whose coordinates are divisible by
+every power of `π` vanishes. -/
+theorem eq_zero_of_forall_pow_dvd (π : R) [IsHausdorff (Ideal.span {π}) R] {x : ι → R}
+    (hx : ∀ m i, π ^ m ∣ x i) : x = 0 :=
+  IsHausdorff.haus (I := Ideal.span {π}) inferInstance x fun m ↦ by
+    rw [SModEq.zero, mem_span_singleton_pow_smul_top_iff]
+    exact hx m
+
+end TauCeti
