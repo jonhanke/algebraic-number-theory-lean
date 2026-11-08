@@ -1,5 +1,5 @@
 name = "algebraic_number_theory_lean"
-version = "0.1.0"
+version = "0.2.0"
 defaultTargets = ["NumberFieldKB", "Challenge", "Solution"]
 
 [leanOptions]

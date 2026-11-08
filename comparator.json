@@ -21,7 +21,14 @@
     "NumberFieldKB.Headlines.genus_X0",
     "NumberFieldKB.Headlines.modularPolynomial_rational",
     "NumberFieldKB.Headlines.modularFunctions_Gamma0",
-    "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank"
+    "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank",
+    "NumberFieldKB.Headlines.grunwaldWang",
+    "NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic",
+    "NumberFieldKB.Headlines.localKroneckerWeber_lubinTate",
+    "NumberFieldKB.Headlines.eisensteinReciprocity",
+    "NumberFieldKB.Headlines.furtwangler_fermat",
+    "NumberFieldKB.Headlines.gauss_cubicCurve_count",
+    "NumberFieldKB.Headlines.weberL_continuation"
   ],
   "definition_names": [],
   "permitted_axioms": [

@@ -1,0 +1,539 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Tau Ceti contributors
+-/
+module
+
+public import Mathlib.Data.ZMod.Units
+public import Mathlib.GroupTheory.OrderOfElement
+public import Mathlib.NumberTheory.Padics.RingHoms
+public import Mathlib.Topology.Algebra.Constructions
+public import Mathlib.Topology.Algebra.ContinuousMonoidHom
+public import Mathlib.Topology.Instances.ZMod
+public import Mathlib.Topology.LocallyConstant.Basic
+public import Mathlib.Topology.MetricSpace.Ultra.Basic
+import Mathlib.Data.Int.CardIntervalMod
+import Mathlib.GroupTheory.SpecificGroups.Cyclic
+import Mathlib.RingTheory.LocalRing.RingHom.Basic
+import NumberFieldKB.TauCetiPort.NumberTheory.Padics.PadicIntegers
+import NumberFieldKB.TauCetiPort.Topology.Algebra.Ring.Ideal
+
+/-!
+# Congruence and continuity properties of the truncations of a `p`-adic integer
+
+Mathlib's `PadicInt.appr x n` is the natural number below `p ^ n` congruent to `x` modulo
+`p ^ n`, and `PadicInt.toZModPow n` is the induced ring homomorphism to `ZMod (p ^ n)`. This
+file records the arithmetic dictionary between the two, the congruences that make `appr`
+behave like a ring homomorphism modulo `p ^ n`, and the continuity of `toZModPow`.
+
+The congruences are exactly what is needed to raise an element of `p`-power order in a monoid
+to a `p`-adic exponent: `g ^ x.appr n` does not change when `n` grows past the order of `g`
+(`PadicInt.pow_appr_eq_pow_appr`), so such powers assemble into a well-defined action of
+`ℤ_[p]`.
+
+## Main results
+
+* `PadicInt.val_toZModPow_eq_appr`: `appr` computes the `ZMod (p ^ n)`-value of `toZModPow`.
+* `PadicInt.continuous_toZModPow`, `PadicInt.continuous_toZMod`: truncation modulo `p ^ n` and
+  reduction modulo `p` are continuous, `ZMod (p ^ n)` and `ZMod p` carrying the discrete
+  topology.
+* `PadicInt.toZMod_eq_zero_iff_dvd`, `PadicInt.toZModPow_eq_zero_iff_dvd`: the kernels of
+  reduction and truncation, as divisibility statements; `PadicInt.toZModPow_eq_iff_dvd_sub`:
+  two `p`-adic integers truncate to the same residue exactly when `p ^ n` divides their
+  difference; `PadicInt.eight_dvd_sub_iff_toZModPow_three_eq` is its case `p ^ n = 8`.
+* `PadicInt.isUnit_iff_toZModPow_three_mul_self`: the units of `ℤ_[2]` are exactly the elements
+  whose residue modulo `8` squares to `1`; `PadicInt.eight_dvd_sq_sub_one_of_isUnit`: so the
+  square of a unit is `1` modulo `8`; `PadicInt.eight_dvd_sub_or_eight_dvd_sub_add_of_eq`: for
+  `k ≥ 1`, a unit of the form `a x² + 2ᵏ b y²` is congruent to `a` or to `a + 2ᵏ b` modulo `8`.
+* `PadicInt.not_isSquare_neg_three`: `-3` is not a square in `ℤ_[2]`.
+* `PadicInt.two_dvd_sq_sub_self`: every `2`-adic integer satisfies `x ^ 2 ≡ x` modulo `2`.
+* `PadicInt.toZModPow_eq_one_of_norm_sub_one_le`: a norm bound forcing a `p`-adic integer to
+  reduce to `1` modulo `p ^ n`.
+* `PadicInt.cast_toZModPow_eq_toZMod`: reducing the truncation modulo `p ^ n` further modulo `p`
+  recovers `toZMod`.
+* `PadicInt.dvd_sub_appr`: `x - appr x n` is divisible by `p ^ n` in `ℤ_[p]`.
+* `PadicInt.div_pow_le_card_filter_dvd`: among `n` consecutive elements of `ℤ_[p]`, at least
+  `⌊n / pʲ⌋` are divisible by `p ^ j`; `PadicInt.card_filter_pow_dvd_natCast_sub`: for a natural
+  number `a`, exactly `⌊n / pʲ⌋ + [a mod pʲ < n mod pʲ]` of them are.
+* `PadicInt.appr_modEq`, `PadicInt.appr_add_modEq`, `PadicInt.appr_mul_modEq`,
+  `PadicInt.appr_natCast_modEq`: the truncations are compatible with each other and with the
+  ring operations, modulo `p ^ n`.
+* `PadicInt.appr_natCast_pow_of_le`: the truncation of `p ^ m` modulo `p ^ n` is `0` for
+  `n ≤ m`.
+* `PadicInt.appr_zero_right`, `PadicInt.appr_natCast`, `PadicInt.appr_mod_pow`: the truncation
+  modulo `1` is `0`, the truncation of a natural number is its remainder, and reducing a finer
+  truncation gives the coarser one.
+* `PadicInt.norm_sub_appr_le`, `PadicInt.norm_sub_appr_le_of_le`,
+  `PadicInt.appr_eq_iff_norm_sub_le`, `PadicInt.tendsto_appr`: `x` is within `p ^ (-m)` of its
+  truncation modulo `p ^ n` for `m ≤ n`, the fibres of the truncation are closed balls, and the
+  truncations converge to `x`.
+* `PadicInt.continuous_appr`: the truncation modulo `p ^ n` is locally constant.
+* `PadicInt.pow_appr_eq_pow_appr`: raising an element of `p`-power order to the truncated
+  exponent is independent of the truncation level, once that level is large enough.
+* `PadicInt.quotientSpanPowEquivZMod`: `toZModPow n` identifies `ℤ_[p] ⧸ (p ^ n)` with
+  `ZMod (p ^ n)`.
+* `PadicInt.span_singleton_eq_span_pow_valuation`, `PadicInt.quotientSpanEquivZMod`,
+  `PadicInt.natCard_quotient_span`, `PadicInt.isAddCyclic_quotient_span`: a nonzero `x` generates
+  the same ideal as `p ^ v` for `v` its valuation, so `ℤ_[p] ⧸ (x)` is `ZMod (p ^ v)`, a finite
+  ring of cardinality `p ^ v` whose additive group is cyclic.
+* `PadicInt.valuation_natCast`, `PadicInt.valuation_eq_zero_of_isUnit`,
+  `PadicInt.one_le_valuation_of_dvd`: the valuation of a natural number is its `p`-adic
+  valuation, units have valuation `0`, and a nonzero multiple of `p` has valuation at least `1`.
+* `PadicInt.dvd_pow_valuation`: a nonzero `x` divides `p ^ v` for `v` its valuation.
+* `PadicInt.quotientSpanToZMod`, `PadicInt.quotientSpanToZModPow`: for `p ∣ q`, respectively
+  `p ^ n ∣ q`, reduction modulo `p`, respectively truncation modulo `p ^ n`, descends to a
+  continuous ring homomorphism out of `ℤ_[p] ⧸ (q)`.
+* `PadicInt.unitsToZModPow`: truncation modulo `p ^ n` on the units of `ℤ_[p]`, as a continuous
+  homomorphism to the units of `ZMod (p ^ n)`; it is surjective, that is, every unit of
+  `ZMod (p ^ n)` lifts to a unit of `ℤ_[p]` (`PadicInt.unitsToZModPow_surjective`),
+  compatible with the reductions `ZMod.unitsMap` between levels
+  (`PadicInt.unitsMap_unitsToZModPow`), and trivial at level `0`
+  (`PadicInt.unitsToZModPow_zero_apply`).
+* `PadicInt.finite_residueField`, `PadicInt.card_residueField`: the residue field of `ℤ_[p]` is
+  finite of cardinality `p`.
+-/
+
+public section
+
+namespace PadicInt
+
+variable {p : ℕ} [hp : Fact p.Prime]
+
+/-- The residue field of `ℤ_p` is finite, being `ℤ/pℤ`. -/
+instance finite_residueField : Finite (IsLocalRing.ResidueField ℤ_[p]) :=
+  Finite.of_equiv _ residueField.symm.toEquiv
+
+variable (p) in
+/-- The residue field of `ℤ_p` has `p` elements. -/
+theorem card_residueField : Nat.card (IsLocalRing.ResidueField ℤ_[p]) = p := by
+  rw [Nat.card_congr residueField.toEquiv, Nat.card_zmod]
+
+/-- The truncation `toZModPow n x` is the class of the natural number `x.appr n`. -/
+theorem toZModPow_eq_natCast_appr (x : ℤ_[p]) (n : ℕ) :
+    toZModPow n x = (x.appr n : ZMod (p ^ n)) :=
+  (rfl)
+
+/-- The `ZMod (p ^ n)`-value of the truncation `toZModPow n x` is `x.appr n`.
+
+This is the `p ^ n` analogue of `PadicInt.val_toZMod_eq_zmodRepr`. -/
+theorem val_toZModPow_eq_appr (x : ℤ_[p]) (n : ℕ) : (toZModPow n x).val = x.appr n := by
+  rw [toZModPow_eq_natCast_appr, ZMod.val_natCast_of_lt (appr_lt x n)]
+
+/-- Truncation modulo `p ^ n` is continuous: its fibres are the closed balls of radius
+`p ^ (-n)`, which are open because the `p`-adic distance is ultrametric. -/
+theorem continuous_toZModPow (n : ℕ) : Continuous (toZModPow (p := p) n) := by
+  refine (IsLocallyConstant.iff_isOpen_fiber_apply.mpr fun x ↦ ?_).continuous
+  have h : (toZModPow (p := p) n) ⁻¹' {toZModPow n x}
+      = Metric.closedBall x ((p : ℝ) ^ (-n : ℤ)) := by
+    ext y
+    simp only [Set.mem_preimage, Set.mem_singleton_iff, Metric.mem_closedBall, dist_eq_norm]
+    rw [norm_le_pow_iff_mem_span_pow, ← ker_toZModPow, RingHom.mem_ker, map_sub, sub_eq_zero]
+  have hp0 : (0 : ℝ) < p := by exact_mod_cast hp.out.pos
+  rw [h]
+  exact IsUltrametricDist.isOpen_closedBall _ (zpow_ne_zero _ hp0.ne')
+
+/-- Reduction modulo `p` is continuous: its fibres are those of the truncation `toZModPow 1`,
+both kernels being the maximal ideal `(p)`. -/
+theorem continuous_toZMod : Continuous (toZMod : ℤ_[p] → ZMod p) := by
+  refine (IsLocallyConstant.iff_isOpen_fiber_apply.mpr fun x ↦ ?_).continuous
+  have h : (toZMod : ℤ_[p] → ZMod p) ⁻¹' {toZMod x} = toZModPow 1 ⁻¹' {toZModPow 1 x} := by
+    ext y
+    simp only [Set.mem_preimage, Set.mem_singleton_iff, ← RingHom.sub_mem_ker_iff, ker_toZMod,
+      ker_toZModPow, maximalIdeal_eq_span_p, pow_one]
+  rw [h]
+  exact (continuous_toZModPow 1).isOpen_preimage _ (isOpen_discrete _)
+
+/-- A `p`-adic integer reduces to `0` modulo `p` exactly when `p` divides it. -/
+theorem toZMod_eq_zero_iff_dvd (x : ℤ_[p]) : toZMod x = 0 ↔ (p : ℤ_[p]) ∣ x := by
+  rw [← RingHom.mem_ker, ker_toZMod, maximalIdeal_eq_span_p, Ideal.mem_span_singleton]
+
+-- This is the `p = 2` case of the congruence `x ^ p ≡ x` modulo `p`; the general case would need
+-- `ZMod.pow_card`, whose finite-field import closure is far wider than this file's.
+/-- Every `2`-adic integer satisfies `x ^ 2 ≡ x` modulo `2`, since the residue field of `ℤ_[2]` is
+`ZMod 2`. -/
+theorem two_dvd_sq_sub_self (x : ℤ_[2]) : (2 : ℤ_[2]) ∣ x ^ 2 - x := by
+  have h : toZMod (x ^ 2 - x) = 0 := by
+    rw [map_sub, map_pow]
+    generalize toZMod x = a
+    revert a
+    decide
+  simpa using (toZMod_eq_zero_iff_dvd _).mp h
+
+/-- A `p`-adic integer truncates to `0` modulo `p ^ n` exactly when `p ^ n` divides it. -/
+theorem toZModPow_eq_zero_iff_dvd (n : ℕ) (x : ℤ_[p]) :
+    toZModPow n x = 0 ↔ (p : ℤ_[p]) ^ n ∣ x := by
+  rw [← RingHom.mem_ker, ker_toZModPow, Ideal.mem_span_singleton]
+
+/-- Two `p`-adic integers have the same truncation modulo `p ^ n` exactly when `p ^ n` divides
+their difference. -/
+theorem toZModPow_eq_iff_dvd_sub (n : ℕ) {x y : ℤ_[p]} :
+    toZModPow n x = toZModPow n y ↔ (p : ℤ_[p]) ^ n ∣ y - x := by
+  rw [eq_comm, ← sub_eq_zero, ← map_sub, toZModPow_eq_zero_iff_dvd]
+
+/-- Divisibility by `8` in `ℤ_[2]` is equality of residues modulo `8`. -/
+theorem eight_dvd_sub_iff_toZModPow_three_eq {a c : ℤ_[2]} :
+    (8 : ℤ_[2]) ∣ c - a ↔ toZModPow 3 a = toZModPow 3 c := by
+  rw [toZModPow_eq_iff_dvd_sub]
+  norm_num
+
+/-- An element of `ℤ_[2]` is a unit exactly when its residue modulo `8` squares to `1`. -/
+theorem isUnit_iff_toZModPow_three_mul_self {z : ℤ_[2]} :
+    IsUnit z ↔ toZModPow 3 z * toZModPow 3 z = 1 := by
+  refine ⟨fun ⟨u, hu⟩ ↦ ?_, fun hz ↦ ?_⟩
+  · subst hu
+    have key : ∀ a b : ZMod (2 ^ 3), a * b = 1 → a * a = 1 := by decide
+    exact key _ (toZModPow 3 (↑u⁻¹ : ℤ_[2])) (by rw [← map_mul, Units.mul_inv, map_one])
+  · by_contra h
+    obtain ⟨w, rfl⟩ := not_isUnit_iff_dvd.mp h
+    have key : ∀ a : ZMod (2 ^ 3), 2 * a * (2 * a) ≠ 1 := by decide
+    exact key (toZModPow 3 w) (by simpa [map_ofNat] using hz)
+
+/-- The square of a unit of `ℤ_[2]` is `1` modulo `8`. -/
+theorem eight_dvd_sq_sub_one_of_isUnit {z : ℤ_[2]} (hz : IsUnit z) : (8 : ℤ_[2]) ∣ z ^ 2 - 1 := by
+  rw [eight_dvd_sub_iff_toZModPow_three_eq, map_one, map_pow, sq,
+    isUnit_iff_toZModPow_three_mul_self.mp hz]
+
+/-- For `k ≥ 1`, a unit `c = a x² + 2ᵏ b y²` of `ℤ_[2]` is congruent to `a` or to `a + 2ᵏ b`
+modulo `8`: the values of the binary form `⟨a, 2ᵏ b⟩` that are units. -/
+theorem eight_dvd_sub_or_eight_dvd_sub_add_of_eq {a b c x y : ℤ_[2]} {k : ℕ}
+    (hk : k ≠ 0) (hc : IsUnit c) (h : a * x ^ 2 + 2 ^ k * b * y ^ 2 = c) :
+    (8 : ℤ_[2]) ∣ c - a ∨ (8 : ℤ_[2]) ∣ c - (a + 2 ^ k * b) := by
+  obtain ⟨j, rfl⟩ := Nat.exists_eq_add_one_of_ne_zero hk
+  -- `x` is a unit, since otherwise `2` divides `c`.
+  have hx : IsUnit x := by
+    by_contra hx
+    obtain ⟨w, rfl⟩ := not_isUnit_iff_dvd.mp hx
+    refine not_isUnit_iff_dvd.mpr ⟨a * 2 * w ^ 2 + 2 ^ j * b * y ^ 2, ?_⟩ hc
+    rw [← h]
+    push_cast
+    ring
+  have hx8 := eight_dvd_sq_sub_one_of_isUnit hx
+  by_cases hy : IsUnit y
+  · right
+    have he : c - (a + 2 ^ (j + 1) * b) = a * (x ^ 2 - 1) + 2 ^ (j + 1) * b * (y ^ 2 - 1) := by
+      rw [← h]
+      ring
+    rw [he]
+    exact dvd_add (dvd_mul_of_dvd_right hx8 _)
+      (dvd_mul_of_dvd_right (eight_dvd_sq_sub_one_of_isUnit hy) _)
+  · left
+    obtain ⟨z, rfl⟩ := not_isUnit_iff_dvd.mp hy
+    have he : c - a = a * (x ^ 2 - 1) + 8 * (2 ^ j * b * z ^ 2) := by
+      rw [← h]
+      push_cast
+      ring
+    rw [he]
+    exact dvd_add (dvd_mul_of_dvd_right hx8 _) (dvd_mul_right _ _)
+
+/-- `-3` is not a square in `ℤ_[2]`, since it is not a square modulo `8`. -/
+theorem not_isSquare_neg_three : ¬IsSquare (-3 : ℤ_[2]) := by
+  rintro ⟨x, hx⟩
+  have h8 := congrArg (toZModPow 3) hx
+  rw [map_mul, map_neg, map_ofNat] at h8
+  revert h8
+  generalize toZModPow 3 x = y
+  revert y
+  decide
+
+/-- A `p`-adic integer within `p ^ (-n)` of `1` reduces to `1` modulo `p ^ n`. -/
+theorem toZModPow_eq_one_of_norm_sub_one_le {n : ℕ} {x : ℤ_[p]}
+    (hx : ‖x - 1‖ ≤ (p : ℝ) ^ (-(n : ℤ))) :
+    toZModPow n x = 1 := by
+  rw [← sub_eq_zero, ← map_one (toZModPow (p := p) n), ← map_sub,
+    ← RingHom.mem_ker, ker_toZModPow, ← norm_le_pow_iff_mem_span_pow]
+  exact hx
+
+/-- Reducing the truncation `x mod p ^ n` further modulo `p` gives `x mod p`. -/
+@[simp]
+theorem cast_toZModPow_eq_toZMod {n : ℕ} (hn : n ≠ 0) (x : ℤ_[p]) :
+    (ZMod.cast (toZModPow n x) : ZMod p) = toZMod x := by
+  have h : toZMod (x - (x.appr n : ℤ_[p])) = 0 := by
+    rw [← RingHom.mem_ker, ker_toZMod, maximalIdeal_eq_span_p]
+    exact Ideal.span_singleton_le_span_singleton.mpr (dvd_pow_self (p : ℤ_[p]) hn) (appr_spec n x)
+  rw [map_sub, sub_eq_zero] at h
+  rw [h, toZModPow_eq_natCast_appr x n, ZMod.cast_natCast (dvd_pow_self p hn), map_natCast]
+
+/-- The truncation `appr x n` agrees with `x` modulo `p ^ n`: the divisibility form of
+`PadicInt.appr_spec`. -/
+@[simp]
+theorem dvd_sub_appr (x : ℤ_[p]) (n : ℕ) : (p : ℤ_[p]) ^ n ∣ x - x.appr n :=
+  Ideal.mem_span_singleton.mp (appr_spec n x)
+
+open scoped Classical Finset in
+/-- At least `⌊n / pʲ⌋` of the `n` consecutive elements `a, a - 1, …, a - (n - 1)` of `ℤ_p` are
+divisible by `pʲ`: the indices `r + t pʲ` with `t < ⌊n / pʲ⌋`, where `r = appr a j`. -/
+theorem div_pow_le_card_filter_dvd (a : ℤ_[p]) (n j : ℕ) :
+    n / p ^ j ≤ #{i ∈ Finset.range n | (p : ℤ_[p]) ^ j ∣ a - ((i : ℕ) : ℤ_[p])} := by
+  have hP : 0 < p ^ j := pow_pos hp.out.pos j
+  calc n / p ^ j = #(Finset.range (n / p ^ j)) := (Finset.card_range _).symm
+    _ ≤ _ := Finset.card_le_card_of_injOn (fun t ↦ a.appr j + t * p ^ j) (fun t ht ↦ ?_)
+        (fun s _ t _ hst ↦ ?_)
+  · simp only [Finset.coe_range, Set.mem_Iio] at ht
+    have hle : (t + 1) * p ^ j ≤ n := (Nat.le_div_iff_mul_le hP).mp ht
+    have hr := a.appr_lt j
+    simp only [Finset.coe_filter, Finset.mem_range, Set.mem_ofPred_eq]
+    refine ⟨by nlinarith, ?_⟩
+    have hsub : a - ((a.appr j + t * p ^ j : ℕ) : ℤ_[p]) =
+        (a - a.appr j) - t * (p : ℤ_[p]) ^ j := by
+      push_cast
+      ring
+    rw [hsub]
+    exact dvd_sub (a.dvd_sub_appr j) (dvd_mul_left _ _)
+  · simpa [hP.ne', hp.out.ne_zero] using hst
+
+open scoped Classical Finset in
+/-- For a natural number `a`, exactly `⌊n / pʲ⌋ + [a mod pʲ < n mod pʲ]` of the `n` consecutive
+elements `a, a - 1, …, a - (n - 1)` of `ℤ_p` are divisible by `pʲ`: the exact form of
+`PadicInt.div_pow_le_card_filter_dvd`. -/
+theorem card_filter_pow_dvd_natCast_sub (j n a : ℕ) :
+    #{i ∈ Finset.range n | (p : ℤ_[p]) ^ j ∣ (a : ℤ_[p]) - ((i : ℕ) : ℤ_[p])} =
+      n / p ^ j + if a % p ^ j < n % p ^ j then 1 else 0 := by
+  rw [← Nat.count_modEq_card n (pow_pos hp.out.pos j) a, Nat.count_eq_card_filter_range]
+  refine congrArg Finset.card (Finset.filter_congr fun i _ ↦ ?_)
+  have hcast : (a : ℤ_[p]) - i = ((a - i : ℤ) : ℤ_[p]) := by
+    rw [Int.cast_sub, Int.cast_natCast, Int.cast_natCast]
+  rw [hcast, pow_p_dvd_int_iff, Nat.modEq_iff_dvd, Nat.cast_pow]
+
+/-- A coarser truncation of `x` is a finer truncation of `x` read modulo the coarser
+modulus. -/
+theorem appr_modEq (x : ℤ_[p]) {m n : ℕ} (h : m ≤ n) : x.appr n ≡ x.appr m [MOD p ^ m] := by
+  rw [← ZMod.natCast_eq_natCast_iff, ← ZMod.cast_natCast (pow_dvd_pow p h) (x.appr n),
+    ← toZModPow_eq_natCast_appr, ← toZModPow_eq_natCast_appr, cast_toZModPow m n h]
+
+/-- Truncation is additive modulo `p ^ n`. -/
+theorem appr_add_modEq (x y : ℤ_[p]) (n : ℕ) :
+    (x + y).appr n ≡ x.appr n + y.appr n [MOD p ^ n] := by
+  rw [← ZMod.natCast_eq_natCast_iff]
+  push_cast
+  rw [← toZModPow_eq_natCast_appr, ← toZModPow_eq_natCast_appr, ← toZModPow_eq_natCast_appr,
+    map_add]
+
+/-- Truncation is multiplicative modulo `p ^ n`. -/
+theorem appr_mul_modEq (x y : ℤ_[p]) (n : ℕ) :
+    (x * y).appr n ≡ x.appr n * y.appr n [MOD p ^ n] := by
+  rw [← ZMod.natCast_eq_natCast_iff]
+  push_cast
+  rw [← toZModPow_eq_natCast_appr, ← toZModPow_eq_natCast_appr, ← toZModPow_eq_natCast_appr,
+    map_mul]
+
+/-- Truncation fixes a natural number modulo `p ^ n`. -/
+theorem appr_natCast_modEq (k n : ℕ) : ((k : ℤ_[p])).appr n ≡ k [MOD p ^ n] := by
+  rw [← ZMod.natCast_eq_natCast_iff, ← toZModPow_eq_natCast_appr, map_natCast]
+
+/-- The truncation of `p ^ m` modulo `p ^ n` vanishes when `n ≤ m`. -/
+@[simp]
+theorem appr_natCast_pow_of_le {m n : ℕ} (h : n ≤ m) : ((p : ℤ_[p]) ^ m).appr n = 0 := by
+  have hm := appr_natCast_modEq (p := p) (p ^ m) n
+  rw [Nat.cast_pow] at hm
+  exact Nat.eq_zero_of_dvd_of_lt
+    (Nat.modEq_zero_iff_dvd.mp (hm.trans (Nat.modEq_zero_iff_dvd.mpr (pow_dvd_pow p h))))
+    (appr_lt _ n)
+
+/-- The truncation modulo `p ^ 0 = 1` is `0`. -/
+@[simp]
+theorem appr_zero_right (x : ℤ_[p]) : x.appr 0 = 0 := by
+  simpa using appr_lt x 0
+
+/-- The truncation of a natural number `k` modulo `p ^ n` is its remainder `k % p ^ n`. -/
+@[simp]
+theorem appr_natCast (k n : ℕ) : ((k : ℤ_[p])).appr n = k % p ^ n := by
+  have h : ((k : ℤ_[p])).appr n % p ^ n = k % p ^ n := appr_natCast_modEq k n
+  rwa [Nat.mod_eq_of_lt (appr_lt _ n)] at h
+
+/-- A finer truncation of `x`, reduced modulo `p ^ m`, is the truncation of `x` modulo `p ^ m`. -/
+theorem appr_mod_pow (x : ℤ_[p]) {m n : ℕ} (h : m ≤ n) : x.appr n % p ^ m = x.appr m := by
+  have h' : x.appr n % p ^ m = x.appr m % p ^ m := appr_modEq x h
+  rwa [Nat.mod_eq_of_lt (appr_lt x m)] at h'
+
+/-- A `p`-adic integer is within `p ^ (-n)` of its truncation modulo `p ^ n`. -/
+theorem norm_sub_appr_le (x : ℤ_[p]) (n : ℕ) : ‖x - x.appr n‖ ≤ (p : ℝ) ^ (-(n : ℤ)) :=
+  (norm_le_pow_iff_mem_span_pow _ n).mpr (appr_spec n x)
+
+/-- For `m ≤ n`, a `p`-adic integer is within `p ^ (-m)` of its truncation modulo `p ^ n`. -/
+theorem norm_sub_appr_le_of_le (x : ℤ_[p]) {m n : ℕ} (h : m ≤ n) :
+    ‖x - x.appr n‖ ≤ (p : ℝ) ^ (-(m : ℤ)) :=
+  (norm_sub_appr_le x n).trans
+    (zpow_le_zpow_right₀ (mod_cast hp.out.one_lt.le) (neg_le_neg (mod_cast h)))
+
+/-- For `k < p ^ n`, the truncation of `x` modulo `p ^ n` is `k` exactly when `x` lies in the
+closed ball of radius `p ^ (-n)` around `k`. -/
+theorem appr_eq_iff_norm_sub_le (x : ℤ_[p]) {k n : ℕ} (hk : k < p ^ n) :
+    x.appr n = k ↔ ‖x - k‖ ≤ (p : ℝ) ^ (-(n : ℤ)) := by
+  rw [norm_le_pow_iff_mem_span_pow, ← ker_toZModPow, RingHom.mem_ker, map_sub, map_natCast,
+    sub_eq_zero, ← (ZMod.val_injective _).eq_iff, val_toZModPow_eq_appr, ZMod.val_natCast_of_lt hk]
+
+/-- The truncations of a `p`-adic integer converge to it. -/
+theorem tendsto_appr (x : ℤ_[p]) :
+    Filter.Tendsto (fun n ↦ (x.appr n : ℤ_[p])) Filter.atTop (nhds x) := by
+  refine Metric.tendsto_atTop.mpr fun ε hε ↦ ?_
+  obtain ⟨k, hk⟩ := exists_pow_neg_lt p hε
+  refine ⟨k, fun n hn ↦ ?_⟩
+  rw [dist_eq_norm, norm_sub_rev]
+  exact (norm_sub_appr_le_of_le x hn).trans_lt hk
+
+/-- The truncation modulo `p ^ n` is locally constant, `ℕ` carrying the discrete topology. -/
+theorem continuous_appr (n : ℕ) : Continuous fun x : ℤ_[p] ↦ x.appr n := by
+  simp_rw [← val_toZModPow_eq_appr]
+  exact continuous_of_discreteTopology.comp (continuous_toZModPow n)
+
+/-- The truncation `toZModPow n` identifies the quotient of `ℤ_[p]` by the ideal `(p ^ n)` with
+`ZMod (p ^ n)`. This is the `p ^ n` analogue of `PadicInt.residueField`. -/
+noncomputable def quotientSpanPowEquivZMod (n : ℕ) :
+    ℤ_[p] ⧸ Ideal.span {(p : ℤ_[p]) ^ n} ≃+* ZMod (p ^ n) :=
+  (Ideal.quotEquivOfEq (ker_toZModPow n).symm).trans
+    (RingHom.quotientKerEquivOfSurjective (ZMod.ringHom_surjective (toZModPow n)))
+
+@[simp]
+theorem quotientSpanPowEquivZMod_mk (n : ℕ) (x : ℤ_[p]) :
+    quotientSpanPowEquivZMod n (Ideal.Quotient.mk _ x) = toZModPow n x := by
+  simp [quotientSpanPowEquivZMod]
+
+/-- A nonzero `p`-adic integer `x` generates the same ideal as `p ^ x.valuation`, since it is a
+unit times that power of `p`. -/
+theorem span_singleton_eq_span_pow_valuation {x : ℤ_[p]} (hx : x ≠ 0) :
+    Ideal.span {x} = Ideal.span {(p : ℤ_[p]) ^ x.valuation} := by
+  conv_lhs => rw [unitCoeff_spec hx]
+  exact Ideal.span_singleton_mul_left_unit (unitCoeff hx).isUnit _
+
+/-- The quotient of `ℤ_[p]` by the ideal generated by a nonzero element `x` is `ZMod (p ^ v)`,
+where `v` is the valuation of `x`: the ideal `(x)` is `(p ^ v)`, and `toZModPow v` identifies the
+quotient with `ZMod (p ^ v)`. -/
+noncomputable def quotientSpanEquivZMod {x : ℤ_[p]} (hx : x ≠ 0) :
+    ℤ_[p] ⧸ Ideal.span {x} ≃+* ZMod (p ^ x.valuation) :=
+  (Ideal.quotEquivOfEq (span_singleton_eq_span_pow_valuation hx)).trans
+    (quotientSpanPowEquivZMod _)
+
+@[simp]
+theorem quotientSpanEquivZMod_mk {x : ℤ_[p]} (hx : x ≠ 0) (y : ℤ_[p]) :
+    quotientSpanEquivZMod hx (Ideal.Quotient.mk _ y) = toZModPow x.valuation y := by
+  simp [quotientSpanEquivZMod]
+
+/-- The quotient of `ℤ_[p]` by the ideal generated by a nonzero element is finite. -/
+theorem finite_quotient_span {x : ℤ_[p]} (hx : x ≠ 0) : Finite (ℤ_[p] ⧸ Ideal.span {x}) :=
+  have : NeZero p := ⟨hp.out.ne_zero⟩
+  Finite.of_equiv _ (quotientSpanEquivZMod hx).symm.toEquiv
+
+/-- The quotient of `ℤ_[p]` by the ideal generated by a nonzero element `x` has `p ^ v` elements,
+where `v` is the valuation of `x`. -/
+theorem natCard_quotient_span {x : ℤ_[p]} (hx : x ≠ 0) :
+    Nat.card (ℤ_[p] ⧸ Ideal.span {x}) = p ^ x.valuation := by
+  rw [Nat.card_congr (quotientSpanEquivZMod hx).toEquiv, Nat.card_zmod]
+
+/-- The additive group of the quotient of `ℤ_[p]` by the ideal generated by a nonzero element is
+cyclic, being that of `ZMod (p ^ v)`. -/
+theorem isAddCyclic_quotient_span {x : ℤ_[p]} (hx : x ≠ 0) :
+    IsAddCyclic (ℤ_[p] ⧸ Ideal.span {x}) :=
+  isAddCyclic_of_surjective (quotientSpanEquivZMod hx).symm.toAddMonoidHom
+    (quotientSpanEquivZMod hx).symm.surjective
+
+/-- The valuation of a natural number in `ℤ_[p]` is its `p`-adic valuation. -/
+@[simp]
+theorem valuation_natCast (n : ℕ) : (n : ℤ_[p]).valuation = padicValNat p n := by
+  have h := valuation_coe (n : ℤ_[p])
+  rw [coe_natCast, Padic.valuation_natCast] at h
+  exact_mod_cast h.symm
+
+/-- A unit of `ℤ_[p]` has valuation `0`. -/
+theorem valuation_eq_zero_of_isUnit {x : ℤ_[p]} (hx : IsUnit x) : x.valuation = 0 := by
+  have h := isUnit_iff.1 hx
+  rwa [norm_eq_zpow_neg_valuation hx.ne_zero,
+    zpow_eq_one_iff_right₀ (Nat.cast_nonneg p) (by exact_mod_cast hp.out.ne_one), neg_eq_zero,
+    Nat.cast_eq_zero] at h
+
+/-- A nonzero `p`-adic integer divisible by `p` has valuation at least `1`. -/
+theorem one_le_valuation_of_dvd {x : ℤ_[p]} (hx : x ≠ 0) (h : (p : ℤ_[p]) ∣ x) :
+    1 ≤ x.valuation := by
+  rw [← mem_span_pow_iff_le_valuation x hx, pow_one, Ideal.mem_span_singleton]
+  exact h
+
+/-- A nonzero `p`-adic integer `x` divides `p ^ v` for `v` its valuation. -/
+theorem dvd_pow_valuation {x : ℤ_[p]} (hx : x ≠ 0) : x ∣ (p : ℤ_[p]) ^ x.valuation := by
+  nth_rewrite 1 [unitCoeff_spec hx]
+  exact Units.mul_left_dvd.mpr dvd_rfl
+
+/-- **Reduction modulo `p` of `ℤ_[p] ⧸ (q)`**, for `p ∣ q`: the ring homomorphism induced by
+`toZMod`, whose kernel `(p)` contains `(q)`. -/
+noncomputable def quotientSpanToZMod {q : ℤ_[p]} (hq : (p : ℤ_[p]) ∣ q) :
+    ℤ_[p] ⧸ Ideal.span {q} →+* ZMod p :=
+  Ideal.Quotient.lift _ toZMod fun a ha ↦ by
+    rw [← RingHom.mem_ker, ker_toZMod, maximalIdeal_eq_span_p]
+    exact Ideal.span_singleton_le_span_singleton.mpr hq ha
+
+/-- Reduction modulo `p` of the class of `x` in `ℤ_[p] ⧸ (q)` is `x mod p`. -/
+@[simp]
+theorem quotientSpanToZMod_mk {q : ℤ_[p]} (hq : (p : ℤ_[p]) ∣ q) (x : ℤ_[p]) :
+    quotientSpanToZMod hq (Ideal.Quotient.mk _ x) = toZMod x :=
+  Ideal.Quotient.lift_mk _ _ _
+
+/-- Reduction modulo `p` of `ℤ_[p] ⧸ (q)` is continuous for the quotient topology. -/
+theorem continuous_quotientSpanToZMod {q : ℤ_[p]} (hq : (p : ℤ_[p]) ∣ q) :
+    Continuous (quotientSpanToZMod hq) :=
+  Ideal.Quotient.continuous_lift _ continuous_toZMod _
+
+/-- **Truncation modulo `p ^ n` of `ℤ_[p] ⧸ (q)`**, for `p ^ n ∣ q`: the ring homomorphism
+induced by `toZModPow n`, whose kernel `(p ^ n)` contains `(q)`. -/
+noncomputable def quotientSpanToZModPow (n : ℕ) {q : ℤ_[p]} (hq : (p : ℤ_[p]) ^ n ∣ q) :
+    ℤ_[p] ⧸ Ideal.span {q} →+* ZMod (p ^ n) :=
+  Ideal.Quotient.lift _ (toZModPow n) fun a ha ↦ by
+    rw [← RingHom.mem_ker, ker_toZModPow]
+    exact Ideal.span_singleton_le_span_singleton.mpr hq ha
+
+/-- Truncation modulo `p ^ n` of the class of `x` in `ℤ_[p] ⧸ (q)` is `x mod p ^ n`. -/
+@[simp]
+theorem quotientSpanToZModPow_mk (n : ℕ) {q : ℤ_[p]} (hq : (p : ℤ_[p]) ^ n ∣ q) (x : ℤ_[p]) :
+    quotientSpanToZModPow n hq (Ideal.Quotient.mk _ x) = toZModPow n x :=
+  Ideal.Quotient.lift_mk _ _ _
+
+/-- Truncation modulo `p ^ n` of `ℤ_[p] ⧸ (q)` is continuous for the quotient topology. -/
+theorem continuous_quotientSpanToZModPow (n : ℕ) {q : ℤ_[p]} (hq : (p : ℤ_[p]) ^ n ∣ q) :
+    Continuous (quotientSpanToZModPow n hq) :=
+  Ideal.Quotient.continuous_lift _ (continuous_toZModPow n) _
+
+/-- Truncation modulo `p ^ n` on the units of `ℤ_[p]`, as a continuous homomorphism to the units of
+`ZMod (p ^ n)`. -/
+noncomputable def unitsToZModPow (n : ℕ) : ℤ_[p]ˣ →ₜ* (ZMod (p ^ n))ˣ where
+  toMonoidHom := Units.map (toZModPow n : ℤ_[p] →+* ZMod (p ^ n)).toMonoidHom
+  continuous_toFun :=
+    Units.continuous_map (f := (toZModPow n : ℤ_[p] →+* ZMod (p ^ n)).toMonoidHom)
+      (continuous_toZModPow n)
+
+@[simp]
+theorem coe_unitsToZModPow_apply (n : ℕ) (u : ℤ_[p]ˣ) :
+    ((unitsToZModPow n u : (ZMod (p ^ n))ˣ) : ZMod (p ^ n)) = toZModPow n (u : ℤ_[p]) :=
+  (rfl)
+
+/-- Truncation modulo `p ^ n` on the units of `ℤ_[p]` is surjective: every unit of `ZMod (p ^ n)`
+lifts to a unit of `ℤ_[p]`. -/
+theorem unitsToZModPow_surjective (n : ℕ) :
+    Function.Surjective (unitsToZModPow (p := p) n) := by
+  rcases Nat.eq_zero_or_pos n with rfl | hn
+  · have : Subsingleton (ZMod (p ^ 0)) := by rw [pow_zero]; infer_instance
+    exact fun u ↦ ⟨1, Subsingleton.elim _ _⟩
+  · have : Fact (1 < p ^ n) := ⟨Nat.one_lt_pow hn.ne' hp.out.one_lt⟩
+    exact IsLocalRing.surjective_units_map_of_local_ringHom _ (ZMod.ringHom_surjective _)
+      (IsLocalHom.of_surjective _ (ZMod.ringHom_surjective _))
+
+/-- Truncating modulo `p ^ n` and then reducing modulo `p ^ m`, for `p ^ m ∣ p ^ n`, is
+truncation modulo `p ^ m`. -/
+@[simp]
+theorem unitsMap_unitsToZModPow {m n : ℕ} (h : p ^ m ∣ p ^ n) (u : ℤ_[p]ˣ) :
+    ZMod.unitsMap h (unitsToZModPow n u) = unitsToZModPow m u := by
+  ext
+  rw [ZMod.unitsMap_val, coe_unitsToZModPow_apply, coe_unitsToZModPow_apply,
+    cast_toZModPow _ _ ((Nat.pow_dvd_pow_iff_le_right hp.out.one_lt).mp h)]
+
+/-- Truncation modulo `p ^ 0 = 1` sends every unit to `1`. -/
+theorem unitsToZModPow_zero_apply (u : ℤ_[p]ˣ) : unitsToZModPow 0 u = 1 := by
+  have : Subsingleton (ZMod (p ^ 0)) := by rw [pow_zero]; infer_instance
+  exact Subsingleton.elim _ _
+
+variable {M : Type*} [Monoid M] {g : M} {n : ℕ}
+
+/-- Raising an element killed by `p ^ m` to the exponent `x.appr n` gives the same value for
+every truncation level `n ≥ m`. This is what makes the `p`-adic power well defined. -/
+theorem pow_appr_eq_pow_appr (x : ℤ_[p]) {m : ℕ} (hg : g ^ p ^ m = 1) (hmn : m ≤ n) :
+    g ^ x.appr n = g ^ x.appr m :=
+  pow_eq_pow_of_modEq (x.appr_modEq hmn) hg
+
+end PadicInt

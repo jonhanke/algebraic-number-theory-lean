@@ -1,0 +1,141 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Tau Ceti contributors
+-/
+module
+
+public import Mathlib.RepresentationTheory.Intertwining
+public import Mathlib.RepresentationTheory.Maschke
+public import Mathlib.RepresentationTheory.FDRep
+public import Mathlib.Algebra.Category.FGModuleCat.Abelian
+public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
+import NumberFieldKB.TauCetiPort.RepresentationTheory.AsModule
+import NumberFieldKB.TauCetiPort.RingTheory.Semisimple.HomDimension
+
+/-!
+# Maschke's theorem for intertwining maps
+
+Mathlib states Maschke's theorem for modules over the group algebra: over a field in which the
+order of the finite group `G` is invertible, a `k[G]`-linear injection has a `k[G]`-linear left
+inverse (`MonoidAlgebra.exists_leftInverse_of_injective`).  This file reads that statement through
+Mathlib's dictionary `Representation.IntertwiningMap.equivLinearMapAsModule` between intertwining
+maps and `k[G]`-linear maps of the attached modules, so that it applies to representations as they
+are usually given, without passing to `Representation.asModule`. It also gives a splitting of every
+short exact sequence in `Rep k G` and `FDRep k G`, the categorical form used to compare split and
+exact Grothendieck rings.
+
+The form recorded here is the one used to compare the two meanings of "a constituent of `ρ`": an
+irreducible `σ` that embeds in `ρ` is also a quotient of `ρ`, because the embedding splits.
+
+## Main statements
+
+* `Representation.IntertwiningMap.exists_leftInverse_of_injective`: an injective intertwining map
+  has an intertwining left inverse.
+* `TauCeti.Rep.nonempty_splitting_of_shortExact`: a short exact sequence in `Rep` splits.
+* `TauCeti.FDRep.nonempty_splitting_of_shortExact`: a short exact sequence in `FDRep` splits.
+* `Representation.finrank_intertwiningMap_comm`: intertwining-space dimension is symmetric for
+  finite-dimensional representations.
+
+## References
+
+* J.-P. Serre, *Linear Representations of Finite Groups*, Springer GTM 42 (1977), Chapter 1.
+-/
+
+public section
+
+open scoped MonoidAlgebra
+
+namespace Representation.IntertwiningMap
+
+variable {k G V W : Type*} [Field k] [Group G] [Finite G] [NeZero (Nat.card G : k)]
+  [AddCommGroup V] [Module k V] [AddCommGroup W] [Module k W]
+  {ρ : Representation k G V} {σ : Representation k G W}
+
+/-- **Maschke's theorem for intertwining maps.**  Over a field in which the order of the finite
+group `G` is invertible, an injective intertwining map `f : ρ → σ` has an intertwining left
+inverse `p : σ → ρ`, that is, `p ∘ f = id`. -/
+theorem exists_leftInverse_of_injective (f : IntertwiningMap ρ σ) (hf : Function.Injective f) :
+    ∃ p : IntertwiningMap σ ρ, p.comp f = IntertwiningMap.id ρ := by
+  let e := IntertwiningMap.equivLinearMapAsModule ρ σ
+  obtain ⟨q, hq⟩ := MonoidAlgebra.exists_leftInverse_of_injective (e f)
+    (LinearMap.ker_eq_bot.mpr hf)
+  let e' := IntertwiningMap.equivLinearMapAsModule σ ρ
+  let p := e'.symm q
+  refine ⟨p, IntertwiningMap.ext (LinearMap.ext fun v => ?_)⟩
+  rw [IntertwiningMap.coe_toLinearMap, IntertwiningMap.comp_apply,
+    IntertwiningMap.coe_toLinearMap, IntertwiningMap.id_apply]
+  have hef : e f (ρ.asModuleEquiv.symm v) = σ.asModuleEquiv.symm (f v) := by
+    apply σ.asModuleEquiv.eq_symm_apply.mpr
+    rw [IntertwiningMap.equivLinearMapAsModule_apply,
+      Representation.asModuleEquiv_symm_apply]
+    -- `f v` is read as an element of `σ.asModule`, where `asModuleEquiv` evaluates.
+    exact Representation.asModuleEquiv_apply (show σ.asModule from f v)
+  have hqv := congrArg (fun l => ρ.asModuleEquiv (l (ρ.asModuleEquiv.symm v))) hq
+  rw [LinearMap.comp_apply, hef, LinearMap.id_apply, LinearEquiv.apply_symm_apply] at hqv
+  calc
+    p (f v) = ρ.asModuleEquiv (q (σ.asModuleEquiv.symm (f v))) := by
+      simpa only [p, e'] using
+        (IntertwiningMap.equivLinearMapAsModule_symm_apply q (f v))
+    _ = v := hqv
+
+end Representation.IntertwiningMap
+
+namespace Representation
+
+variable {k G V W : Type*} [Field k] [Group G] [Finite G] [NeZero (Nat.card G : k)]
+  [AddCommGroup V] [Module k V] [AddCommGroup W] [Module k W]
+  [FiniteDimensional k V] [FiniteDimensional k W]
+
+/-- When the finite group order is invertible, the spaces of intertwining maps in the two
+directions between finite-dimensional representations have equal dimension. -/
+theorem finrank_intertwiningMap_comm (ρ : Representation k G V) (σ : Representation k G W) :
+    Module.finrank k (IntertwiningMap ρ σ) = Module.finrank k (IntertwiningMap σ ρ) := by
+  rw [(IntertwiningMap.equivLinearMapAsModule ρ σ).finrank_eq,
+    (IntertwiningMap.equivLinearMapAsModule σ ρ).finrank_eq]
+  exact TauCeti.finrank_linearMap_comm_of_isSemisimpleModule ρ.asModule σ.asModule
+
+end Representation
+
+namespace TauCeti
+
+open CategoryTheory CategoryTheory.Limits
+
+universe u v w
+
+variable {k : Type u} {G : Type v} [Field k] [Group G] [Finite G]
+  [NeZero (Nat.card G : k)]
+
+namespace Rep
+
+/-- Every short exact sequence of representations splits when the group
+order is invertible in the coefficient field. -/
+theorem nonempty_splitting_of_shortExact {S : ShortComplex (Rep.{w} k G)}
+    (hS : S.ShortExact) : Nonempty S.Splitting := by
+  have := hS.mono_f
+  obtain ⟨r, hr⟩ := S.f.hom.exists_leftInverse_of_injective
+    ((Rep.mono_iff_injective S.f).mp inferInstance)
+  refine ⟨ShortComplex.Splitting.ofExactOfRetraction S hS.exact
+    (ConcreteCategory.ofHom r) ?_ hS.epi_g⟩
+  apply Rep.hom_ext
+  simpa only [Rep.hom_comp, ConcreteCategory.hom_ofHom, Rep.hom_id] using hr
+
+end Rep
+
+namespace FDRep
+
+/-- Every short exact sequence of finite-dimensional representations splits when the group
+order is invertible in the coefficient field. -/
+theorem nonempty_splitting_of_shortExact {S : ShortComplex (FDRep k G)}
+    (hS : S.ShortExact) : Nonempty S.Splitting := by
+  let F := forget₂ (FDRep k G) (Rep k G)
+  obtain ⟨s⟩ := Rep.nonempty_splitting_of_shortExact (hS.map_of_exact F)
+  refine ⟨ShortComplex.Splitting.ofExactOfRetraction S hS.exact
+    (F.preimage s.r) ?_ hS.epi_g⟩
+  apply F.map_injective
+  rw [F.map_comp, F.map_preimage, F.map_id]
+  exact s.f_r
+
+end FDRep
+
+end TauCeti

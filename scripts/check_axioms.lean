@@ -44,3 +44,12 @@ fails if any other axiom (in particular `sorryAx`) appears.
 #print axioms NumberFieldKB.Headlines.modularPolynomial_rational
 #print axioms NumberFieldKB.Headlines.modularFunctions_Gamma0
 #print axioms NumberFieldKB.Headlines.cuspForms_weightTwo_finrank
+
+-- Milne, *Class Field Theory*
+#print axioms NumberFieldKB.Headlines.grunwaldWang
+#print axioms NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic
+#print axioms NumberFieldKB.Headlines.localKroneckerWeber_lubinTate
+#print axioms NumberFieldKB.Headlines.eisensteinReciprocity
+#print axioms NumberFieldKB.Headlines.furtwangler_fermat
+#print axioms NumberFieldKB.Headlines.gauss_cubicCurve_count
+#print axioms NumberFieldKB.Headlines.weberL_continuation

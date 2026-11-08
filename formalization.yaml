@@ -2,10 +2,10 @@
 version: "v0.4"
 
 project:
-  name: "algebraic-number-theory-lean (NumberFieldKB): number fields, Tate's thesis and Hecke L-functions"
+  name: "algebraic-number-theory-lean (NumberFieldKB): number fields, class field theory, Tate's thesis and Hecke L-functions"
   description: >-
-    A Lean 4 + Mathlib formalization of five texts of algebraic number theory, item by item: Milne's Algebraic
-    Number Theory; Weil's Basic Number Theory, Chapters I-VII (number fields and function fields over finite
+    A Lean 4 + Mathlib formalization of six texts of algebraic number theory, item by item: Milne's Algebraic
+    Number Theory; Milne's Class Field Theory; Weil's Basic Number Theory, Chapters I-VII (number fields and function fields over finite
     fields); Tate's thesis (Cassels-Frohlich, Chapter XV) over every number field; Pontryagin duality for locally
     compact abelian groups (Folland, Chapter 4; Weil II.5 and VII.2); and the modular curves X_0(N) (Milne,
     Elliptic Curves, Chapter V, sections 1-3). Principal results: Kummer's theorem for regular primes; Dedekind's
@@ -15,8 +15,11 @@ project:
     equation of Hecke L-functions with root number, and the continuation and functional equation of the
     Dedekind zeta function over every number field; Pontryagin duality, Fourier inversion with the dual measure
     and the annihilator correspondences; the genus of X_0(N), the modular polynomial over Q, the function field
-    C(j, j_N) and dim S_2(Gamma_0(N)) = g. Each item of the books is mapped to its Lean declaration and status in
-    docs/results/books/.
+    C(j, j_N) and dim S_2(Gamma_0(N)) = g; from class field theory, the Grunwald-Wang theorem, the cyclicity of
+    central division algebras over number fields, local Kronecker-Weber in Lubin-Tate form, the Eisenstein
+    reciprocity law, Furtwangler's theorem, Gauss's point count for x^3 + y^3 + z^3 = 0 and the continuation of
+    Weber L-series with L(1, chi) != 0. Each item of the books is mapped to its Lean declaration and status in
+    docs/results/books/. This file describes release 0.2.0.
   authors:
     - "Jonathan Hanke"
   license: "Apache-2.0"
@@ -25,11 +28,11 @@ project:
 
 classification:
   arxiv: ["math.NT"]
-  # 11R04 algebraic numbers, rings of algebraic integers; 11R42 zeta functions and L-functions of number fields;
+  # 11R04 algebraic numbers, rings of algebraic integers; 11R37 class field theory; 11R42 zeta functions and L-functions of number fields;
   # 11R56 adele rings and groups; 11S40 zeta functions and L-functions of local fields; 11R58 arithmetic theory of
   # algebraic function fields; 43A40 character groups and dual objects; 11F03 modular and automorphic functions;
   # 03B35 mechanization of proofs and logical operations.
-  msc2020: ["11R04", "11R42", "11R56", "11S40", "11R58", "43A40", "11F03", "03B35"]
+  msc2020: ["11R04", "11R37", "11R42", "11R56", "11S40", "11R58", "43A40", "11F03", "03B35"]
 
 sources:
   - title: "Algebraic Number Theory (version 3.08)"
@@ -37,6 +40,13 @@ sources:
       - "James S. Milne"
     type: "lecture-notes"
     location: "jmilne.org, 2020; every item mapped in docs/results/books/milne-ant.md"
+    relationship: "formalizes"
+    author_endorsement: "n/a"
+  - title: "Class Field Theory (version 4.03)"
+    authors:
+      - "James S. Milne"
+    type: "lecture-notes"
+    location: "jmilne.org, 2020; every item mapped in docs/results/books/milne-cft.md"
     relationship: "formalizes"
     author_endorsement: "n/a"
   - title: "Basic Number Theory"
@@ -87,13 +97,22 @@ related_formalizations:
       with their headers, license and authors kept (see NOTICE). Tau Ceti also has, independently, Chebotarev's
       theorem with natural density, the S-unit theorem and Hermite-Minkowski with ramification in S; these are
       proved here too but are not headlines. docs/results/comparison.md compares each headline with Tau Ceti main
-      (d7b47803c, 2026-11-07).
+      (d7b47803c, 2026-11-07); the class field theory headlines were compared with Tau Ceti 686d0d7f, which has
+      global and local class field theory (those theorems are proved here too, partly from the ported files, but
+      are not headlines).
+  - id: "https://github.com/n-yamaguchi-0729/ClassFieldTheory"
+    relationship: "builds-on"
+    note: "Files of N. Yamaguchi's class field theory library (local existence, local Kronecker-Weber over Q_p,
+      Lubin-Tate torsion, the small Hilbert class field) are ported in NumberFieldKB/YamaguchiPort/ (Apache 2.0)."
+  - id: "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd"
+    relationship: "builds-on"
+    note: "The strong prime number theorem is ported in NumberFieldKB/PNTPort/ (Apache 2.0)."
 
 status:
   scope: >-
-    Formalized (the 20 statements of Challenge.lean, proved in Solution.lean): Milne ANT 3, Weil 4 (number fields 2,
-    function fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The book maps give the
-    status of every item of the five texts. The library also ships the files of its class field theory, elliptic
+    Formalized (the 27 statements of Challenge.lean, proved in Solution.lean): Milne ANT 3, Milne CFT 7, Weil 4
+    (number fields 2, function fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The
+    book maps give the status of every item of the six texts. The library also ships the files of its elliptic
     curve, Chebotarev, non-vanishing and Hilbert class field topics that these books import; those topics are not
     part of this release's books, and some of their files state named results without proof (no headline uses them).
   sorry_count: 0
@@ -130,10 +149,16 @@ fidelity:
     locally compact abelian groups is written multiplicatively, with Mathlib's PontryaginDual. (5) Milne EC V,
     Theorem 2.3 is stated as equality of functions off a discrete subset of the upper half plane (values at poles are
     Lean default values). (6) Literature locators marked [unverified] have not been checked against the sources;
-    the Tate's thesis map is built from the library's citations of Chapter XV, not from an audit of the text.
+    the Tate's thesis map is built from the library's citations of Chapter XV, not from an audit of the text. (7)
+    Three statements of Milne, Class Field Theory, Chapter V are errata of the book, confirmed by the author of this
+    library: Theorem 2.4(b) ("converges for Re(s) > 0" should read "extends to Re(s) > 0"; the corrected form is
+    the headline weberL_continuation), Exercise 3.15 (the existence clause needs the primes of S in H) and Remark
+    4.8 (the first sentence needs G complete and Hausdorff; the second also needs phi trivial on the identity
+    component of K_infinity^x). The corrected forms are proved; the printed forms of Exercise 3.15 and Remark 4.8
+    are refuted by counterexamples in Lean.
 
 review:
-  status: "not yet reviewed: the 20 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 27 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -225,7 +250,37 @@ alignment:
       lean: "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank"
       module: "Challenge / Solution"
       status: "proved"
+    - source: "Milne, Class Field Theory, VIII, Theorem 2.4"
+      lean: "NumberFieldKB.Headlines.grunwaldWang"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Class Field Theory, VIII, Theorem 2.6"
+      lean: "NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Class Field Theory, I, Theorem 4.8"
+      lean: "NumberFieldKB.Headlines.localKroneckerWeber_lubinTate"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Ireland-Rosen, Theorem 14.5.1; Milne, Class Field Theory, VIII, section 5"
+      lean: "NumberFieldKB.Headlines.eisensteinReciprocity"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Class Field Theory, VIII, Theorem 5.14"
+      lean: "NumberFieldKB.Headlines.furtwangler_fermat"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Class Field Theory, VIII, section 10, p. 263"
+      lean: "NumberFieldKB.Headlines.gauss_cubicCurve_count"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Class Field Theory, V, Theorem 2.4(b)"
+      lean: "NumberFieldKB.Headlines.weberL_continuation"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "Corrected form: the book says the series converges for Re(s) > 0 (an erratum); it extends to Re(s) > 0."
 
 acknowledgements: >-
-  Mathlib and its contributors; the Tau Ceti contributors, whose files are ported in NumberFieldKB/TauCetiPort/; the
+  Mathlib and its contributors; the Tau Ceti contributors, whose files are ported in NumberFieldKB/TauCetiPort/; Naganori Yamaguchi, whose
+  class field theory files are ported in NumberFieldKB/YamaguchiPort/; the PrimeNumberTheoremAnd contributors; the
   Lean FRO for Lean, Lake and lake comparator; Claude Code (Anthropic).
