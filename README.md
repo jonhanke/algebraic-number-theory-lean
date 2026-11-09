@@ -17,7 +17,8 @@ Fourier analysis, self-dual measures, adelic Poisson summation and local zeta in
   deliberate ones in [`Challenge.lean`](Challenge.lean), which states the headline results without proofs. The CI
   workflow builds the library, checks that the headline theorems depend only on the standard axioms `propext`,
   `Classical.choice` and `Quot.sound` ([scripts/check_axioms.lean](scripts/check_axioms.lean)), and runs
-  `lake comparator` to check the proved statements against [`Challenge.lean`](Challenge.lean).
+  `lake comparator` once per book (`Challenge_<book>.lean` against `Solution_<book>.lean`) to check the proved
+  statements.
 - **Comparison**: [docs/results/comparison.md](docs/results/comparison.md) says, for each headline and each chapter,
   what Mathlib and [Tau Ceti](https://github.com/TauCetiProject/TauCeti) already have and what this library adds.
 
@@ -53,9 +54,6 @@ reviewed by a human** (see Provenance).
 **Milne, *Class Field Theory***
 
 - **The Grunwald–Wang theorem:** for finitely many places $`v`$ of a number field $`K`$ and characters $`\chi_v`$ of finite order of $`K_v^\times`$, there is a character of the idele class group with these local components, of order $`\operatorname{lcm}(\operatorname{ord}\chi_v)`$ outside Wang's special case (`grunwaldWang`).
-- **Local Kronecker–Weber in Lubin–Tate form:** for a nonarchimedean local field $`K`$ and a prime element $`\pi`$, every finite abelian extension of $`K`$ lies in $`K_\pi K^{\mathrm{un}}`$ (`localKroneckerWeber_lubinTate`).
-- **Eisenstein reciprocity:** $`(\alpha/a)_p = (a/\alpha)_p`$ for an odd prime $`p`$, $`a \in \mathbb{Z}`$ prime to $`p`$ and $`\alpha`$ a primary non-unit of $`\mathbb{Z}[\zeta_p]`$ prime to $`a`$ (`eisensteinReciprocity`).
-- **Furtwängler's theorem:** if $`x^p + y^p = z^p`$ with $`x, y, z`$ coprime and $`p \nmid xyz`$, then $`q^{p-1} \equiv 1 \pmod{p^2}`$ for every prime $`q \mid xyz`$ (`furtwangler_fermat`).
 - **Gauss's point count:** $`x^3 + y^3 + z^3 = 0`$ has $`p + 1`$ points over $`\mathbb{F}_p`$ if $`p \not\equiv 1 \pmod 3`$, and $`p + 1 + A`$ if $`p \equiv 1 \pmod 3`$, where $`4p = A^2 + 27B^2`$ and $`A \equiv 1 \pmod 3`$ (`gauss_cubicCurve_count`).
 - **Weber $`L`$-series:** for a nontrivial character $`\chi`$ of a ray class group, $`L(s, \chi)`$ extends to a holomorphic function on $`\operatorname{Re} s > 0`$ with $`L(1, \chi) \neq 0`$ (`weberL_continuation`; Milne's Theorem V.2.4(b), whose "converges" is an erratum for "extends").
 
@@ -94,8 +92,9 @@ reviewed by a human** (see Provenance).
 **Main statements.** To check what is claimed, read one file: [`Challenge.lean`](Challenge.lean) states the results
 above, with a docstring for each and a list of the library definitions the statements use; every proof there is a
 deliberate `sorry`. [`Solution.lean`](Solution.lean) proves the same statements by appeal to the library theorems, and
-`lake comparator` (configured by [`comparator.json`](comparator.json)) checks that each proved statement is exactly
-the one in `Challenge.lean` and uses only the standard axioms. [`formalization.yaml`](formalization.yaml) records the
+`lake comparator`, run once per book (the per-book files `Challenge_<book>.lean` and `Solution_<book>.lean` and the
+configurations in [`comparator/`](comparator/), listed in [`comparator.json`](comparator.json)), checks that each
+proved statement is exactly the one in `Challenge.lean` and uses only the standard axioms. [`formalization.yaml`](formalization.yaml) records the
 scope, sources, divergences from the literature, provenance and review status in the
 [formalization.yaml](https://github.com/mathlib-initiative/formalization.yaml) format.
 
@@ -117,7 +116,8 @@ marks these rows.
 ```
 Challenge.lean          the headline statements (proofs: deliberate sorry)
 Solution.lean           the same statements, proved from the library
-comparator.json         configuration for `lake comparator` (Solution against Challenge)
+comparator.json         the per-book `lake comparator` checks (configurations in comparator/)
+Challenge_<book>.lean   the headline statements of one book (generated from Challenge.lean; Solution_<book>.lean likewise)
 formalization.yaml      scope, sources, divergences, provenance, review (formalization.yaml v0.4)
 docs/results/books/     the book maps; docs/results/comparison.md: comparison with Mathlib and Tau Ceti
 NumberFieldKB/
@@ -153,7 +153,7 @@ maps depends on them).
 lake exe cache get       # once: download prebuilt Mathlib
 lake build               # build and check everything
 lake env lean scripts/check_axioms.lean   # axioms of the headline theorems
-./scripts/verify-comparator.sh            # Solution against Challenge (Linux; needs bubblewrap)
+./scripts/verify-comparator.sh MilneCFT   # one book's Solution against its Challenge (Linux; needs bubblewrap)
 ```
 
 The quadratic-forms dependency and this library are built from source (about 4,000 modules besides Mathlib's
@@ -169,9 +169,9 @@ results, the conventions and the proof routes. The files under `NumberFieldKB/Ta
 contributors (see their headers), and those under `NumberFieldKB/YamaguchiPort/` and `NumberFieldKB/PNTPort/` by
 N. Yamaguchi and by the PrimeNumberTheoremAnd contributors; each port lists its changes in its README.
 The proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms.
-The 26 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
-reviewed** by a human; that review is planned for a later release. `lake comparator` checks that `Solution.lean`
-proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
+The 23 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
+reviewed** by a human; that review is planned for a later release. `lake comparator` (once per book) checks that
+`Solution.lean` proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
 results, and the book maps) has not been reviewed by a human; as with any AI-written formalization, treat it as
 untrustworthy until checked against the literature. Corrections and reports of mis-formalizations are very welcome.
 
@@ -181,10 +181,15 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
 
 - **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and 20 headline statements.
 - **v0.2.0** (Lean and Mathlib v4.35.0), archived on Zenodo as doi:DOI_PLACEHOLDER: Milne's *Class Field Theory* as a
-  sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and six new
-  headline statements; the 20 headlines of v0.1.0 are unchanged. Milne's Theorem VIII.2.6 (every central division
-  algebra over a number field is cyclic) is proved in the library (`NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6`); it
-  becomes a headline in 0.2.1, once its comparator check fits a standard machine.
+  sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and three new
+  headline statements; the 20 headlines of v0.1.0 are unchanged. Four further results of the book are proved in the
+  library and become headlines in a later release, once their comparator checks fit a standard machine (the Lean
+  kernel's replay of their long chains of class field theory takes more memory than the checks are allowed; each
+  file of those chains re-checks quickly on its own): Theorem VIII.2.6, every central division algebra over a number
+  field is cyclic (`NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6`); local Kronecker–Weber in Lubin–Tate form
+  (`NumberFieldKB.MilneCFT.LocalCFT.localKroneckerWeber`); Eisenstein reciprocity
+  (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.eisensteinReciprocity`); and Furtwängler's theorem
+  (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.theorem5_14`). The comparator now runs once per book.
 
 **Not in this release** (planned for a later release): the rest of *Elliptic Curves* as a book; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
 citations).

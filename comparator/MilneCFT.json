@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge_MilneCFT",
+  "solution_module": "Solution_MilneCFT",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.grunwaldWang",
+    "NumberFieldKB.Headlines.gauss_cubicCurve_count",
+    "NumberFieldKB.Headlines.weberL_continuation"
+  ]
+}

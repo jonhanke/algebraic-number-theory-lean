@@ -1,6 +1,6 @@
 name = "algebraic_number_theory_lean"
 version = "0.2.0"
-defaultTargets = ["NumberFieldKB", "Challenge", "Solution"]
+defaultTargets = ["NumberFieldKB", "Challenge", "Solution", "Challenge_MilneANT", "Solution_MilneANT", "Challenge_WeilBNT", "Solution_WeilBNT", "Challenge_Tate", "Solution_Tate", "Challenge_Pontryagin", "Solution_Pontryagin", "Challenge_ModularCurves", "Solution_ModularCurves", "Challenge_MilneCFT", "Solution_MilneCFT"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -28,3 +28,51 @@ roots = ["Challenge"]
 [[lean_lib]]
 name = "Solution"
 roots = ["Solution"]
+
+[[lean_lib]]
+name = "Challenge_MilneANT"
+roots = ["Challenge_MilneANT"]
+
+[[lean_lib]]
+name = "Solution_MilneANT"
+roots = ["Solution_MilneANT"]
+
+[[lean_lib]]
+name = "Challenge_WeilBNT"
+roots = ["Challenge_WeilBNT"]
+
+[[lean_lib]]
+name = "Solution_WeilBNT"
+roots = ["Solution_WeilBNT"]
+
+[[lean_lib]]
+name = "Challenge_Tate"
+roots = ["Challenge_Tate"]
+
+[[lean_lib]]
+name = "Solution_Tate"
+roots = ["Solution_Tate"]
+
+[[lean_lib]]
+name = "Challenge_Pontryagin"
+roots = ["Challenge_Pontryagin"]
+
+[[lean_lib]]
+name = "Solution_Pontryagin"
+roots = ["Solution_Pontryagin"]
+
+[[lean_lib]]
+name = "Challenge_ModularCurves"
+roots = ["Challenge_ModularCurves"]
+
+[[lean_lib]]
+name = "Solution_ModularCurves"
+roots = ["Solution_ModularCurves"]
+
+[[lean_lib]]
+name = "Challenge_MilneCFT"
+roots = ["Challenge_MilneCFT"]
+
+[[lean_lib]]
+name = "Solution_MilneCFT"
+roots = ["Solution_MilneCFT"]

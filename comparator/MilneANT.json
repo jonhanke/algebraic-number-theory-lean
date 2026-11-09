@@ -1,0 +1,16 @@
+{
+  "challenge_module": "Challenge_MilneANT",
+  "solution_module": "Solution_MilneANT",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.kummer_regular",
+    "NumberFieldKB.Headlines.dedekind_factorizationType",
+    "NumberFieldKB.Headlines.ostrowski_numberField"
+  ]
+}
