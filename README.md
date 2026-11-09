@@ -2,8 +2,8 @@
 
 [![Lean build](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml/badge.svg)](https://github.com/jonhanke/algebraic-number-theory-lean/actions/workflows/build.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24047657.svg)](https://doi.org/10.5281/zenodo.24047657)
 
-A Lean 4 library (built on Mathlib v4.35.0) that formalizes five texts of algebraic number theory item by item:
-Milne's *Algebraic Number Theory*, Weil's *Basic Number Theory* (number fields and function fields over finite
+A Lean 4 library (built on Mathlib v4.35.0) that formalizes six texts of algebraic number theory item by item:
+Milne's *Algebraic Number Theory* and *Class Field Theory*, Weil's *Basic Number Theory* (number fields and function fields over finite
 fields), Tate's thesis, Pontryagin duality for locally compact abelian groups, and the modular curves $`X_0(N)`$ of
 Milne's *Elliptic Curves*. The Lean library is called `NumberFieldKB`. It depends on
 [quadratic-forms-lean](https://github.com/jonhanke/quadratic-forms-lean) (release v0.3.0, a Lake dependency) for local
@@ -17,7 +17,8 @@ Fourier analysis, self-dual measures, adelic Poisson summation and local zeta in
   deliberate ones in [`Challenge.lean`](Challenge.lean), which states the headline results without proofs. The CI
   workflow builds the library, checks that the headline theorems depend only on the standard axioms `propext`,
   `Classical.choice` and `Quot.sound` ([scripts/check_axioms.lean](scripts/check_axioms.lean)), and runs
-  `lake comparator` to check the proved statements against [`Challenge.lean`](Challenge.lean).
+  `lake comparator` once per book (`Challenge_<book>.lean` against `Solution_<book>.lean`) to check the proved
+  statements.
 - **Comparison**: [docs/results/comparison.md](docs/results/comparison.md) says, for each headline and each chapter,
   what Mathlib and [Tau Ceti](https://github.com/TauCetiProject/TauCeti) already have and what this library adds.
 
@@ -26,6 +27,7 @@ Fourier analysis, self-dual measures, adelic Poisson summation and local zeta in
 | book | rows | proved | definitions | in Mathlib | conditional | other |
 |---|---|---|---|---|---|---|
 | [J. S. Milne, *Algebraic Number Theory*](docs/results/books/milne-ant.md) | 328 | 132 | 17 | 179 | 0 | 0 |
+| [J. S. Milne, *Class Field Theory*](docs/results/books/milne-cft.md) | 513 | 344 | 58 | 105 | 0 | 6 |
 | [A. Weil, *Basic Number Theory* (number fields and function fields)](docs/results/books/weil-bnt.md) | 371 | 272 | 24 | 74 | 0 | 1 |
 | [J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV)](docs/results/books/tate-thesis.md) | 80 | 57 | 23 | 0 | 0 | 0 |
 | [Pontryagin duality (Folland, *A Course in Abstract Harmonic Analysis*, Chapter 4; Weil II.§5, VII.§2)](docs/results/books/pontryagin.md) | 24 | 22 | 2 | 0 | 0 | 0 |
@@ -48,6 +50,12 @@ reviewed by a human** (see Provenance).
 - **Kummer's theorem:** if $`p`$ is an odd prime not dividing the class number of $`\mathbb{Q}(\zeta_p)`$, then $`x^p + y^p = z^p`$ has no integer solution with $`p \nmid xyz`$ (`kummer_regular`).
 - **Dedekind's theorem over every number field:** if a monic $`f`$ over the ring of integers $`\mathcal{O}_K`$ is squarefree modulo a prime $`\mathfrak{p}`$, the degrees of its irreducible factors modulo $`\mathfrak{p}`$ are the cycle type of an element of the Galois group of $`f`$ over $`K`$ (`dedekind_factorizationType`; Tau Ceti has it over $`\mathbb{Q}`$).
 - **Ostrowski's theorem for number fields:** every nontrivial absolute value on a number field is equivalent to exactly one absolute value given by a prime ideal, a real embedding or a pair of complex conjugate embeddings (`ostrowski_numberField`).
+
+**Milne, *Class Field Theory***
+
+- **The Grunwald–Wang theorem:** for finitely many places $`v`$ of a number field $`K`$ and characters $`\chi_v`$ of finite order of $`K_v^\times`$, there is a character of the idele class group with these local components, of order $`\operatorname{lcm}(\operatorname{ord}\chi_v)`$ outside Wang's special case (`grunwaldWang`).
+- **Gauss's point count:** $`x^3 + y^3 + z^3 = 0`$ has $`p + 1`$ points over $`\mathbb{F}_p`$ if $`p \not\equiv 1 \pmod 3`$, and $`p + 1 + A`$ if $`p \equiv 1 \pmod 3`$, where $`4p = A^2 + 27B^2`$ and $`A \equiv 1 \pmod 3`$ (`gauss_cubicCurve_count`).
+- **Weber $`L`$-series:** for a nontrivial character $`\chi`$ of a ray class group, $`L(s, \chi)`$ extends to a holomorphic function on $`\operatorname{Re} s > 0`$ with $`L(1, \chi) \neq 0`$ (`weberL_continuation`; Milne's Theorem V.2.4(b), whose "converges" is an erratum for "extends").
 
 **Weil, *Basic Number Theory*: number fields**
 
@@ -84,25 +92,37 @@ reviewed by a human** (see Provenance).
 **Main statements.** To check what is claimed, read one file: [`Challenge.lean`](Challenge.lean) states the results
 above, with a docstring for each and a list of the library definitions the statements use; every proof there is a
 deliberate `sorry`. [`Solution.lean`](Solution.lean) proves the same statements by appeal to the library theorems, and
-`lake comparator` (configured by [`comparator.json`](comparator.json)) checks that each proved statement is exactly
-the one in `Challenge.lean` and uses only the standard axioms. [`formalization.yaml`](formalization.yaml) records the
+`lake comparator`, run once per book (the per-book files `Challenge_<book>.lean` and `Solution_<book>.lean` and the
+configurations in [`comparator/`](comparator/), listed in [`comparator.json`](comparator.json)), checks that each
+proved statement is exactly the one in `Challenge.lean` and uses only the standard axioms. [`formalization.yaml`](formalization.yaml) records the
 scope, sources, divergences from the literature, provenance and review status in the
 [formalization.yaml](https://github.com/mathlib-initiative/formalization.yaml) format.
 
 **Also proved here, not headlines because Tau Ceti has them:** Chebotarev's density theorem and Dirichlet's theorem
-with natural density, Hermite–Minkowski with ramification in a finite set of primes, the $`S`$-unit theorem, and the
-Riemann–Roch theorem for function fields (see the [comparison](docs/results/comparison.md)).
+with natural density, Hermite–Minkowski with ramification in a finite set of primes, the $`S`$-unit theorem, the
+Riemann–Roch theorem for function fields, and the main theorems of global and local class field theory (reciprocity,
+existence, the Kronecker–Weber theorem), the Hasse norm theorem and the exact sequence of Brauer groups of a number
+field (see the [comparison](docs/results/comparison.md)).
+
+**Errata of Milne's *Class Field Theory*.** Three statements of Chapter V are false as printed: Theorem 2.4(b) (the
+series need not converge on $`\operatorname{Re} s > 0`$; it extends there), Exercise 3.15 (the existence clause needs
+the primes of $`S`$ in $`H`$) and Remark 4.8 (the first sentence needs $`G`$ complete; the second also needs the
+character to be trivial on the identity component of $`K_\infty^\times`$). The corrected forms are proved, and the
+printed forms of Exercise 3.15 and Remark 4.8 are refuted in Lean; the [map of the book](docs/results/books/milne-cft.md)
+marks these rows.
 
 ## Layout
 
 ```
 Challenge.lean          the headline statements (proofs: deliberate sorry)
 Solution.lean           the same statements, proved from the library
-comparator.json         configuration for `lake comparator` (Solution against Challenge)
+comparator.json         the per-book `lake comparator` checks (configurations in comparator/)
+Challenge_<book>.lean   the headline statements of one book (generated from Challenge.lean; Solution_<book>.lean likewise)
 formalization.yaml      scope, sources, divergences, provenance, review (formalization.yaml v0.4)
 docs/results/books/     the book maps; docs/results/comparison.md: comparison with Mathlib and Tau Ceti
 NumberFieldKB/
   MilneANT/             Milne, Algebraic Number Theory
+  MilneCFT/             Milne, Class Field Theory
   WeilBNT/              Weil, Basic Number Theory (number fields; FunctionField/: function fields)
   Ideles/, HeckeCharacter/, LocalZeta/, GlobalZeta/, HeckeL/
                         Tate's thesis: ideles, Hecke characters, local and global zeta integrals,
@@ -110,19 +130,22 @@ NumberFieldKB/
   Pontryagin/           Pontryagin duality, Fourier inversion, the dual measure
   ModularCurves/        the modular curves X_0(N) over ℚ
   TauCetiPort/          files ported from Tau Ceti (Apache 2.0), see its README
+  YamaguchiPort/        files ported from N. Yamaguchi's class field theory library (Apache 2.0), see its README
+  PNTPort/              the strong prime number theorem, ported from PrimeNumberTheoremAnd (Apache 2.0)
   MilneEC/              Milne, Elliptic Curves: Chapter V, §§1–3 (with ModularCurves/), and supporting files
-  MilneCFT/, Chebotarev/, NonVanishing/, HilbertClassField/
+  Chebotarev/, NonVanishing/, HilbertClassField/
                         supporting files outside this release's books (see below)
 references.bib          bibliography; the keys used by @[kb]
 scripts/check_axioms.lean  prints the axioms of the headline theorems (run in CI)
 scripts/verify-comparator.sh  runs `lake comparator` with the toolchain's kernels (run in CI)
 ```
 
-**Supporting files outside this release's books.** The books import 39 files of the library's class field theory
-(Milne, *Class Field Theory*) and elliptic curves (Milne, *Elliptic Curves*) topics, 19 files on the Chebotarev density
-theorem, 10 on the non-vanishing of $`L`$-functions on $`\operatorname{Re} s = 1`$ and 3 on the Hilbert class field
-They are shipped so that the library builds; those topics are not part of this release, and some of their files state named results of those books
-without proof (no headline and no row marked *proved* in the book maps depends on them).
+**Supporting files outside this release's books.** The books import 24 files of the library's elliptic curve topic
+(Milne, *Elliptic Curves*; besides the three files of Chapter V, §§1–3 that belong to the $`X_0(N)`$ map), 19 files on
+the Chebotarev density theorem, 10 on the non-vanishing of $`L`$-functions on $`\operatorname{Re} s = 1`$ and 4 on the
+Hilbert class field. They are shipped so that the library builds; those topics are not part of this release, and some
+of their files state named results of those books without proof (no headline and no row marked *proved* in the book
+maps depends on them).
 
 ## Usage
 
@@ -130,12 +153,12 @@ without proof (no headline and no row marked *proved* in the book maps depends o
 lake exe cache get       # once: download prebuilt Mathlib
 lake build               # build and check everything
 lake env lean scripts/check_axioms.lean   # axioms of the headline theorems
-./scripts/verify-comparator.sh            # Solution against Challenge (Linux; needs bubblewrap)
+./scripts/verify-comparator.sh MilneCFT   # one book's Solution against its Challenge (Linux; needs bubblewrap)
 ```
 
-The quadratic-forms dependency and this library are built from source (about 1,600 modules besides Mathlib's
-prebuilt cache). A cold build took about 40 minutes on 8 cores, with at most 8 GB of memory in use (the largest
-single Lean process 8.2 GB); the CI workflow adds swap space to GitHub's runner (4 cores, 16 GB), where it takes
+The quadratic-forms dependency and this library are built from source (about 4,000 modules besides Mathlib's
+prebuilt cache, most of them the ported class field theory files). A cold build took about two hours on 8 cores,
+with at most 10.2 GB of memory in use (the largest single Lean process 10.2 GB); the CI workflow adds swap space to GitHub's runner (4 cores, 16 GB), where it takes
 longer.
 
 ## Provenance
@@ -143,11 +166,12 @@ longer.
 NumberFieldKB was written by AI, with Claude Code (Anthropic): almost entirely by Claude Opus 5.5, with a share by
 Claude Sonnet 5.5, in October and November 2026. Jonathan Hanke designed and directed it: he chose the books, the
 results, the conventions and the proof routes. The files under `NumberFieldKB/TauCetiPort/` are by the Tau Ceti
-contributors (see their headers), ported with the changes listed in that directory's README.
+contributors (see their headers), and those under `NumberFieldKB/YamaguchiPort/` and `NumberFieldKB/PNTPort/` by
+N. Yamaguchi and by the PrimeNumberTheoremAnd contributors; each port lists its changes in its README.
 The proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms.
-The 20 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
-reviewed** by a human; that review is planned for a later release. `lake comparator` checks that `Solution.lean`
-proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
+The 23 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
+reviewed** by a human; that review is planned for a later release. `lake comparator` (once per book) checks that
+`Solution.lean` proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
 results, and the book maps) has not been reviewed by a human; as with any AI-written formalization, treat it as
 untrustworthy until checked against the literature. Corrections and reports of mis-formalizations are very welcome.
 
@@ -155,13 +179,23 @@ untrustworthy until checked against the literature. Corrections and reports of m
 
 Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24047657](https://doi.org/10.5281/zenodo.24047657) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
-- **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and the 20 headline statements above.
+- **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and 20 headline statements.
+- **v0.2.0** (Lean and Mathlib v4.35.0), archived on Zenodo as doi:DOI_PLACEHOLDER: Milne's *Class Field Theory* as a
+  sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and three new
+  headline statements; the 20 headlines of v0.1.0 are unchanged. Four further results of the book are proved in the
+  library and become headlines in a later release, once their comparator checks fit a standard machine (the Lean
+  kernel's replay of their long chains of class field theory takes more memory than the checks are allowed; each
+  file of those chains re-checks quickly on its own): Theorem VIII.2.6, every central division algebra over a number
+  field is cyclic (`NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6`); local Kronecker–Weber in Lubin–Tate form
+  (`NumberFieldKB.MilneCFT.LocalCFT.localKroneckerWeber`); Eisenstein reciprocity
+  (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.eisensteinReciprocity`); and Furtwängler's theorem
+  (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.theorem5_14`). The comparator now runs once per book.
 
-**Not in this release** (planned for a later release): Milne's *Class Field Theory* and the rest of *Elliptic Curves*
-as books; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
+**Not in this release** (planned for a later release): the rest of *Elliptic Curves* as a book; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
 citations).
 
 ## License
 
-Apache License 2.0; see [LICENSE](LICENSE). Files ported from Tau Ceti are Apache 2.0, copyright the Tau Ceti
-contributors.
+Apache License 2.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE). Files ported from Tau Ceti are Apache 2.0,
+copyright the Tau Ceti contributors; files ported from N. Yamaguchi's library are Apache 2.0, copyright Naganori
+Yamaguchi; files ported from PrimeNumberTheoremAnd are Apache 2.0, copyright its contributors.

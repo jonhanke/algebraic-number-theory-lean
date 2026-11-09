@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge_Pontryagin",
+  "solution_module": "Solution_Pontryagin",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.pontryaginDuality",
+    "NumberFieldKB.Headlines.fourierInversion_dualMeasure",
+    "NumberFieldKB.Headlines.pontryagin_closedSubgroups",
+    "NumberFieldKB.Headlines.compact_iff_dual_discrete"
+  ]
+}

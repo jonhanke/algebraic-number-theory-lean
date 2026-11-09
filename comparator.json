@@ -1,33 +1,47 @@
 {
-  "challenge_module": "Challenge",
-  "solution_module": "Solution",
-  "theorem_names": [
-    "NumberFieldKB.Headlines.kummer_regular",
-    "NumberFieldKB.Headlines.dedekind_factorizationType",
-    "NumberFieldKB.Headlines.ostrowski_numberField",
-    "NumberFieldKB.Headlines.adeles_selfDual",
-    "NumberFieldKB.Headlines.idele_classes_finite",
-    "NumberFieldKB.Headlines.zeta_functionField",
-    "NumberFieldKB.Headlines.heckeL_functionField_polynomial",
-    "NumberFieldKB.Headlines.tate_globalZeta_functionalEquation",
-    "NumberFieldKB.Headlines.tate_globalZeta_residues",
-    "NumberFieldKB.Headlines.heckeL_functionalEquation",
-    "NumberFieldKB.Headlines.dedekindZeta_continuation",
-    "NumberFieldKB.Headlines.completedDedekindZeta_functionalEquation",
-    "NumberFieldKB.Headlines.pontryaginDuality",
-    "NumberFieldKB.Headlines.fourierInversion_dualMeasure",
-    "NumberFieldKB.Headlines.pontryagin_closedSubgroups",
-    "NumberFieldKB.Headlines.compact_iff_dual_discrete",
-    "NumberFieldKB.Headlines.genus_X0",
-    "NumberFieldKB.Headlines.modularPolynomial_rational",
-    "NumberFieldKB.Headlines.modularFunctions_Gamma0",
-    "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank"
-  ],
-  "definition_names": [],
-  "permitted_axioms": [
-    "propext",
-    "Quot.sound",
-    "Classical.choice"
-  ],
-  "enable_nanoda": true
+  "description": "One lake comparator check per book (a combined check of all headlines needs far more memory than a CI runner has; see the README). Run one book with: ./scripts/verify-comparator.sh <book>. Each entry's config is a complete lake comparator configuration.",
+  "books": [
+    {
+      "book": "MilneANT",
+      "config": "comparator/MilneANT.json",
+      "challenge_module": "Challenge_MilneANT",
+      "solution_module": "Solution_MilneANT",
+      "theorems": 3
+    },
+    {
+      "book": "WeilBNT",
+      "config": "comparator/WeilBNT.json",
+      "challenge_module": "Challenge_WeilBNT",
+      "solution_module": "Solution_WeilBNT",
+      "theorems": 4
+    },
+    {
+      "book": "Tate",
+      "config": "comparator/Tate.json",
+      "challenge_module": "Challenge_Tate",
+      "solution_module": "Solution_Tate",
+      "theorems": 5
+    },
+    {
+      "book": "Pontryagin",
+      "config": "comparator/Pontryagin.json",
+      "challenge_module": "Challenge_Pontryagin",
+      "solution_module": "Solution_Pontryagin",
+      "theorems": 4
+    },
+    {
+      "book": "ModularCurves",
+      "config": "comparator/ModularCurves.json",
+      "challenge_module": "Challenge_ModularCurves",
+      "solution_module": "Solution_ModularCurves",
+      "theorems": 4
+    },
+    {
+      "book": "MilneCFT",
+      "config": "comparator/MilneCFT.json",
+      "challenge_module": "Challenge_MilneCFT",
+      "solution_module": "Solution_MilneCFT",
+      "theorems": 3
+    }
+  ]
 }

@@ -1,0 +1,714 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Claude
+-/
+module
+
+public import Mathlib.RepresentationTheory.FiniteIndex
+public import NumberFieldKB.TauCetiPort.GroupTheory.Coset.Basic
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Induction.Permutation
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Rep.OfMulAction
+import NumberFieldKB.TauCetiPort.Algebra.MonoidAlgebra.TensorProduct
+
+/-!
+# Induction and coinduction from the trivial subgroup
+
+For a group `G` and a `k`-module `X`, the representation coinduced from the trivial subgroup,
+`coindBot k G X = Coind_⊥^G X`, is the module of functions `G → X` with `G` acting by right
+translation, `(g • f) h = f (h * g)`, and the representation induced from the trivial subgroup,
+`indBot k G X = Ind_⊥^G X`, is `k[G] ⊗ X`, which is the module of finitely supported functions
+`G →₀ X` with the same right-translation action (`Rep.indBotEquivFinsupp`). Every representation
+`A` embeds into `coindBot k G A.V` (by `a ↦ (g ↦ g • a)`) and is a quotient of `indBot k G A.V`;
+these are the two maps used for dimension shifting. For a finite group the two constructions agree
+(`Rep.indBotIsoCoindBot`), and for any group `k[G]` is induced from the trivial subgroup
+(`Rep.indBotIsoLeftRegular`).
+
+Both constructions are stable under restriction to a subgroup `S`: writing `G` as `S × G ⧸ S`
+through `(s, y) ↦ y.out * s` (Mathlib's `Subgroup.groupEquivQuotientProdSubgroup`), the restriction
+of `Coind_⊥^G X` to `S` is `Coind_⊥^S (G ⧸ S → X)` (`Rep.resCoindBotIso`), and
+the restriction of `Ind_⊥^G X` to `S` is `Ind_⊥^S (G ⧸ S →₀ X)` (`Rep.resIndBotIso`).
+
+The constructions follow `ClassFieldTheory/Cohomology/IndCoind/Finite.lean` and
+`IndCoind/TrivialCohomology.lean` in `kbuzzard/ClassFieldTheory`, commit
+`ccc3323c6750abca25b49b35106f54eb3a398509`, adapted to Mathlib's `Rep.coind` and `Rep.ind`.
+
+## Main definitions
+
+* `Rep.resBotIsoTrivial`: the restriction of a representation to the trivial subgroup is the
+  trivial representation on its underlying module.
+* `Rep.coindBot`, `Rep.coindBotFunctor`: coinduction from the trivial subgroup.
+* `Rep.coindBotRepFunctor`, `Rep.indBotRepFunctor`: coinduction and induction on the underlying
+  module, as endofunctors of representations.
+* `Rep.coindBotUnitNatTrans`, `Rep.indBotCounitNatTrans`: the canonical embedding into
+  coinduction and projection from induction, as natural transformations.
+* `Rep.coindBotMap`, `Rep.indBotMap`: maps induced by morphisms of representations.
+* `Rep.coindBotUnit`: the monomorphism `A ⟶ coindBot k G A.V`.
+* `Rep.toCoindBot`: the morphism `B ⟶ coindBot k G X`, `b ↦ (g ↦ r (g • b))`, attached to a
+  `k`-linear map `r : B → X`.
+* `Rep.indBot`, `Rep.indBotFunctor`: induction from the trivial subgroup.
+* `Rep.indBotCounit`: the epimorphism `indBot k G A.V ⟶ A`.
+* `Rep.fromIndBot`: the morphism `indBot k G X ⟶ B`, `⟦g ⊗ₜ x⟧ ↦ g⁻¹ • s x`, attached to a
+  `k`-linear map `s : X → B`.
+* `Rep.coindBotEquivPi`, `Rep.indBotEquivFinsupp`: the underlying modules as functions `G → X`
+  and finitely supported functions `G →₀ X`.
+* `Rep.indBotIsoCoindBot`: for a finite group, `indBot k G X ≅ coindBot k G X`.
+* `Rep.indBotIsoLeftRegular`: `indBot k G k ≅ k[G]`.
+* `Rep.leftRegularIsoCoindBot`: for a finite group, `k[G] ≅ coindBot k G k`.
+* `Rep.resCoindBotIso`, `Rep.resIndBotIso`: restrictions to a subgroup, again coinduced,
+  respectively induced, from the trivial subgroup.
+* `Rep.quotientToInvariantsCoindBotIso`: the invariants under a normal subgroup `S` of a
+  representation coinduced from the trivial subgroup, coinduced from the trivial subgroup of
+  `G ⧸ S`.
+
+## References
+
+* J. S. Milne, *Class Field Theory*, Chapter II, §1.
+* K. S. Brown, *Cohomology of Groups*, Chapter III, §5.
+-/
+
+public noncomputable section
+
+universe u
+
+open CategoryTheory Representation
+
+namespace Rep
+
+variable {k G : Type u} [Group G]
+
+section Semiring
+
+variable [Semiring k]
+
+/-- The restriction of a representation to the trivial subgroup is the trivial representation on
+its underlying module. -/
+def resBotIsoTrivial (A : Rep k G) :
+    res (⊥ : Subgroup G).subtype A ≅ trivial k (⊥ : Subgroup G) A.V :=
+  mkIso <| .mk (LinearEquiv.refl k A.V) fun s ↦ by
+    obtain rfl : s = 1 := Subsingleton.elim s 1
+    ext
+    simp
+
+-- `simp` reduces the carriers of the `abbrev`s `coindBot`, `indBot`, `Rep.trivial`,
+-- `Rep.leftRegular` and `Rep.res` in implicit type arguments before it looks a term up, so the
+-- `simp` lemmas evaluating this file's maps state their left-hand sides through `dsimp% only`,
+-- as in #8315.
+/-- The identification of the restriction to the trivial subgroup with the trivial representation
+does not move elements. -/
+@[simp]
+theorem resBotIsoTrivial_hom_hom_apply (A : Rep k G) (x : A.V) :
+    (dsimp% only ((resBotIsoTrivial A).hom.hom x)) = x :=
+  (rfl)
+
+/-- The inverse identification of the trivial representation with the restriction to the trivial
+subgroup does not move elements. -/
+@[simp]
+theorem resBotIsoTrivial_inv_hom_apply (A : Rep k G) (x : A.V) :
+    (dsimp% only ((resBotIsoTrivial A).inv.hom x)) = x :=
+  (rfl)
+
+end Semiring
+
+variable [CommRing k]
+
+section Coinduction
+
+variable (k G) in
+/-- The representation of `G` coinduced from the trivial subgroup on a `k`-module `X`: the
+functions `G → X`, with `G` acting by right translation, `(g • f) h = f (h * g)`. -/
+abbrev coindBot (X : Type u) [AddCommGroup X] [Module k X] : Rep k G :=
+  coind (⊥ : Subgroup G).subtype (trivial k (⊥ : Subgroup G) X)
+
+variable (k G) in
+/-- Coinduction from the trivial subgroup, as a functor `ModuleCat k ⥤ Rep k G`. -/
+-- The body is exposed because the object and map characterizations below mention `coindBot`
+-- elements of `(coindBotFunctor k G).obj X`; with an opaque body those statements do not
+-- typecheck in the public view of this module.
+@[expose] def coindBotFunctor : ModuleCat.{u} k ⥤ Rep k G :=
+  trivialFunctor k (⊥ : Subgroup G) ⋙ coindFunctor k (⊥ : Subgroup G).subtype
+
+/-- Evaluating the coinduction functor from the trivial subgroup gives `coindBot`. -/
+@[simp]
+theorem coindBotFunctor_obj (X : ModuleCat.{u} k) : (coindBotFunctor k G).obj X = coindBot k G X :=
+  (rfl)
+
+/-- The coinduction functor from the trivial subgroup acts on a morphism by postcomposition. -/
+@[simp]
+theorem coindBotFunctor_map_hom_apply_coe {X Y : ModuleCat.{u} k} (f : X ⟶ Y)
+    (x : coindBot k G X) (g : G) :
+    (((coindBotFunctor k G).map f).hom x).1 g = f.hom (x.1 g) :=
+  (rfl)
+
+/-- The canonical embedding of a representation `A` into the representation coinduced from the
+trivial subgroup on its underlying module, `a ↦ (g ↦ A.ρ g a)`. -/
+def coindBotUnit (A : Rep k G) : A ⟶ coindBot k G A.V :=
+  resCoindToHom (⊥ : Subgroup G).subtype A (trivial k (⊥ : Subgroup G) A.V)
+    (resBotIsoTrivial A).hom
+
+/-- The embedding into the coinduced representation sends `a` to the function `g ↦ A.ρ g a`. -/
+@[simp]
+theorem coindBotUnit_hom_apply_coe (A : Rep k G) (a : A) (g : G) :
+    (dsimp% only (((coindBotUnit A).hom a).1 g)) = A.ρ g a :=
+  (rfl)
+
+/-- The embedding into the coinduced representation is a monomorphism. -/
+instance coindBotUnit_mono (A : Rep k G) : Mono (coindBotUnit A) :=
+  (mono_iff_injective _).2 fun x y h ↦ by
+    have h1 : A.ρ 1 x = A.ρ 1 y := by
+      rw [← coindBotUnit_hom_apply_coe, ← coindBotUnit_hom_apply_coe, h]
+    simpa using h1
+
+/-- Coinduction on the underlying module, viewed as an endofunctor of representations. -/
+@[expose] def coindBotRepFunctor : Rep k G ⥤ Rep k G :=
+  (forget₂ (Rep k G) (ModuleCat k)) ⋙ coindBotFunctor k G
+
+/-- The map of coinduced representations associated to a morphism of representations. -/
+def coindBotMap {A B : Rep k G} (f : A ⟶ B) :
+    coindBot k G A.V ⟶ coindBot k G B.V :=
+  (coindBotFunctor k G).map ((forget₂ (Rep k G) (ModuleCat k)).map f)
+
+variable {A B : Rep k G}
+
+/-- The coinduction endofunctor acts on objects by coinduction of underlying modules. -/
+@[simp] theorem coindBotRepFunctor_obj (A : Rep k G) :
+    (coindBotRepFunctor (k := k) (G := G)).obj A = coindBot k G A.V := rfl
+
+/-- The coinduction endofunctor acts on morphisms by `coindBotMap`. -/
+@[simp] theorem coindBotRepFunctor_map (f : A ⟶ B) :
+    (coindBotRepFunctor (k := k) (G := G)).map f = coindBotMap f := by
+  simp [coindBotRepFunctor, coindBotMap]
+
+/-- The map induced by an identity morphism is the identity. -/
+@[simp]
+theorem coindBotMap_id (A : Rep k G) : coindBotMap (𝟙 A) = 𝟙 _ := by
+  simpa only [coindBotRepFunctor_map, coindBotRepFunctor_obj] using
+    (coindBotRepFunctor (k := k) (G := G)).map_id A
+
+/-- The map induced by a composite is the composite of the induced maps. -/
+@[simp]
+theorem coindBotMap_comp {A B C : Rep k G} (f : A ⟶ B) (g : B ⟶ C) :
+    coindBotMap (f ≫ g) = coindBotMap f ≫ coindBotMap g := by
+  simpa only [coindBotRepFunctor_map, coindBotRepFunctor_obj] using
+    (coindBotRepFunctor (k := k) (G := G)).map_comp f g
+
+/-- The coinduced map acts pointwise by the underlying map. -/
+@[simp]
+theorem coindBotMap_hom_apply_coe {A B : Rep k G} (f : A ⟶ B)
+    (x : coindBot k G A.V) (g : G) :
+    (dsimp% only (((coindBotMap f).hom x).1 g)) = f.hom (x.1 g) :=
+  coindBotFunctor_map_hom_apply_coe ((forget₂ (Rep k G) (ModuleCat k)).map f) x g
+
+/-- The embedding into a coinduced representation is natural in the representation. -/
+@[reassoc]
+theorem coindBotUnit_naturality {A B : Rep k G} (f : A ⟶ B) :
+    f ≫ coindBotUnit B = coindBotUnit A ≫ coindBotMap f := by
+  apply Rep.hom_ext
+  apply Representation.IntertwiningMap.ext
+  ext a g
+  -- Evaluate the two composites as maps into the coinduced function space.
+  change ((coindBotUnit B).hom (f.hom a)).1 g =
+    ((coindBotMap f).hom ((coindBotUnit A).hom a)).1 g
+  rw [coindBotUnit_hom_apply_coe, coindBotMap_hom_apply_coe,
+    coindBotUnit_hom_apply_coe]
+  exact (Rep.hom_comm_apply f g a).symm
+
+/-- The canonical embedding into coinduction, as a natural transformation. -/
+@[expose] def coindBotUnitNatTrans : 𝟭 (Rep k G) ⟶ coindBotRepFunctor (k := k) (G := G) where
+  app A := coindBotUnit A
+  naturality := by
+    intro A B f
+    -- Unfold the identity and coinduction functor maps to the existing naturality square.
+    change f ≫ coindBotUnit B = coindBotUnit A ≫ coindBotMap f
+    exact coindBotUnit_naturality f
+
+/-- The component of the coinduction unit at `A` is its canonical embedding. -/
+@[simp] theorem coindBotUnitNatTrans_app (A : Rep k G) :
+    (coindBotUnitNatTrans (k := k) (G := G)).app A = coindBotUnit A := rfl
+
+variable (k) in
+/-- Every function `G → X` lies in the module coinduced from the trivial subgroup: the
+compatibility condition only involves the identity of `G`. -/
+private theorem mem_coindV_bot {X : Type u} [AddCommGroup X] [Module k X] (f : G → X) :
+    f ∈ coindV (⊥ : Subgroup G).subtype (trivial k (⊥ : Subgroup G) X).ρ := fun g _ ↦ by
+  obtain rfl : g = 1 := Subsingleton.elim g 1
+  simp
+
+variable (k G) in
+/-- The underlying module of the representation coinduced from the trivial subgroup is the module
+of all functions `G → X`. -/
+def coindBotEquivPi (X : Type u) [AddCommGroup X] [Module k X] :
+    (coindBot k G X : Type u) ≃ₗ[k] (G → X) :=
+  LinearEquiv.ofTop _ <| eq_top_iff.2 fun f _ ↦ mem_coindV_bot k f
+
+/-- The identification of the coinduced module with functions is the underlying function. -/
+@[simp]
+theorem coindBotEquivPi_apply (X : Type u) [AddCommGroup X] [Module k X] (f : coindBot k G X) :
+    (dsimp% only (coindBotEquivPi k G X f)) = f.1 :=
+  (rfl)
+
+/-- The inverse identification of functions with the coinduced module is the underlying
+function. -/
+@[simp]
+theorem coindBotEquivPi_symm_apply_coe (X : Type u) [AddCommGroup X] [Module k X] (f : G → X) :
+    (dsimp% only (((coindBotEquivPi k G X).symm f).1)) = f :=
+  (rfl)
+
+/-- Evaluation at `1` is a `k`-linear retraction of the embedding of a representation into the
+representation coinduced from the trivial subgroup. -/
+theorem leftInverse_coindBotUnit (A : Rep k G) :
+    Function.LeftInverse (LinearMap.proj 1 ∘ₗ (coindBotEquivPi k G A.V).toLinearMap)
+      (coindBotUnit A).hom := fun a ↦ by simp
+
+/-- The morphism `n ↦ (g ↦ r (g • n))` from a representation to the representation coinduced from
+the trivial subgroup, attached to a `k`-linear map `r`. -/
+def toCoindBot (A : Rep k G) {X : Type u} [AddCommGroup X] [Module k X]
+    (r : A.V →ₗ[k] X) : A ⟶ coindBot k G X :=
+  coindBotUnit A ≫ (coindBotFunctor k G).map (ModuleCat.ofHom r)
+
+/-- The morphism attached to `r` sends `a` to the function `g ↦ r (g • a)`. -/
+@[simp]
+theorem toCoindBot_hom_apply_coe (A : Rep k G) {X : Type u} [AddCommGroup X] [Module k X]
+    (r : A.V →ₗ[k] X) (a : A) (g : G) :
+    (dsimp% only (((toCoindBot A r).hom a).1 g)) = r (A.ρ g a) := by
+  -- The underlying map of a composite of representations is the composite of the underlying maps;
+  -- `Rep.hom_comp` does not fire here because the middle object is `coindBot k G A.V` on one side
+  -- and `(coindBotFunctor k G).obj _` on the other.
+  change (((coindBotFunctor k G).map (ModuleCat.ofHom r)).hom ((coindBotUnit A).hom a)).1 g = _
+  rw [coindBotFunctor_map_hom_apply_coe, ModuleCat.hom_ofHom, coindBotUnit_hom_apply_coe]
+
+/-- If `r` is a retraction of `f : A ⟶ B`, then `f` followed by `n ↦ (g ↦ r (g • n))` is the
+embedding of `A` into its coinduced representation. -/
+@[reassoc]
+theorem comp_toCoindBot_of_leftInverse {A B : Rep k G} (f : A ⟶ B) {r : B.V →ₗ[k] A.V}
+    (hr : Function.LeftInverse r f.hom) : f ≫ toCoindBot B r = coindBotUnit A := by
+  apply Rep.hom_ext
+  apply Representation.IntertwiningMap.ext
+  ext a : 1
+  refine Subtype.ext (funext fun g ↦ ?_)
+  -- Evaluate both sides as functions `G → A`.
+  change ((toCoindBot B r).hom (f.hom a)).1 g = ((coindBotUnit A).hom a).1 g
+  rw [toCoindBot_hom_apply_coe, coindBotUnit_hom_apply_coe, ← Rep.hom_comm_apply, hr]
+
+end Coinduction
+
+section Induction
+
+-- `Finsupp` and the tensor-product identifications of `indBotEquivFinsupp` need decidable
+-- equality of the group; nothing in the statements below depends on the choice.
+attribute [local instance] Classical.decEq
+
+variable (k G) in
+/-- The representation of `G` induced from the trivial subgroup on a `k`-module `X`, namely
+`k[G] ⊗[k] X`; `Rep.indBotEquivFinsupp` identifies it with the finitely supported functions
+`G →₀ X` with `G` acting by right translation, `(g • f) h = f (h * g)`. -/
+abbrev indBot (X : Type u) [AddCommGroup X] [Module k X] : Rep k G :=
+  ind (⊥ : Subgroup G).subtype (trivial k (⊥ : Subgroup G) X)
+
+variable (k G) in
+/-- Induction from the trivial subgroup, as a functor `ModuleCat k ⥤ Rep k G`. -/
+-- The body is exposed for the same reason as `coindBotFunctor`: `indBotFunctor_map_hom_mk`
+-- evaluates the map on generators of `(indBotFunctor k G).obj X`.
+@[expose] def indBotFunctor : ModuleCat.{u} k ⥤ Rep k G :=
+  trivialFunctor k (⊥ : Subgroup G) ⋙ indFunctor k (⊥ : Subgroup G).subtype
+
+/-- Evaluating the induction functor from the trivial subgroup gives `indBot`. -/
+@[simp]
+theorem indBotFunctor_obj (X : ModuleCat.{u} k) : (indBotFunctor k G).obj X = indBot k G X :=
+  (rfl)
+
+-- The generator-evaluation lemmas below are not `@[simp]`: their `IndV.mk` arguments unfold under
+-- simp, so `@[simp]` would violate the `simpNF` linter. `indBotCounit_hom_mk` is a pre-simp lemma
+-- (`@[simp↓]`) instead, which fires before the argument unfolds.
+/-- The induction functor from the trivial subgroup acts on generators through the morphism:
+`⟦g ⊗ₜ x⟧ ↦ ⟦g ⊗ₜ f x⟧`. -/
+theorem indBotFunctor_map_hom_mk {X Y : ModuleCat.{u} k} (f : X ⟶ Y) (g : G) (x : X) :
+    ((indBotFunctor k G).map f).hom
+        (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) g x) =
+      IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) Y) g (f.hom x) :=
+  (rfl)
+
+/-- Two morphisms out of the representation induced from the trivial subgroup agree once they
+agree on the generators `⟦1 ⊗ₜ x⟧`: by equivariance, these determine the values on every
+`⟦g ⊗ₜ x⟧`. -/
+theorem indBot_hom_ext {X : Type u} [AddCommGroup X] [Module k X] {B : Rep k G}
+    {f f' : indBot k G X ⟶ B}
+    (h : ∀ x : X,
+      f.hom (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) 1 x) =
+        f'.hom
+          (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) 1 x)) :
+    f = f' :=
+  (indResHomEquiv (⊥ : Subgroup G).subtype _ B).injective <| Rep.hom_ext <|
+    IntertwiningMap.ext <| LinearMap.ext h
+
+/-- The canonical projection from the representation induced from the trivial subgroup on the
+underlying module of `A` onto `A`, `⟦g ⊗ₜ a⟧ ↦ A.ρ g⁻¹ a`. -/
+def indBotCounit (A : Rep k G) : indBot k G A.V ⟶ A :=
+  (indResHomEquiv (⊥ : Subgroup G).subtype (trivial k (⊥ : Subgroup G) A.V) A).symm
+    (resBotIsoTrivial A).inv
+
+/-- The projection from the induced representation on generators: `⟦g ⊗ₜ a⟧ ↦ A.ρ g⁻¹ a`. -/
+@[simp↓]
+theorem indBotCounit_hom_mk (A : Rep k G) (g : G) (a : A) :
+    (indBotCounit A).hom
+        (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) A.V) g a) =
+      A.ρ g⁻¹ a := by
+  simp [indBotCounit, resBotIsoTrivial]
+
+/-- The generator map `a ↦ ⟦1 ⊗ₜ a⟧` is a `k`-linear section of the projection from the
+representation induced from the trivial subgroup onto a representation. -/
+theorem rightInverse_indBotCounit (A : Rep k G) :
+    Function.RightInverse
+      (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) A.V) 1)
+      (indBotCounit A).hom := fun a ↦ by
+  rw [indBotCounit_hom_mk, inv_one, map_one, one_apply_eq_self]
+
+/-- The projection from the induced representation is an epimorphism. -/
+instance indBotCounit_epi (A : Rep k G) : Epi (indBotCounit A) :=
+  (epi_iff_surjective _).2 (rightInverse_indBotCounit A).surjective
+
+/-- The map of induced representations associated to a morphism of representations. -/
+def indBotMap {A B : Rep k G} (f : A ⟶ B) :
+    indBot k G A.V ⟶ indBot k G B.V :=
+  indMap (⊥ : Subgroup G).subtype
+    ((trivialFunctor k (⊥ : Subgroup G)).map (ModuleCat.ofHom f.hom.toLinearMap))
+
+/-- The map induced by an identity morphism is the identity. -/
+@[simp]
+theorem indBotMap_id (A : Rep k G) : indBotMap (𝟙 A) = 𝟙 _ :=
+  indBot_hom_ext fun _ ↦ rfl
+
+/-- The map induced by a composite is the composite of the induced maps. -/
+@[simp]
+theorem indBotMap_comp {A B C : Rep k G} (f : A ⟶ B) (g : B ⟶ C) :
+    indBotMap (f ≫ g) = indBotMap f ≫ indBotMap g :=
+  indBot_hom_ext fun _ ↦ rfl
+
+/-- The induced map applies the underlying map to every generator. -/
+theorem indBotMap_hom_mk {A B : Rep k G} (f : A ⟶ B) (g : G) (a : A) :
+    (indBotMap f).hom
+        (Representation.IndV.mk (⊥ : Subgroup G).subtype
+          (Representation.trivial k (⊥ : Subgroup G) A.V) g a) =
+      Representation.IndV.mk (⊥ : Subgroup G).subtype
+        (Representation.trivial k (⊥ : Subgroup G) B.V) g
+        (f.hom a) :=
+  indBotFunctor_map_hom_mk ((forget₂ (Rep k G) (ModuleCat k)).map f) g a
+
+/-- The projection from an induced representation is natural in the representation. -/
+@[reassoc]
+theorem indBotCounit_naturality {A B : Rep k G} (f : A ⟶ B) :
+    indBotMap f ≫ indBotCounit B = indBotCounit A ≫ f :=
+  indBot_hom_ext fun a ↦ by
+    rw [Rep.hom_comp, Rep.hom_comp, IntertwiningMap.comp_apply, IntertwiningMap.comp_apply,
+      indBotMap_hom_mk, indBotCounit_hom_mk, indBotCounit_hom_mk]
+    exact (Rep.hom_comm_apply f 1⁻¹ a).symm
+
+/-- The morphism `⟦g ⊗ₜ x⟧ ↦ g⁻¹ • s x` to a representation from the representation induced from
+the trivial subgroup, attached to a `k`-linear map `s`. -/
+def fromIndBot (B : Rep k G) {X : Type u} [AddCommGroup X] [Module k X]
+    (s : X →ₗ[k] B.V) : indBot k G X ⟶ B :=
+  indMap (⊥ : Subgroup G).subtype ((trivialFunctor k (⊥ : Subgroup G)).map (ModuleCat.ofHom s)) ≫
+    indBotCounit B
+
+/-- The morphism attached to `s` on generators: `⟦g ⊗ₜ x⟧ ↦ g⁻¹ • s x`. -/
+-- `indMap` sends the generator `⟦g ⊗ₜ x⟧` to `⟦g ⊗ₜ s x⟧` by definition, so this is
+-- `indBotCounit_hom_mk`.
+theorem fromIndBot_hom_mk (B : Rep k G) {X : Type u} [AddCommGroup X] [Module k X]
+    (s : X →ₗ[k] B.V) (g : G) (x : X) :
+    (fromIndBot B s).hom (IndV.mk (⊥ : Subgroup G).subtype
+        (Representation.trivial k (⊥ : Subgroup G) X) g x) =
+      B.ρ g⁻¹ (s x) :=
+  indBotCounit_hom_mk B g (s x)
+
+/-- If `s` is a section of `f : B ⟶ A`, then `⟦g ⊗ₜ a⟧ ↦ g⁻¹ • s a` followed by `f` is the
+projection of the representation induced from the trivial subgroup onto `A`. -/
+@[reassoc]
+theorem fromIndBot_comp_of_rightInverse {A B : Rep k G} (f : B ⟶ A)
+    {s : A.V →ₗ[k] B.V} (hs : Function.RightInverse s f.hom) :
+    fromIndBot B s ≫ f = indBotCounit A :=
+  indBot_hom_ext fun a ↦ by
+    rw [Rep.hom_comp, IntertwiningMap.comp_apply, fromIndBot_hom_mk, indBotCounit_hom_mk,
+      Rep.hom_comm_apply, hs a]
+
+/-- Induction on the underlying module, viewed as an endofunctor of representations. -/
+@[expose] def indBotRepFunctor : Rep k G ⥤ Rep k G :=
+  (forget₂ (Rep k G) (ModuleCat k)) ⋙ indBotFunctor k G
+
+/-- The induction endofunctor acts on objects by induction of underlying modules. -/
+@[simp] theorem indBotRepFunctor_obj (A : Rep k G) :
+    (indBotRepFunctor (k := k) (G := G)).obj A = indBot k G A.V := rfl
+
+/-- The induction endofunctor acts on morphisms by `indBotMap`. -/
+@[simp] theorem indBotRepFunctor_map {A B : Rep k G} (f : A ⟶ B) :
+    (indBotRepFunctor (k := k) (G := G)).map f = indBotMap f := (rfl)
+
+/-- The canonical projection from induction, as a natural transformation. -/
+@[expose] def indBotCounitNatTrans : indBotRepFunctor (k := k) (G := G) ⟶ 𝟭 (Rep k G) where
+  app A := indBotCounit A
+  naturality := by
+    intro A B f
+    -- Unfold the induction and identity functor maps to the existing naturality square.
+    change indBotMap f ≫ indBotCounit B = indBotCounit A ≫ f
+    exact indBotCounit_naturality f
+
+/-- The component of the induction counit at `A` is its canonical projection. -/
+@[simp] theorem indBotCounitNatTrans_app (A : Rep k G) :
+    (indBotCounitNatTrans (k := k) (G := G)).app A = indBotCounit A := rfl
+
+variable (k G) in
+/-- The underlying module of the representation induced from the trivial subgroup is the module
+of finitely supported functions `G →₀ X`, `⟦g ⊗ₜ x⟧ ↦ single g x`: the coinvariants of the trivial
+group are the whole module `k[G] ⊗ X`. -/
+def indBotEquivFinsupp (X : Type u) [AddCommGroup X] [Module k X] :
+    (indBot k G X : Type u) ≃ₗ[k] (G →₀ X) :=
+  (Submodule.quotEquivOfEqBot _ <| Submodule.span_eq_bot.2 fun _ hx ↦ by
+    obtain ⟨⟨g, v⟩, rfl⟩ := hx
+    obtain rfl : g = 1 := Subsingleton.elim g 1
+    simp).trans TauCeti.MonoidAlgebra.tensorEquivFinsupp
+
+/-- The underlying module of the induced representation on generators: `⟦g ⊗ₜ x⟧ ↦ single g x`. -/
+theorem indBotEquivFinsupp_mk (X : Type u) [AddCommGroup X] [Module k X] (g : G) (x : X) :
+    indBotEquivFinsupp k G X
+        (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) g x) =
+      Finsupp.single g x := by
+  -- `quotEquivOfEqBot` is the identity on classes, so on a generator only `tensorEquivFinsupp`
+  -- acts.
+  change TauCeti.MonoidAlgebra.tensorEquivFinsupp (MonoidAlgebra.single g (1 : k) ⊗ₜ[k] x) = _
+  simp
+
+/-- `G` acts on the finitely supported functions underlying the representation induced from the
+trivial subgroup by right translation: `(g • v) h = v (h * g)`. -/
+-- Not `@[simp]`: simp first unfolds the action `(indBot k G X).ρ g` through
+-- `Representation.ind_apply`, so the left-hand side is not in simp-normal form (`simpNF`).
+theorem indBotEquivFinsupp_ρ_apply (X : Type u) [AddCommGroup X] [Module k X] (g : G)
+    (v : indBot k G X) (h : G) :
+    indBotEquivFinsupp k G X ((indBot k G X).ρ g v) h = indBotEquivFinsupp k G X v (h * g) := by
+  refine LinearMap.congr_fun (f := Finsupp.lapply h ∘ₗ (indBotEquivFinsupp k G X).toLinearMap ∘ₗ
+      (indBot k G X).ρ g) (g := Finsupp.lapply (h * g) ∘ₗ (indBotEquivFinsupp k G X).toLinearMap)
+    (IndV.hom_ext _ _ fun h' ↦ LinearMap.ext fun x ↦ ?_) v
+  -- On the generator `⟦h' ⊗ₜ x⟧` both sides are values of single functions. The goal is restated
+  -- with the generator folded: `IndV.mk` is a reducible abbreviation for a composite of linear
+  -- maps, so `simp`/`rw [LinearMap.comp_apply]` unfold it into
+  -- `Coinvariants.mk (single h' 1 ⊗ₜ x)`, where `Representation.ind_mk` and
+  -- `indBotEquivFinsupp_mk` (stated on `IndV.mk`) no longer match.
+  change indBotEquivFinsupp k G X (Representation.ind _ _ g
+      (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) h' x)) h =
+    indBotEquivFinsupp k G X
+      (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) X) h' x) (h * g)
+  rw [Representation.ind_mk, indBotEquivFinsupp_mk, indBotEquivFinsupp_mk, Finsupp.single_apply,
+    Finsupp.single_apply]
+  simp only [mul_inv_eq_iff_eq_mul]
+
+/-- For any group, `k[G]` is induced from the trivial subgroup: `Ind_⊥^G k ≅ k[G ⧸ ⊥] ≅ k[G]`. -/
+def indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G :=
+  TauCeti.indTrivialIso k (⊥ : Subgroup G) ≪≫ TauCeti.quotientBotIsoLeftRegular k
+
+/-- The isomorphism from induction out of the trivial subgroup to the left regular
+representation reads the underlying finitely supported function with inverted indices. -/
+@[simp]
+theorem indBotIsoLeftRegular_hom_hom_apply_coeff (v : indBot k G k) (g : G) :
+    (dsimp% only
+        (((indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G).hom.hom v).coeff g)) =
+      indBotEquivFinsupp k G k v g⁻¹ := by
+  refine LinearMap.congr_fun
+    (f := Finsupp.lapply g ∘ₗ (MonoidAlgebra.coeffLinearEquiv k).toLinearMap ∘ₗ
+      (indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G).hom.hom.toLinearMap)
+    (g := Finsupp.lapply g⁻¹ ∘ₗ (indBotEquivFinsupp k G k).toLinearMap)
+    (IndV.hom_ext _ _ fun h ↦ LinearMap.ext fun a ↦ ?_) v
+  -- Keep `IndV.mk` folded while exposing the two composed representation maps: rewriting the
+  -- composition directly unfolds this reducible generator, after which the generator lemmas below
+  -- no longer match.
+  change ((indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G).hom.hom
+      (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) k) h a)).coeff
+    g = indBotEquivFinsupp k G k
+      (IndV.mk (⊥ : Subgroup G).subtype (Representation.trivial k (⊥ : Subgroup G) k) h a) g⁻¹
+  simp only [indBotIsoLeftRegular, Iso.trans_hom, hom_comp,
+    IntertwiningMap.comp_apply]
+  rw [TauCeti.indTrivialIso_hom_hom_apply_mk,
+    TauCeti.quotientBotIsoLeftRegular_hom_hom_single_mk,
+    indBotEquivFinsupp_mk]
+  simp only [MonoidAlgebra.coeff_single, Finsupp.single_apply, inv_eq_iff_eq_inv]
+
+/-- The inverse isomorphism, from the left regular representation back to induction out of the
+trivial subgroup, likewise reads the underlying finitely supported function with inverted
+indices. -/
+@[simp]
+theorem indBotEquivFinsupp_indBotIsoLeftRegular_inv_hom_apply (v : leftRegular k G) (g : G) :
+    (dsimp% only (indBotEquivFinsupp k G k
+        ((indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G).inv.hom v) g)) = v.coeff g⁻¹ := by
+  have h := indBotIsoLeftRegular_hom_hom_apply_coeff
+    ((indBotIsoLeftRegular : indBot k G k ≅ leftRegular k G).inv.hom v) g⁻¹
+  rw [hom_inv_apply, inv_inv] at h
+  exact h.symm
+
+end Induction
+
+section Finite
+
+variable [Finite G]
+
+-- Mathlib's `indCoindIso` is stated with a decidability hypothesis on the right coset relation;
+-- for the trivial subgroup we supply it classically.
+attribute [local instance] Classical.decRel
+
+/-- For a finite group, induction and coinduction from the trivial subgroup agree. -/
+def indBotIsoCoindBot (X : Type u) [AddCommGroup X] [Module k X] : indBot k G X ≅ coindBot k G X :=
+  indCoindIso (trivial k (⊥ : Subgroup G) X)
+
+/-- For a finite group, the left regular representation `k[G]` is coinduced from the trivial
+subgroup. -/
+def leftRegularIsoCoindBot : leftRegular k G ≅ coindBot k G k :=
+  indBotIsoLeftRegular.symm ≪≫ indBotIsoCoindBot k
+
+end Finite
+
+section Restriction
+
+variable (S : Subgroup G)
+
+/-- The restriction to a subgroup `S` of a representation coinduced from the trivial subgroup of
+`G` is coinduced from the trivial subgroup of `S`, on `[G : S]` copies of the coefficients:
+`f ↦ (s ↦ (y ↦ f (y.out * s)))` (`resCoindBotIso_hom_hom_apply_coe`). -/
+def resCoindBotIso (X : Type u) [AddCommGroup X] [Module k X] :
+    res S.subtype (coindBot k G X) ≅ coindBot k S (G ⧸ S → X) :=
+  mkIso <| .mk (coindBotEquivPi k G X ≪≫ₗ
+    LinearEquiv.funCongrLeft k X
+      ((Equiv.prodComm S (G ⧸ S)).trans Subgroup.groupEquivQuotientProdSubgroup.symm) ≪≫ₗ
+    LinearEquiv.curry k X S (G ⧸ S) ≪≫ₗ (coindBotEquivPi k S (G ⧸ S → X)).symm) fun s ↦ by
+    ext f h y
+    -- Both sides evaluate `f` at a point of `G`, written through the coset decomposition of `G`.
+    -- The goal is restated because the action of `s` on `res S.subtype (coindBot k G X)` is the
+    -- `Representation.coind` operator applied through `LinearMap.funLeft`/`restrict`, and the
+    -- forward map is a composite of `LinearEquiv.funCongrLeft` and `LinearEquiv.curry`: `simp`
+    -- normalizes these into `Function.curry`/`funLeft` forms in which the argument
+    -- `groupEquivQuotientProdSubgroup.symm (y, h)` is no longer exposed for its evaluation lemma.
+    change f.1 (Subgroup.groupEquivQuotientProdSubgroup.symm (y, h) * s) =
+      f.1 (Subgroup.groupEquivQuotientProdSubgroup.symm (y, h * s))
+    rw [Subgroup.groupEquivQuotientProdSubgroup_symm_apply,
+      Subgroup.groupEquivQuotientProdSubgroup_symm_apply, Subgroup.coe_mul, mul_assoc]
+
+/-- The restriction of a coinduced representation to `S`: `f ↦ (s ↦ (y ↦ f (y.out * s)))`. -/
+@[simp]
+theorem resCoindBotIso_hom_hom_apply_coe (X : Type u) [AddCommGroup X] [Module k X]
+    (f : coindBot k G X) (s : S) (y : G ⧸ S) :
+    (dsimp% only ((((resCoindBotIso S X).hom.hom f).1 s) y)) = f.1 (y.out * s) :=
+  -- The forward map evaluates `f` at the point of `G` with coset `y` and subgroup part `s`.
+  congrArg f.1 (Subgroup.groupEquivQuotientProdSubgroup_symm_apply y s)
+
+/-- The inverse of the restriction of a coinduced representation to `S`: a function
+`F : S → (G ⧸ S → X)` goes to `g ↦ F (⟦g⟧.out⁻¹ * g) ⟦g⟧`, read through Mathlib's decomposition
+`Subgroup.groupEquivQuotientProdSubgroup` of `g`. -/
+@[simp]
+theorem resCoindBotIso_inv_hom_apply_coe (X : Type u) [AddCommGroup X] [Module k X]
+    (F : coindBot k S (G ⧸ S → X)) (g : G) :
+    (dsimp% only (((resCoindBotIso S X).inv.hom F).1 g)) =
+      F.1 (Subgroup.groupEquivQuotientProdSubgroup g).2 (g : G ⧸ S) :=
+  (rfl)
+
+/-- The restriction to a subgroup `S` of a representation induced from the trivial subgroup of `G`
+is induced from the trivial subgroup of `S`, on the finitely supported functions `G ⧸ S →₀ X`: a
+finitely supported function on `G = S × G ⧸ S` is a finitely supported function on `S` with values
+finitely supported on `G ⧸ S` (`indBotEquivFinsupp_resIndBotIso_hom_hom_apply`). -/
+def resIndBotIso (X : Type u) [AddCommGroup X] [Module k X] :
+    res S.subtype (indBot k G X) ≅ indBot k S (G ⧸ S →₀ X) :=
+  mkIso <| .mk (indBotEquivFinsupp k G X ≪≫ₗ
+    Finsupp.domLCongr (Subgroup.groupEquivQuotientProdSubgroup.trans (Equiv.prodComm (G ⧸ S) S)) ≪≫ₗ
+    Finsupp.curryLinearEquiv k ≪≫ₗ (indBotEquivFinsupp k S (G ⧸ S →₀ X)).symm) fun s ↦
+    LinearMap.ext fun v ↦ (indBotEquivFinsupp k S (G ⧸ S →₀ X)).injective <|
+      Finsupp.ext fun t ↦ Finsupp.ext fun y ↦ by
+        -- Both sides evaluate the finitely supported function of `v` at a point of `G`, written
+        -- through the coset decomposition of `G`; the action of `s` is right translation.
+        rw [LinearMap.comp_apply, LinearMap.comp_apply, MonoidHom.comp_apply, Subgroup.coe_subtype,
+          indBotEquivFinsupp_ρ_apply]
+        simp only [LinearEquiv.coe_coe, LinearEquiv.trans_apply, LinearEquiv.apply_symm_apply,
+          Finsupp.domLCongr_apply, Finsupp.domCongr_apply, Finsupp.curryLinearEquiv_apply,
+          Finsupp.curry_apply, Finsupp.equivMapDomain_apply, Equiv.symm_trans_apply,
+          Equiv.prodComm_symm, Equiv.prodComm_apply, Prod.swap_prod_mk,
+          Subgroup.groupEquivQuotientProdSubgroup_symm_apply]
+        rw [indBotEquivFinsupp_ρ_apply, Subgroup.coe_mul, mul_assoc]
+
+/-- The restriction of an induced representation to `S`: the finitely supported function attached
+to `v` sends `s` to the finitely supported function `y ↦ v (y.out * s)`. -/
+@[simp]
+theorem indBotEquivFinsupp_resIndBotIso_hom_hom_apply (X : Type u) [AddCommGroup X] [Module k X]
+    (v : indBot k G X) (s : S) (y : G ⧸ S) :
+    (dsimp% only (indBotEquivFinsupp k S (G ⧸ S →₀ X) ((resIndBotIso S X).hom.hom v) s y)) =
+      indBotEquivFinsupp k G X v (y.out * s) := by
+  simp [resIndBotIso]
+
+/-- The inverse of the restriction of an induced representation to `S`: the finitely supported
+function on `G` attached to `W` evaluates `W` at the decomposition `g = ⟦g⟧.out * (⟦g⟧.out⁻¹ * g)`
+of `g` into a coset and an element of `S`. -/
+@[simp]
+theorem indBotEquivFinsupp_resIndBotIso_inv_hom_apply (X : Type u) [AddCommGroup X] [Module k X]
+    (W : indBot k S (G ⧸ S →₀ X)) (g : G) :
+    (dsimp% only (indBotEquivFinsupp k G X ((resIndBotIso S X).inv.hom W) g)) =
+      indBotEquivFinsupp k S (G ⧸ S →₀ X) W (Subgroup.groupEquivQuotientProdSubgroup g).2
+        (g : G ⧸ S) := by
+  simp [resIndBotIso, Finsupp.uncurry_apply]
+
+end Restriction
+
+section Invariants
+
+variable (S : Subgroup G) (X : Type u) [AddCommGroup X] [Module k X]
+
+/-- An `S`-invariant function `G → X` in `Coind_⊥^G X` is constant on the cosets of `S`. -/
+private theorem coindBot_apply_eq_of_mem_invariants
+    {f : coindBot k G X} (hf : f ∈ Representation.invariants ((coindBot k G X).ρ.comp S.subtype))
+    {a b : G} (hab : (a : G ⧸ S) = b) : f.1 a = f.1 b := by
+  obtain ⟨s, rfl⟩ : ∃ s : S, b = a * s := ⟨⟨a⁻¹ * b, QuotientGroup.eq.1 hab⟩, by simp⟩
+  exact (congrArg (fun f : coindBot k G X => f.1 a) (hf s)).symm
+
+variable [S.Normal]
+
+/-- For a normal subgroup `S`, the `S`-invariants of the representation coinduced from the trivial
+subgroup of `G` are coinduced from the trivial subgroup of `G ⧸ S`: an `S`-invariant function on
+`G` is a function on `G ⧸ S`, `f ↦ (y ↦ f y.out)`
+(`quotientToInvariantsCoindBotIso_hom_hom_apply_coe`). -/
+def quotientToInvariantsCoindBotIso :
+    (coindBot k G X).quotientToInvariants S ≅ coindBot k (G ⧸ S) X :=
+  mkIso <| .mk
+    { toFun f := ⟨fun y => f.1.1 y.out, mem_coindV_bot k _⟩
+      map_add' _ _ := rfl
+      map_smul' _ _ := rfl
+      invFun F := ⟨⟨fun g => F.1 g, mem_coindV_bot k _⟩, fun s => by
+        ext g
+        exact congrArg F.1 (QuotientGroup.mk_mul_of_mem g s.2)⟩
+      left_inv f := by
+        ext g
+        exact coindBot_apply_eq_of_mem_invariants S X f.2 (QuotientGroup.out_eq' _)
+      right_inv F := by
+        ext y
+        exact congrArg F.1 (QuotientGroup.out_eq' y) }
+    fun y => by
+      induction y using QuotientGroup.induction_on with | H g => ?_
+      ext f y
+      exact coindBot_apply_eq_of_mem_invariants S X f.2 (by simp)
+
+/-- The `S`-invariants of a coinduced representation, as a function on `G ⧸ S`: `f ↦ (y ↦ f y.out)`.
+-/
+@[simp]
+theorem quotientToInvariantsCoindBotIso_hom_hom_apply_coe
+    (f : (coindBot k G X).quotientToInvariants S) (y : G ⧸ S) :
+    (dsimp% only (((quotientToInvariantsCoindBotIso S X).hom.hom f).1 y)) = f.1.1 y.out :=
+  (rfl)
+
+/-- An invariant function has the same value at a representative and at the chosen representative
+of its coset. Together with `quotientToInvariantsCoindBotIso_hom_hom_apply_coe`, this evaluates
+the forward isomorphism on cosets of representatives. -/
+@[simp]
+theorem quotientToInvariants_coindBot_apply_out_mk
+    (f : (coindBot k G X).quotientToInvariants S) (g : G) :
+    f.1.1 (QuotientGroup.mk g : G ⧸ S).out = f.1.1 g :=
+  coindBot_apply_eq_of_mem_invariants S X f.2 (QuotientGroup.out_eq' _)
+
+/-- A function on `G ⧸ S`, as an `S`-invariant function on `G`: `F ↦ (g ↦ F ⟦g⟧)`. -/
+@[simp]
+theorem quotientToInvariantsCoindBotIso_inv_hom_apply_coe_coe (F : coindBot k (G ⧸ S) X) (g : G) :
+    (dsimp% only (((quotientToInvariantsCoindBotIso S X).inv.hom F).1.1 g)) = F.1 g :=
+  (rfl)
+
+end Invariants
+
+end Rep

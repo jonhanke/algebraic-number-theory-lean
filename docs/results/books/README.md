@@ -5,6 +5,7 @@ For each book in the scope of this release, a table from the items of the book t
 | book | rows | proved | definitions | in Mathlib | conditional | other |
 |---|---|---|---|---|---|---|
 | [J. S. Milne, *Algebraic Number Theory*](milne-ant.md) | 328 | 132 | 17 | 179 | 0 | 0 |
+| [J. S. Milne, *Class Field Theory*](milne-cft.md) | 513 | 344 | 58 | 105 | 0 | 6 |
 | [A. Weil, *Basic Number Theory* (number fields and function fields)](weil-bnt.md) | 371 | 272 | 24 | 74 | 0 | 1 |
 | [J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV)](tate-thesis.md) | 80 | 57 | 23 | 0 | 0 | 0 |
 | [Pontryagin duality (Folland, *A Course in Abstract Harmonic Analysis*, Chapter 4; Weil II.§5, VII.§2)](pontryagin.md) | 24 | 22 | 2 | 0 | 0 | 0 |

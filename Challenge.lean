@@ -21,9 +21,12 @@ import NumberFieldKB.ModularCurves.GenusX0
 import NumberFieldKB.ModularCurves.Rationality
 import NumberFieldKB.ModularCurves.Theorem23
 import NumberFieldKB.ModularCurves.Cor34
+import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangUncond
+import NumberFieldKB.MilneCFT.Ch8.GaussCubicUncond
+import NumberFieldKB.MilneCFT.Ch5LSeriesExtends
 
 /-!
-# Headline statements of NumberFieldKB 0.1.0
+# Headline statements of NumberFieldKB 0.2.0
 
 The main results of the library, one theorem each, with every proof a deliberate `sorry`: to check what is claimed,
 read this file. `Solution.lean` proves the same statements from the library, and `lake comparator` (configured by
@@ -87,6 +90,12 @@ on); a reader checking a statement should check these too:
 * `NumberFieldKB.MilneEC.V.g4`
 * `NumberFieldKB.MilneEC.V.g6`
 * `NumberFieldKB.MilneEC.V.discr`
+* `NumberFieldKB.MilneCFT.LocalCFT.ltField`
+* `NumberFieldKB.MilneCFT.Ch8.cubicAffineCount`
+* `NumberFieldKB.MilneCFT.Modulus`
+* `NumberFieldKB.MilneCFT.RayClassGroup`
+* `NumberFieldKB.MilneCFT.weberLSeries`
+* `NumberFieldKB.MilneCFT.idealRayClass`
 -/
 
 noncomputable section
@@ -370,6 +379,55 @@ $\dim S_2(\Gamma_0(N)) = 1 + \mu/12 - \nu_2/4 - \nu_3/3 - \nu_\infty/2$). -/
 theorem cuspForms_weightTwo_finrank (N : ℕ) [NeZero N] :
     (Module.finrank ℂ (CuspForm ((CongruenceSubgroup.Gamma0 N).map (Matrix.SpecialLinearGroup.mapGL ℝ)) 2) : ℤ) =
       genus ℚ (X0 N) :=
+  sorry
+
+/-! ## Milne, *Class Field Theory* -/
+
+open NumberField IsDedekindDomain in
+/-- **The Grunwald–Wang theorem** (Milne, *Class Field Theory*, Chapter VIII, Theorem 2.4): let $K$ be a number field,
+$S$ a finite set of finite places and $T$ a finite set of infinite places, and for each $v \in S \cup T$ let
+$\chi_v$ be a continuous character of finite order of $K_v^\times$; let $n$ be the least common multiple of their
+orders. There is a continuous character $\psi$ of the idele class group $C_K$ whose restriction to $K_v^\times$ is
+$\chi_v$ for all $v \in S \cup T$, and $\psi$ can be chosen of order exactly $n$ unless $2^t \mid n$ for some $t$
+with $K(\zeta_{2^t})/K$ not cyclic (Wang's special case). (The library's named statement `Theorem2_4`, unfolded.) -/
+theorem grunwaldWang {K : Type} [Field K] [NumberField K] (S : Finset (HeightOneSpectrum (𝓞 K))) (T : Finset (InfinitePlace K))
+    (χ : ∀ v : HeightOneSpectrum (𝓞 K), (v.adicCompletion K)ˣ →* ℂˣ)
+    (χ' : ∀ w : InfinitePlace K, w.Completionˣ →* ℂˣ)
+    (hχ : ∀ v ∈ S, Continuous (χ v) ∧ IsOfFinOrder (χ v)) (hχ' : ∀ w ∈ T, Continuous (χ' w) ∧ IsOfFinOrder (χ' w))
+    (n : ℕ) (hn : ∀ v ∈ S, orderOf (χ v) ∣ n) (hn' : ∀ w ∈ T, orderOf (χ' w) ∣ n)
+    (hlcm : ∀ m : ℕ, (∀ v ∈ S, orderOf (χ v) ∣ m) → (∀ w ∈ T, orderOf (χ' w) ∣ m) → n ∣ m) :
+    ∃ ψ : IdeleClassGroup (𝓞 K) K →* ℂˣ, Continuous ψ ∧
+      (∀ v ∈ S, ψ.comp ((QuotientGroup.mk' _).comp (IdeleGroup.ofAdicCompletion (𝓞 K) K v)) = χ v) ∧
+      (∀ w ∈ T, ψ.comp ((QuotientGroup.mk' _).comp (IdeleGroup.ofCompletion (𝓞 K) K w)) = χ' w) ∧
+      ((∀ t : ℕ, 2 ^ t ∣ n →
+          IsCyclic (CyclotomicField (2 ^ t) K ≃ₐ[K] CyclotomicField (2 ^ t) K)) → orderOf ψ = n) :=
+  sorry
+
+open NumberFieldKB.MilneCFT.Ch8 in
+/-- **A theorem of Gauss** (Milne, *Class Field Theory*, Chapter VIII, §10; Silverman–Tate IV.2): let $N_p$ be the
+number of points of the projective curve $X^3 + Y^3 + Z^3 = 0$ over $\mathbb F_p$, so that the number of nonzero
+solutions in $\mathbb F_p^3$ (`cubicAffineCount p`) is $(p-1)N_p$. If $p \not\equiv 1 \pmod 3$ then $N_p = p + 1$;
+if $p \equiv 1 \pmod 3$ then $N_p = p + 1 + A$, where $A$ is the unique integer $\equiv 1 \pmod 3$ with
+$4p = A^2 + 27B^2$ for some integer $B$. (The library's named statement `GaussCubicCount`, unfolded.) -/
+theorem gauss_cubicCurve_count (p : ℕ) [Fact p.Prime] :
+    (p % 3 ≠ 1 → cubicAffineCount p = (p - 1) * (p + 1)) ∧
+    (p % 3 = 1 → ∃ A B : ℤ, A % 3 = 1 ∧ 4 * p = A ^ 2 + 27 * B ^ 2 ∧
+      (cubicAffineCount p : ℤ) = (p - 1) * (p + 1 + A) ∧
+      ∀ A' B' : ℤ, A' % 3 = 1 → 4 * p = A' ^ 2 + 27 * B' ^ 2 → A' = A) :=
+  sorry
+
+open NumberField in
+open NumberFieldKB.MilneCFT in
+/-- **Weber $L$-series** (Milne, *Class Field Theory*, Chapter V, Theorem 2.4(b), in the corrected form: the book says
+"converges for $\mathrm{Re}(s) > 0$", which fails in general for $[K:\mathbb Q] \ge 2$; the author of this library
+confirmed "extends" as the intended reading): for a modulus $\mathfrak m$ of a number field $K$ and a nontrivial
+character $\chi$ of the ray class group $C_\mathfrak m$, the series
+$L(s,\chi) = \sum_{(\mathfrak a,\mathfrak m_0) = 1}\chi(\mathfrak a)N\mathfrak a^{-s}$ (`weberLSeries`) extends to a
+holomorphic function on $\mathrm{Re}(s) > 0$ whose value at $s = 1$ is nonzero. (The library's named statement
+`Theorem2_4bExtends`, unfolded; proved from the Hecke $L$-function of the attached Hecke character of finite order.) -/
+theorem weberL_continuation {K : Type} [Field K] [NumberField K] (m : Modulus K) (χ : RayClassGroup m →* ℂˣ) (hχ : χ ≠ 1) :
+    ∃ L : ℂ → ℂ, DifferentiableOn ℂ L {s : ℂ | 0 < s.re} ∧
+      (∀ s : ℂ, 1 < s.re → L s = weberLSeries m χ s) ∧ L 1 ≠ 0 :=
   sorry
 
 end NumberFieldKB.Headlines

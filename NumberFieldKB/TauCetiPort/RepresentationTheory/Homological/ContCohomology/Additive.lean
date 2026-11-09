@@ -1,0 +1,478 @@
+/-
+Copyright (c) 2026 The Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: The Tau Ceti contributors
+-/
+module
+
+public import Mathlib.Algebra.Category.ModuleCat.Abelian
+public import Mathlib.Algebra.Homology.Linear
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Continuous.TopRep.Res
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.ContCohomology.Functoriality
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.ContCohomology.SmoothDiscrete.Basic
+
+/-!
+# Additivity and linearity of continuous cohomology
+
+This file proves that the compatible-pair map on continuous cohomology is additive in its
+coefficient morphism. Over a commutative coefficient ring it also commutes with scalar
+multiplication. Consequently `Hⁿ(G, -)`, packaged as
+`TauCeti.ContinuousCohomology.continuousCohomologyFunctor`, is an additive and linear functor.
+
+The proof follows the construction through Mathlib's coinduced resolution: `resolutionMap`,
+`cochainsMap`, `cocyclesMap`, and finally the induced map on homology. The cochain- and
+cocycle-level statements are public because later constructions, in particular connecting maps
+and cup products, need linearity before passing to cohomology.
+
+## Main results
+
+* `TauCeti.ContinuousCohomology.map_add` and `TauCeti.ContinuousCohomology.map_smul` give
+  additivity and linearity of the map associated to a compatible pair.
+* `TauCeti.ContinuousCohomology.mapAddHom` and
+  `TauCeti.ContinuousCohomology.mapLinearMap` bundle that dependence as an additive homomorphism
+  and a linear map.
+* `TauCeti.ContinuousCohomology.continuousCochainsFunctor` is the additive functor of
+  homogeneous cochain complexes, with `continuousCochainsFunctorCompHomologyIso`; its action on
+  maps of discrete modules is `cochainsMap_ofDiscreteModulePair_id`.
+* `TauCeti.ContinuousCohomology.continuousCohomologyFunctor_additive` and
+  `TauCeti.ContinuousCohomology.continuousCohomologyFunctor_linear` install the corresponding
+  functor instances.
+* `TauCeti.ContinuousCohomology.subsingleton_continuousCohomology_of_subsingleton`: continuous
+  cohomology vanishes on subsingleton coefficients, a consequence of additivity.
+* `TauCeti.ContinuousCohomology.subsingleton_continuousCohomology_ofDiscreteModule_of_subsingleton`:
+  the same for the discrete module attached to a subsingleton carrier.
+* `TauCeti.ContinuousCohomology.subsingleton_continuousCohomology_of_iso`: continuous cohomology
+  vanishes on coefficients isomorphic to ones on which it vanishes.
+* `TauCeti.ContinuousCohomology.map_ofDiscreteModulePair_bijective_of_continuousMulEquiv`: the map
+  along a topological group isomorphism and an equivariant isomorphism of discrete modules is
+  bijective.
+* `subsingleton_continuousCohomology_ofDiscreteModule_of_continuousMulEquiv`: consequently,
+  vanishing transfers along such a pair.
+-/
+
+public section
+
+universe u v w
+
+open CategoryTheory
+
+namespace TauCeti.ContinuousCohomology
+
+open _root_.ContinuousCohomology _root_.TopRep _root_.ContRepresentation
+
+
+variable {R : Type u} {G H : Type v} [Ring R] [TopologicalSpace R]
+  [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
+  [Group H] [TopologicalSpace H] [IsTopologicalGroup H]
+  {X : TopRep R G} {Y : TopRep R H}
+
+@[simp]
+private theorem resolutionMap_zero_coeff (φ : H →ₜ* G) (i : ℕ) :
+    resolutionMap φ (0 : TopRep.res φ X ⟶ Y) i = 0 := by
+  induction i with
+  | zero => rfl
+  | succ i ih =>
+    rw [resolutionMap_succ, ih]
+    ext F x
+    rfl
+
+@[simp]
+private theorem resolutionMap_add (φ : H →ₜ* G) (f g : TopRep.res φ X ⟶ Y) (i : ℕ) :
+    resolutionMap φ (f + g) i = resolutionMap φ f i + resolutionMap φ g i := by
+  induction i with
+  | zero => rfl
+  | succ i ih =>
+    rw [resolutionMap_succ, resolutionMap_succ, resolutionMap_succ, ih]
+    ext F x
+    rfl
+
+/-- The compatible-pair cochain map induced by the zero coefficient morphism is zero. -/
+@[simp]
+theorem cochainsMap_zero (φ : H →ₜ* G) :
+    cochainsMap φ (0 : TopRep.res φ X ⟶ Y) = 0 := by
+  ext i v
+  simp only [cochainsMap_f, resolutionMap_zero_coeff]
+  rfl
+
+/-- Compatible-pair cochain maps are additive in the coefficient morphism. -/
+@[simp]
+theorem cochainsMap_add (φ : H →ₜ* G) (f g : TopRep.res φ X ⟶ Y) :
+    cochainsMap φ (f + g) = cochainsMap φ f + cochainsMap φ g := by
+  ext i v
+  simp only [cochainsMap_f, resolutionMap_add]
+  rfl
+
+/-- The map on continuous cocycles induced by the zero coefficient morphism is zero. -/
+@[simp]
+theorem cocyclesMap_zero (φ : H →ₜ* G) (n : ℕ) :
+    cocyclesMap φ (0 : TopRep.res φ X ⟶ Y) n = 0 := by
+  simp only [cocyclesMap, cochainsMap_zero]
+  exact HomologicalComplex.cyclesMap_zero _ _ n
+
+/-- Maps on continuous cocycles are additive in the coefficient morphism. -/
+@[simp]
+theorem cocyclesMap_add (φ : H →ₜ* G) (f g : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    cocyclesMap φ (f + g) n = cocyclesMap φ f n + cocyclesMap φ g n := by
+  rw [← cancel_mono ((homogeneousCochains Y).iCycles n)]
+  rw [HomologicalComplex.cyclesMap_i, Preadditive.add_comp,
+    HomologicalComplex.cyclesMap_i, HomologicalComplex.cyclesMap_i, cochainsMap_add,
+    HomologicalComplex.add_f_apply, Preadditive.comp_add]
+
+/-- The map on continuous cohomology induced by the zero coefficient morphism is zero. -/
+@[simp]
+theorem map_zero (φ : H →ₜ* G) (n : ℕ) :
+    map φ (0 : TopRep.res φ X ⟶ Y) n = 0 := by
+  simp only [map, cochainsMap_zero]
+  exact HomologicalComplex.homologyMap_zero _ _ n
+
+/-- Maps on continuous cohomology are additive in the coefficient morphism. -/
+@[simp]
+theorem map_add (φ : H →ₜ* G) (f g : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    map φ (f + g) n = map φ f n + map φ g n := by
+  simp only [map, cochainsMap_add]
+  exact HomologicalComplex.homologyMap_add _ _ n
+
+/-- The map on continuous cohomology induced by a fixed group homomorphism, bundled as an
+additive homomorphism in the coefficient morphism. -/
+noncomputable def mapAddHom (φ : H →ₜ* G) (X : TopRep R G) (Y : TopRep R H) (n : ℕ) :
+    (TopRep.res φ X ⟶ Y) →+ (continuousCohomology n X ⟶ continuousCohomology n Y) where
+  toFun f := map φ f n
+  map_zero' := map_zero φ n
+  map_add' f g := map_add φ f g n
+
+@[simp]
+theorem mapAddHom_apply (φ : H →ₜ* G) (f : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    mapAddHom φ X Y n f = map φ f n :=
+  (rfl)
+
+section Linear
+
+variable {R : Type u} [CommRing R] [TopologicalSpace R]
+  {X : TopRep R G} {Y : TopRep R H}
+
+@[simp]
+private theorem resolutionMap_smul (φ : H →ₜ* G) (r : R) (f : TopRep.res φ X ⟶ Y)
+    (i : ℕ) :
+    resolutionMap φ (r • f) i = r • resolutionMap φ f i := by
+  induction i with
+  | zero => rfl
+  | succ i ih =>
+    rw [resolutionMap_succ, resolutionMap_succ, ih]
+    ext F x
+    rfl
+
+/-- Compatible-pair cochain maps commute with scalar multiplication of the coefficient morphism. -/
+@[simp]
+theorem cochainsMap_smul (φ : H →ₜ* G) (r : R) (f : TopRep.res φ X ⟶ Y) :
+    cochainsMap φ (r • f) = r • cochainsMap φ f := by
+  ext i v
+  simp only [cochainsMap_f, resolutionMap_smul]
+  rfl
+
+/-- Maps on continuous cocycles commute with scalar multiplication of the coefficient morphism. -/
+@[simp]
+theorem cocyclesMap_smul (φ : H →ₜ* G) (r : R) (f : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    cocyclesMap φ (r • f) n = r • cocyclesMap φ f n := by
+  rw [← cancel_mono ((homogeneousCochains Y).iCycles n)]
+  rw [HomologicalComplex.cyclesMap_i, Linear.smul_comp, HomologicalComplex.cyclesMap_i,
+    cochainsMap_smul, HomologicalComplex.smul_f_apply, Linear.comp_smul]
+
+/-- Maps on continuous cohomology commute with scalar multiplication of the coefficient morphism. -/
+@[simp]
+theorem map_smul (φ : H →ₜ* G) (r : R) (f : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    map φ (r • f) n = r • map φ f n := by
+  rw [← cancel_epi (π X n), π_map, cocyclesMap_smul, Linear.smul_comp, Linear.comp_smul,
+    π_map]
+
+/-- The map on continuous cohomology induced by a fixed group homomorphism, bundled as a linear
+map in the coefficient morphism. -/
+noncomputable def mapLinearMap (φ : H →ₜ* G) (X : TopRep R G) (Y : TopRep R H) (n : ℕ) :
+    (TopRep.res φ X ⟶ Y) →ₗ[R]
+      (continuousCohomology n X ⟶ continuousCohomology n Y) where
+  __ := mapAddHom φ X Y n
+  map_smul' r f := map_smul φ r f n
+
+@[simp]
+theorem mapLinearMap_apply (φ : H →ₜ* G) (f : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    mapLinearMap φ X Y n f = map φ f n :=
+  (rfl)
+
+end Linear
+
+section Additive
+
+variable (R : Type u) [Ring R] [TopologicalSpace R]
+  (G : Type v) [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
+
+private def resIdHom (X : TopRep R G) :
+    TopRep.res (ContinuousMonoidHom.id G : G →* G) X ⟶ X :=
+  eqToHom (TopRep.res_id X)
+
+private theorem coeffMap_eq_map_id {X Y : TopRep R G} (f : X ⟶ Y) (n : ℕ) :
+    coeffMap f n = map (ContinuousMonoidHom.id G) (resIdHom R G X ≫ f) n := by
+  rw [coeffMap_def]
+  exact map_congr rfl (eqToHom_comp_heq f (TopRep.res_id X)).symm n
+
+private theorem coeffMap_add {X Y : TopRep R G} (f g : X ⟶ Y) (n : ℕ) :
+    coeffMap (f + g) n = coeffMap f n + coeffMap g n := by
+  rw [coeffMap_eq_map_id, coeffMap_eq_map_id, coeffMap_eq_map_id,
+    Preadditive.comp_add, map_add]
+
+/-- Continuous cohomology in a fixed degree is additive in the coefficient representation. -/
+noncomputable instance continuousCohomologyFunctor_additive (n : ℕ) :
+    (continuousCohomologyFunctor R G n).Additive where
+  map_add {_X _Y} {f g} := coeffMap_add R G f g n
+
+/-- Multiplication by `k` on a discrete coefficient module induces multiplication by `k`
+on continuous cohomology in every degree. -/
+@[simp]
+theorem coeffMap_nsmulAddMonoidHom {M : Type v} [AddCommGroup M] [TopologicalSpace M]
+    [DiscreteTopology M] [DistribMulAction G M] (k n : ℕ) :
+    coeffMap (ofDiscreteModuleMap (nsmulAddMonoidHom k : M →+ M).toIntLinearMap
+      (fun g m ↦ smul_comm k g m)) n =
+      k • 𝟙 (continuousCohomology n (ofDiscreteModule ℤ G M)) := by
+  have hmul : ofDiscreteModuleMap (nsmulAddMonoidHom k : M →+ M).toIntLinearMap
+      (fun g m ↦ smul_comm k g m) = k • 𝟙 (ofDiscreteModule ℤ G M) := by
+    refine TopRep.hom_ext (DFunLike.ext _ _ fun (m : M) ↦ ?_)
+    -- Read both categorical wrappers through their evaluation lemmas.
+    refine (ofDiscreteModuleMap_hom_apply _ _ m).trans ?_
+    refine (congrFun (AddMonoidHom.coe_toIntLinearMap (nsmulAddMonoidHom k : M →+ M)) m).trans ?_
+    refine (nsmulAddMonoidHom_apply k m).trans ?_
+    have hs : (((k : ℤ) • 𝟙 (ofDiscreteModule ℤ G M)).hom m) = k • m :=
+      (DFunLike.congr_fun (TopRep.hom_smul (k : ℤ) (𝟙 (ofDiscreteModule ℤ G M))) m).trans
+        ((ContIntertwiningMap.smul_apply (k : ℤ)
+          (𝟙 (ofDiscreteModule ℤ G M) : ofDiscreteModule ℤ G M ⟶ _).hom m).trans
+          ((congrArg (fun a : M ↦ (k : ℤ) • a) (TopRep.id_apply (ofDiscreteModule ℤ G M) m)).trans
+            (Nat.cast_smul_eq_nsmul ℤ k m)))
+    exact hs.symm.trans (congrArg (fun f : ofDiscreteModule ℤ G M ⟶ _ ↦ f.hom m)
+      (Nat.cast_smul_eq_nsmul ℤ k (𝟙 (ofDiscreteModule ℤ G M))))
+  rw [hmul]
+  exact (continuousCohomologyFunctor ℤ G n).map_nsmul.trans
+    (congrArg (k • ·) ((continuousCohomologyFunctor ℤ G n).map_id _))
+
+variable {R G} in
+/-- Continuous cohomology vanishes on a coefficient representation whose carrier is a
+subsingleton: the identity of such a representation is the zero morphism, and the additive functor
+`continuousCohomologyFunctor` sends it to the zero endomorphism of the cohomology. -/
+theorem subsingleton_continuousCohomology_of_subsingleton (X : TopRep R G) [Subsingleton X]
+    (n : ℕ) : Subsingleton (continuousCohomology n X) := by
+  have hX : (𝟙 X : X ⟶ X) = 0 :=
+    TopRep.hom_ext
+      (ContIntertwiningMap.ext (ContinuousLinearMap.ext fun _ ↦ Subsingleton.elim _ _))
+  have h : (𝟙 (continuousCohomology n X) : _ ⟶ _) = 0 := by
+    rw [← coeffMap_id X n, hX]
+    exact (continuousCohomologyFunctor R G n).map_zero X X
+  exact ⟨fun x y ↦ (congrArg (fun f : continuousCohomology n X ⟶ _ ↦ f.hom x) h).trans
+    (congrArg (fun f : continuousCohomology n X ⟶ _ ↦ f.hom y) h).symm⟩
+
+variable {R G} in
+/-- Continuous cohomology vanishes on a discrete module with subsingleton carrier: the carrier of
+`ofDiscreteModule R G M` is `M` itself, so the representation is a subsingleton and
+`subsingleton_continuousCohomology_of_subsingleton` applies. -/
+theorem subsingleton_continuousCohomology_ofDiscreteModule_of_subsingleton (M : Type (max v w))
+    [AddCommGroup M] [Module R M] [TopologicalSpace M] [DiscreteTopology M] [DistribMulAction G M]
+    [SMulCommClass G R M] [ContinuousSMul R M] [Subsingleton M] (n : ℕ) :
+    Subsingleton (continuousCohomology n (ofDiscreteModule R G M)) :=
+  have : Subsingleton (ofDiscreteModule R G M) := ‹Subsingleton M›
+  subsingleton_continuousCohomology_of_subsingleton _ n
+
+variable {R G} in
+/-- Continuous cohomology vanishes on a coefficient representation isomorphic to one on which it
+vanishes: the coefficient map of the isomorphism is a bijection of the cohomology modules. -/
+theorem subsingleton_continuousCohomology_of_iso {X Y : TopRep R G} (e : X ≅ Y) (n : ℕ)
+    [Subsingleton (continuousCohomology n Y)] : Subsingleton (continuousCohomology n X) :=
+  haveI : IsIso (coeffMap e.hom n) := (continuousCohomologyFunctor R G n).map_isIso e.hom
+  (Equiv.ofBijective _ (ConcreteCategory.bijective_of_isIso (coeffMap e.hom n))).subsingleton
+
+variable {R G} in
+/-- Along `e : H ≃ₜ* G` and an equivariant `f : M ≃ₗ[R] N`, the map along `e⁻¹` and `f⁻¹`
+followed by the map along `e` and `f` is the identity of `Hⁿ(H, N)`: the composite coefficient
+morphism is the identity of `N`, along `e⁻¹ ∘ e = id`. The hypothesis `hf'` is determined by `hf`;
+it is taken as an argument so that the statement is symmetric in the two directions. -/
+private theorem map_ofDiscreteModulePair_symm_comp_map_ofDiscreteModulePair
+    {H : Type v} [Group H] [TopologicalSpace H] [IsTopologicalGroup H] (e : H ≃ₜ* G)
+    {M N : Type (max v w)} [AddCommGroup M] [Module R M] [TopologicalSpace M] [DiscreteTopology M]
+    [DistribMulAction G M] [SMulCommClass G R M] [ContinuousSMul R M]
+    [AddCommGroup N] [Module R N] [TopologicalSpace N] [DiscreteTopology N]
+    [DistribMulAction H N] [SMulCommClass H R N] [ContinuousSMul R N]
+    (f : M ≃ₗ[R] N) (hf : ∀ (h : H) (m : M), f (e h • m) = h • f m)
+    (hf' : ∀ (g : G) (n : N), f.symm (e.symm g • n) = g • f.symm n) (n : ℕ) :
+    map (ContinuousMonoidHom.toContinuousMonoidHom e.symm)
+        (ofDiscreteModulePair (ContinuousMonoidHom.toContinuousMonoidHom e.symm : G →* H)
+          f.symm.toLinearMap hf') n ≫
+      map (ContinuousMonoidHom.toContinuousMonoidHom e)
+        (ofDiscreteModulePair (ContinuousMonoidHom.toContinuousMonoidHom e : H →* G)
+          f.toLinearMap hf) n = 𝟙 _ := by
+  let φ : H →ₜ* G := ContinuousMonoidHom.toContinuousMonoidHom e
+  let ψ : G →ₜ* H := ContinuousMonoidHom.toContinuousMonoidHom e.symm
+  have hψφ : ψ.comp φ = ContinuousMonoidHom.id H := by
+    ext h
+    exact e.symm_apply_apply h
+  have hid : ∀ (h : H) (m : N), (LinearMap.id : N →ₗ[R] N) ((ψ.comp φ : H →* H) h • m) =
+      h • (LinearMap.id : N →ₗ[R] N) m := fun h m => by
+    rw [hψφ]
+    rfl
+  -- the composite coefficient morphism is the identity of `N`, along `e⁻¹ ∘ e = id`
+  have hcomp : (TopRep.resFunctor (φ : H →* G)).map
+      (ofDiscreteModulePair (ψ : G →* H) f.symm.toLinearMap hf') ≫
+        ofDiscreteModulePair (φ : H →* G) f.toLinearMap hf =
+      ofDiscreteModulePair ((ψ.comp φ : H →ₜ* H) : H →* H) LinearMap.id hid := by
+    ext (m : N)
+    exact (ofDiscreteModulePair_hom_apply _ _ hf _).trans
+      ((congrArg f (ofDiscreteModulePair_hom_apply _ _ hf' m)).trans
+        ((f.apply_symm_apply m).trans (ofDiscreteModulePair_hom_apply _ _ hid m).symm))
+  rw [← _root_.ContinuousCohomology.map_comp, ← _root_.ContinuousCohomology.map_id]
+  refine map_congr hψφ ((heq_of_eq hcomp).trans ?_) n
+  exact ofDiscreteModulePair_heq_of_hom_apply (G := H) (M := N) (N := N)
+    (congrArg ContinuousMonoidHom.toMonoidHom hψφ) LinearMap.id hid
+    (𝟙 (ofDiscreteModule R H N) : TopRep.res ((ContinuousMonoidHom.id H : H →ₜ* H) : H →* H)
+      (ofDiscreteModule R H N) ⟶ ofDiscreteModule R H N) fun _ => rfl
+
+variable {R G} in
+/-- **Continuous cohomology is invariant under a topological group isomorphism**: for
+`e : H ≃ₜ* G` and an `R`-linear isomorphism `f : M ≃ₗ[R] N` with `f (e h • m) = h • f m`, the map
+`Hⁿ(G, M) → Hⁿ(H, N)` along `e` and `f` is bijective. -/
+theorem map_ofDiscreteModulePair_bijective_of_continuousMulEquiv
+    {H : Type v} [Group H] [TopologicalSpace H] [IsTopologicalGroup H] (e : H ≃ₜ* G)
+    {M N : Type (max v w)} [AddCommGroup M] [Module R M] [TopologicalSpace M] [DiscreteTopology M]
+    [DistribMulAction G M] [SMulCommClass G R M] [ContinuousSMul R M]
+    [AddCommGroup N] [Module R N] [TopologicalSpace N] [DiscreteTopology N]
+    [DistribMulAction H N] [SMulCommClass H R N] [ContinuousSMul R N]
+    (f : M ≃ₗ[R] N) (hf : ∀ (h : H) (m : M), f (e h • m) = h • f m) (n : ℕ) :
+    Function.Bijective (map (ContinuousMonoidHom.toContinuousMonoidHom e)
+      (ofDiscreteModulePair (ContinuousMonoidHom.toContinuousMonoidHom e : H →* G)
+        f.toLinearMap hf) n) := by
+  have hf' : ∀ (g : G) (n : N), f.symm (e.symm g • n) = g • f.symm n := fun g n =>
+    f.injective <| by simpa using (hf (e.symm g) (f.symm n)).symm
+  -- the two maps are mutually inverse, by the same computation at `e` and at `e⁻¹`
+  have hBA := map_ofDiscreteModulePair_symm_comp_map_ofDiscreteModulePair e f hf hf' n
+  have hAB := map_ofDiscreteModulePair_symm_comp_map_ofDiscreteModulePair e.symm f.symm hf' hf n
+  have : IsIso (map (ContinuousMonoidHom.toContinuousMonoidHom e)
+      (ofDiscreteModulePair (ContinuousMonoidHom.toContinuousMonoidHom e : H →* G)
+        f.toLinearMap hf) n) := ⟨_, hAB, hBA⟩
+  exact ConcreteCategory.bijective_of_isIso _
+
+variable {R G} in
+/-- Continuous cohomology vanishes on a discrete module carried along a topological group
+isomorphism from one on which it vanishes: for `e : H ≃ₜ* G` and an `R`-linear isomorphism
+`f : M ≃ₗ[R] N` with `f (e h • m) = h • f m`, the map along `e` and `f` is bijective
+(`map_ofDiscreteModulePair_bijective_of_continuousMulEquiv`). -/
+theorem subsingleton_continuousCohomology_ofDiscreteModule_of_continuousMulEquiv
+    {H : Type v} [Group H] [TopologicalSpace H] [IsTopologicalGroup H] (e : H ≃ₜ* G)
+    {M N : Type (max v w)} [AddCommGroup M] [Module R M] [TopologicalSpace M] [DiscreteTopology M]
+    [DistribMulAction G M] [SMulCommClass G R M] [ContinuousSMul R M]
+    [AddCommGroup N] [Module R N] [TopologicalSpace N] [DiscreteTopology N]
+    [DistribMulAction H N] [SMulCommClass H R N] [ContinuousSMul R N]
+    (f : M ≃ₗ[R] N) (hf : ∀ (h : H) (m : M), f (e h • m) = h • f m) (n : ℕ)
+    [Subsingleton (continuousCohomology n (ofDiscreteModule R G M))] :
+    Subsingleton (continuousCohomology n (ofDiscreteModule R H N)) :=
+  (Equiv.ofBijective _ (map_ofDiscreteModulePair_bijective_of_continuousMulEquiv e f hf n)).symm
+    |>.subsingleton
+
+end Additive
+
+section Linear
+
+variable (R : Type u) [CommRing R] [TopologicalSpace R]
+  (G : Type v) [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
+
+private theorem coeffMap_smul {X Y : TopRep R G} (r : R) (f : X ⟶ Y) (n : ℕ) :
+    coeffMap (r • f) n = r • coeffMap f n := by
+  rw [coeffMap_eq_map_id, coeffMap_eq_map_id, Linear.comp_smul, map_smul]
+
+/-- Continuous cohomology in a fixed degree is linear in the coefficient representation. -/
+noncomputable instance continuousCohomologyFunctor_linear (n : ℕ) :
+    (continuousCohomologyFunctor R G n).Linear R where
+  map_smul f r := coeffMap_smul R G r f n
+
+end Linear
+
+/-! ### The cochain functor -/
+
+section Functor
+
+variable (R : Type u) [Ring R] [TopologicalSpace R]
+  (G : Type v) [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
+
+-- Exposed because the generated `@[simps]` field lemmas are `rfl` proofs about this body.
+/-- Mathlib's homogeneous cochain complex `TopRep.homogeneousCochains` as a functor in the
+coefficients. Its action on morphisms is the compatible-pair cochain map at `φ = id`, the
+cochain-level counterpart of `TauCeti.ContinuousCohomology.coeffMap`. -/
+@[expose, simps]
+noncomputable def continuousCochainsFunctor :
+    TopRep.{v} R G ⥤ CochainComplex (TopModuleCat.{v} R) ℕ where
+  obj X := TopRep.homogeneousCochains X
+  map f := cochainsMap (ContinuousMonoidHom.id G) f
+  map_id X := cochainsMap_id X
+  map_comp f g := cochainsMap_comp (ContinuousMonoidHom.id G) (ContinuousMonoidHom.id G) f g
+
+/-- The cochain functor is additive in the coefficient representation. -/
+noncomputable instance continuousCochainsFunctor_additive :
+    (continuousCochainsFunctor R G).Additive where
+  map_add {_X _Y} {f g} := cochainsMap_add (ContinuousMonoidHom.id G) f g
+
+/-- The homology of the cochain functor in degree `n` is continuous cohomology
+`continuousCohomologyFunctor R G n`; the two functors agree on objects and morphisms by
+definition. -/
+noncomputable def continuousCochainsFunctorCompHomologyIso (n : ℕ) :
+    continuousCochainsFunctor R G ⋙ HomologicalComplex.homologyFunctor _ _ n ≅
+      continuousCohomologyFunctor R G n :=
+  NatIso.ofComponents (fun _ ↦ Iso.refl _) fun f ↦ by
+    simp only [Functor.comp_map, continuousCochainsFunctor_map, continuousCohomologyFunctor_map,
+      coeffMap_def]
+    exact (Category.comp_id _).trans (Category.id_comp _).symm
+
+end Functor
+
+/-- The cochain map of an equivariant map of discrete modules agrees with the cochain functor
+applied to the corresponding map of topological representations. -/
+theorem cochainsMap_ofDiscreteModulePair_id {M N : Type v} [AddCommGroup M]
+    [TopologicalSpace M] [DiscreteTopology M] [DistribMulAction G M] [AddCommGroup N]
+    [TopologicalSpace N] [DiscreteTopology N] [DistribMulAction G N] {f : M →+ N}
+    (hf : ∀ (g : G) (m : M), f (g • m) = g • f m) :
+    cochainsMap (ContinuousMonoidHom.id G)
+        (ofDiscreteModulePair (ContinuousMonoidHom.id G : G →* G) f.toIntLinearMap hf) =
+      (continuousCochainsFunctor ℤ G).map (ofDiscreteModuleMap f.toIntLinearMap hf) := by
+  rw [continuousCochainsFunctor_map]
+  exact congrArg _ (ofDiscreteModulePair_eq_of_hom_apply _ _ _ _ fun _ ↦ rfl)
+
+variable {R : Type u} [Ring R] [TopologicalSpace R]
+  {G : Type v} [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
+
+/-- After forgetting topologies, the map `Hⁿ(G, X) ⟶ Hⁿ(H, Y)` of a compatible pair is the map
+induced on the homology of the forgotten homogeneous-cochain complexes by `cochainsMap φ f`,
+conjugated by the identifications `CategoryTheory.ShortComplex.mapHomologyIso` of that homology
+with the underlying modules of continuous cohomology. -/
+theorem forget₂_map_map {H : Type v} [Group H] [TopologicalSpace H] [IsTopologicalGroup H]
+    {X : TopRep.{v} R G} {Y : TopRep.{v} R H} (φ : H →ₜ* G) (f : TopRep.res φ X ⟶ Y) (n : ℕ) :
+    (forget₂ (TopModuleCat R) (ModuleCat R)).map (map φ f n) =
+      ((X.homogeneousCochains.sc n).mapHomologyIso
+          (forget₂ (TopModuleCat R) (ModuleCat R))).inv ≫
+        HomologicalComplex.homologyMap
+          (((forget₂ (TopModuleCat R) (ModuleCat R)).mapHomologicalComplex _).map
+            (cochainsMap φ f)) n ≫
+          ((Y.homogeneousCochains.sc n).mapHomologyIso
+            (forget₂ (TopModuleCat R) (ModuleCat R))).hom :=
+  (Iso.eq_inv_comp _).2 (ShortComplex.mapHomologyIso_hom_naturality
+    ((HomologicalComplex.shortComplexFunctor _ _ n).map (cochainsMap φ f))
+    (forget₂ (TopModuleCat R) (ModuleCat R))).symm
+
+/-- After forgetting topologies, the coefficient map `Hⁿ(G, X) ⟶ Hⁿ(G, Y)` is the map induced on
+the homology of the forgotten homogeneous-cochain complexes, conjugated by the identifications
+`CategoryTheory.ShortComplex.mapHomologyIso` of that homology with the underlying modules of
+continuous cohomology. This is `forget₂_map_map` at `φ = id`. -/
+theorem forget₂_map_coeffMap {X Y : TopRep.{v} R G} (f : X ⟶ Y) (n : ℕ) :
+    (forget₂ (TopModuleCat R) (ModuleCat R)).map (coeffMap f n) =
+      ((X.homogeneousCochains.sc n).mapHomologyIso
+          (forget₂ (TopModuleCat R) (ModuleCat R))).inv ≫
+        HomologicalComplex.homologyMap
+          (((forget₂ (TopModuleCat R) (ModuleCat R)).mapHomologicalComplex _).map
+            ((continuousCochainsFunctor R G).map f)) n ≫
+          ((Y.homogeneousCochains.sc n).mapHomologyIso
+            (forget₂ (TopModuleCat R) (ModuleCat R))).hom := by
+  rw [coeffMap_def]
+  exact forget₂_map_map (ContinuousMonoidHom.id G) f n
+
+end TauCeti.ContinuousCohomology
+
+end

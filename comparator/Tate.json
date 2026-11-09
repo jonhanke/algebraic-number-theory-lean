@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge_Tate",
+  "solution_module": "Solution_Tate",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.tate_globalZeta_functionalEquation",
+    "NumberFieldKB.Headlines.tate_globalZeta_residues",
+    "NumberFieldKB.Headlines.heckeL_functionalEquation",
+    "NumberFieldKB.Headlines.dedekindZeta_continuation",
+    "NumberFieldKB.Headlines.completedDedekindZeta_functionalEquation"
+  ]
+}

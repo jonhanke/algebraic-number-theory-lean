@@ -6,6 +6,11 @@ statements (not only the names) in Mathlib master at commit `df6966d0d` and Tau 
 This library is built on Mathlib v4.35.0; Tau Ceti uses a later Lean and Mathlib and cannot be imported here, so the
 Tau Ceti files this library needs are ported (`NumberFieldKB/TauCetiPort/`, see `NOTICE`).
 
+The class field theory headlines of release 0.2.0 (three; Theorem VIII.2.6, local Kronecker–Weber, Eisenstein reciprocity and Furtwängler's theorem, below, are library theorems in 0.2.0 and headlines in a later release) were compared on 2026-11-08 with Tau Ceti at commit
+`686d0d7f` and Mathlib at `df6966d`, again by reading statements. Tau Ceti now has global and local class field
+theory (`NumberTheory/ClassFieldTheory/`: the global Artin map and reciprocity, global and local existence, the
+Kronecker–Weber theorem, ray class fields, the inequalities), so those theorems are not headlines here.
+
 A search of two large libraries can miss a result stated under another name or in another form; corrections are
 welcome.
 
@@ -33,6 +38,13 @@ welcome.
 | `modularPolynomial_rational` | — | — | new: the modular polynomial $F_N$ has rational coefficients, degree $[\mathrm{SL}_2(\mathbb Z) : \Gamma_0(N)]$ and is minimal |
 | `modularFunctions_Gamma0` | — | the $j$-function on the upper half plane (`Analysis/Complex/ModularForms/LevelOne/JInputs.lean`) | new: the modular functions for $\Gamma_0(N)$ are the rational functions of $j$ and $j_N$ |
 | `cuspForms_weightTwo_finrank` | the spaces of cusp forms (`CuspForm`, used in the statement) | relations between the dimensions of modular forms and cusp forms for $\Gamma_1(N)$ (`EisensteinSeries/Dimension.lean`) | new: $\dim S_2(\Gamma_0(N)) = g(X_0(N))$ |
+| `grunwaldWang` | — | — (no Grunwald–Wang theorem; the idele congruence subgroups used in the proof are ported from Tau Ceti) | new: characters of $C_K$ with prescribed local components at finitely many places, of the least possible order outside Wang's special case (Milne VIII.2.4) |
+| `centralDivisionAlgebra_cyclic` (library theorem `MilneCFT.Ch8.T26.theorem2_6` in 0.2.0) | central simple algebras and the Brauer group of a field | the fundamental exact sequence $0 \to \mathrm{Br}\,K \to \bigoplus_v \mathrm{Br}\,K_v \to \mathbb Q/\mathbb Z \to 0$ for the cohomological Brauer group (`brLocalization_injective`, `range_brLocalization`, `sumLocalInv_surjective`, `NumberTheory/ClassFieldTheory/Global/Brauer/`); cyclic classes of relative Brauer groups (`relBrInfl_cyclicClass`) | new: period equals index and every central division algebra over a number field is cyclic (Albert, Brauer–Hasse–Noether; Milne VIII.2.6) |
+| `localKroneckerWeber_lubinTate` (library theorem `MilneCFT.LocalCFT.localKroneckerWeber` in 0.2.0) | — | local class field theory without Lubin–Tate theory: the local Artin map, local existence (`localExistence`, `NumberTheory/ClassFieldTheory/LocalExistence/Existence.lean`), the cyclotomic Artin symbol over $\mathbb Q_p$; no Lubin–Tate formal groups | new in Milne's form: $K^{\mathrm{ab}} = K_\pi K^{\mathrm{un}}$ for every nonarchimedean local field and every prime element, with the Lubin–Tate tower (Milne I.4.8). The Lubin–Tate extension theorem (Milne I.3.6) is proved from a port of N. Yamaguchi's class field theory library, whose local Kronecker–Weber theorem is over $\mathbb Q_p$ |
+| `eisensteinReciprocity` (library theorem `MilneCFT.Ch8.Eisenstein.eisensteinReciprocity` in 0.2.0) | quadratic reciprocity (Legendre and Jacobi symbols) | the Eisenstein-primary normalisation and Stickelberger preliminaries (`IsEisensteinPrimary`, `NumberTheory/NumberField/Cyclotomic/EisensteinPrimary.lean`); cubic reciprocity (`IsPrimaryEisenstein.cubic_reciprocity`); no general Eisenstein law | new: Eisenstein reciprocity for every odd prime $p$ |
+| `furtwangler_fermat` (library theorem `MilneCFT.Ch8.Eisenstein.theorem5_14` in 0.2.0) | Fermat's Last Theorem for the exponents 3 and 4 | — (its `Furtwängler` files are the transfer theorem behind the principal ideal theorem, a different result) | new: Furtwängler's congruence $q^{p-1} \equiv 1 \pmod{p^2}$ for primes dividing a first-case solution (Milne VIII.5.14) |
+| `gauss_cubicCurve_count` | Jacobi sums (`jacobiSum_mul_jacobiSum_inv`) | Jacobi sums are Eisenstein-primary (`isPrimaryEisenstein_jacobiSum`) | new: Gauss's count of the points of $X^3 + Y^3 + Z^3 = 0$ over $\mathbb F_p$ |
+| `weberL_continuation` | $L(1,\chi) \ne 0$ for Dirichlet characters over $\mathbb Q$ (`DirichletCharacter.LFunction_apply_one_ne_zero`) | Hecke $L$-functions of ray class characters as the canonical meromorphic continuation (`heckeLFunctionC`), analytic on $\operatorname{Re} s > 1$, with no continuation proved; non-vanishing at $s = 1$ assuming a continuation (`ne_zero_of_eqOn_LSeries_galoisCharacterWeight`) | stronger: for every number field and every nontrivial ray class character, the Weber series continues to $\operatorname{Re} s > 0$ (in fact the continuation is entire) and $L(1,\chi) \ne 0$ (Milne V.2.4(b), corrected) |
 
 ## Results of the books that are proved here but are not headlines, because Tau Ceti has them
 
@@ -43,6 +55,14 @@ welcome.
 | Hermite–Minkowski with ramification in a finite set $S$ (Milne, Theorem 8.42) | `MilneANT.theorem8_42` | `TauCeti.NumberField.finite_of_finrank_le_of_ramifiedSupport_subset` |
 | The $S$-unit theorem (Weil, IV.§4, Theorem 9) | `WeilBNT.weil_IV_4_thm9` | `TauCeti.NumberField.SUnit.exist_unique_eq_mul_prod` |
 | The Riemann–Roch theorem for function fields (Weil, VI.§2, Theorem 2) | `WeilBNT.FF.weil_VI_2_thm2` | `isRiemannRochDivisor_*` (`FieldTheory/FunctionField/`) |
+| The global reciprocity law (Milne V.5.3, idelic form) | `MilneCFT.idelicReciprocity` (from the Tau Ceti port) | `globalArtinMap` and its properties (`NumberTheory/ClassFieldTheory/Global/Reciprocity.lean`) |
+| The existence theorem (Milne V.3.6) | `MilneCFT.existenceTheoremArtin` (from the Tau Ceti port) | `globalExistence`, `globalAbelianExistence` (`GlobalExistence/Existence.lean`) |
+| Local reciprocity and local existence (Milne I.1.1) | `MilneCFT.LocalCFT.localReciprocityExistence` (from the Tau Ceti and Yamaguchi ports) | `localExistence`, the local Artin map (`LocalExistence/`, `Local/`) |
+| The Kronecker–Weber theorem | `MilneCFT.LocalCFT.kroneckerWeber` (from the Tau Ceti port) | `kroneckerWeber` (`ClassFields/KroneckerWeber.lean`) |
+| The Hasse norm theorem for cyclic extensions (Milne VIII.3.1) | `MilneCFT.Ch8.hasseNormTheorem` | `isGlobalNorm_iff_isLocalNormEverywhere`, `cyclicHasseNorm` |
+| The fundamental exact sequence of Brauer groups (Milne VIII.4.2) | `MilneCFT.Ch8.theorem_4_2'` (for Mathlib's Brauer group of central simple algebras) | `brLocalization_injective`, `range_brLocalization`, `sumLocalInv_surjective` (for the cohomological Brauer group) |
+| Cubic reciprocity (Milne VIII, Example 5.13) | `MilneCFT.Ch8.example5_13` | `IsPrimaryEisenstein.cubic_reciprocity` |
+| The Chebotarev density theorem with Dirichlet density (Milne V.2.5) | `Chebotarev.chebotarev_unconditional` | `hasDirichletDensity_frobeniusPrimeSet` |
 
 ## By book and chapter
 
@@ -67,6 +87,21 @@ has in the same area where it was checked ("not checked": no search was made for
 Most of Chapters 1–5 is in Mathlib; this library adds the remaining items, Chapters 6–8 (Kummer's theorem, Ostrowski's
 theorem for number fields, the local theory, Chebotarev and its consequences) and Dedekind's theorem over every number
 field.
+
+### Milne, *Class Field Theory*
+
+Mathlib has Galois cohomology in low degrees, central simple algebras, local fields and the adeles, but no class field
+theory. Tau Ceti (checked at `686d0d7f`) has Tate cohomology, class formations, local and global class field theory
+(reciprocity, existence, the Kronecker–Weber theorem, ray class fields), the Hasse norm theorem, the Brauer group of a
+number field and Chebotarev's theorem; the corresponding items of Milne are proved here partly from ports of those Tau
+Ceti files and of N. Yamaguchi's class field theory library (`NumberFieldKB/TauCetiPort/`,
+`NumberFieldKB/YamaguchiPort/`). New here: Lubin–Tate theory in Milne's form (the Lubin–Tate extensions, the
+independence of the prime element, $K^{\mathrm{ab}} = K_\pi K^{\mathrm{un}}$), the Grunwald–Wang theorem, the cyclicity
+of central division algebras over number fields, the Eisenstein reciprocity law and Furtwängler's theorem, Gauss's
+point count, Weber $L$-series of ray class characters (continuation and $L(1,\chi) \ne 0$), and the item-by-item
+statements of the book. Three statements of Chapter V are errata of the book; the map
+([books/milne-cft.md](books/milne-cft.md)) shows the corrected forms, proved, and the counterexamples to the printed
+forms.
 
 ### Weil, *Basic Number Theory* (Chapters I–VII)
 

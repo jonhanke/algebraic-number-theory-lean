@@ -1,0 +1,286 @@
+/-
+Copyright (c) 2026 Tau Ceti contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Claude
+-/
+module
+
+public import Mathlib.RepresentationTheory.Homological.Resolution
+public import Mathlib.CategoryTheory.Preadditive.Projective.Resolution
+public import Mathlib.RepresentationTheory.Coinduced
+public import NumberFieldKB.TauCetiPort.RepresentationTheory.Augmentation.Basic
+
+/-!
+# The standard and bar resolutions along a group homomorphism
+
+`MonoidHom.standardComplexMap` applies a monoid homomorphism to each entry of a standard
+generator. It commutes with the alternating boundary, preserves the augmentation, and
+respects identity and composition without assumptions on restriction of projectives.
+These are Amelia Livingston's standard complexes from Mathlib; the degreewise maps use
+`MulActionHom.toRepRes`, built from `MonoidAlgebra.mapDomainLinearMap`.
+
+Let `f : H →* G` be a homomorphism of groups. The bar resolution `Rep.barComplex k H` of the
+trivial representation `k` of `H` maps to the restriction along `f` of the bar resolution of `G`:
+in degree `n` a basis element `(h₁, …, hₙ)` is sent to `(f h₁, …, f hₙ)`. This file constructs
+that chain map, `TauCeti.Rep.barComplex.resChainMap`, and checks that it lies over the identity of
+`k`. When restriction along `f` preserves projectives, it is therefore a morphism of projective
+resolutions of the trivial representation.
+
+To make the last statement checkable, the file also computes the augmentations of Mathlib's
+standard and bar resolutions on basis elements: both send a basis element with coefficient `r` to
+`r`. On the way it records the value of the comparison `Rep.diagonalSuccIsoFree` between the bar
+and standard resolutions on basis elements, `(g, (g₁, …, gₙ)) ↦ g • (1, g₁, g₁g₂, …, g₁⋯gₙ)`.
+
+The chain map is what identifies Mathlib's Shapiro isomorphism `groupCohomology.coindIso`, which is
+defined through `Ext`, with an explicit map on inhomogeneous cochains.
+
+## Main definitions
+
+* `TauCeti.Rep.barComplex.resHom`: the degree-`n` component `k[Hⁿ] ⊗ k[H] ⟶ k[Gⁿ] ⊗ k[G]`.
+* `TauCeti.Rep.barComplex.resChainMap`: the chain map from the bar resolution of `H` to the
+  restriction of the bar resolution of `G`.
+
+## Main results
+
+* `TauCeti.Rep.diagonalSuccIsoFree_inv_hom_single`: the comparison between the bar and standard
+  resolutions on basis elements.
+* `TauCeti.Rep.standardComplex.εToSingle₀_f_zero`: the augmentation of the standard complex in
+  degree `0` is `Rep.standardComplex.ε`.
+* `TauCeti.Rep.standardResolution_π_f_zero_single` and
+  `TauCeti.Rep.barResolution_π_f_zero_single`: the augmentations on basis elements.
+* `TauCeti.Rep.barComplex.resChainMap_f_zero_comp_π`: the chain map lies over the identity of `k`.
+
+## References
+
+* K. S. Brown, *Cohomology of Groups*, Graduate Texts in Mathematics 87, Springer (1982),
+  Chapter I, §5 (the bar resolution) and Chapter III, §8 (change of groups).
+* The proof of `diagonalSuccIsoFree_inv_hom_single` adapts Amelia Livingston's computation in
+  Mathlib's `Rep.barComplex.d_comp_diagonalSuccIsoFree_inv_eq`.
+-/
+
+public section
+
+universe u
+
+open CategoryTheory Finsupp
+
+namespace TauCeti.Rep
+
+open _root_.Rep
+
+
+/-- In degree `0` the augmentation `Rep.standardComplex.εToSingle₀` of the standard complex is
+`Rep.standardComplex.ε`. -/
+@[simp]
+theorem standardComplex.εToSingle₀_f_zero {k G : Type u} [CommRing k] [Monoid G] :
+    (standardComplex.εToSingle₀ k G).f 0 =
+      (standardComplex.xIso k G 0).hom ≫ standardComplex.ε k G :=
+  -- `εToSingle₀` is defined as `(toSingle₀Equiv _ _).symm ⟨ε, d_comp_ε⟩`.
+  ChainComplex.toSingle₀Equiv_symm_apply_f_zero _ _
+
+/-- Mathlib's standard augmentation is the coefficient-sum augmentation of its
+permutation representation. -/
+theorem standardComplex.ε_eq_permutationAugmentation {k G : Type u} [CommRing k] [Monoid G] :
+    _root_.Rep.standardComplex.ε k G = TauCeti.permutationAugmentation k G (Fin 1 → G) := by
+  apply _root_.Rep.ofMulAction_hom_ext
+  intro x
+  rw [TauCeti.permutationAugmentation_apply]
+  simp [_root_.Rep.standardComplex.ε]
+
+variable {k G H : Type u} [CommRing k] [Group G] [Group H]
+
+/-- The comparison `Rep.diagonalSuccIsoFree` between the bar and standard resolutions sends the
+basis element `(g₁, …, gₘ)` with coefficient `r • g` to `g • (1, g₁, g₁g₂, …, g₁⋯gₘ)` with
+coefficient `r`. -/
+theorem diagonalSuccIsoFree_inv_hom_single (m : ℕ) (x : Fin m → G) (g : G) (r : k) :
+    (diagonalSuccIsoFree k G m).inv.hom (single x (MonoidAlgebra.single g r)) =
+      MonoidAlgebra.single (g • Fin.partialProd x) r := by
+  simp only [diagonalSuccIsoFree, diagonalSuccIsoTensorTrivial, Iso.trans_inv, Rep.hom_comp,
+    Representation.IntertwiningMap.comp_apply]
+  have h : (leftRegularTensorTrivialIsoFree k G (Fin m → G)).inv.hom (single x (.single g r)) =
+      .single g 1 ⊗ₜ[k] .single x r :=
+    Representation.leftRegularTensorTrivialIsoFree_symm_apply_single_single x g r
+  rw [h]
+  refine ((congrArg (Representation.linearizeMap (Action.diagonalSuccIsoTensorTrivial G m).inv)
+      (Representation.LinearizeMonoidal.μ_apply_single_single (k := k)
+        (X := Action.leftRegular G) (Y := Action.trivial G (Fin m → G)) g x 1 r)).trans
+    (Representation.linearizeMap_single (k := k)
+      (Action.diagonalSuccIsoTensorTrivial G m).inv (g, x) ((1 : k) * r))).trans ?_
+  rw [one_mul, Action.diagonalSuccIsoTensorTrivial_inv_hom_apply]
+
+/-- The augmentation of the standard resolution sends a basis element with coefficient `r` to
+`r`. -/
+theorem standardResolution_π_f_zero_single (y : Fin 1 → G) (r : k) :
+    ((standardResolution k G).π.f 0).hom (MonoidAlgebra.single y r) = r :=
+  (congrArg (fun φ : (standardComplex k G).X 0 ⟶ trivial k G k => φ.hom (MonoidAlgebra.single y r))
+    (ChainComplex.toSingle₀Equiv_symm_apply_f_zero (C := standardComplex k G)
+      (X := trivial k G k) (standardComplex.ε k G) (standardComplex.d_comp_ε k G))).trans
+    ((linearCombination_single k (v := fun _ : Fin 1 → G => (1 : k)) r y).trans (mul_one r))
+
+/-- The augmentation of the bar resolution sends a basis element with coefficient `r` to `r`. -/
+theorem barResolution_π_f_zero_single (x : Fin 0 → G) (g : G) (r : k) :
+    ((barResolution k G).π.f 0).hom (single x (MonoidAlgebra.single g r)) = r :=
+  (congrArg ((standardResolution k G).π.f 0).hom
+    (diagonalSuccIsoFree_inv_hom_single (k := k) 0 x g r)).trans
+    (standardResolution_π_f_zero_single _ r)
+
+namespace barComplex
+
+open _root_.Rep.barComplex
+
+/-- The degree-`n` component of the map from the bar resolution of `H` to the restriction along
+`f : H →* G` of the bar resolution of `G`: it sends the basis element `(h₁, …, hₙ)` to
+`(f h₁, …, f hₙ)`. -/
+noncomputable def resHom (f : H →* G) (n : ℕ) :
+    free k H (Fin n → H) ⟶ res f (free k G (Fin n → G)) :=
+  freeLift k H (res f (free k G (Fin n → G))) fun x => single (f ∘ x) (MonoidAlgebra.single 1 1)
+
+-- `simp` reduces the carriers of the `abbrev`s `Rep.free` and `Rep.res` in implicit type
+-- arguments before it looks a term up, so the left-hand side is stated through `dsimp% only`, as
+-- in #8315.
+/-- `resHom f n` applies `f` to the tuple and to the group coefficient of a basis element. -/
+@[simp]
+theorem resHom_single (f : H →* G) (n : ℕ) (x : Fin n → H) (h : H) (r : k) :
+    (dsimp% only ((resHom f n).hom (single x (MonoidAlgebra.single h r)))) =
+      single (f ∘ x) (MonoidAlgebra.single (f h) r) := by
+  simp [resHom]
+
+/-- The components `resHom f n` commute with the bar differentials. -/
+theorem d_comp_resHom (f : H →* G) (n : ℕ) :
+    d k H n ≫ resHom f n = resHom f (n + 1) ≫ (resFunctor f).map (d k G n) := by
+  refine free_ext _ _ _ _ _ fun x => ?_
+  simp only [Rep.hom_comp, Representation.IntertwiningMap.comp_apply]
+  rw [d_single, resHom_single, map_add, map_sum, resHom_single, resMap_hom_apply, map_one,
+    d_single]
+  refine congrArg _ (Finset.sum_congr rfl fun j _ => ?_)
+  rw [resHom_single, map_one, Fin.comp_contractNth _ _ (map_mul f)]
+
+/-- **The bar resolution along a group homomorphism.** The chain map from the bar resolution of
+`H` to the restriction along `f : H →* G` of the bar resolution of `G`, sending `(h₁, …, hₙ)` to
+`(f h₁, …, f hₙ)` in every degree. -/
+noncomputable def resChainMap (f : H →* G) :
+    barComplex k H ⟶ ((resFunctor f).mapHomologicalComplex _).obj (barComplex k G) where
+  f n := resHom f n
+  comm' i j (h : j + 1 = i) := by
+    subst h
+    simpa [d_def] using (d_comp_resHom (k := k) f j).symm
+
+/-- The components of `resChainMap f` are the maps `resHom f n`. -/
+@[simp]
+theorem resChainMap_f (f : H →* G) (n : ℕ) : (resChainMap (k := k) f).f n = resHom f n := (rfl)
+
+/-- **The bar resolution along a group homomorphism lies over the identity of `k`.**
+This augmentation identity holds for every homomorphism, even when restriction does not
+preserve projective representations. -/
+@[reassoc]
+theorem resChainMap_f_zero_comp_π (f : H →* G) : (resChainMap (k := k) f).f 0 ≫
+    (resFunctor f).map ((barResolution k G).π.f 0) =
+      (barResolution k H).π.f 0 := by
+  refine free_ext _ _ _ _ _ fun x => ?_
+  have h₁ : ((resChainMap (k := k) f).f 0).hom (single x (MonoidAlgebra.single 1 1)) =
+      single (f ∘ x) (MonoidAlgebra.single 1 1) := by
+    simpa only [resChainMap_f, map_one] using (resHom_single (k := k) f 0 x 1 1)
+  have h₂ : ((resFunctor f).map ((barResolution k G).π.f 0)).hom
+      (single (f ∘ x) (MonoidAlgebra.single 1 1)) = (1 : k) :=
+    barResolution_π_f_zero_single (k := k) (f ∘ x) (1 : G) 1
+  exact (congrArg _ h₁).trans (h₂.trans
+    (barResolution_π_f_zero_single (k := k) x (1 : H) 1).symm)
+
+end barComplex
+
+end TauCeti.Rep
+
+noncomputable section
+
+namespace MonoidHom
+
+
+variable {k G H : Type u} [Monoid G] [Monoid H]
+
+/-- Relabelling standard generators, equivariantly for pointwise left multiplication. -/
+abbrev standardComplexMulActionHom (φ : G →* H) (n : ℕ) :
+    (Fin (n + 1) → G) →ₑ[φ] (Fin (n + 1) → H) where
+  toFun x := φ ∘ x
+  map_smul' g x := by
+    ext i
+    exact map_mul φ g (x i)
+
+section Ring
+
+variable [Ring k]
+
+/-- Apply a homomorphism to every entry of a standard generator, as a morphism to the
+restricted permutation representation. -/
+abbrev standardComplexHom (φ : G →* H) (n : ℕ) :
+    Rep.ofMulAction k G (Fin (n + 1) → G) ⟶
+      Rep.res φ (Rep.ofMulAction k H (Fin (n + 1) → H)) :=
+  (φ.standardComplexMulActionHom n).toRepRes
+
+end Ring
+
+variable [CommRing k]
+
+/-- The standard complex is functorial under a homomorphism, with its target action restricted
+along that homomorphism. -/
+def standardComplexMap (φ : G →* H) :
+    Rep.standardComplex k G ⟶
+      ((Rep.resFunctor φ).mapHomologicalComplex _).obj (Rep.standardComplex k H) where
+  -- Mathlib presents each term as the corresponding permutation representation.
+  f n := φ.standardComplexHom n
+  comm' i j h := by
+    subst i
+    refine Rep.ofMulAction_hom_ext (X := Fin (j + 2) → G) fun x => ?_
+    -- The categorical terms have the types (standardComplex k G).X n, whereas the
+    -- degreewise maps use permutation representations. Rewriting hom_comp or resMap_hom_apply
+    -- directly leaves ill-typed implicit arguments; compare their underlying linear maps once.
+    change ((Rep.standardComplex k H).d (j + 1) j).hom.toLinearMap
+        ((φ.standardComplexHom (j + 1)).hom.toLinearMap (MonoidAlgebra.single x 1)) =
+      (φ.standardComplexHom j).hom.toLinearMap
+        (((Rep.standardComplex k G).d (j + 1) j).hom.toLinearMap (MonoidAlgebra.single x 1))
+    rw [Rep.standardComplex.d_eq, Rep.standardComplex.d_eq,
+      MulActionHom.toRepRes_hom_toLinearMap, MulActionHom.toRepRes_hom_toLinearMap]
+    -- d_eq also retains the old categorical carrier in implicit linear-map arguments.
+    -- Restate the application on the canonical tuple modules before using d_of.
+    change Rep.standardComplex.d k H (j + 1)
+        (MonoidAlgebra.mapDomainLinearMap k k (fun x => φ ∘ x) (MonoidAlgebra.single x 1)) =
+      MonoidAlgebra.mapDomainLinearMap k k (fun x => φ ∘ x)
+        (Rep.standardComplex.d k G (j + 1) (MonoidAlgebra.single x 1))
+    simp [Rep.standardComplex.d_of, Function.comp_def]
+
+/-- The components of the induced standard-complex map in permutation coordinates. -/
+@[simp]
+theorem standardComplexMap_f (φ : G →* H) (n : ℕ) :
+    (φ.standardComplexMap (k := k)).f n =
+      φ.standardComplexHom n :=
+  (rfl)
+
+/-- The identity homomorphism induces the identity standard-complex map. -/
+@[simp]
+theorem standardComplexMap_id :
+    (MonoidHom.id G).standardComplexMap (k := k) = 𝟙 (Rep.standardComplex k G) := by
+  apply HomologicalComplex.hom_ext
+  intro n
+  exact MulActionHom.toRepRes_id (k := k) (G := G) (X := Fin (n + 1) → G)
+
+/-- Standard-complex maps respect composition, restricting the second map along the first
+homomorphism. -/
+@[simp]
+theorem standardComplexMap_comp {K : Type u} [Monoid K] (ψ : H →* K) (φ : G →* H) :
+    (ψ.comp φ).standardComplexMap (k := k) =
+      φ.standardComplexMap ≫
+        ((Rep.resFunctor φ).mapHomologicalComplex _).map ψ.standardComplexMap := by
+  apply HomologicalComplex.hom_ext
+  intro n
+  exact MulActionHom.toRepRes_comp
+    (ψ.standardComplexMulActionHom n) (φ.standardComplexMulActionHom n)
+
+/-- The standard-complex map preserves the degree-zero augmentation. -/
+@[reassoc (attr := simp)]
+theorem standardComplexHom_comp_ε (φ : G →* H) :
+    φ.standardComplexHom (k := k) 0 ≫ (Rep.resFunctor φ).map (Rep.standardComplex.ε k H) =
+      Rep.standardComplex.ε k G := by
+  rw [TauCeti.Rep.standardComplex.ε_eq_permutationAugmentation,
+    TauCeti.Rep.standardComplex.ε_eq_permutationAugmentation]
+  exact MulActionHom.toRepRes_comp_permutationAugmentation _
+
+end MonoidHom

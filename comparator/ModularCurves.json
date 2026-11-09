@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge_ModularCurves",
+  "solution_module": "Solution_ModularCurves",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.genus_X0",
+    "NumberFieldKB.Headlines.modularPolynomial_rational",
+    "NumberFieldKB.Headlines.modularFunctions_Gamma0",
+    "NumberFieldKB.Headlines.cuspForms_weightTwo_finrank"
+  ]
+}

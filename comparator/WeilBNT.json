@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge_WeilBNT",
+  "solution_module": "Solution_WeilBNT",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.adeles_selfDual",
+    "NumberFieldKB.Headlines.idele_classes_finite",
+    "NumberFieldKB.Headlines.zeta_functionField",
+    "NumberFieldKB.Headlines.heckeL_functionField_polynomial"
+  ]
+}

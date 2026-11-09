@@ -6,3 +6,12 @@ This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 The files under NumberFieldKB/TauCetiPort/ are derived from Tau Ceti (https://github.com/TauCetiProject/TauCeti),
 Copyright the Tau Ceti contributors, licensed under the Apache License, Version 2.0. Their headers name their
 authors; NumberFieldKB/TauCetiPort/README.md lists the source commits and the changes made in porting them.
+
+The files under NumberFieldKB/YamaguchiPort/ are derived from N. Yamaguchi's ClassFieldTheory library
+(https://github.com/n-yamaguchi-0729/ClassFieldTheory), Copyright Naganori Yamaguchi, licensed under the Apache
+License, Version 2.0; NumberFieldKB/YamaguchiPort/README.md lists the source commit and the changes.
+
+The files under NumberFieldKB/PNTPort/ are derived from PrimeNumberTheoremAnd
+(https://github.com/AlexKontorovich/PrimeNumberTheoremAnd), Copyright the PrimeNumberTheoremAnd contributors,
+licensed under the Apache License, Version 2.0; NumberFieldKB/PNTPort/README.md lists the source commit and the
+changes.
