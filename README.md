@@ -180,7 +180,7 @@ untrustworthy until checked against the literature. Corrections and reports of m
 Releases are tagged with semantic versions; `main` continues to develop. The DOI [10.5281/zenodo.24047657](https://doi.org/10.5281/zenodo.24047657) always resolves to the latest release. To cite a specific version, use its release page or the "Cite this repository" button.
 
 - **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and 20 headline statements.
-- **v0.2.0** (Lean and Mathlib v4.35.0), archived on Zenodo as doi:DOI_PLACEHOLDER: Milne's *Class Field Theory* as a
+- **[v0.2.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.2.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24092975](https://doi.org/10.5281/zenodo.24092975): Milne's *Class Field Theory* as a
   sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and three new
   headline statements; the 20 headlines of v0.1.0 are unchanged. Four further results of the book are proved in the
   library and become headlines in a later release, once their comparator checks fit a standard machine (the Lean
