@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Jonathan Hanke
 -/
 import Solution
+import NumberFieldKB.MilneCFT.Ch8.Theorem26Uncond
 
 /-!
 # Axiom check for the headline theorems
