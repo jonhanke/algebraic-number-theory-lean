@@ -53,7 +53,6 @@ reviewed by a human** (see Provenance).
 **Milne, *Class Field Theory***
 
 - **The Grunwald–Wang theorem:** for finitely many places $`v`$ of a number field $`K`$ and characters $`\chi_v`$ of finite order of $`K_v^\times`$, there is a character of the idele class group with these local components, of order $`\operatorname{lcm}(\operatorname{ord}\chi_v)`$ outside Wang's special case (`grunwaldWang`).
-- **Central division algebras over a number field:** the order of $`[D]`$ in $`\operatorname{Br}(K)`$ is $`\sqrt{[D:K]}`$, and $`D`$ is a cyclic algebra (`centralDivisionAlgebra_cyclic`).
 - **Local Kronecker–Weber in Lubin–Tate form:** for a nonarchimedean local field $`K`$ and a prime element $`\pi`$, every finite abelian extension of $`K`$ lies in $`K_\pi K^{\mathrm{un}}`$ (`localKroneckerWeber_lubinTate`).
 - **Eisenstein reciprocity:** $`(\alpha/a)_p = (a/\alpha)_p`$ for an odd prime $`p`$, $`a \in \mathbb{Z}`$ prime to $`p`$ and $`\alpha`$ a primary non-unit of $`\mathbb{Z}[\zeta_p]`$ prime to $`a`$ (`eisensteinReciprocity`).
 - **Furtwängler's theorem:** if $`x^p + y^p = z^p`$ with $`x, y, z`$ coprime and $`p \nmid xyz`$, then $`q^{p-1} \equiv 1 \pmod{p^2}`$ for every prime $`q \mid xyz`$ (`furtwangler_fermat`).
@@ -170,7 +169,7 @@ results, the conventions and the proof routes. The files under `NumberFieldKB/Ta
 contributors (see their headers), and those under `NumberFieldKB/YamaguchiPort/` and `NumberFieldKB/PNTPort/` by
 N. Yamaguchi and by the PrimeNumberTheoremAnd contributors; each port lists its changes in its README.
 The proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms.
-The 27 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
+The 26 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
 reviewed** by a human; that review is planned for a later release. `lake comparator` checks that `Solution.lean`
 proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
 results, and the book maps) has not been reviewed by a human; as with any AI-written formalization, treat it as
@@ -182,8 +181,10 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
 
 - **[v0.1.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.1.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24047658](https://doi.org/10.5281/zenodo.24047658): the first release: five book maps and 20 headline statements.
 - **v0.2.0** (Lean and Mathlib v4.35.0), archived on Zenodo as doi:DOI_PLACEHOLDER: Milne's *Class Field Theory* as a
-  sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and seven new
-  headline statements; the 20 headlines of v0.1.0 are unchanged.
+  sixth book (its map, with the three errata of Chapter V marked and their corrected forms proved) and six new
+  headline statements; the 20 headlines of v0.1.0 are unchanged. Milne's Theorem VIII.2.6 (every central division
+  algebra over a number field is cyclic) is proved in the library (`NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6`); it
+  becomes a headline in 0.2.1, once its comparator check fits a standard machine.
 
 **Not in this release** (planned for a later release): the rest of *Elliptic Curves* as a book; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
 citations).

@@ -110,7 +110,7 @@ related_formalizations:
 
 status:
   scope: >-
-    Formalized (the 27 statements of Challenge.lean, proved in Solution.lean): Milne ANT 3, Milne CFT 7, Weil 4
+    Formalized (the 26 statements of Challenge.lean, proved in Solution.lean): Milne ANT 3, Milne CFT 6, Weil 4
     (number fields 2, function fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The
     book maps give the status of every item of the six texts. The library also ships the files of its elliptic
     curve, Chebotarev, non-vanishing and Hilbert class field topics that these books import; those topics are not
@@ -158,7 +158,7 @@ fidelity:
     are refuted by counterexamples in Lean.
 
 review:
-  status: "not yet reviewed: the 27 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 26 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -255,8 +255,8 @@ alignment:
       module: "Challenge / Solution"
       status: "proved"
     - source: "Milne, Class Field Theory, VIII, Theorem 2.6"
-      lean: "NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic"
-      module: "Challenge / Solution"
+      lean: "NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6"
+      module: "NumberFieldKB.MilneCFT.Ch8.Theorem26Uncond"
       status: "proved"
     - source: "Milne, Class Field Theory, I, Theorem 4.8"
       lean: "NumberFieldKB.Headlines.localKroneckerWeber_lubinTate"

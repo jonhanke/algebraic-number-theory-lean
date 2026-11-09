@@ -47,7 +47,8 @@ fails if any other axiom (in particular `sorryAx`) appears.
 
 -- Milne, *Class Field Theory*
 #print axioms NumberFieldKB.Headlines.grunwaldWang
-#print axioms NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic
+-- Theorem VIII.2.6 is a library theorem in 0.2.0 (a headline from 0.2.1)
+#print axioms NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6
 #print axioms NumberFieldKB.Headlines.localKroneckerWeber_lubinTate
 #print axioms NumberFieldKB.Headlines.eisensteinReciprocity
 #print axioms NumberFieldKB.Headlines.furtwangler_fermat
