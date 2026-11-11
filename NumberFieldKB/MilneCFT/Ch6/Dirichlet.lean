@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch6.Basic
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.LocallyUniformLimit
+import Mathlib.Analysis.LocallyConvex.AbsConvexOpen
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+import Mathlib.Data.Nat.Dist
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI §2: Dirichlet series and characters of finite abelian groups

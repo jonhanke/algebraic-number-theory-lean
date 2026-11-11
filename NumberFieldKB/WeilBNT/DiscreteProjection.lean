@@ -1,5 +1,7 @@
-import Mathlib
+import Mathlib.Tactic.Group
+import Mathlib.Topology.Algebra.OpenSubgroup
 import QuadFormsKB.Citation
+import Mathlib.Topology.Filter
 
 /-!
 # Weil, *Basic Number Theory*, Chapter V, §2, Lemma 1 (projection of a cocompact discrete subgroup)

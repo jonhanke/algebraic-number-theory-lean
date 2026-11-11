@@ -2,6 +2,16 @@ import NumberFieldKB.ModularCurves.EllipticCount
 import NumberFieldKB.ModularCurves.HeckeCommute
 import NumberFieldKB.ModularCurves.CuspCount
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.PlaneCurve.Projective
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Polynomial.Bivariate
+import Mathlib.FieldTheory.RatFunc.AsPolynomial
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.MvPolynomial.Homogeneous
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # The plane model $F_N(X, Y) = 0$ of $X_0(N)$ is singular (Milne, Remark V.2.6)

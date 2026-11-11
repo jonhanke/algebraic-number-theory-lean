@@ -2,6 +2,14 @@ import NumberFieldKB.Chebotarev.PrimeDensity
 import NumberFieldKB.Chebotarev.DensityTools
 import Mathlib.Analysis.Normed.Module.MultipliableUniformlyOn
 import QuadFormsKB.Citation
+import Mathlib.NumberTheory.SumPrimeReciprocals
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.LocallyUniformLimit
+import Mathlib.NumberTheory.NumberField.DedekindZeta
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Weil, *Basic Number Theory*, VII.§1 Cor. 2–3 and VII.§5 Cor. 3–4: places of modular degree one

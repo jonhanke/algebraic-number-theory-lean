@@ -1,4 +1,8 @@
 import NumberFieldKB.ModularCurves.ComplexQExp
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Quotients of $q$-expansions vanishing at $i\infty$

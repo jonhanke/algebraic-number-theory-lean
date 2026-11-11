@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneANT.Ch7Integral
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RamificationInertia.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.GroupWithZero.Submonoid.CancelMulZero
+import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: extensions of a complete discretely valued field

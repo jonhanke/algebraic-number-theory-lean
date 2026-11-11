@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneANT.Ch8Chebotarev
+import Mathlib.RingTheory.Frobenius
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.LegendreSymbol.QuadraticReciprocity
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Frobenius in cyclotomic and quadratic fields

@@ -3,6 +3,13 @@ import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.PowerSubgroup.Basic
 import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.PowerSubgroup.Units
 import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.NatCastValuation
 import NumberFieldKB.TauCetiPort.RingTheory.DedekindDomain.AdicValuation.ValuativeRel
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne, *Class Field Theory*, VII §6: Proposition 6.8 (nonarchimedean case), from Tau Ceti

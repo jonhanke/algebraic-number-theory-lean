@@ -1,5 +1,14 @@
 import NumberFieldKB.MilneEC.Ch1Functions
 import NumberFieldKB.MilneEC.Ch1Examples
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Nullstellensatz
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Basic.Complex.Basic
+import Mathlib.LinearAlgebra.Projectivization.Basic
+import Mathlib.RingTheory.MvPolynomial.IrreducibleQuadratic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Section 4: regular maps of curves
@@ -571,7 +580,12 @@ def ProjRegularMap.Extends {F F' : MvPolynomial (Fin 3) k} (φ : ProjRegularMap 
 p. 180), for the affine pieces $C_L$ with $L = Z$: a regular map $C \cap U_2 \to C' \cap U_2$ of the affine
 pieces of nonsingular projective plane curves extends uniquely to a regular map $C \to C'$.  (Milne allows
 any nonzero linear forms `L`, `L'`; a linear change of coordinates reduces to $L = L' = Z$, which is the case
-stated.) -/
+stated.)
+
+**False as stated** (`not_prop4_18`, file `Ch1MapsCounterexample`): uniqueness is asked on the points over every
+field `K`, and a `ProjRegularMap` imposes no compatibility between fields; over $\mathbb F_3$ a curve with no affine
+$\mathbb F_3$-point gives two extensions. The corrected statement is `Prop4_18Corrected` (uniqueness over
+algebraically closed fields). -/
 @[kb "milne2006ec" "Ch. I, Prop. 4.18, pdf p. 48"]
 structure Prop4_18 : Prop where
   extends_unique : ∀ (k : Type) [Field k] [PerfectField k] (F F' : MvPolynomial (Fin 3) k),

@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.IntegralClosure.IntegralRestrict
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §1: the global Artin map

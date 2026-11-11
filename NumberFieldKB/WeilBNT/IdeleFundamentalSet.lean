@@ -1,5 +1,12 @@
 import NumberFieldKB.WeilBNT.IdeleDensity
 import NumberFieldKB.MilneCFT.Ch5Ideles
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Units.Regulator
 
 /-!
 # Weil, *Basic Number Theory*, V.§4, Proposition 8: a fundamental set of order $e$ for $k^\times$ in the ideles

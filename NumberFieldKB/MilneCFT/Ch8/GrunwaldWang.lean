@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch7
 import NumberFieldKB.MilneCFT.Ch4
+import Mathlib.Algebra.BrauerGroup.Defs
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.Cyclotomic.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §2: the Grunwald–Wang theorem

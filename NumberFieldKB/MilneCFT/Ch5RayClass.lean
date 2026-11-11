@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Intro.Theorems
 import NumberFieldKB.MilneCFT.Intro.Complements
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 /-!
 # Ray class groups (Milne, *Class Field Theory*, Chapter V, §1)

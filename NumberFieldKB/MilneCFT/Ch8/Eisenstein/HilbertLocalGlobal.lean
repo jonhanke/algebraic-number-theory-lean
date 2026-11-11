@@ -3,6 +3,12 @@ import NumberFieldKB.MilneCFT.Ch8.Eisenstein.Reciprocity
 import NumberFieldKB.MilneCFT.Ch8.Eisenstein.PairingTransport
 import NumberFieldKB.MilneCFT.Ch8.Prop512Full
 import NumberFieldKB.MilneCFT.LocalCFT.ReciprocityTauCeti
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Local–global compatibility of the Hilbert symbol at $\lambda$, and Proposition 5.12 in full

@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch7Prop764Zero
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.RingTheory.Polynomial.GaussLemma
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
 
 /-!
 # Erratum (statement fidelity) for Milne, Proposition 7.64

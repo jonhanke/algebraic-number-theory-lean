@@ -1,5 +1,11 @@
 import NumberFieldKB.WeilBNT.IdeleDensity
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, Proposition 17: extending a morphism of $I(P)$ to the ideles

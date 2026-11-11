@@ -1,4 +1,13 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.RingTheory.DedekindDomain.Different
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Analysis.Normed.Field.Lemmas
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 4.11: auxiliary results for the example

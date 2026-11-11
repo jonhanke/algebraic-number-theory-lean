@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7Remark753
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Hensel's lemma in the integral closure of a complete DVR in an algebraic separable extension

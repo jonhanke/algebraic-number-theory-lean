@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.Quadratic
 import NumberFieldKB.Ideles.RelativeNormTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.HasseNorm.Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, Theorem 3.1 (the Hasse norm theorem) from the Tau Ceti port

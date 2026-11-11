@@ -1,5 +1,10 @@
-import Mathlib
+import Mathlib.Tactic.Have
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.FieldTheory.Galois.NormalBasis
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.LongExactSequence
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Shapiro
 import QuadFormsKB.Citation
+import Mathlib.RepresentationTheory.Induced
 
 /-!
 # Milne, *Class Field Theory*, Chapter II §1: induced modules

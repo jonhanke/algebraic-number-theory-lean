@@ -1,6 +1,8 @@
 import NumberFieldKB.MilneCFT.LocalCFT.Unconditional
 import NumberFieldKB.MilneCFT.LocalCFT.ExistenceYamaguchi
 import NumberFieldKB.MilneCFT.Ch3Existence
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.NumberTheory.LocalField.Basic
 
 /-!
 # Local class field theory in every characteristic

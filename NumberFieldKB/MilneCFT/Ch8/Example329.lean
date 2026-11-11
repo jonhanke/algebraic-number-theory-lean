@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5Characters
 import NumberFieldKB.MilneCFT.Ch8.Density
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Data.FunLike.Fintype
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.DedekindDomain.Factorization
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Example 3.29: the conductor-discriminant formula for a quadratic field

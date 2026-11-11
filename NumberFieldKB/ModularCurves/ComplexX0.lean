@@ -1,5 +1,12 @@
 import NumberFieldKB.ModularCurves.GenusX0
 import NumberFieldKB.ModularCurves.Hecke
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.AsPolynomial
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.Polynomial.IsIntegral
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Basic
 
 /-!
 # The function field $\mathbb C(X_0(N))$ over $\mathbb C$

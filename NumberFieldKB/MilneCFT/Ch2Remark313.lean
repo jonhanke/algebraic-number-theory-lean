@@ -4,6 +4,9 @@ import NumberFieldKB.MilneCFT.Ch2Remarks
 import NumberFieldKB.MilneCFT.Ch2TateTheorem
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.Connecting.GroupCohomology
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.Cup.Delta
+import Mathlib.GroupTheory.PGroup
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter II, Remark 3.13, proved from Tau Ceti

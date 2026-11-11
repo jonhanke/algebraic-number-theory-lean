@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.MilneCFT.Ch7.IdealReciprocityKer
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.NumberTheory.NumberField.Completion.LiesOverInstances
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 3.8 (the conductor), unconditional

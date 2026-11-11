@@ -1,7 +1,14 @@
-import Mathlib
+import Mathlib.Computability.Reduce
+import Mathlib.GroupTheory.Transfer
+import Mathlib.RepresentationTheory.FiniteIndex
+import Mathlib.CategoryTheory.Monoidal.Tor
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Homological.GroupHomology.Shapiro
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Induced
 import NumberFieldKB.MilneCFT.Ch2Corestriction
+import Mathlib.CategoryTheory.Monad.Types
 
 /-!
 # Milne, *Class Field Theory*, Chapter II §3: the Tate groups

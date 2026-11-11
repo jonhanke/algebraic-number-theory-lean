@@ -12,6 +12,7 @@ import NumberFieldKB.MilneCFT.Ch5IdelicMain
 import NumberFieldKB.MilneCFT.Ch5RatIdeles
 import NumberFieldKB.MilneCFT.Ch5Cite
 import NumberFieldKB.MilneCFT.Ch5Extra
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Class Field Theory*, Chapter V: global class field theory, statements

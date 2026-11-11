@@ -23,6 +23,7 @@ import NumberFieldKB.MilneANT.Ch7Prop750
 import NumberFieldKB.MilneANT.Ch7Cor751
 import NumberFieldKB.MilneANT.Ch7NormOfDVR
 import NumberFieldKB.MilneANT.Ch7Prop764
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Algebraic Number Theory*: the open items now proved

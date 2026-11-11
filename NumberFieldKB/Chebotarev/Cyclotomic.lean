@@ -2,6 +2,14 @@ import NumberFieldKB.Chebotarev.DensityTools
 import NumberFieldKB.Chebotarev.FrobeniusPrimes
 import NumberFieldKB.Chebotarev.PrimeDensityOrth
 import NumberFieldKB.Chebotarev.DirichletHecke
+import Mathlib.RingTheory.Frobenius
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.DirichletCharacter.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Step 1 of the proof of Chebotarev's theorem: the cyclotomic case

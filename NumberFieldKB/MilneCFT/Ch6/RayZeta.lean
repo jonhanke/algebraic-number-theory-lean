@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneCFT.Intro.RayClass
 import NumberFieldKB.MilneCFT.Ch6.Basic
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.NumberTheory.NumberField.Units.Regulator
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI §2: partial zeta functions of ray classes

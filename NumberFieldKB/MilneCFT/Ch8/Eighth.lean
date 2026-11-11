@@ -1,5 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch8.Basic
 import Mathlib.RingTheory.ZMod.UnitsCyclic
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.LegendreSymbol.QuadraticReciprocity
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.NumberTheory.Padics.Hensel
+import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §1: $16$ and eighth powers; Remark 1.5

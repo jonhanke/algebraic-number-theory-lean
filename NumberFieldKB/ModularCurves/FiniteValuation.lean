@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.FiniteFibre
+import Mathlib.Analysis.Analytic.Polynomial
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Calculus.Deriv.Polynomial
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The order valuation at $\tau_0 \in \mathbb H$ restricted to $\mathbb Q(j)$

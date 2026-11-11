@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.FieldTheory.Galois.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Tate
 

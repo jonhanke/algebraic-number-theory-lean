@@ -1,5 +1,13 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Module.LinearMap.DivisionRing
+import Mathlib.Control.Traversable.Equiv
 
 /-!
 # Tensor product of a simple separable extension with a field extension

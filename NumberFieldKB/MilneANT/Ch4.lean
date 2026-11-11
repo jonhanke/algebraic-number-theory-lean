@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.Algebra.QuadraticAlgebra.Discriminant
+import Mathlib.Algebra.Ring.IsFormallyReal
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
 import QuadFormsKB.Citation
 import QuadFormsKB.Binary.ClassBijection
 import NumberFieldKB.HilbertClassField.Artin

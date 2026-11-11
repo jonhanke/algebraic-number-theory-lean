@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch8Basic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.NumberField.ProductFormula
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
+import Mathlib.RingTheory.Ideal.Norm.RelNorm
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: the product formula

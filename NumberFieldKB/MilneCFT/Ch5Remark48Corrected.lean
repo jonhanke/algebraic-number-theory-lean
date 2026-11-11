@@ -1,4 +1,5 @@
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8, corrected and proved

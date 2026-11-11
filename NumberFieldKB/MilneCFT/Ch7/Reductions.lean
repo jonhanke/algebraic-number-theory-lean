@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch7.Cohomology
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §§5–6: reductions of the second inequality

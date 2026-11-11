@@ -14,6 +14,7 @@ import NumberFieldKB.MilneCFT.Ch8.Cubic
 import NumberFieldKB.MilneCFT.Ch8.Cite
 import NumberFieldKB.MilneCFT.Ch8.Ch5Bridge
 import NumberFieldKB.MilneCFT.Ch8.NormLimitation
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII: complements

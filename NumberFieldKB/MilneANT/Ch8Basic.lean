@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
 import QuadFormsKB.Citation
 import NumberFieldKB.Chebotarev.Unconditional
 

@@ -4,6 +4,12 @@ import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.LocalArtin
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.Reciprocity
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.LocalGlobal.Semilocal.Norm.Units
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.InfinitePlace.Completion.Norm
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.Completion.Ramification
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter I, Theorem 1.1 (b) and Chapter III, Proposition 1.2 at completions of number

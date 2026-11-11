@@ -10,6 +10,10 @@
   "enable_nanoda": true,
   "theorem_names": [
     "NumberFieldKB.Headlines.grunwaldWang",
+    "NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic",
+    "NumberFieldKB.Headlines.localKroneckerWeber_lubinTate",
+    "NumberFieldKB.Headlines.eisensteinReciprocity",
+    "NumberFieldKB.Headlines.furtwangler_fermat",
     "NumberFieldKB.Headlines.gauss_cubicCurve_count",
     "NumberFieldKB.Headlines.weberL_continuation"
   ]

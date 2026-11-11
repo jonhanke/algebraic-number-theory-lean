@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.Eighth
 import NumberFieldKB.MilneCFT.Ch8.Remark15aBridge
 import NumberFieldKB.TauCetiPort.RingTheory.DedekindDomain.SInteger.SelmerGroup.Basic
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.DedekindDomain.SelmerGroup
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
 
 /-!
 # Grunwald–Wang: finitely many auxiliary places detect `n`-th powers among Selmer elements

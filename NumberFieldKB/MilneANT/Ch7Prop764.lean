@@ -1,6 +1,17 @@
 import NumberFieldKB.MilneANT.Ch7NormOfDVR
 import NumberFieldKB.MilneANT.Ch7Krasner
 import NumberFieldKB.MilneANT.Ch7RamificationFields
+import Mathlib.NumberTheory.Dioph
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.PurelyInseparable.Basic
+import Mathlib.RingTheory.Polynomial.GaussLemma
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.Basic
+import Mathlib.Analysis.Normed.Order.Lattice
+import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
+import Mathlib.Topology.MetricSpace.Ultra.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Prop. 7.64 (finiteness of totally ramified extensions of given degree)

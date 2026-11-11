@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneEC.Ch5JFunction
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.Polynomial.IsIntegral
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions
 
 /-!
 # The plane model $F_N(X, Y) = 0$ of $X_0(N)$ over $\mathbb Q$

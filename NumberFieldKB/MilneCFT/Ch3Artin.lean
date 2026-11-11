@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.IntegralClosure.IntegralRestrict
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3Ramified
 import NumberFieldKB.MilneCFT.Ch3TateZero

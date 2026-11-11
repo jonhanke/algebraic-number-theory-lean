@@ -4,7 +4,7 @@ Version 4.03 (2020), available at jmilne.org. Items as numbered in the notes; *D
 
 Each row is a result of the book, the Lean declaration that formalizes it, and its status. *Proved* means proved in Lean with only the standard axioms, assuming no unproved input (a hypothesis that is a condition of the statement, such as "$K$ is a local field", is not an input); *conditional* names the unproved inputs it still assumes; *in Mathlib* means Mathlib (v4.35.0, on which this library is built) already has the result, and the Lean name is Mathlib's; *not formalized* means the library does not state it. Rows that are not results (examples, history, comments, computations) are omitted and only counted. The statements in the middle column are short descriptions, not quotations; read the book for the exact wording. Items that the library states in a generalized form are mapped to the general statement.
 
-Rows: 513. proved: 334; proved (in the quadratic-forms library, a dependency): 7; proved, corrected form (erratum of the book): 3; formalized (a definition): 58; in Mathlib: 105; in Tau Ceti, not in this library: 3; formalized, not in this release: 1; not formalized: 2. Not results (omitted): 25.
+Rows: 513. proved: 338; proved (in the quadratic-forms library, a dependency): 7; proved, corrected form (erratum of the book): 3; formalized (a definition): 58; in Mathlib: 105; formalized, not in this release: 1; stated in the book without proof: 1. Not results (omitted): 25.
 
 Errata of the book. Three statements of Chapter V are false as printed; the author of this library confirmed them as errata of the book. Each row shows the corrected form, proved, and the counterexample to the printed form where there is one: Theorem V.2.4(b) ("converges" for $\mathrm{Re}\,s>0$ should read "extends"; for $[K:\mathbb Q]\ge2$ convergence can fail), Exercise V.3.15 (the existence clause needs the primes of $S$ in $H$) and Remark V.4.8 (the first sentence needs $G$ complete; the second also needs $\varphi$ trivial on the identity component of $K_\infty^\times$, which excludes Hecke characters of nontrivial infinity type). Other deviations from the text (misprints, missing hypotheses) are stated in the docstrings of the Lean declarations.
 
@@ -450,7 +450,7 @@ Open predicates: `MilneCFT.Ch7.IsGlobalArtinMap`, `MilneCFT.Ch7.KummerSetting`, 
 | Remark 3.28 | 174 | The conductor of a character equals the conductor of the fixed field of its kernel | `MilneCFT.Remark3_28`, `MilneCFT.remark3_28` | proved |
 | Example 3.29 | 174 | The formula for a quadratic field recovers the discriminant | `MilneCFT.example_3_29`, `MilneCFT.isCharConductor_one` | proved |
 | Example 3.30 | 174 | The formula for $\mathbb Q(\zeta_p)$ gives discriminant $\pm p^{p-2}$ | `MilneCFT.example_3_30` | proved |
-| Theorem 3.33 | 177 | For a CM field $K$ over a totally real $F$, adjoining special values of automorphic functions gives $(K^{ab})^H\mathbb Q^{ab}$ with $H$ the image of the transfer | — | not formalized |
+| Theorem 3.33 | 177 | For a CM field $K$ over a totally real $F$, adjoining special values of automorphic functions gives $(K^{ab})^H\mathbb Q^{ab}$ with $H$ the image of the transfer | — | stated in the book without proof (the proof is a reference to Wei 1993, 1994) |
 | Definition (prose): global Artin map, norm of ideals | 165 | $\psi_{L/K}:I^S\to\mathrm{Gal}(L/K)$, $\mathfrak p\mapsto(\mathfrak p,L/K)$; $\mathrm{Nm}:I_L\to I_K$ | `MilneCFT.artinMap`, `MilneCFT.artinFrob`, `MilneCFT.idealNorm`, `MilneCFT.normIdeals` | formalized (a definition) |
 | Definition (prose): admitting a modulus | 166 | A homomorphism on S-ideals admits a modulus if it is trivial on $i(K_{m,1})$ for some modulus with support in S | `MilneCFT.admitsModulus_iff_factors` | proved |
 | Definition (prose): defining modulus | 167 | A modulus through which the Artin map factors | `MilneCFT.IsDefiningModulus` | formalized (a definition) |
@@ -618,8 +618,8 @@ Open predicates: `MilneCFT.Ch7.IsGlobalArtinMap`, `MilneCFT.Ch7.KummerSetting`, 
 | Theorem 8.1 | 230 | (a) The Artin map of an abelian extension is trivial on principal ideles; (b) the sum of local invariants of any class in the second cohomology of L over K is zero | `MilneCFT.Ch7.Theorem8_1a`, `MilneCFT.Ch7.reciprocity_of_thm_8_1a`, `MilneCFT.Ch7.theorem8_1a` | proved |
 | Example 8.2 | 230 | Verification of Theorem 8.1(a) for the cyclotomic extension Q(zeta_m) over the rationals by computing local Artin maps on the generators minus one, l, and primes q | `MilneCFT.Ch7.Example8_2`, `MilneCFT.Ch7.example8_2` | proved |
 | Lemma 8.4 | 231 | If 8.1(a) holds for L over K it holds for subextensions and for base changes L K' over K' | `MilneCFT.Ch7.lemma_8_4a` | proved |
-| Lemma 8.5 | 231 | For abelian L over K, 8.1(b) implies 8.1(a); for cyclic L, 8.1(a) implies 8.1(b) | — | in Tau Ceti, not in this library |
-| Lemma 8.6 | 232 | If 8.1(b) holds for cyclic cyclotomic extensions then it holds for all finite Galois extensions | — | in Tau Ceti, not in this library |
+| Lemma 8.5 | 231 | For abelian L over K, 8.1(b) implies 8.1(a); for cyclic L, 8.1(a) implies 8.1(b) | `MilneCFT.Ch7.lemma8_5`, `TauCeti.ClassFieldTheory.forall_sumLocalInv_brLocalization_relBrInfl_eq_zero_iff` | proved |
+| Lemma 8.6 | 232 | If 8.1(b) holds for cyclic cyclotomic extensions then it holds for all finite Galois extensions | `MilneCFT.Ch7.lemma8_6`, `TauCeti.ClassFieldTheory.sumLocalInv_brLocalization_eq_zero` | proved |
 
 ## Chapter VII, section 9
 
@@ -680,7 +680,7 @@ Open predicates: `MilneCFT.Ch7.IsGlobalArtinMap`, `MilneCFT.Ch7.KummerSetting`, 
 | Corollary 4.3 | 250 | 0 → Br(L/K) → ⊕ Br(L_v/K_v) → (1/n₀)Z/Z → 0. | `MilneCFT.Ch8.Corollary4_3`, `MilneCFT.Ch8.corollary4_3_of`, `MilneCFT.Ch8.mem_sum_torsion_iff`, `MilneCFT.Ch8.image_eq_torsion_of_card` | proved |
 | Example 4.4 | 250 | (a) cyclic case K^×/Nm L^×; (b) classification of division algebras by invariants; quaternion algebras over Q ↔ even finite sets of primes. | `MilneCFT.Ch8.example_4_4b_algEquiv_iff_ramified`, `MilneCFT.Ch8.example_4_4b_rat`, `MilneCFT.Ch8.example_4_4b_ramified_finite_even`, `MilneCFT.Ch8.example_4_4b_exists_ramified` | proved |
 | Example 4.5 | 250 | Q[√13, √17]: degree 4, local degrees ≤ 2. | `MilneCFT.Ch8.example_4_5` | proved |
-| Lemma 4.6 | 251 | inv_L(res γ) = [L:K] inv_K(γ). | — | in Tau Ceti, not in this library |
+| Lemma 4.6 | 251 | inv_L(res γ) = [L:K] inv_K(γ). | `MilneCFT.Ch8.lemma4_6`, `TauCeti.ClassFieldTheory.globalInv_res` | proved |
 | Theorem 4.7 | 251 | H²(L/K) is cyclic of order [L:K] with a canonical generator. | `MilneCFT.Ch8.Theorem4_7` | proved |
 | Theorem 4.8 | 252 | Norm limitation: Nm_{E/K}C_E = Nm_{M/K}C_M. | `MilneCFT.Ch8.Theorem4_8` | proved |
 
@@ -750,7 +750,7 @@ Open predicates: `MilneCFT.Ch7.IsGlobalArtinMap`, `MilneCFT.Ch7.KummerSetting`, 
 | Artin's and Brauer's induction theorems (running text) | 271 | Characters are Q- (Artin) or Z- (Brauer) combinations of induced characters. | `MilneCFT.Ch8.ArtinInduction`, `MilneCFT.Ch8.BrauerInduction`, `MilneCFT.Ch8.artinInduction`, `MilneCFT.Ch8.brauerInduction` | proved |
 | Artin's conjecture (running text) | 271 | L(s,ρ) is entire for ρ without trivial constituent. | `MilneCFT.Ch8.ArtinConjecture` | formalized (a definition) |
 | Definition (prose): Hecke L-series | 271 | L(s,χ) = ∏_{v∉S} (1 − χ(π_v)Nv^{−s})^{−1}. | `HeckeL.heckeL`, `HeckeL.localL`, `HeckeCharacter` | formalized (a definition) |
-| Example 10.1 | 271 | A Hecke character of Q(ζ_3) attached to a cube-free D. | — | not formalized |
+| Example 10.1 | 271 | A Hecke character of Q(ζ_3) attached to a cube-free D. | `MilneCFT.Ch8.example10_1` | proved |
 | A theorem of Gauss (running text) | 272 | Points of X³+Y³+Z³ = 0 over F_p; the Weil bound. | `MilneCFT.Ch8.GaussCubicCount`, `MilneCFT.Ch8.weil_bound_of_gauss`, `MilneCFT.Ch8.gaussCubicCount` | proved |
 
 ## Appendices

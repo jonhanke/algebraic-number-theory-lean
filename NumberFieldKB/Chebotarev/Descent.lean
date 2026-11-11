@@ -1,5 +1,9 @@
 import NumberFieldKB.Chebotarev.DensityTools
 import NumberFieldKB.Chebotarev.FrobeniusPrimes
+import Mathlib.Algebra.Group.ConjFinite
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.Unramified.Locus
 
 /-!
 # Deuring's descent

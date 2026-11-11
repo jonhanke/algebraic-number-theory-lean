@@ -27,11 +27,11 @@ Fourier analysis, self-dual measures, adelic Poisson summation and local zeta in
 | book | rows | proved | definitions | in Mathlib | conditional | other |
 |---|---|---|---|---|---|---|
 | [J. S. Milne, *Algebraic Number Theory*](docs/results/books/milne-ant.md) | 328 | 132 | 17 | 179 | 0 | 0 |
-| [J. S. Milne, *Class Field Theory*](docs/results/books/milne-cft.md) | 513 | 344 | 58 | 105 | 0 | 6 |
+| [J. S. Milne, *Class Field Theory*](docs/results/books/milne-cft.md) | 513 | 348 | 58 | 105 | 0 | 2 |
 | [A. Weil, *Basic Number Theory* (number fields and function fields)](docs/results/books/weil-bnt.md) | 371 | 272 | 24 | 74 | 0 | 1 |
 | [J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV)](docs/results/books/tate-thesis.md) | 80 | 57 | 23 | 0 | 0 | 0 |
 | [Pontryagin duality (Folland, *A Course in Abstract Harmonic Analysis*, Chapter 4; Weil II.§5, VII.§2)](docs/results/books/pontryagin.md) | 24 | 22 | 2 | 0 | 0 | 0 |
-| [The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V)](docs/results/books/modular-curves.md) | 43 | 20 | 2 | 1 | 2 | 18 |
+| [The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V)](docs/results/books/modular-curves.md) | 43 | 29 | 3 | 1 | 1 | 9 |
 
 *Proved* counts the items proved in Lean with only the standard axioms and no unproved input; *in Mathlib* the items
 that Mathlib already has (the map names the Mathlib declaration); rows that are definitions, items in Tau Ceti only,
@@ -54,6 +54,10 @@ reviewed by a human** (see Provenance).
 **Milne, *Class Field Theory***
 
 - **The Grunwald–Wang theorem:** for finitely many places $`v`$ of a number field $`K`$ and characters $`\chi_v`$ of finite order of $`K_v^\times`$, there is a character of the idele class group with these local components, of order $`\operatorname{lcm}(\operatorname{ord}\chi_v)`$ outside Wang's special case (`grunwaldWang`).
+- **Central division algebras over a number field:** the order of $`[D]`$ in $`\operatorname{Br}(K)`$ is $`\sqrt{[D:K]}`$, and $`D`$ is a cyclic algebra (`centralDivisionAlgebra_cyclic`).
+- **Local Kronecker–Weber in Lubin–Tate form:** for a nonarchimedean local field $`K`$ and a prime element $`\pi`$, every finite abelian extension of $`K`$ lies in $`K_\pi K^{\mathrm{un}}`$ (`localKroneckerWeber_lubinTate`).
+- **Eisenstein reciprocity:** $`(\alpha/a)_p = (a/\alpha)_p`$ for an odd prime $`p`$, $`a \in \mathbb{Z}`$ prime to $`p`$ and $`\alpha`$ a primary non-unit of $`\mathbb{Z}[\zeta_p]`$ prime to $`a`$ (`eisensteinReciprocity`).
+- **Furtwängler's theorem:** if $`x^p + y^p = z^p`$ with $`x, y, z`$ coprime and $`p \nmid xyz`$, then $`q^{p-1} \equiv 1 \pmod{p^2}`$ for every prime $`q \mid xyz`$ (`furtwangler_fermat`).
 - **Gauss's point count:** $`x^3 + y^3 + z^3 = 0`$ has $`p + 1`$ points over $`\mathbb{F}_p`$ if $`p \not\equiv 1 \pmod 3`$, and $`p + 1 + A`$ if $`p \equiv 1 \pmod 3`$, where $`4p = A^2 + 27B^2`$ and $`A \equiv 1 \pmod 3`$ (`gauss_cubicCurve_count`).
 - **Weber $`L`$-series:** for a nontrivial character $`\chi`$ of a ray class group, $`L(s, \chi)`$ extends to a holomorphic function on $`\operatorname{Re} s > 0`$ with $`L(1, \chi) \neq 0`$ (`weberL_continuation`; Milne's Theorem V.2.4(b), whose "converges" is an erratum for "extends").
 
@@ -138,10 +142,11 @@ NumberFieldKB/
 references.bib          bibliography; the keys used by @[kb]
 scripts/check_axioms.lean  prints the axioms of the headline theorems (run in CI)
 scripts/verify-comparator.sh  runs `lake comparator` with the toolchain's kernels (run in CI)
+scripts/check_map_names.lean  checks that every Lean name in the book maps exists (run in CI)
 ```
 
-**Supporting files outside this release's books.** The books import 24 files of the library's elliptic curve topic
-(Milne, *Elliptic Curves*; besides the three files of Chapter V, §§1–3 that belong to the $`X_0(N)`$ map), 19 files on
+**Supporting files outside this release's books.** The books import 39 files of the library's elliptic curve topic
+(Milne, *Elliptic Curves*; the files of Chapter V, §§1–3 among them carry the $`X_0(N)`$ map), 19 files on
 the Chebotarev density theorem, 10 on the non-vanishing of $`L`$-functions on $`\operatorname{Re} s = 1`$ and 4 on the
 Hilbert class field. They are shipped so that the library builds; those topics are not part of this release, and some
 of their files state named results of those books without proof (no headline and no row marked *proved* in the book
@@ -158,8 +163,10 @@ lake env lean scripts/check_axioms.lean   # axioms of the headline theorems
 
 The quadratic-forms dependency and this library are built from source (about 4,000 modules besides Mathlib's
 prebuilt cache, most of them the ported class field theory files). A cold build took about two hours on 8 cores,
-with at most 10.2 GB of memory in use (the largest single Lean process 10.2 GB); the CI workflow adds swap space to GitHub's runner (4 cores, 16 GB), where it takes
-longer.
+with at most 9.6 GB of memory in use (the largest single Lean process 8.3 GB); the CI workflow adds swap space to GitHub's runner (4 cores, 16 GB), where it takes
+longer. `lake comparator` took 5 to 11 minutes per book on 8 cores (at most 7.6 GB of memory), except for Milne's
+*Class Field Theory*: about 39 minutes and 9.6 GB, most of it in the Lean kernel's replay of the class field theory
+behind its headlines.
 
 ## Provenance
 
@@ -169,7 +176,7 @@ results, the conventions and the proof routes. The files under `NumberFieldKB/Ta
 contributors (see their headers), and those under `NumberFieldKB/YamaguchiPort/` and `NumberFieldKB/PNTPort/` by
 N. Yamaguchi and by the PrimeNumberTheoremAnd contributors; each port lists its changes in its README.
 The proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms.
-The 23 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
+The 27 headline statements of this release in `Challenge.lean`, and the definitions they use, have **not yet been
 reviewed** by a human; that review is planned for a later release. `lake comparator` (once per book) checks that
 `Solution.lean` proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
 results, and the book maps) has not been reviewed by a human; as with any AI-written formalization, treat it as
@@ -190,6 +197,16 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   (`NumberFieldKB.MilneCFT.LocalCFT.localKroneckerWeber`); Eisenstein reciprocity
   (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.eisensteinReciprocity`); and Furtwängler's theorem
   (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.theorem5_14`). The comparator now runs once per book.
+- **v0.2.1** (Lean and Mathlib v4.35.0): the four results of Milne's *Class Field Theory* held back in v0.2.0 are
+  headlines again (27 in all): Theorem VIII.2.6 (`centralDivisionAlgebra_cyclic`), local Kronecker–Weber in
+  Lubin–Tate form (`localKroneckerWeber_lubinTate`), Eisenstein reciprocity (`eisensteinReciprocity`) and
+  Furtwängler's theorem (`furtwangler_fermat`), with the same statements as in v0.2.0's library. The kernel's replay
+  of their proofs had exploded because one definition (the unramified extension of a local field) unfolded during
+  type checking; it is now irreducible, and each of the four replays in at most about 20 minutes and 9 GB. Book-map
+  rows completed: Lemmas VII.8.5, VII.8.6 and VIII.4.6 (stated in the map as Tau Ceti only in v0.2.0) and Example
+  VIII.10.1 (a cubic Hecke character of $`\mathbb{Q}(\zeta_3)`$) are proved; Theorem V.3.33 is marked as stated
+  in the book without proof; more rows of the $`X_0(N)`$ map are proved (Exercise 1.10 (a), (b); (c) conditional on
+  a named input). No file of the library imports all of Mathlib any more: each imports the Mathlib modules it uses.
 
 **Not in this release** (planned for a later release): the rest of *Elliptic Curves* as a book; an item-by-item audit of Tate's thesis and of Folland's Chapter 4 (their maps are built from the library's
 citations).

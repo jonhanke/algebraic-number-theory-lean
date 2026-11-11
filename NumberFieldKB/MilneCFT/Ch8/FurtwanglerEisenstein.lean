@@ -4,6 +4,10 @@ import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Cyclotomic.RootsOfUnit
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.PowerResidueSymbol.Ideal
 import NumberFieldKB.MilneCFT.Ch8.FurtwanglerIdeal
 import NumberFieldKB.MilneCFT.Ch8.FurtwanglerReduce
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
 
 /-!
 # Milne, *Class Field Theory*, VIII, Theorem 5.14 (Furtwängler) from Eisenstein reciprocity

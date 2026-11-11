@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch8.Fermat
+import Mathlib.Tactic.LinearCombination
+import Mathlib.Data.Nat.ModEq
+import Mathlib.RingTheory.Coprime.Lemmas
+import Mathlib.Data.Nat.Prime.Basic
 
 /-!
 # Furtwängler's theorem: reduction of the natural-number statement to an integral one

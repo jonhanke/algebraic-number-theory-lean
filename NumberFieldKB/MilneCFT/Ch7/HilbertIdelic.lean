@@ -1,6 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch7.IdealReciprocityKer
 import NumberFieldKB.MilneCFT.Ch7.Basic
 import NumberFieldKB.MilneCFT.Ch7.IdelicExistence
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Topology.Algebra.Group.Units
+import Mathlib.RingTheory.ClassGroup.ExtendedHom
 
 /-!
 # The Hilbert class field from the idelic theorems (Milne, *CFT*, Chapter V, Example 3.9 via §5)

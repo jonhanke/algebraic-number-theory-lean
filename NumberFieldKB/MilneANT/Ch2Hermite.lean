@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.LinearAlgebra.Matrix.Permutation
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 import QuadFormsKB.Citation
 
 /-!

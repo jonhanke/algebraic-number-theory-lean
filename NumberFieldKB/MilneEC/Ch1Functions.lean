@@ -1,4 +1,17 @@
 import NumberFieldKB.MilneEC.Ch1Projective
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Nullstellensatz
+import Mathlib.Algebra.MvPolynomial.Monad
+import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.LinearAlgebra.Projectivization.Basic
+import Mathlib.RingTheory.LocalProperties.Reduced
+import Mathlib.RingTheory.MvPolynomial.IrreducibleQuadratic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.ValuationSubring
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Section 4: regular functions; the Riemann–Roch theorem

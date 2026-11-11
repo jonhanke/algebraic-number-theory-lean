@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneEC.Ch5JFunction
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.Topology.UniformSpace.Uniformizable
+import Mathlib.Algebra.Group.Action.Sum
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Real.Pi.Bounds
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §1: the extended upper half-plane and the compact quotients $X(\Gamma)$
@@ -260,12 +268,9 @@ lemma continuous_jStar : Continuous jStar := by
         exact h3
       · exact hx'
 
-/-- **Proposition 1.9** (pdf p. 187), in topological form, proved from the named statements
-`Prop1_7` and `JInjective`: $X_0(1)$ is homeomorphic to the sphere $\mathbb P^1(\mathbb C)$, so it has genus $0$
-(a compact orientable surface homeomorphic to the sphere has genus $0$; Milne computes $2 - 2g = V - E + F = 2$
-from a triangulation). The homeomorphism is induced by $j$ (Proposition 2.2). -/
-@[kb "milne2006ec" "Ch. V, Proposition 1.9, pdf p. 187"]
-theorem prop_1_9 (h17 : Prop1_7) (hj : JInjective) :
+/-- **Proposition 1.9** (pdf p. 187), topological form, from the compactness of $X_0(1)$ (the compactness half of
+Proposition 1.7, proved in `NumberFieldKB.MilneEC.V.compactSpace_xGamma`) and the named `JInjective`. -/
+theorem prop_1_9_of_compactSpace (hc : CompactSpace (XGamma ⊤)) (hj : JInjective) :
     ∃ e : XGamma ⊤ ≃ₜ OnePoint ℂ, ∀ x : HStar, e (Quotient.mk _ x) = jStar x := by
   let e₀ : XGamma ⊤ → OnePoint ℂ := Quotient.lift jStar jStar_orbit
   have hcont : Continuous e₀ := continuous_jStar.quotient_lift jStar_orbit
@@ -290,8 +295,16 @@ theorem prop_1_9 (h17 : Prop1_7) (hj : JInjective) :
     | coe c =>
       obtain ⟨z, hz⟩ := jFun_surjective c
       exact ⟨Quotient.mk _ (Sum.inl z : HStar), by show (jFun z : OnePoint ℂ) = (c : OnePoint ℂ); rw [hz]⟩
-  have : CompactSpace (XGamma ⊤) := h17.compact ⊤ inferInstance
   let f : XGamma ⊤ ≃ OnePoint ℂ := Equiv.ofBijective e₀ ⟨hinj, hsurj⟩
   exact ⟨Continuous.homeoOfEquivCompactToT2 (f := f) hcont, fun x => rfl⟩
+
+/-- **Proposition 1.9** (pdf p. 187), in topological form, proved from the named statements
+`Prop1_7` and `JInjective`: $X_0(1)$ is homeomorphic to the sphere $\mathbb P^1(\mathbb C)$, so it has genus $0$
+(a compact orientable surface homeomorphic to the sphere has genus $0$; Milne computes $2 - 2g = V - E + F = 2$
+from a triangulation). The homeomorphism is induced by $j$ (Proposition 2.2). -/
+@[kb "milne2006ec" "Ch. V, Proposition 1.9, pdf p. 187"]
+theorem prop_1_9 (h17 : Prop1_7) (hj : JInjective) :
+    ∃ e : XGamma ⊤ ≃ₜ OnePoint ℂ, ∀ x : HStar, e (Quotient.mk _ x) = jStar x :=
+  prop_1_9_of_compactSpace (h17.compact ⊤ inferInstance) hj
 
 end NumberFieldKB.MilneEC.V

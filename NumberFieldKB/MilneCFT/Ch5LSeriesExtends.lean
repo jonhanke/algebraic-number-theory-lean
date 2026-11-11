@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch5LSeries
 import NumberFieldKB.MilneCFT.Ch8.WeberLTauCeti
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Theorem 2.4(b), corrected and proved

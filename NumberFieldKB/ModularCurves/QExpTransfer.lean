@@ -1,4 +1,7 @@
 import NumberFieldKB.ModularCurves.CuspInfinity
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
 
 /-!
 # Polynomial identities between meromorphic functions pass to Laurent expansions

@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.TateZero
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.GroupTheory.QuotientGroup.Simple
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Auxiliary results for Milne, *CFT*, Chapter VII, Lemma 4.5

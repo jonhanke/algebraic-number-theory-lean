@@ -1,6 +1,18 @@
 import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneCFT.Ch5LSeries
 import NumberFieldKB.MilneCFT.Ch5Artin
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Exercise 3.15: the existence clause is false as formalized

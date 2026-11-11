@@ -1,5 +1,18 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.NumberTheory.NumberField.Norm
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Algebra.Hom.Rat
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import QuadFormsKB.Citation
+import Mathlib.Data.Int.Range
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Disc
 
 /-!
 # Milne, *Algebraic Number Theory*, Lemma 5.13: a lower bound for the fundamental unit of a cubic field

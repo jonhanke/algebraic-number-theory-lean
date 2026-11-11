@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneANT.Ch8Basic
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: natural density implies Dirichlet density

@@ -1,6 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch3Unramified
 import NumberFieldKB.MilneCFT.LocalCFT.UnramifiedTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.NormalizedValuation
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Minpoly.IsIntegrallyClosed
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter III §1: the unramified inputs, proved from Tau Ceti

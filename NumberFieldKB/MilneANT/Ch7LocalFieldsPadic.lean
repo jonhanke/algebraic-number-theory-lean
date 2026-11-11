@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.NumberTheory.Ostrowski
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Padics.LocalField
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Unbundled.RingSeminorm
+import Mathlib.Topology.Algebra.Module.FiniteDimension
 import NumberFieldKB.MilneANT.Ch7LocalFields
 
 /-!

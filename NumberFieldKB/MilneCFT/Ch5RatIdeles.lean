@@ -1,5 +1,17 @@
 import NumberFieldKB.MilneCFT.Ch5IdelicMain
 import NumberFieldKB.MilneANT.Ch8Examples
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # The idèles of $\mathbb Q$ (Milne, *Class Field Theory*, Chapter V, §5, pp. 180–182)

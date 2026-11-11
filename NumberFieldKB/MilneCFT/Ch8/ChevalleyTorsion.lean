@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.FieldTheory.AbelRuffini
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.Minpoly
+import Mathlib.RingTheory.SimpleRing.Principal
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.FrobeniusGeneration
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Frobenius.Kummer.LocalUnit
 

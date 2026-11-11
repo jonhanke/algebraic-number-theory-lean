@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark32Local
 import NumberFieldKB.MilneCFT.Ch8.Remark32Global
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # Milne, *Class Field Theory*, Remark VIII.3.2, unconditional

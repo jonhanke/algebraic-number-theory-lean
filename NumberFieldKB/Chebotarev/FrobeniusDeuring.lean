@@ -1,5 +1,7 @@
 import NumberFieldKB.Chebotarev.Frobenius
 import NumberFieldKB.Chebotarev.FrobeniusCount
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.RamificationInertia.Galois
 
 /-!
 # The Frobenius map on the primes above `p` and the Deuring count

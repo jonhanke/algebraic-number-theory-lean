@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneEC.Ch5Differentials
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.RingTheory.RootsOfUnity.Complex
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V, Proposition 3.3 in local form: elliptic points

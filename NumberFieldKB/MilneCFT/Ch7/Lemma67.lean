@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch7.SUnitIndex
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.DedekindDomain.SInteger
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Lemma 6.7 (from Lemma 6.9, Proposition 6.10 and the $S$-unit theorem)

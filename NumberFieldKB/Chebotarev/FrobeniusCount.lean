@@ -1,4 +1,5 @@
-import Mathlib
+import Mathlib.Tactic.Group
+import Mathlib.Data.ZMod.QuotientGroup
 
 /-!
 # Counting points with a prescribed Frobenius

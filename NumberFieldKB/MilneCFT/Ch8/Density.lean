@@ -2,6 +2,12 @@ import NumberFieldKB.MilneCFT.Ch6
 import NumberFieldKB.MilneCFT.Ch5Density
 import NumberFieldKB.MilneCFT.Ch5Artin
 import NumberFieldKB.Chebotarev.Unconditional
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Algebra.Group.ConjFinite
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.Data.Set.Opposite
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §7: density theorems

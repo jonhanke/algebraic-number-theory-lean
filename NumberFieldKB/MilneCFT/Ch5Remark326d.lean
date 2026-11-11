@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch5Characters
 import NumberFieldKB.MilneANT.Ch8Thm831
+import Mathlib.Basic.Real.Basic
+import Mathlib.NumberTheory.NumberField.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 3.26(d), unconditionally

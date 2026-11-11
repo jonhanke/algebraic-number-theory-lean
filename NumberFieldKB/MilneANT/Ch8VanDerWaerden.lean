@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneANT.Ch8GaloisGroups
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.UniqueSums
+import Mathlib.Algebra.MvPolynomial.Division
+import Mathlib.Algebra.MvPolynomial.Nilpotent
+import Mathlib.FieldTheory.Galois.Basic
+import Mathlib.RingTheory.Polynomial.GaussLemma
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Theorem 8.20 (van der Waerden)

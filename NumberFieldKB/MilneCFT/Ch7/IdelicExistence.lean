@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5IdelicMain
 import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneCFT.Ch7.Existence
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Chapter V's existence theorem (Theorem 5.5) from Chapter VII's (Theorem 9.5)

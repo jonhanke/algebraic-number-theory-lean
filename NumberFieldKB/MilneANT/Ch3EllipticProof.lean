@@ -2,6 +2,10 @@ import NumberFieldKB.MilneANT.Ch3Elliptic
 import NumberFieldKB.MilneEC.Ch3Curve
 import NumberFieldKB.TauCetiPort.AlgebraicGeometry.EllipticCurve.Affine.CoordinateRing
 import NumberFieldKB.TauCetiPort.AlgebraicGeometry.EllipticCurve.Affine.Point.ToClass
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 
 /-!
 # Milne, *Algebraic Number Theory*, Example 3.22: the coordinate ring of a complex affine elliptic curve

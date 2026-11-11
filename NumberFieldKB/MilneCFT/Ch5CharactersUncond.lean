@@ -2,6 +2,15 @@ import NumberFieldKB.MilneCFT.Ch5ConductorUncond
 import NumberFieldKB.MilneCFT.Ch5Characters
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.AdmissibleModulus.Ramification
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Discriminant.RamifiedSupport.Basic
+import Mathlib.Computability.Reduce
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, §3, p. 165: primitive characters, unconditional

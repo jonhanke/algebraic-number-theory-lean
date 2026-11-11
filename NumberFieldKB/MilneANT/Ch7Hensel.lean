@@ -1,5 +1,18 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Data.ZMod.Units
+import Mathlib.FieldTheory.Finite.Basic
+import Mathlib.NumberTheory.Padics.RingHoms
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
 import QuadFormsKB.Citation
+import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: Newton's lemma and Hensel's lemma

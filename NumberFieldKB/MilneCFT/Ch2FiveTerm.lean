@@ -1,4 +1,5 @@
-import Mathlib
+import Mathlib.Tactic.Have
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Remarks
 

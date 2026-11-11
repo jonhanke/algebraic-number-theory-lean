@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch7.ArtinMap
 import NumberFieldKB.MilneCFT.Ch7.Cohomology
 import NumberFieldKB.HilbertClassField.Artin
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.Cyclotomic.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §8: completion of the proof of the reciprocity law

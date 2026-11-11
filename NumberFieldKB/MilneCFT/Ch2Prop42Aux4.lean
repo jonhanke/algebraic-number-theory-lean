@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Topology.Algebra.OpenSubgroup
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
 import NumberFieldKB.MilneCFT.Ch2Prop42Aux3
 import NumberFieldKB.MilneCFT.Ch2Profinite
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.ContCohomology.Resolution.Basic

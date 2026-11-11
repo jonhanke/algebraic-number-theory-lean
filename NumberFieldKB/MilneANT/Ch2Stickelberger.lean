@@ -1,5 +1,14 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Infinite
+import Mathlib.LinearAlgebra.Matrix.Permanent
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Discriminant.Basic
 import QuadFormsKB.Citation
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Disc
 
 /-!
 # Milne, *Algebraic Number Theory*, Proposition 2.40: sign of the discriminant and Stickelberger's theorem

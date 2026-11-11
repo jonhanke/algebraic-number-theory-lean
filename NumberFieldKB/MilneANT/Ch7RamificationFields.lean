@@ -1,5 +1,13 @@
 import NumberFieldKB.MilneANT.Ch7Extensions
 import NumberFieldKB.MilneANT.Ch7Ramification
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Invariant.Galois
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: ramification groups and subfields

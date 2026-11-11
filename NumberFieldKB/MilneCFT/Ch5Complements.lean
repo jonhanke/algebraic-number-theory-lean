@@ -1,5 +1,20 @@
 import NumberFieldKB.MilneCFT.Ch5MainIdeal
 import NumberFieldKB.HilbertClassField.ClassNumberOne
+import Mathlib.GroupTheory.Transfer
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.NumberTheory.NumberField.ExistsRamified
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # Consequences and complements of the main theorems (Milne, *Class Field Theory*, Chapter V, §3, pp. 158–168)

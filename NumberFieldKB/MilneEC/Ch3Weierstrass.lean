@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneEC.Ch3Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
+import Mathlib.NumberTheory.ModularForms.LFunction
 
 /-!
 # Milne, Elliptic Curves, Chapter III §2–§3: ℘, Eisenstein series, `E(Λ)`, the `j`-invariant

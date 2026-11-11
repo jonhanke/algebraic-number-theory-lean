@@ -1,6 +1,17 @@
 import NumberFieldKB.ModularCurves.EllipticCommute
 import NumberFieldKB.ModularCurves.CuspCountX0
 import NumberFieldKB.ModularCurves.JInjective
+import Mathlib.NumberTheory.Modular
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.Analytic.Order
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The geometric counts over $j = 0$ and $j = 1728$, and the genus of $X_0(N)$

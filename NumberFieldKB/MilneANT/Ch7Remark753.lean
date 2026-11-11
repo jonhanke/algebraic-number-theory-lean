@@ -1,5 +1,13 @@
 import NumberFieldKB.MilneANT.Ch7Thm758aFixed
 import NumberFieldKB.MilneANT.Ch7Hensel
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.AdicCompletion.Functoriality
+import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Polynomial.Eval.Irreducible
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.53: unramified extensions and separable extensions of the residue field

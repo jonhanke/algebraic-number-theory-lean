@@ -2,6 +2,13 @@ import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
 import NumberFieldKB.MilneCFT.Ch8.HilbertPairingArtin
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.ArtinMapTransport
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # The global Hilbert symbol at a finite place is the local Hilbert pairing of the completion

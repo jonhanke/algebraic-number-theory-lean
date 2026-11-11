@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch8.Prop512Full
 import NumberFieldKB.MilneCFT.LocalCFT.ReciprocityTauCeti
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # Milne, *Class Field Theory*, VIII, Proposition 5.12 without a local Artin map hypothesis

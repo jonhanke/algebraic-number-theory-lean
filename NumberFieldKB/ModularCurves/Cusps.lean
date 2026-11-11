@@ -1,4 +1,8 @@
 import NumberFieldKB.ModularCurves.Places
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The chart of $X_0(N)$ at the cusps: the integral closure of $\mathbb Q[1/j]$

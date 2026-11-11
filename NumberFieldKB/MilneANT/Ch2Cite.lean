@@ -1,5 +1,13 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.RingTheory.Etale.Weakly
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.RingTheory.MvPolynomial.Symmetric.FundamentalTheorem
 import QuadFormsKB.Citation
+import Mathlib.RingTheory.Polynomial.IsIntegral
 
 /-!
 # Milne, Algebraic Number Theory, Chapter 2: results in Mathlib

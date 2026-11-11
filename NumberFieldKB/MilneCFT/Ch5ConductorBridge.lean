@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch5Cor4_13
 import NumberFieldKB.MilneCFT.Ch5CharactersUncond
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # The conductor of Milne, *CFT*, V, Remark 3.8, is Tau Ceti's `abelianConductor`

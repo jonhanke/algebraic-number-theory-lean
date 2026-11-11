@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7PlacesFFClosedDiff
+import Mathlib.FieldTheory.IsAlgClosed.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Kaehler.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.17(b): the sum formula for function fields over an algebraically

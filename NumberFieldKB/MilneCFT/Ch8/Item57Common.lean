@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, VIII, 5.7 (auxiliary): a common abelian extension of two Kummer extensions

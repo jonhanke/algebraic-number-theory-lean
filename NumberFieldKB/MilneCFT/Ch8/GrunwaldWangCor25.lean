@@ -2,6 +2,13 @@ import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangSpecial
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangValuation
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangLocalChar
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangField
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, *CFT*, VIII, Corollary 2.5, unconditionally (including the special case)

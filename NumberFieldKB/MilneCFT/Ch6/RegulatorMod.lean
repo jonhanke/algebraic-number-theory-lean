@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch6.RayZeta
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.Units.Regulator
+import Mathlib.Topology.Order.Hom.Esakia
 
 /-!
 # The regulator of $U_{\mathfrak m,1}$

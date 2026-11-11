@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.FrickeHecke
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Trace.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions
 
 /-!
 # The trace of $X_0(M) \to X_0(N)$ as a sum over cosets, and $T(p)$ as $\sum_\alpha f(\alpha z)$

@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneANT.Ch7LocalFieldsCharP
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.WithAbs
+import Mathlib.Analysis.Normed.Ring.InfiniteSum
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.49(c): local fields of characteristic $p$ are Laurent series fields

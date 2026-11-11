@@ -41,7 +41,7 @@
       "config": "comparator/MilneCFT.json",
       "challenge_module": "Challenge_MilneCFT",
       "solution_module": "Solution_MilneCFT",
-      "theorems": 3
+      "theorems": 7
     }
   ]
 }

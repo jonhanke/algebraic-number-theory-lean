@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch5Remark48Corrected
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8: the converse (with the hypothesis at the infinite places)

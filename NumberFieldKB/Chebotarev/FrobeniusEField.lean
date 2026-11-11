@@ -1,4 +1,6 @@
 import NumberFieldKB.Chebotarev.FrobeniusDeuring
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.RamificationInertia.Galois
 
 /-!
 # The Deuring count on the `E`-side

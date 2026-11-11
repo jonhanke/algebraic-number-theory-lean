@@ -2,6 +2,11 @@ import NumberFieldKB.NonVanishing.Hecke
 import NumberFieldKB.Chebotarev.DirichletHeckeRat
 import Mathlib.NumberTheory.DirichletCharacter.Basic
 import Mathlib.NumberTheory.MulChar.Duality
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.Group.Units
+import Mathlib.NumberTheory.RamificationInertia.Inertia
 
 /-!
 # Dirichlet characters as Hecke characters of a number field

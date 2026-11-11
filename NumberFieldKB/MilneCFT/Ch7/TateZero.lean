@@ -1,5 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch7.GaloisAdeles
 import NumberFieldKB.MilneCFT.Ch7.Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.MvPolynomial.Funext
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Hilbert90
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
+import Mathlib.FieldTheory.Finite.Polynomial
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §§2, 4: $H^0_T(G, C_L) = \mathbb I_K/K^\times\mathrm{Nm}(\mathbb I_L)$

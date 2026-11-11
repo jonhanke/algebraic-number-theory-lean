@@ -1,4 +1,12 @@
 import NumberFieldKB.ModularCurves.RationalFunctions
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
 
 /-!
 # $\mathbb Q(X_0(N))$ as a field of meromorphic functions on $\mathbb H$

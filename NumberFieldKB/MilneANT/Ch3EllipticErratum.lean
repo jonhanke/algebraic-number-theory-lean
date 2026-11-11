@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneANT.Ch3Elliptic
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
 
 /-!
 # Milne, *Algebraic Number Theory*, Example 3.22: an erratum in the named statement

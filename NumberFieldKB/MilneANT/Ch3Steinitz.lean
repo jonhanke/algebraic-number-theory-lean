@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch3InvariantFactors
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.Etale.Weakly
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 3.31: structure of torsion-free modules over a Dedekind domain

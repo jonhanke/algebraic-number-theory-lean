@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.FunctionField
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Data.Num.Basic
+import Mathlib.NumberTheory.ModularForms.QExpansion
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
+import Mathlib.Geometry.Manifold.MFDeriv.NormedSpace
 
 /-!
 # Milne, *Elliptic Curves*, Ch. V, Theorem 2.3: the meromorphic functions on $X_0(N)$ are $\mathbb C(j, j_N)$

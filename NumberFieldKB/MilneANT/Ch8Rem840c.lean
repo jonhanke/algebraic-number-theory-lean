@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch8Dedekind
 import NumberFieldKB.MilneANT.Ch8Rem840cFactor

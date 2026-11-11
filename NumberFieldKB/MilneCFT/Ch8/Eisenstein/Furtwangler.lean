@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch8.Eisenstein.Reciprocity
+import Mathlib.Data.Nat.ModEq
+import Mathlib.Data.Nat.Prime.Defs
 
 /-!
 # Furtwängler's theorem and Wieferich's criterion, unconditionally

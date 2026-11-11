@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Functoriality
+import Mathlib.Topology.Algebra.Group.Torsor
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Profinite
 

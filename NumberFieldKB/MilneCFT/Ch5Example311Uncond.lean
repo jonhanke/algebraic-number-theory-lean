@@ -2,6 +2,20 @@ import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneCFT.Ch5ConductorUncond
 import NumberFieldKB.TauCetiPort.NumberTheory.Multiquadratic.Cyclotomic.Conductor
 import NumberFieldKB.TauCetiPort.NumberTheory.Multiquadratic.Quadratic.Discriminant
+import Mathlib.NumberTheory.FundamentalDiscriminant
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Conductor
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Unramified.Locus
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Example 3.11 (the conductor of a quadratic field), unconditional

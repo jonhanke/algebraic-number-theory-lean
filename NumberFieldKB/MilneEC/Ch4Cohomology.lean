@@ -1,7 +1,24 @@
-import Mathlib
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Infinite
+import Mathlib.FieldTheory.Galois.Profinite
+import Mathlib.LinearAlgebra.Projectivization.Basic
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.ClopenNhdofOne
+import Mathlib.Topology.Compactness.Paracompact
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Hilbert90
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.LongExactSequence
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Profinite
 import NumberFieldKB.MilneCFT.Ch2Corestriction
+import Mathlib.AlgebraicGeometry.EllipticCurve.DivisionPolynomial.Basic
+import Mathlib.Data.Int.Range
 
 /-!
 # Milne, Elliptic Curves, Chapter IV §1: group cohomology

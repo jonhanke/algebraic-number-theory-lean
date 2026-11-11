@@ -2,6 +2,9 @@ import NumberFieldKB.Chebotarev.PrimeDensity
 import Mathlib.NumberTheory.MulChar.Duality
 import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
 import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Equidistribution of primes from character sums

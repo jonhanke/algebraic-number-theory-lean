@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7Hensel
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Minpoly.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Polynomial.IsIntegral
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: the integral closure of a complete discrete valuation ring is local

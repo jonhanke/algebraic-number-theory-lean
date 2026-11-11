@@ -2,6 +2,14 @@ import NumberFieldKB.MilneCFT.LubinTate.PowerSeriesEvalAlg
 import NumberFieldKB.MilneCFT.LubinTate.LevelPolynomial
 import NumberFieldKB.MilneCFT.LubinTate.ThetaConstructionProof
 import NumberFieldKB.MilneCFT.LubinTate.ExtensionYamaguchi
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.IntermediateField.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.PowerSeries.Substitution
+import Mathlib.RingTheory.PowerSeries.WeierstrassPreparation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Evaluating Lubin–Tate series at torsion points over the completed unramified ring

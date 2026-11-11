@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneANT.Ch8Thm831
 import NumberFieldKB.MilneANT.Ch8Unconditional
+import Mathlib.FieldTheory.PolynomialGaloisGroup
+import Mathlib.Basic.Real.Basic
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: the natural-density consequences, unconditionally

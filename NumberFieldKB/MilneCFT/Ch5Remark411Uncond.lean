@@ -2,6 +2,9 @@ import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.Ideles.Compact
 import NumberFieldKB.HeckeCharacter.Basic
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Ideles.Norm.Surjective
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.11, unconditionally

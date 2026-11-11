@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch7.Basic
 import NumberFieldKB.MilneCFT.Ch6.Splitting
 import NumberFieldKB.MilneCFT.Ch7.Lemma45Aux
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §4: applications of the first inequality

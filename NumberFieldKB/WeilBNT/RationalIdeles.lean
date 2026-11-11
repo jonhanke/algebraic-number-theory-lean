@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch5Ideles
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
 
 /-!
 # Weil, *Basic Number Theory*, Chapter XIII, §4, Lemma 6: the ideles of $\mathbb Q$

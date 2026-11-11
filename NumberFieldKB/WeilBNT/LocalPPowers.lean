@@ -1,4 +1,6 @@
 import NumberFieldKB.WeilBNT.RayGroup
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.Data.Nat.Choose.Dvd
 
 /-!
 # Weil, *Basic Number Theory*, I.§4, Lemma 5: $(1+P)^{p^n}\subseteq1+P^{n+1}$

@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 import QuadFormsKB.Citation
 
 namespace NumberFieldKB.MilneANT

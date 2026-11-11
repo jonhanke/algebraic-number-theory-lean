@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.RingTheory.FractionalIdeal.Norm
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Data.Rat.Cast.Lemmas
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch4Thm429Inj
 

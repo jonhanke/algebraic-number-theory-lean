@@ -1,5 +1,8 @@
 import NumberFieldKB.WeilBNT.AdeleBoxes
 import NumberFieldKB.MilneEC.Ch4Cohomology
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Weil, *Basic Number Theory*, Chapter IV, §3, text p. 71: inversion is not continuous for the adelic topology

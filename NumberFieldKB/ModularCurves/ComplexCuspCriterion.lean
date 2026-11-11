@@ -1,4 +1,12 @@
 import NumberFieldKB.ModularCurves.ComplexCanonical
+import Mathlib.FieldTheory.Separable
+import Mathlib.RingTheory.AdjoinRoot
+import Mathlib.Basic.Complex.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # $h \in L(W)$ at the cusps

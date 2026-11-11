@@ -3,6 +3,19 @@ import NumberFieldKB.MilneCFT.GlobalUnconditional
 import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneANT.Ch8Examples
 import NumberFieldKB.MilneCFT.Intro.Theorems
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.DedekindDomain.Different
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Proofs of Milne, *CFT*, Introduction, Exercises 0.12 and 0.15

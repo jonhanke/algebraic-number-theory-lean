@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch8.ExplicitPairingSteinberg
+import Mathlib.Algebra.Field.Defs
+import Mathlib.Data.Nat.Prime.Basic
 
 /-!
 # Prop. VIII.5.12 on the generators, with "pairs trivially" in place of "is a $p$-th power"

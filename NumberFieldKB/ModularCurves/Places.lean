@@ -1,5 +1,9 @@
 import NumberFieldKB.ModularCurves.Ramification
 import NumberFieldKB.MilneEC.Ch1Example46
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.NumberTheory.ModularForms.Cusps
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
 
 /-!
 # The points of $X_0(N)$ over $\mathbb Q$ as places: $Y_0(N)$ and the cusps

@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneANT.Ch7Hensel
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.37: the discriminant form from the resultant form

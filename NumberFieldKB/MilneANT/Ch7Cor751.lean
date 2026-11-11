@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneANT.Ch7Prop750
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Finite.Basic
+import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.LocalRing.ResidueField.Instances
 
 /-!
 # Milne, *Algebraic Number Theory*, Corollaries 7.51 and 7.52, p. 128

@@ -1,5 +1,6 @@
 import NumberFieldKB.MilneANT.Ch7HenselResultant
 import NumberFieldKB.MilneANT.Ch7HenselDiscr
+import Mathlib.RingTheory.DiscreteValuationRing.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.37: the discriminant form of Hensel's lemma, unconditionally

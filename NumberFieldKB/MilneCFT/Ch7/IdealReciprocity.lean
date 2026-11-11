@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch5IdelicMain
 import NumberFieldKB.MilneCFT.Ch5MainIdeal
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
 
 /-!
 # From the idelic reciprocity law to the ideal-theoretic one (Milne, *CFT*, Chapter V, Remark 5.8, first steps)

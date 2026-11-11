@@ -2,6 +2,9 @@ import NumberFieldKB.MilneCFT.Ch7.HilbertIdelic
 import NumberFieldKB.MilneCFT.Ch7.IdealExistence
 import NumberFieldKB.MilneCFT.Ch7.ExistenceTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.Conductor.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.Completion.LiesOverInstances
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # The named input `ArtinInertia` (Milne, *CFT*, V, Proposition 5.2 with local class field theory), proved from Tau Ceti

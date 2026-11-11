@@ -1,5 +1,11 @@
 import NumberFieldKB.ModularCurves.HeckePic
 import NumberFieldKB.ModularCurves.HeckeDivisors
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.Data.Finsupp.Pointwise
+import Mathlib.NumberTheory.ModularForms.Cusps
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # $T(p)$ on divisors of $X_0(N)$ restricts to $T(p)$ on divisors of $Y_0(N)$

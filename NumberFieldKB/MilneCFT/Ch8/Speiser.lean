@@ -1,5 +1,15 @@
-import Mathlib
+import Mathlib.FieldTheory.Fixed
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.Dual.Lemmas
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs
 import QuadFormsKB.Citation
+import Mathlib.Control.Traversable.Equiv
 
 /-!
 # Speiser's Hilbert 90 for $\mathrm{GL}_n$ (for Milne, *Class Field Theory*, VIII, Remark 6.4)

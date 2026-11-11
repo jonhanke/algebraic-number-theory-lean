@@ -1,5 +1,13 @@
 import NumberFieldKB.MilneCFT.Intro.Theorems
 import NumberFieldKB.MilneANT.Ch8DedekindProof
+import Mathlib.FieldTheory.PolynomialGaloisGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI §3: primes splitting in an extension

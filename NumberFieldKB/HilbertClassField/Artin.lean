@@ -1,5 +1,7 @@
 import NumberFieldKB.HilbertClassField.Basic
 import NumberFieldKB.Chebotarev.Unconditional
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # The Artin map of an unramified abelian extension and the existence of the Hilbert class field

@@ -1,4 +1,8 @@
 import NumberFieldKB.ModularCurves.Y0
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RamificationInertia.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Ramification in $Y_0(M) \to Y_0(N)$: the fundamental identity

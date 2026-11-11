@@ -1,6 +1,11 @@
 import NumberFieldKB.ModularCurves.ComplexConverse
 import NumberFieldKB.ModularCurves.ComplexCuspVanish
 import NumberFieldKB.ModularCurves.CuspCountX0
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # From $L(W)$ to cusp forms: the condition at the cusps

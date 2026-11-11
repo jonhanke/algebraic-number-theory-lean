@@ -1,5 +1,9 @@
-import Mathlib
+import Mathlib.Data.Nat.ModEq
+import Mathlib.Algebra.Order.Ring.Nat
+import Mathlib.Algebra.Ring.Divisibility.Basic
+import Mathlib.Data.Nat.Prime.Defs
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Order.Ring.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §5: application to Fermat's equation

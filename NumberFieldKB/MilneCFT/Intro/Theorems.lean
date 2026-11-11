@@ -1,6 +1,8 @@
 import NumberFieldKB.MilneCFT.Intro.RayClass
 import NumberFieldKB.Chebotarev.Unconditional
 import NumberFieldKB.HilbertClassField.Artin
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
 
 /-!
 # The main theorems of the Introduction (Milne, *Class Field Theory*, Introduction)

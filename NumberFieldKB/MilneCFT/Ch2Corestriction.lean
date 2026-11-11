@@ -1,5 +1,14 @@
-import Mathlib
+import Mathlib.Tactic.Have
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.GroupTheory.FiniteAbelian.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.Analysis.Normed.Ring.Lemmas
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Hilbert90
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Shapiro
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Homology.ComplexShapeSigns
+import Mathlib.Algebra.Module.LinearMap.Index
 
 /-!
 # Milne, *Class Field Theory*, Chapter II §1: restriction, corestriction, inflation

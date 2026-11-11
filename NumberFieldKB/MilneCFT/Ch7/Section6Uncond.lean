@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch7.Lemma66
 import NumberFieldKB.MilneCFT.Ch7.Prop68TauCeti
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6: the lemmas made unconditional

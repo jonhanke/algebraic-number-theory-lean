@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.RingTheory.Polynomial.Tower
+import Mathlib.RingTheory.PowerSeries.Substitution
+import Mathlib.RingTheory.PowerSeries.WeierstrassPreparation
 
 /-!
 # Evaluating power series at a root of a distinguished polynomial (purely algebraic)

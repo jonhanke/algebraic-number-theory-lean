@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneEC.Ch5JFunction
 import NumberFieldKB.MilneEC.Ch5LevelOne
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RepresentationTheory.Rep.Basic
+import Mathlib.Topology.EMetricSpace.Weak
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §2: the $q$-expansion (37) of $j$

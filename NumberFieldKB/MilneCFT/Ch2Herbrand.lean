@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Algebra.Torsor.Defs
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Algebra.Order.Star.Basic
+import Mathlib.CategoryTheory.Limits.Shapes.Countable
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.FiniteCyclic
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Tate
 import NumberFieldKB.MilneCFT.Ch2Exact

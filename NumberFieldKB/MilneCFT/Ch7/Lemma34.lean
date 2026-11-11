@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch2
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.GroupTheory.FiniteAbelian.Basic
+import Mathlib.RepresentationTheory.Rep.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.Algebra.Module.ZLattice.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §3: Herbrand quotients of lattices

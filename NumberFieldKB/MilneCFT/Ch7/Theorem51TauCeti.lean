@@ -5,6 +5,14 @@ import NumberFieldKB.Ideles.RelativeNormTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.IdeleClass.SecondInequality
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.IdeleClass.HerbrandQuotient
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.Reciprocity
+import Mathlib.FieldTheory.KrullTopology
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Theorems 4.3 and 5.1 from the Tau Ceti port

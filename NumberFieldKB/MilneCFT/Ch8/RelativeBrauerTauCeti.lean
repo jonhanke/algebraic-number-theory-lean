@@ -1,5 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch8.RelativeBrauer
 import NumberFieldKB.MilneCFT.Ch4BrauerTauCeti
+import Mathlib.NumberTheory.NumberField.Basic
 
 /-!
 # Milne, *Class Field Theory*, VIII Theorem 4.2 and Corollary 4.3 from Tau Ceti

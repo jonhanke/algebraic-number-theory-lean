@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Algebra.Quaternion
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Padics.PadicNumbers
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
 import QuadFormsKB.Equiv.Hilbert
 import QuadFormsKB.Literature.LocalGlobal.HilbertReciprocity

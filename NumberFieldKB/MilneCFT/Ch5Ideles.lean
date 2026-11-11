@@ -4,6 +4,17 @@ import NumberFieldKB.Ideles.RelativeNorm
 import NumberFieldKB.HeckeCharacter.Basic
 import NumberFieldKB.MilneCFT.LocalCFT.Uniqueness
 import QuadFormsKB.Tamagawa.Measure.Weil.IdeleIdeal
+import Mathlib.Computability.Reduce
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Idèles (Milne, *Class Field Theory*, Chapter V, §4, pp. 168–177)

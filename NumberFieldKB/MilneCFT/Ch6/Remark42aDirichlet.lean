@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch6.Remark42aTauCeti
 import NumberFieldKB.MilneCFT.Ch6.Remark42aAnalysis
+import Mathlib.Analysis.Complex.ExponentialBounds
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Milne, *Class Field Theory*, VI, Remark 4.2 (a): the Dirichlet-density half, from the error-term prime number theorem

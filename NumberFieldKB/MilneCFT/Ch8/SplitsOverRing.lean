@@ -1,4 +1,15 @@
 import NumberFieldKB.MilneCFT.Ch8.RelativeBrauer
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Algebra.BrauerGroup.Defs
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
 
 /-!
 # Splitting of central simple algebras over commutative algebras

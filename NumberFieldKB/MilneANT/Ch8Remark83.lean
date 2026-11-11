@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneANT.Ch8Prop810
 import NumberFieldKB.MilneANT.Ch7OstrowskiFinite
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.RingTheory.RamificationInertia.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 8.3: extensions of the $\mathfrak p$-adic absolute value

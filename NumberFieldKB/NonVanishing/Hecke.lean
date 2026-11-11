@@ -2,6 +2,13 @@ import NumberFieldKB.NonVanishing.NaturalOrder
 import NumberFieldKB.NonVanishing.Landau
 import NumberFieldKB.HeckeL.Completed
 import QuadFormsKB.Siegel.RegProd
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Convex.Contractible
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DedekindZeta
+import Mathlib.MeasureTheory.Measure.Haar.DistribChar
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Hecke $L$-functions on $\operatorname{Re}s = 1$ and the Euler product at $s = 1$

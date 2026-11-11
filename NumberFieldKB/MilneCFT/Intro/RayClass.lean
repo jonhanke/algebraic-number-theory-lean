@@ -1,5 +1,14 @@
 import NumberFieldKB.HilbertClassField.Basic
 import Mathlib.NumberTheory.LSeries.DirichletContinuation
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Moduli, ray class groups and class fields (Milne, *Class Field Theory*, Introduction)

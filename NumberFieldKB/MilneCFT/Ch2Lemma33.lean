@@ -1,6 +1,10 @@
-import Mathlib
+import Mathlib.Tactic.Have
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Analysis.Normed.Ring.Lemmas
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Tate
+import Mathlib.Data.Int.Range
 
 /-!
 # Milne, *Class Field Theory*, Chapter II §3: Lemma 3.3

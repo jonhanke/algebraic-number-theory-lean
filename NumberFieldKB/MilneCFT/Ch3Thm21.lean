@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3InvSystemRel
 import NumberFieldKB.MilneCFT.Ch3InvRelUnram

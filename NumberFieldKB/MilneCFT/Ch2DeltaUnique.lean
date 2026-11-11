@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.RepresentationTheory.Coinvariants
+import Mathlib.Tactic.Have
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Rep.Iso
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Delta
 

@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Algebra.Group.Submonoid.Saturation
+import Mathlib.Data.Finsupp.MonomialOrder.DegLex
+import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
 import QuadFormsKB.Citation
 
 /-!

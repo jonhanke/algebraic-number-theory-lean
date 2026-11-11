@@ -1,6 +1,21 @@
 import NumberFieldKB.MilneCFT.Ch8.Basic
 import NumberFieldKB.MilneCFT.Ch5Artin
 import NumberFieldKB.Chebotarev.FrobeniusNF
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.Lemmas
+import Mathlib.RingTheory.RootsOfUnity.Minpoly
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.UniformSpace.Uniformizable
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §5: higher reciprocity laws

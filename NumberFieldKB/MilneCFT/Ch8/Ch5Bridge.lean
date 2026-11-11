@@ -1,5 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.Reciprocity
 import NumberFieldKB.MilneCFT.Ch5Characters
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*: Chapter V's power residue criterion, from Chapter VIII, 5.2 and 5.3

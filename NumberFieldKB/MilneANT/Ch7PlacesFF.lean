@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7Places
 import NumberFieldKB.WeilBNT.FunctionField.ProductFormula
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 7.17(a): the product formula for function fields over a finite field

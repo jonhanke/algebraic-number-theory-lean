@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Field.Shrink
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.ProductFormula
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch7Ostrowski
 

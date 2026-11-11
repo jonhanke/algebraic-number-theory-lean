@@ -3,6 +3,12 @@ import NumberFieldKB.MilneCFT.Ch8.Item57Common
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.LocalGlobal.Semilocal.Norm.Trace
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Places.Semilocal
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.LiesOverInstances
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, 5.7: $(b,a)_v = (a,b)_v^{-1}$, proved

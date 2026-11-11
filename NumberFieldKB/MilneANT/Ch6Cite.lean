@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.NumberTheory.Bernoulli
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
 import QuadFormsKB.Citation
 
 /-!

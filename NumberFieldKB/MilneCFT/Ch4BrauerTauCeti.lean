@@ -4,6 +4,12 @@ import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.Brauer.Seq
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.Brauer.Exactness
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Brauer.CentralSimple.Basic
 import NumberFieldKB.MilneCFT.Ch4BrauerBaseChange
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.Algebra.BrauerGroup.Defs
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, IV Example 2.14(e) = VIII Theorem 4.2 (the fundamental exact sequence), from Tau Ceti

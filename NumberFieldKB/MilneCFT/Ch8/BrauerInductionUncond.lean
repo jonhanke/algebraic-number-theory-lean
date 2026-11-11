@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch8.ArtinInductionUncond
+import Mathlib.Basic.Complex.Basic
+import Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs
 
 /-!
 # Brauer's induction theorem: proved pieces (Milne, *CFT*, VIII, §10, p. 262)

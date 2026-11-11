@@ -2,6 +2,11 @@ import NumberFieldKB.MilneCFT.Ch7.KummerSetting
 import NumberFieldKB.MilneCFT.Ch5Ideles
 import NumberFieldKB.MilneCFT.Ch5Density
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Lemma 6.6 from Proposition 6.8

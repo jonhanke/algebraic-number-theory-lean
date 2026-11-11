@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.GaloisDescentForms
 import QuadFormsKB.Tamagawa.FormClassNF
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
 
 /-!
 # Milne, *Class Field Theory*, VIII, Remark 6.4: Hasse–Minkowski as injectivity of $H^1(K,O) \to \prod_v H^1(K_v,O)$

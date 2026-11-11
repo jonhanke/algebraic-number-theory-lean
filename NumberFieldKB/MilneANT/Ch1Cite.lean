@@ -1,5 +1,12 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Nakayama
+import Mathlib.LinearAlgebra.TensorProduct.Quotient
+import Mathlib.RingTheory.Noetherian.Basic
+import Mathlib.RingTheory.Noetherian.UniqueFactorizationDomain
+import Mathlib.RingTheory.Ideal.Quotient.ChineseRemainder
+import Mathlib.RingTheory.Localization.AtPrime.Basic
 import QuadFormsKB.Citation
+import Mathlib.Data.Fintype.Inv
 
 /-!
 # Milne, Algebraic Number Theory, Chapter 1: results in Mathlib

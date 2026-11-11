@@ -2,6 +2,17 @@ import NumberFieldKB.MilneCFT.Ch5RayClass
 import NumberFieldKB.MilneANT.Ch8
 import QuadFormsKB.Tamagawa.Measure.Weil.BaseChangeLocal
 import NumberFieldKB.HilbertClassField.Artin
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.NumberTheory.LegendreSymbol.Basic
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.RingTheory.Ideal.Norm.RelNorm
 
 /-!
 # The global Artin map (Milne, *Class Field Theory*, Chapter V, §3, pp. 156–157)

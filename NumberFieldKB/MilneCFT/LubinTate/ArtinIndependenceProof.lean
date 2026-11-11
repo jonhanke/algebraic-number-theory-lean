@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.IntegralClosure.IntegralRestrict
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.LubinTate.ArtinMap
 import NumberFieldKB.MilneCFT.LubinTate.LocalKroneckerWeberCFT

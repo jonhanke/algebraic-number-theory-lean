@@ -2,6 +2,17 @@ import NumberFieldKB.MilneCFT.Ch6.Density
 import NumberFieldKB.Chebotarev.DensityTools
 import NumberFieldKB.Chebotarev.FrobeniusPrimes
 import NumberFieldKB.HeckeL.DedekindCont
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.LocallyUniformLimit
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DedekindZeta
+import Mathlib.NumberTheory.RamificationInertia.Unramified
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Separation.CompletelyRegular
+import Mathlib.Analysis.Normed.Module.MultipliableUniformlyOn
 
 /-!
 # Auxiliary lemmas for the polar-density results of Milne, *CFT*, Chapter VI §§3–4

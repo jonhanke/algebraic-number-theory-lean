@@ -1,5 +1,13 @@
 import NumberFieldKB.ModularCurves.ComplexCusp
 import NumberFieldKB.ModularCurves.RiemannHurwitz
+import Mathlib.RingTheory.Henselian
+import Mathlib.Basic.Complex.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # The genus of $\mathbb C(X_0(N))$ equals the genus of $\mathbb Q(X_0(N))$

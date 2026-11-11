@@ -1,6 +1,16 @@
 import NumberFieldKB.MilneCFT.Ch8.SteinbergNorm
 import NumberFieldKB.MilneCFT.LocalCFT.Basic
 import NumberFieldKB.MilneCFT.Ch3Kummer
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Norm.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The Hilbert pairing of order $p$ from a local Artin map (for Milne, *CFT*, VIII, Prop. 5.12)

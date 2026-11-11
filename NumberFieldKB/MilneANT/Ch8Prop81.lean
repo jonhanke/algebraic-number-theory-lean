@@ -3,6 +3,17 @@ import NumberFieldKB.MilneANT.Ch8CompleteUnique
 import NumberFieldKB.MilneANT.Ch8CompleteExists
 import NumberFieldKB.MilneANT.Ch8TensorFactor
 import NumberFieldKB.MilneANT.Ch7OstrowskiComplete
+import Mathlib.FieldTheory.PrimitiveElement
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Trace.Defs
+import Mathlib.Topology.GDelta.MetrizableSpace
+import Mathlib.Topology.Separation.CompletelyRegular
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.Analysis.Normed.Field.WithAbs
+import Mathlib.Analysis.Normed.Module.Completion
+import Mathlib.Analysis.Normed.Unbundled.RingSeminorm
 
 /-!
 # Milne, *Algebraic Number Theory*, Propositions 8.1 and 8.2 and Corollary 8.4, unconditional

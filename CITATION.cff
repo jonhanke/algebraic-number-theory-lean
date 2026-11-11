@@ -9,9 +9,9 @@ authors:
   - family-names: Hanke
     given-names: Jonathan
 license: Apache-2.0
-version: "0.2.0"
+version: "0.2.1"
 doi: "10.5281/zenodo.24047657"
-date-released: "2026-11-08"
+date-released: "2026-11-11"
 repository-code: "https://github.com/jonhanke/algebraic-number-theory-lean"
 keywords:
   - Lean 4

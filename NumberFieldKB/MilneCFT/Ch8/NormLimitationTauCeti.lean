@@ -3,6 +3,17 @@ import NumberFieldKB.MilneCFT.Ch8.NormLimitation
 import NumberFieldKB.MilneCFT.Ch7.ExistenceTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.IdeleClass.Norm
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.ClassFormation
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Infinite
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RepresentationTheory.Continuous.TopRep
+import Mathlib.RepresentationTheory.Rep.Basic
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, VIII Theorem 4.8 (norm limitation), from Tau Ceti

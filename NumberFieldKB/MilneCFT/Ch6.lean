@@ -5,6 +5,7 @@ import NumberFieldKB.MilneCFT.Ch6.Density
 import NumberFieldKB.MilneCFT.Ch6.Splitting
 import NumberFieldKB.MilneCFT.Ch6.SecondInequality
 import NumberFieldKB.MilneCFT.Ch6.Polar
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI: L-series and the density of primes

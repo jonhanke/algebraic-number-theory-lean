@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.FieldTheory.AbelRuffini
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyLocal
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyGreedy
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.FrobeniusGeneration

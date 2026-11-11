@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch7Thm758b
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Invariant.Galois
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 7.58(a): the fixed field of the inertia group

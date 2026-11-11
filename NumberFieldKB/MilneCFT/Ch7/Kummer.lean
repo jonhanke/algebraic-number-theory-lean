@@ -1,6 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch7.Basic
 import QuadFormsKB.Literature.HasseNorm.SquareClasses
 import QuadFormsKB.Literature.HasseNorm.Infinite
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RootsOfUnity.Complex
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6: the algebraic proof of the second inequality

@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneANT.Ch7Places
 import NumberFieldKB.MilneANT.Ch7Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 7.14: the finite primes

@@ -17,6 +17,7 @@ import NumberFieldKB.MilneCFT.Ch3Hilbert
 import NumberFieldKB.MilneCFT.Ch3Split
 import NumberFieldKB.MilneCFT.Ch3Prop19
 import NumberFieldKB.MilneCFT.Ch3Cor16
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Class Field Theory*, Chapter III: local class field theory (cohomological approach)

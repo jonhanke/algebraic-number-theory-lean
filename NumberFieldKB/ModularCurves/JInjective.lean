@@ -1,6 +1,9 @@
 import NumberFieldKB.MilneEC.Ch3Curve
 import NumberFieldKB.MilneEC.Ch5JFunction
 import NumberFieldKB.MilneEC.Ch5HStar
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
+import Mathlib.NumberTheory.ModularForms.EisensteinSeries.Basic
 
 /-!
 # $j$ is injective on $\mathrm{SL}_2(\mathbb Z)\backslash\mathbb H$ (Milne, Proposition V.2.2)

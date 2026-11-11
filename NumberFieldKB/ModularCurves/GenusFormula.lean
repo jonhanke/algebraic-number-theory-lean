@@ -1,4 +1,6 @@
 import NumberFieldKB.ModularCurves.RiemannHurwitz
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
 
 /-!
 # The genus formula for $X_0(N)$ from the fibres of $j$

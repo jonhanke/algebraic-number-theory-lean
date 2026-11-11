@@ -1,4 +1,6 @@
 import NumberFieldKB.ModularCurves.EllipticFibre
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # Cosets whose point $w_c$ lies over $j(\tau_0)$ are fixed by the elliptic element

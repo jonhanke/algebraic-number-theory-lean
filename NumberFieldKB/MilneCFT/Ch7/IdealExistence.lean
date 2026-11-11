@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch7.HilbertIdelic
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # The ideal-theoretic existence theorem from the idelic one (Milne, *CFT*, Chapter V, Remark 5.8, existence half)

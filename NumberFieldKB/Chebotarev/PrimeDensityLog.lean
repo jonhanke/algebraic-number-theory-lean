@@ -1,6 +1,10 @@
 import NumberFieldKB.NonVanishing.Hecke
 import NumberFieldKB.NonVanishing.Dedekind
 import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DedekindZeta
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Logarithms of Euler products near $s = 1$

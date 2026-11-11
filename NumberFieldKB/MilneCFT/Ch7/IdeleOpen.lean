@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch5Ideles
 import NumberFieldKB.MilneCFT.Ch7.Basic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Open subgroups of the ideles and finite sets of primes (for Milne, *CFT*, Chapter VII, Lemma 9.3)

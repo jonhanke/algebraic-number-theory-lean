@@ -1,6 +1,9 @@
 import NumberFieldKB.ModularCurves.ComplexCuspCriterion
 import NumberFieldKB.ModularCurves.JLocal
 import NumberFieldKB.MilneEC.Ch5LevelOne
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # The Laurent expansion of $j'(N\tau)$

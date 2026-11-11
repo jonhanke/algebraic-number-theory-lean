@@ -1,6 +1,16 @@
 import NumberFieldKB.WeilBNT.LocalPowers
 import NumberFieldKB.WeilBNT.LocalPPowers
 import NumberFieldKB.WeilBNT.IdeleCharacterExtension
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Data.Nat.Choose.Dvd
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, Prop. 16: morphisms of the ideles into $K^\times$, $K$ a $p$-field

@@ -1,6 +1,14 @@
 import NumberFieldKB.MilneANT.Ch7PlacesFFClosedZeros
 import Mathlib.RingTheory.Unramified.Field
 import Mathlib.RingTheory.Kaehler.Basic
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Remark 7.17(b), part 2: separating elements via Kähler differentials

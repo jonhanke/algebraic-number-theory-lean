@@ -1,4 +1,15 @@
 import NumberFieldKB.MilneANT.Ch8Dedekind
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.Real.Sqrt
+import Mathlib.NumberTheory.Padics.Hensel
+import Mathlib.RingTheory.Int.Basic
+import Mathlib.RingTheory.Polynomial.GaussLemma
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.LegendreSymbol.QuadraticChar.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Remark 8.40(e)

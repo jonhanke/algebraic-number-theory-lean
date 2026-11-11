@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch5Complements
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # Characters of ideals, the conductor-discriminant formula, power residue symbols

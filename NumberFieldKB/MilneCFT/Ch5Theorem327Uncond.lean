@@ -1,6 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch5ConductorBridge
 import NumberFieldKB.MilneCFT.Ch5Theorem327Lcm
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.AdmissibleModulus.ConductorDiscriminant
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Theorem 3.27 (Führerdiskriminantenproduktformel), unconditional

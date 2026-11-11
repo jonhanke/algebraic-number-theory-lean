@@ -1,5 +1,14 @@
 import NumberFieldKB.ModularCurves.ComplexRamification
 import NumberFieldKB.ModularCurves.CuspCountX0
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Tactic.Cases
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Degree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # The cusps of $\mathbb C(X_0(N))$

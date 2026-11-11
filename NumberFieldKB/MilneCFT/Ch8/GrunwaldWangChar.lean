@@ -1,5 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.ExistsUUncond
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWang
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.GroupTheory.FiniteAbelian.Duality
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Grunwald–Wang: characters of `C_K` from an open subgroup with controlled local traces

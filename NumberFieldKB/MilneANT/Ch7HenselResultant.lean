@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7Hensel
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
 
 /-!
 # Milne, Remark 7.37: proofs of the resultant and discriminant forms of Hensel's lemma

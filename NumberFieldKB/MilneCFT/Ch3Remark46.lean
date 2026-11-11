@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.IntegralClosure.IntegralRestrict
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3Prop43
 import NumberFieldKB.MilneCFT.CharSeparation

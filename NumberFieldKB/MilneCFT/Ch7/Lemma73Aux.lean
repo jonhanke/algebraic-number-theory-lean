@@ -1,4 +1,18 @@
-import Mathlib
+import Mathlib.NumberTheory.Multiplicity
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.GroupTheory.FiniteAbelian.Duality
+import Mathlib.NumberTheory.ArithmeticFunction.Carmichael
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.RingTheory.Ideal.NatInt
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
 
 /-!
 # Auxiliary lemmas for `lemma_7_3` (Milne, *CFT*, Chapter VII, p. 220)

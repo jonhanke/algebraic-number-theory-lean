@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3Hilbert
 import NumberFieldKB.MilneCFT.Ch3Prop36

@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.CuspInfinity
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # The cusps $\infty$ and $0$ of $X_0(N)$ are rational

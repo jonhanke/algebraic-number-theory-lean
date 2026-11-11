@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark64
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
 
 /-!
 # Remark VIII.6.4: the local Galois data at the infinite places

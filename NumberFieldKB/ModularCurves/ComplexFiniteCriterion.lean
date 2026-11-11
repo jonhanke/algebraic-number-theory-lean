@@ -1,5 +1,15 @@
 import NumberFieldKB.ModularCurves.ComplexLocal
 import NumberFieldKB.ModularCurves.ComplexCanonical
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # $h \in L(W)$ at the finite places iff $h\,j'$ is holomorphic on $\mathbb H$

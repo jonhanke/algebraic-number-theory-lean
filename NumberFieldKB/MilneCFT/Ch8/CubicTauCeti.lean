@@ -1,6 +1,16 @@
 import NumberFieldKB.MilneCFT.Ch8.Cubic
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Cyclotomic.Three.CubicReciprocity
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Cyclotomic.Three.RationalResidue
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.RingTheory.Henselian
+import Mathlib.Tactic.Have
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Galois
+import Mathlib.NumberTheory.NumberField.Cyclotomic.PID
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Three
 
 /-!
 # Milne, *Class Field Theory*, VIII Example 5.13, Exercise 5.16 and §10: cubic reciprocity from Tau Ceti

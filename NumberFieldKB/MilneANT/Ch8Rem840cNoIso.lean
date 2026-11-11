@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.Algebra.Field.ZMod
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch8Rem840cDiscr
 

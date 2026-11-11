@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch2Tate
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.TrivialityCriterion
+import Mathlib.Computability.Reduce
+import Mathlib.GroupTheory.PGroup
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter II, Theorem 3.10, proved from Tau Ceti

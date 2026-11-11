@@ -1,5 +1,7 @@
 import NumberFieldKB.Chebotarev.Basic
 import NumberFieldKB.Chebotarev.FrobeniusNF
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.NumberField.Cyclotomic.PID
 
 /-!
 # The Hilbert class field: definitions, splitting and Frobenius, class number one

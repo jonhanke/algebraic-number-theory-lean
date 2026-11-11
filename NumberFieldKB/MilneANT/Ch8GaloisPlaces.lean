@@ -1,4 +1,5 @@
 import NumberFieldKB.MilneANT.Ch7Places
+import Mathlib.Analysis.AbsoluteValue.Equivalence
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: the Galois action on primes (places)

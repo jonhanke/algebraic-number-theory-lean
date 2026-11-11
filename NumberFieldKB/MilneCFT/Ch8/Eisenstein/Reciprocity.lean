@@ -4,6 +4,13 @@ import NumberFieldKB.MilneCFT.Ch8.Prop512Normalization
 import NumberFieldKB.MilneCFT.Ch8.FurtwanglerEisenstein
 import NumberFieldKB.MilneCFT.Ch8.Powers
 import NumberFieldKB.MilneCFT.LocalCFT.ReciprocityTauCeti
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.Topology.Algebra.Valued.ValuativeRel
 
 /-!
 # The Eisenstein reciprocity law

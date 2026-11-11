@@ -1,5 +1,17 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark32Field
 import NumberFieldKB.MilneCFT.Ch8.Remark32Rational
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Algebra.Ring.IsFormallyReal
+import Mathlib.Data.Finsupp.Pointwise
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Norm.Transitivity
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
 
 /-!
 # Milne, *Class Field Theory*, Remark VIII.3.2: $25$ is not a norm from $\mathbb Q(\sqrt{13},\sqrt{17})$

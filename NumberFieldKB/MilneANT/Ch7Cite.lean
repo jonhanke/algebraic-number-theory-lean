@@ -1,4 +1,21 @@
 import NumberFieldKB.MilneANT.Ch7Basic
+import Mathlib.NumberTheory.Ostrowski
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.ProductFormula
+import Mathlib.NumberTheory.Padics.Complex
+import Mathlib.NumberTheory.Padics.Hensel
+import Mathlib.RingTheory.Polynomial.GaussNorm
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Separation.CompletelyRegular
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
+import Mathlib.RingTheory.Polynomial.IsIntegral
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: results in Mathlib

@@ -1,5 +1,9 @@
 import NumberFieldKB.ModularCurves.PlaneModel
 import NumberFieldKB.MilneEC.Ch5Rational
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # The modular polynomial $F_N(X, Y) \in \mathbb C[X][Y]$ (Milne, *Elliptic Curves*, Ch. V, §2)

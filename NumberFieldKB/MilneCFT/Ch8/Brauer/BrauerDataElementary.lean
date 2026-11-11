@@ -3,6 +3,11 @@ Copyright (c) 2026 Jonathan Hanke. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 import NumberFieldKB.MilneCFT.Ch8.BrauerInductionTauCeti
+import Mathlib.RepresentationTheory.Character
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # Brauer's elementary-subgroup datum, corrected (Milne, *CFT*, VIII, §10, p. 262; Serre, §§10–11)

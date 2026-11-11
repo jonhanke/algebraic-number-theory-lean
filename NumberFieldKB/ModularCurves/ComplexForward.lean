@@ -1,6 +1,13 @@
 import NumberFieldKB.ModularCurves.ComplexEval
 import NumberFieldKB.ModularCurves.ComplexFiniteCriterion
 import NumberFieldKB.ModularCurves.ModularQuotient
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.FunctionsBoundedAtInfty
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
 
 /-!
 # From weight 2 cusp forms to $\mathbb C(X_0(N))$

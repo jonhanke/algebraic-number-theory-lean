@@ -1,4 +1,8 @@
 import NumberFieldKB.Chebotarev.Frobenius
+import Mathlib.RingTheory.Frobenius
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.RamificationInertia.Galois
 
 /-!
 # Frobenius elements in Galois extensions of number fields

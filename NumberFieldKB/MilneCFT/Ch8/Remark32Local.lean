@@ -2,6 +2,12 @@ import NumberFieldKB.MilneCFT.Ch8.Remark32Norm
 import NumberFieldKB.MilneCFT.Ch8.Remark32Field
 import NumberFieldKB.MilneCFT.Ch8.Remark32Rational
 import NumberFieldKB.MilneCFT.Ch8.HasseNormTauCeti
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
 
 /-!
 # Milne, *Class Field Theory*, Remark VIII.3.2: $25$ is a local norm everywhere from $\mathbb Q(\sqrt{13},\sqrt{17})$

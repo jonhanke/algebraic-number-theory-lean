@@ -1,5 +1,15 @@
 import NumberFieldKB.ModularCurves.ComplexEmb
 import NumberFieldKB.ModularCurves.FiniteValuation
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Calculus.Deriv.Polynomial
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
 
 /-!
 # $\mathbb C(j)$ in the meromorphic germs at a point of $\mathbb H$

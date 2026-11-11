@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.FieldTheory.Minpoly.IsIntegrallyClosed
+import Mathlib.NumberTheory.LocalField.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3Invariant
 import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.GaloisAction

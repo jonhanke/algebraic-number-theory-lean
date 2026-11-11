@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch8.ExplicitPairingSteinberg
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Adjoin.PowerBasis
+import Mathlib.RingTheory.Norm.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 open IntermediateField Polynomial
 

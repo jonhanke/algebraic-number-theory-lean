@@ -1,4 +1,14 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.FractionalIdeal.Norm
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Disc
 
 /-!
 # Milne, *Algebraic Number Theory*, p. 82: auxiliary results for the norm form of an ideal basis

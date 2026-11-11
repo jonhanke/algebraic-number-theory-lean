@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.MilneCFT.Ch5Artin
 import NumberFieldKB.MilneCFT.Ch8.Remark32Local
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8: the first sentence is false for a general topological group

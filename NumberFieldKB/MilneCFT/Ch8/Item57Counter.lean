@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
 import NumberFieldKB.MilneCFT.Ch5ConductorUncond
 import NumberFieldKB.MilneCFT.Ch5RatIdeles
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, 5.7: the form `Item5_7NoRoot` without $\zeta_n \in K$ is false

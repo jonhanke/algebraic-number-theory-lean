@@ -2,6 +2,11 @@ import NumberFieldKB.MilneCFT.Ch8.Theorem23Uncond
 import NumberFieldKB.MilneCFT.Ch7.LocalNormTauCeti
 import NumberFieldKB.MilneCFT.GlobalUnconditional
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangChar
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Grunwald–Wang: the cyclic extension cut out by a character of `C_K`

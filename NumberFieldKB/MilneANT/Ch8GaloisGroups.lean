@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch8Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.CategoryTheory.Shift.Basic
+import Mathlib.FieldTheory.Finite.Basic
+import Mathlib.GroupTheory.Perm.ClosureSwap
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
+import Mathlib.Control.Traversable.Equiv
+import Mathlib.FieldTheory.Finite.Polynomial
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: computing Galois groups

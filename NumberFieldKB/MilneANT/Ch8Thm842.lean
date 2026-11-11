@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneANT.Ch8Extensions
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Discriminant.RamifiedSupport.Hermite
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.NumberTheory.RamificationInertia.Unramified
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 8.42: finitely many extensions of bounded degree unramified outside $S$

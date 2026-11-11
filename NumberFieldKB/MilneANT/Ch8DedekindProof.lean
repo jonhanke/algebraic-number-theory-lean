@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneANT.Ch8Dedekind
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: proof of the Frobenius form of Dedekind's theorem

@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.NumberTheory.NumberField.Discriminant.Different
+import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
+import Mathlib.RingTheory.Valuation.Discrete.Basic
 import QuadFormsKB.Citation
 
 /-!

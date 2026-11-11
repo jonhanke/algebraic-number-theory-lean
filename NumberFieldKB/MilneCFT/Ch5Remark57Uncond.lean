@@ -4,6 +4,18 @@ import NumberFieldKB.MilneCFT.Ch7.ExistenceTauCeti
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.Ideles.Compact
 import NumberFieldKB.WeilBNT.NormSplitting
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Convex.Contractible
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 5.7(a), proved from Tau Ceti

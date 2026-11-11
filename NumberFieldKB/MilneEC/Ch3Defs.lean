@@ -1,5 +1,9 @@
-import Mathlib
+import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.UpperHalfPlane.Basic
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Module.Lattice
 
 /-!
 # Milne, Elliptic Curves, Chapter III: basic definitions

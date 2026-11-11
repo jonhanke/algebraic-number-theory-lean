@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.Ideles.RelativeNormTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Ideles.Norm.Open
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Corollary 4.13, from Tau Ceti

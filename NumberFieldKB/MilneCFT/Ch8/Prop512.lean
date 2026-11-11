@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.HilbertPairingArtin
 import NumberFieldKB.MilneCFT.Ch8.CyclotomicLocalUnits
 import NumberFieldKB.MilneCFT.Ch8.ExplicitPairingTrivial
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
 
 /-!
 # Milne, *Class Field Theory*, VIII, Proposition 5.12: the Hilbert pairing of $\mathbb Q_p[\zeta_p]$

@@ -3,6 +3,16 @@ import NumberFieldKB.MilneCFT.Ch7.IdeleOpen
 import NumberFieldKB.MilneCFT.Ch7.Prop68TauCeti
 import NumberFieldKB.MilneCFT.Ch8.Powers
 import NumberFieldKB.WeilBNT.LocalPowers
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.Data.Finset.Functor
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Milne, *Class Field Theory*, V, Exercise 5.11: a subgroup of finite index of the idele class group that is not open

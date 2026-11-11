@@ -1,4 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch7.KeyCase
+import Mathlib.GroupTheory.IndexNSmul
+import Mathlib.RingTheory.Henselian
+import Mathlib.GroupTheory.FiniteAbelian.Basic
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.DedekindDomain.SelmerGroup
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
 
 /-!
 # The index of $p$-th powers of $S$-units (the input `SUnitIndex` of Lemma 9.3)

@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneANT.Ch8DedekindProof
 import NumberFieldKB.MilneANT.Ch8Jordan
+import Mathlib.FieldTheory.PolynomialGaloisGroup
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: the Dedekind consequences, unconditionally

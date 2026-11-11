@@ -1,6 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch2Remark312
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.DirectedUnion
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.Restriction.AllDegrees
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.Algebra.Field.ZMod
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.GroupTheory.FiniteAbelian.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.Analysis.Normed.Ring.Lemmas
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Tensor products with cohomologically trivial modules over a finite p-group
