@@ -197,7 +197,7 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   (`NumberFieldKB.MilneCFT.LocalCFT.localKroneckerWeber`); Eisenstein reciprocity
   (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.eisensteinReciprocity`); and Furtwängler's theorem
   (`NumberFieldKB.MilneCFT.Ch8.Eisenstein.theorem5_14`). The comparator now runs once per book.
-- **v0.2.1** (Lean and Mathlib v4.35.0): the four results of Milne's *Class Field Theory* held back in v0.2.0 are
+- **[v0.2.1](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.2.1)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24128217](https://doi.org/10.5281/zenodo.24128217): the four results of Milne's *Class Field Theory* held back in v0.2.0 are
   headlines again (27 in all): Theorem VIII.2.6 (`centralDivisionAlgebra_cyclic`), local Kronecker–Weber in
   Lubin–Tate form (`localKroneckerWeber_lubinTate`), Eisenstein reciprocity (`eisensteinReciprocity`) and
   Furtwängler's theorem (`furtwangler_fermat`), with the same statements as in v0.2.0's library. The kernel's replay
