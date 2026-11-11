@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch8.Speiser
 import QuadFormsKB.Lattices.Genus
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Galois descent for quadratic forms (for Milne, *Class Field Theory*, VIII, Remark 6.4)

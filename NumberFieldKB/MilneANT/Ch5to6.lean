@@ -8,6 +8,7 @@ import NumberFieldKB.MilneANT.Ch6Cyclotomic
 import NumberFieldKB.MilneANT.Ch6Compositum
 import NumberFieldKB.MilneANT.Ch6Fermat
 import NumberFieldKB.MilneANT.Ch6FermatThm
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapters 5 and 6

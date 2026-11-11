@@ -1,6 +1,13 @@
 import NumberFieldKB.NonVanishing.LogDeriv
 import NumberFieldKB.NonVanishing.Abelian
 import NumberFieldKB.NonVanishing.Newman
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.Analysis.LocallyConvex.AbsConvexOpen
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.Order.Interval.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # The Euler product at $s = 1$ in the natural order

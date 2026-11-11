@@ -16,6 +16,18 @@ import QuadFormsKB.Literature.Classical.SumsOfSquares
 import QuadFormsKB.Witt.Extension
 import QuadFormsKB.Witt.Cancellation
 import QuadFormsKB.Literature.LocalGlobal.HasseConventionsNF
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Algebra.Field
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.Data.Finsupp.Pointwise
+import Mathlib.LinearAlgebra.QuadraticForm.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
+import Mathlib.Algebra.Order.Archimedean.Real.Hom
+import Mathlib.LinearAlgebra.QuadraticForm.Radical
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §3: the local-global principle for norms and quadratic forms

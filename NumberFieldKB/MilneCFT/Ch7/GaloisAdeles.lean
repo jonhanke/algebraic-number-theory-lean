@@ -1,6 +1,12 @@
 import NumberFieldKB.Ideles.RelativeNorm
 import NumberFieldKB.Ideles.Bridge
 import NumberFieldKB.MilneCFT.Ch2
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RepresentationTheory.Rep.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §2: the Galois action on adeles, ideles and idele classes

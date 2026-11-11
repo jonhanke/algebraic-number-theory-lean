@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch8.Eisenstein.LambdaCompletion
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.CharP.CharAndCard
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Integral
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # A local field with the invariants of $\mathbb Q_p(\zeta_p)$ containing $\mathbb Q(\zeta_p)$ is the completion

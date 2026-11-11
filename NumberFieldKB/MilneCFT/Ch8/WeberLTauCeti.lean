@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.Density
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Data.Finset.Functor
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, Theorem 7.1, proved unconditionally

@@ -2,6 +2,7 @@ import NumberFieldKB.MilneCFT.Ch7.FirstInequality
 import NumberFieldKB.MilneCFT.Ch7.Cohomology
 import NumberFieldKB.MilneCFT.Ch7.KummerSetting
 import NumberFieldKB.MilneCFT.Ch7.IdeleNormComparison
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII: how the named statements combine

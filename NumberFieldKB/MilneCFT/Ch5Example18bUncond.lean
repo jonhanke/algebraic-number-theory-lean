@@ -1,5 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch5Extra
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Quadratic.RingOfIntegers
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.Data.Nat.Squarefree
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Milne, *Class Field Theory*, V, Example 1.8 (b): the table, unconditionally

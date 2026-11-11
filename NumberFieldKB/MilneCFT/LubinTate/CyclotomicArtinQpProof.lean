@@ -7,6 +7,12 @@ import NumberFieldKB.MilneCFT.LocalCFT.UnramifiedTauCeti
 import NumberFieldKB.MilneCFT.LubinTate.ExtensionYamaguchi
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.ExplicitCyclotomicSymbol.ArtinMap
 import NumberFieldKB.TauCetiPort.NumberTheory.Cyclotomic.Irreducible
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.Padics.LocalField
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Roots
 
 /-!
 # Example 3.13: the local Artin map of $\mathbb Q_p$ on cyclotomic extensions (proved)

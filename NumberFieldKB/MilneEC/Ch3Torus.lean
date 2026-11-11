@@ -1,5 +1,20 @@
 import NumberFieldKB.MilneEC.Ch3Defs
 import NumberFieldKB.MilneEC.Ch3Lattice
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Complex
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.Padics.RingHoms
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
+import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
+import Mathlib.Topology.Compactification.OnePoint.ProjectiveLine
+import Mathlib.LinearAlgebra.TensorProduct.Submodule
+import Mathlib.RingTheory.Polynomial.IsIntegral
 
 /-!
 # Milne, Elliptic Curves, Chapter III §3: the Riemann surfaces `ℂ/Λ` and their endomorphisms

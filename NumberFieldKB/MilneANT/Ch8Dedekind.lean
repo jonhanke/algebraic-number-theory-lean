@@ -1,5 +1,24 @@
 import NumberFieldKB.MilneANT.Ch8GaloisGroups
 import NumberFieldKB.MilneANT.Ch8Chebotarev
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Group.ConjFinite
+import Mathlib.Algebra.Polynomial.SpecificDegree
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.Polynomial.Selmer
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.NumberTheory.LegendreSymbol.QuadraticChar.Basic
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Dedekind's theorem and its consequences

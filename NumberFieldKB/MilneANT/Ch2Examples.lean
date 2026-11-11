@@ -1,5 +1,21 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Polynomial.SpecificDegree
+import Mathlib.Data.Nat.Squarefree
+import Mathlib.LinearAlgebra.Dimension.OrzechProperty
+import Mathlib.NumberTheory.NumberField.Norm
+import Mathlib.NumberTheory.Zsqrtd.GaussianInt
+import Mathlib.RingTheory.Adjoin.PowerBasis
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Polynomial.Selmer
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import QuadFormsKB.Citation
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Disc
+import Mathlib.RingTheory.Polynomial.IsIntegral
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 2: examples of rings of integers

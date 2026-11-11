@@ -1,6 +1,8 @@
 import NumberFieldKB.MilneANT.Ch7OstrowskiFinite
 import NumberFieldKB.MilneANT.Ch7OstrowskiInfinite
 import NumberFieldKB.MilneANT.Ch7OstrowskiComplete
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 7.14: the primes of a number field

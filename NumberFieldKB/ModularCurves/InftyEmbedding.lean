@@ -1,5 +1,11 @@
 import NumberFieldKB.ModularCurves.CuspInfinity
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.Place.RatFunc.Basic
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Tactic.Cases
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Degree
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # $\mathbb Q(t) \to \mathbb C((q))$, $t \mapsto s$, for $s$ with a pole of order $N$

@@ -1,5 +1,12 @@
 import NumberFieldKB.ModularCurves.GenusX0
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.Different.Hurwitz
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The Riemann–Hurwitz formula for $j : X_0(N) \to X_0(1)$

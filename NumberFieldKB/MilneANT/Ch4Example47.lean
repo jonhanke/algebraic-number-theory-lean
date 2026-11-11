@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneANT.Ch4
 import NumberFieldKB.MilneANT.Ch5CubicClassGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Example 4.7, second claim: the class group of $\mathbb Q(\alpha)$, $\alpha^3+10\alpha+1=0$

@@ -1,5 +1,9 @@
 import NumberFieldKB.Ideles.RelativeNorm
 import NumberFieldKB.MilneCFT.Intro.Theorems
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII: notation (norms of ideles, norm groups, the global Artin map)

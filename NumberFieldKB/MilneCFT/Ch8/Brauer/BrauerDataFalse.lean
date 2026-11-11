@@ -5,6 +5,10 @@ Released under Apache 2.0 license as described in the file LICENSE.
 import NumberFieldKB.MilneCFT.Ch8.BrauerInductionUncond
 import Mathlib.GroupTheory.SpecificGroups.Quaternion
 import Mathlib.RingTheory.IntegralDomain
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Data.FunLike.Fintype
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs
 
 /-!
 # `BrauerData` is false as stated

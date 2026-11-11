@@ -1,5 +1,12 @@
 import NumberFieldKB.ModularCurves.ComplexX0
 import NumberFieldKB.ModularCurves.FibreCount
+import Mathlib.FieldTheory.Perfect
+import Mathlib.RingTheory.Henselian
+import Mathlib.Basic.Complex.Basic
+import Mathlib.CategoryTheory.Abelian.Ext
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Discrete.Basic
 
 /-!
 # Extending embeddings of $\mathbb Q(X_0(N))$ to $\mathbb C(X_0(N))$

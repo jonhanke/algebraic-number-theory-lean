@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Tactic.Have
+import Mathlib.Algebra.Azumaya.Basic
+import Mathlib.Algebra.Central.Matrix
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.LinearAlgebra.Basis.MulOpposite
+import Mathlib.LinearAlgebra.Matrix.FiniteDimensional
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch4Tensor
 import NumberFieldKB.MilneCFT.Ch4Modules

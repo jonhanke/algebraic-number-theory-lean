@@ -1,4 +1,6 @@
 import NumberFieldKB.ModularCurves.PlaneModel
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # The Fricke symmetry of the modular polynomial

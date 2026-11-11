@@ -2,6 +2,16 @@ import NumberFieldKB.MilneCFT.GlobalUnconditional
 import NumberFieldKB.MilneCFT.Ch5Unconditional
 import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.MilneCFT.Intro.Theorems
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
 
 /-!
 # Takagi's and Furtwängler's theorems, unconditional (Milne, *Class Field Theory*, Introduction)

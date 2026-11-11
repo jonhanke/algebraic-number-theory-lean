@@ -1,6 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.BrauerInductionUncond
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Induction.Brauer.Induction
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Induction.Monomial
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.RepresentationTheory.Character
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # Brauer's induction theorem from Tau Ceti (Milne, *CFT*, VIII, §10, p. 262)

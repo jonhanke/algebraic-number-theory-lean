@@ -1,5 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch5RayClass
 import Mathlib.NumberTheory.NumberField.InfiniteAdeleRing
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Theorem 1.7 and Example 1.8 (Milne, *Class Field Theory*, Chapter V, §1)

@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch5Artin
 import NumberFieldKB.HeckeCharacter.Basic
 import NumberFieldKB.Ideles.Norm
+import Mathlib.RingTheory.Frobenius
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.NumberTheory.DirichletCharacter.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Milne, *Class Field Theory*, Chapter V: items already in Mathlib or in this library

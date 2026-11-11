@@ -1,6 +1,13 @@
 import NumberFieldKB.MilneANT.Ch8Density
 import NumberFieldKB.Chebotarev.PrimeDensity
 import NumberFieldKB.MilneCFT.Ch6.Basic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.Analysis.SpecialFunctions.Log.Summable
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI §§3–4: polar, Dirichlet and natural density

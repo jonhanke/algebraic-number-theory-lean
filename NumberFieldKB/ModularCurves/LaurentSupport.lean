@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Basic.Complex.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Laurent series supported on the multiples of $g$

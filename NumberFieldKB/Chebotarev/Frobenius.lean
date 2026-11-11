@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Frobenius elements: powers, uniqueness, order

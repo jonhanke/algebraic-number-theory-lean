@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Algebra.FreeAlgebra
+import Mathlib.Algebra.QuaternionBasis
+import Mathlib.Algebra.RingQuot
 import QuadFormsKB.Citation
 
 /-!

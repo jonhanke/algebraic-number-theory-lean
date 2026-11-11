@@ -1,4 +1,12 @@
 import NumberFieldKB.ModularCurves.CuspFibre
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # The widths of the cusps of $X_0(N)$: $c(\sigma_c) = \gcd(N, a_c^2)$

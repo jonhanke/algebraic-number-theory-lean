@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch8.Reciprocity
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §5: cubic reciprocity and Exercise 5.16

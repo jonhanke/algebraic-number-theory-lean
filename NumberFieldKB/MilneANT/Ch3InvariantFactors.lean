@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneANT.Ch3Modules
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
+import Mathlib.Control.Traversable.Equiv
 
 /-!
 # Milne, *Algebraic Number Theory*, Theorem 3.32: the invariant factor theorem, proved

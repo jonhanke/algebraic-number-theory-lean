@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneEC.Ch5ModularForms
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V, Proposition 3.3 in local form: weight 2 cusp forms are holomorphic differentials

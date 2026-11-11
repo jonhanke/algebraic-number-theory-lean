@@ -1,5 +1,6 @@
 import NumberFieldKB.MilneCFT.Intro.ExercisesProofs
 import NumberFieldKB.MilneANT.Ch4Example46
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # Proof of Milne, *CFT*, Introduction, Exercise 0.12

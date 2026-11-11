@@ -1,4 +1,6 @@
 import NumberFieldKB.Chebotarev.Cyclic
+import Mathlib.CategoryTheory.Action.Concrete
+import Mathlib.NumberTheory.NumberField.DirichletDensity
 
 /-!
 # The Chebotarev density theorem

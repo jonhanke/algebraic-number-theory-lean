@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch7.KeyCase
+import Mathlib.FieldTheory.KummerExtension
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6 (p. 215): a cyclic degree-$p$ extension embeds in a Kummer extension

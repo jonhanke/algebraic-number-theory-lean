@@ -1,6 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.FirstInequality
 import NumberFieldKB.Ideles.RelativeNormTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Ideles.Norm.Open
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Openness of idele norm groups from Tau Ceti, through a comparison of idele norms

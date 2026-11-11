@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.Eisenstein.LocalGlobal
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.PurelyInseparable.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Transport of the local Hilbert pairing along an isomorphism of local fields

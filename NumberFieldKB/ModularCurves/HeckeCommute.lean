@@ -1,5 +1,17 @@
 import NumberFieldKB.ModularCurves.HeckeTrace
 import NumberFieldKB.ModularCurves.AtkinLehner
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Trace.Defs
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Data.Nat.Prime.Int
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # Hecke operators commute on $\mathbb Q(X_0(N))$

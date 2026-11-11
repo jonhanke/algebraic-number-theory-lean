@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Algebra.MonoidAlgebra.Basic
+import Mathlib.GroupTheory.GroupAction.Ring
+import Mathlib.LinearAlgebra.Finsupp.VectorSpace
+import Mathlib.RingTheory.Ideal.Maps
 import QuadFormsKB.Citation
 
 /-!

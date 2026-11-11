@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Intro.Theorems
 import Mathlib.NumberTheory.KummerDedekind
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
 
 /-!
 # Introduction of Milne, *Class Field Theory*: Theorem 0.10 and Exercise 0.13

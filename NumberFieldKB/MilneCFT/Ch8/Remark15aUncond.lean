@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark15aBridge
 import NumberFieldKB.MilneCFT.Ch8.Remark15aAlgebra
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # Milne, *CFT*, VIII, Remark 1.5 (a), unconditionally

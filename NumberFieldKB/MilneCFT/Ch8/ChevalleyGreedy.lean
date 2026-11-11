@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Algebra.Torsor.Defs
+import Mathlib.Algebra.Group.Subgroup.Finite
+import Mathlib.Algebra.Group.Pointwise.Finset.Basic
 
 /-!
 # Generating a finite group by elements attached to distinct indices

@@ -1,4 +1,8 @@
 import NumberFieldKB.ModularCurves.Theorem23
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
 
 /-!
 # Modular functions with rational $q$-expansions lie in $\mathbb Q(j, j_M)$

@@ -1,6 +1,16 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark15aLocal
 import NumberFieldKB.MilneCFT.Ch8.Remark15aCheb
 import NumberFieldKB.MilneCFT.Ch8.Eighth
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Roots
 
 /-!
 # Glue for Remark VIII.1.5 (a): local powers, splitting fields, coprime exponents

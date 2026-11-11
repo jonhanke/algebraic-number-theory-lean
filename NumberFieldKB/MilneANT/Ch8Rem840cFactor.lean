@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.NumberTheory.LegendreSymbol.QuadraticReciprocity
+import Mathlib.RingTheory.DedekindDomain.Different
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch8Rem840cBasic
 

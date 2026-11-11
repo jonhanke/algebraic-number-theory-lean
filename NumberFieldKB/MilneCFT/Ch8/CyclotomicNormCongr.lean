@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.NormTrace
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
 import QuadFormsKB.Citation
 
 namespace NumberFieldKB.MilneCFT.Ch8

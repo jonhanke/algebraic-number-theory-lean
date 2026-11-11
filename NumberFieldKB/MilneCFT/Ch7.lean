@@ -31,6 +31,7 @@ import NumberFieldKB.MilneCFT.Ch7.IdealReciprocity
 import NumberFieldKB.MilneCFT.Ch7.IdealReciprocityKer
 import NumberFieldKB.MilneCFT.Ch7.HilbertIdelic
 import NumberFieldKB.MilneCFT.Ch7.IdealExistence
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII: global class field theory, proofs of the main theorems

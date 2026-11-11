@@ -1,5 +1,18 @@
 import NumberFieldKB.MilneEC.Ch3Lattice
 import NumberFieldKB.MilneEC.Ch3Residue
+import Mathlib.Computability.Reduce
+import Mathlib.Algebra.Polynomial.Bivariate
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.LocallyConvex.AbsConvexOpen
+import Mathlib.Analysis.Meromorphic.NormalForm
+import Mathlib.Analysis.Meromorphic.RCLike
+import Mathlib.FieldTheory.RatFunc.AsPolynomial
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 
 /-!
 # Milne, Elliptic Curves, Chapter III §2: elliptic functions

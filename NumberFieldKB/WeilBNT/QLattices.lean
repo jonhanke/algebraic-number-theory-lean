@@ -1,5 +1,10 @@
-import Mathlib
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
+import Mathlib.Algebra.GroupWithZero.Action.Pointwise.Finset
+import Mathlib.Data.Int.Range
 
 /-!
 # Weil, *Basic Number Theory*, V.§1: $\mathbb Q$-lattices and orders

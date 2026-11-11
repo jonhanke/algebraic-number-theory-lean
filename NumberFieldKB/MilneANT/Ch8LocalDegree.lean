@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneANT.Ch8LocalDegreeLower
 import NumberFieldKB.MilneANT.Ch8Remark83
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
 
 /-!
 # The local degree formula and Remark 8.3, unconditionally

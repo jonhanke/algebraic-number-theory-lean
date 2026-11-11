@@ -3,6 +3,13 @@ import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.Chebotarev.PrimeDensityOrth
 import NumberFieldKB.Chebotarev.PrimeDensityLog
 import NumberFieldKB.Chebotarev.DensityTools
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Theorem 2.5: equidistribution of primes in ray classes (Milne, *Class Field Theory*, Chapter V, §2)

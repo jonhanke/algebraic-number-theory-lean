@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Norm.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Remark VIII.3.2: a norm from a split étale algebra

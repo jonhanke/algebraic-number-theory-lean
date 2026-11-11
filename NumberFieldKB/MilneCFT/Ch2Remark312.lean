@@ -2,6 +2,15 @@ import NumberFieldKB.MilneCFT.Ch2Tate
 import NumberFieldKB.MilneCFT.Ch2Remark313
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.Cup.TateTheorem
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.IsoCriterion
+import Mathlib.GroupTheory.PGroup
+import Mathlib.RepresentationTheory.Coinduced
+import Mathlib.Algebra.Torsor.Defs
+import Mathlib.CategoryTheory.Monoidal.Tor
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.Algebra.Category.ModuleCat.Biproducts
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter II, Remark 3.12: reduction to a Kuenneth-type lemma

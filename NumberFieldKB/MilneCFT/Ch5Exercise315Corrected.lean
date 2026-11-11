@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch5NormLimitationUncond
 import NumberFieldKB.MilneCFT.Ch5Exercise315Counter
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Exercise 3.15, corrected and proved

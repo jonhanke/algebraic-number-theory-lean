@@ -1,5 +1,9 @@
 import NumberFieldKB.WeilBNT.SUnits
 import NumberFieldKB.MilneCFT.Ch5Ideles
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, Proposition 15: $k^\times G_P$ is dense in the ideles

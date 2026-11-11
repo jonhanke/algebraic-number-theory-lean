@@ -1,5 +1,13 @@
 import NumberFieldKB.ModularCurves.ComplexGenus
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.Differential.Comparison
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.FieldTheory.RatFunc.Degree
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
 
 /-!
 # The divisor of $dj$ on $\mathbb C(X_0(N))$

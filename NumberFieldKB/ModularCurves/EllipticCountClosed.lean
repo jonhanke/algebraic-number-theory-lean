@@ -1,5 +1,7 @@
 import NumberFieldKB.ModularCurves.EllipticCount
 import NumberFieldKB.TauCetiPort.NumberTheory.LegendreSymbol.QuadraticCongruence
+import Mathlib.NumberTheory.LegendreSymbol.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
 
 /-!
 # The numbers of elliptic points of $\Gamma_0(N)$

@@ -1,4 +1,9 @@
 import NumberFieldKB.WeilBNT.QLattices
+import Mathlib.LinearAlgebra.Trace
+import Mathlib.LinearAlgebra.Charpoly.ToMatrix
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Weil, *Basic Number Theory*, V.§1 Prop. 3: elements of an order are integral

@@ -10,7 +10,7 @@ import NumberFieldKB.WeilBNT.FunctionField.ZetaFinal
 import NumberFieldKB.WeilBNT.FunctionField.HeckeRamFE
 
 /-!
-# Headline statements of NumberFieldKB 0.2.0: Weil, Basic Number Theory, proved
+# Headline statements of NumberFieldKB 0.2.1: Weil, Basic Number Theory, proved
 
 The declarations of `Challenge.lean`, with the same names and statements, each proved by citing the library theorems
 named in its proof. `lake comparator` (configured by `comparator.json`) checks that every theorem here has exactly the

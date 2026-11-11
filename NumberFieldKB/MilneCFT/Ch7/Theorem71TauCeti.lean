@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch7.BrauerTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.RelativeBrauerLocalization
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Theorem 7.1 from the Tau Ceti port

@@ -1,6 +1,20 @@
 import NumberFieldKB.MilneCFT.Ch7.Prop68TauCeti
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangChar
 import Mathlib.GroupTheory.FiniteAbelian.Duality
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Grunwald–Wang: local characters of prescribed order

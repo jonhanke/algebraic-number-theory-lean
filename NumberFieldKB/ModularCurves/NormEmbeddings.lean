@@ -1,5 +1,10 @@
 import NumberFieldKB.ModularCurves.RiemannHurwitz
 import NumberFieldKB.ModularCurves.PlaceNorm
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Norm.Transitivity
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
 
 /-!
 # Norms as products over embeddings, and orders of norms at Tau Ceti's places

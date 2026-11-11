@@ -1,4 +1,7 @@
 import NumberFieldKB.ModularCurves.AtkinLehner
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula
 
 /-!
 # The cusp $\infty$ of $X_0(N)$ over $\mathbb Q$: $q$-expansions as a place

@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch7.Existence
+import Mathlib.RingTheory.Henselian
+import Mathlib.GroupTheory.FiniteAbelian.Basic
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §9: Theorem 9.5 from Lemmas 9.3 and 9.4

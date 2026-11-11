@@ -4,6 +4,12 @@ import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.Reciprocit
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.LocalArtin.Compatibility
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.LocalArtin.Frobenius
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.LocalArtin.InfinitePlace
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Theorem 5.3 (the reciprocity law), proved from Tau Ceti

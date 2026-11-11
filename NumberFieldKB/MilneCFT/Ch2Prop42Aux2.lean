@@ -1,5 +1,6 @@
-import Mathlib
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 import NumberFieldKB.MilneCFT.Ch2Prop42Aux1
+import Mathlib.Data.Finset.Sups
 
 /-!
 # Proposition 4.2, auxiliary file 2: inhomogeneous versus homogeneous cochains of a group

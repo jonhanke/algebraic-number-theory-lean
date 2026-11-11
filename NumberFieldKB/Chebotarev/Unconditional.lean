@@ -1,5 +1,10 @@
 import NumberFieldKB.Chebotarev.Statements
 import NumberFieldKB.Ideles.RelativeNorm
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The Chebotarev density theorem, unconditionally

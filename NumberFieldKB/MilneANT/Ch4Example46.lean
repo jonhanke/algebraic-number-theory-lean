@@ -1,5 +1,15 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Polynomial.SpecificDegree
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
 import NumberFieldKB.MilneANT.Ch2Examples
+import Mathlib.RingTheory.Flat.Rank
 
 /-!
 # Milne, *Algebraic Number Theory*, Example 4.6: auxiliary results for $\mathbb Q(\sqrt{-5})$

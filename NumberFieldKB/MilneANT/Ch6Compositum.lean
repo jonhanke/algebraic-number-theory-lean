@@ -1,5 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.RingTheory.DedekindDomain.LinearDisjoint
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
 import QuadFormsKB.Citation
+import Mathlib.LinearAlgebra.Matrix.Charpoly.Disc
 
 /-!
 # Milne, *Algebraic Number Theory*, Lemma 6.5: integers of a compositum

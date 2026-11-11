@@ -3,6 +3,17 @@ import NumberFieldKB.WeilBNT.FunctionField.PlaceDedekind
 import NumberFieldKB.WeilBNT.FunctionField.Separating
 import Mathlib.RingTheory.RamificationInertia.Basic
 import Mathlib.FieldTheory.IsAlgClosed.Basic
+import Mathlib.FieldTheory.SeparablyGenerated
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
+import Mathlib.RingTheory.Polynomial.IsIntegral
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Integral
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Remark 7.17(b), part 1: places over an algebraically closed field and the fundamental identity

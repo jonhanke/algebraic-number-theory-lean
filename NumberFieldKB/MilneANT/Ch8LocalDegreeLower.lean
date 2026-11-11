@@ -1,5 +1,15 @@
 import NumberFieldKB.MilneANT.Ch8Prop810
 import NumberFieldKB.MilneANT.Ch7OstrowskiFinite
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
 
 /-!
 # Milne, *Algebraic Number Theory*, Remark 8.3: the inequality $e f \le [L_w : K_v]$

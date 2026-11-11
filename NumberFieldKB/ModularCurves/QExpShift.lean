@@ -1,4 +1,6 @@
 import NumberFieldKB.ModularCurves.CuspInfinity
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
 
 /-!
 # $q$-expansions of $f(z + r)$

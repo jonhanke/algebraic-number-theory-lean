@@ -2,6 +2,7 @@ name: build
 
 # lake comparator runs once per book (Challenge_<book> against Solution_<book>), as a matrix of jobs after the
 # build: a single check of all headlines needs far more memory than a runner has (releases 0.2.0 and later).
+# The same workflow as elementary-number-theory-lean's, with this repository's books.
 
 on:
   push:
@@ -101,6 +102,9 @@ jobs:
             echo "non-standard axioms: $bad"; exit 1
           fi
           echo "all headline theorems use only propext, Classical.choice, Quot.sound"
+
+      - name: Check that the Lean names of the book maps exist
+        run: lake env lean scripts/check_map_names.lean
 
   comparator:
     needs: build

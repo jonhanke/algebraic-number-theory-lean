@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.PlaneModel
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions
 
 /-!
 # $\mathbb Q$ is the exact constant field of $\mathbb Q(j, j_N)$

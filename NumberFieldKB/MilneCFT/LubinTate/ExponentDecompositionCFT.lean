@@ -2,6 +2,13 @@ import NumberFieldKB.MilneCFT.LubinTate.KroneckerWeber
 import NumberFieldKB.MilneCFT.LocalCFT.UnconditionalYamaguchi
 import NumberFieldKB.MilneCFT.LocalCFT.TotallyRamifiedTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.UnramifiedTauCeti
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Lemma 4.11 (Milne, *CFT*, I, §4), proved by local class field theory

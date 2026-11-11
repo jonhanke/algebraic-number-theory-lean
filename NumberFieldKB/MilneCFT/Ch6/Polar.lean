@@ -2,6 +2,15 @@ import NumberFieldKB.MilneCFT.Ch6.Splitting
 import NumberFieldKB.MilneCFT.Ch6.Density
 import NumberFieldKB.HeckeL.DedekindCont
 import NumberFieldKB.MilneCFT.Ch6.PolarAux
+import Mathlib.FieldTheory.PolynomialGaloisGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI §§3–4: polar densities

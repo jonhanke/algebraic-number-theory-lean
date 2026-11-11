@@ -1,4 +1,15 @@
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Norm.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Normed.Group.Defs
 
 /-!
 # Milne, *Class Field Theory*, VIII, 5.7 (auxiliary): $-\gamma^n$ is a norm from $K(\gamma)$

@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.Theorem23Uncond
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Ideles.Ray.OpenSubgroup
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Ideles.Ray.ClassQuotient
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *CFT*, VIII, Theorem 2.3: `ExistsU` from Chevalley's congruence theorem

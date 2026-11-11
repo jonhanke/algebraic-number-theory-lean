@@ -3,6 +3,9 @@ import NumberFieldKB.ModularCurves.JLocal
 import NumberFieldKB.MilneEC.Ch5Differentials
 import NumberFieldKB.MilneEC.Ch5ModularForms
 import NumberFieldKB.ModularCurves.Rationality
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
+import Mathlib.NumberTheory.ModularForms.EisensteinSeries.Basic
 
 /-!
 # $f/j'$ is a modular function for a weight 2 cusp form $f$

@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch5Extra
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyUncond
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *CFT*, V, Aside 4.5: every subgroup of finite index of `U_K` is open

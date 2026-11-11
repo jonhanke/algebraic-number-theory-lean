@@ -1,4 +1,8 @@
 import NumberFieldKB.ModularCurves.ModularPolynomial
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # The conjugates of $j_N$ at the cusp $\infty$

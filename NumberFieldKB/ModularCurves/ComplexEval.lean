@@ -1,5 +1,13 @@
 import NumberFieldKB.ModularCurves.ComplexLocal
 import NumberFieldKB.ModularCurves.ComplexCuspDeriv
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Calculus.Deriv.Polynomial
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # Polynomials in $j, j_N$ inside $\mathbb C(X_0(N))$, their germs and expansions

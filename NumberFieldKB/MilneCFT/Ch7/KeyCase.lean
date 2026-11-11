@@ -2,6 +2,11 @@ import NumberFieldKB.MilneCFT.Ch7.Existence
 import NumberFieldKB.MilneCFT.Ch7.Lemma42
 import NumberFieldKB.MilneCFT.Ch7.Lemma66
 import NumberFieldKB.MilneCFT.Ch7.IdeleOpen
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.SInteger
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Lemma 9.3 (the key case of the existence theorem)

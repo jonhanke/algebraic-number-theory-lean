@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneEC.Ch5JFunction
+import Mathlib.Computability.Reduce
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.Analytic.Polynomial
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
+import Mathlib.Geometry.Manifold.MFDeriv.NormedSpace
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §2: the meromorphic functions on $X_0(1)$ are $\mathbb C(j)$

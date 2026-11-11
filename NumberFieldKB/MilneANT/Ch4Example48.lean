@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.Algebra.CharP.CharAndCard
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.Polynomial.Selmer
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 import NumberFieldKB.MilneANT.Ch2Examples
 
 /-!

@@ -1,4 +1,5 @@
-import Mathlib
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch2Cup
 import NumberFieldKB.MilneCFT.Ch2Lemma33

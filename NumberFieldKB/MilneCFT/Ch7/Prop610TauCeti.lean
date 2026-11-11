@@ -2,6 +2,16 @@ import NumberFieldKB.MilneCFT.Ch7.KummerTauCeti
 import NumberFieldKB.MilneCFT.Ch7.Lemma67
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.Kummer.Index
 import NumberFieldKB.TauCetiPort.FieldTheory.Kummer.Cyclic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.EnoughRootsOfUnity
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Proposition 6.10 and Lemma 6.7 from the Tau Ceti port

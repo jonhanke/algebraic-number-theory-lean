@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.ComplexCuspLink
+import Mathlib.RingTheory.Henselian
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.NormalForm
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
 
 /-!
 # From $L(W)$ to holomorphic weight 2 forms for $\Gamma_0(N)$

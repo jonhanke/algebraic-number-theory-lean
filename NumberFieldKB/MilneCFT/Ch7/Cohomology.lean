@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.GaloisAdeles
 import NumberFieldKB.MilneCFT.Ch7.TateZero
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §§2–5: cohomology of ideles, units and idele classes

@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneEC.Ch1Functions
 import Mathlib.NumberTheory.RatFunc.Ostrowski
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Polynomial.DegreeLT
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Example 4.6: the projective line has genus 0

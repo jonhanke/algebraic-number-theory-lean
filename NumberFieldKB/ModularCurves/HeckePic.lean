@@ -1,4 +1,11 @@
 import NumberFieldKB.ModularCurves.PlaceNorm
+import Mathlib.FieldTheory.Perfect
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
 
 /-!
 # The Hecke correspondence $T(p)$ on $\mathrm{Pic}^0(X_0(N))$

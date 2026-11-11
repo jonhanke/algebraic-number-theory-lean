@@ -1,4 +1,18 @@
 import NumberFieldKB.ModularCurves.CuspDegree
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.Basic.Complex.Basic
+import Mathlib.NumberTheory.ModularForms.Cusps
+import Mathlib.NumberTheory.RatFunc.Ostrowski
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Counting the cusps of $X_0(N)$ over the cusp of $X(1)$

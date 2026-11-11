@@ -1,4 +1,15 @@
 import NumberFieldKB.MilneCFT.Ch6.Density
+import Mathlib.FieldTheory.Cardinality
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne, *Class Field Theory*, VI, Remark 4.2 (a): no natural density, from the prime number theorem

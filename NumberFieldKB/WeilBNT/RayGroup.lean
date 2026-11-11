@@ -1,4 +1,8 @@
 import NumberFieldKB.WeilBNT.IdeleCharacterGenerators
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, text p. 138: the group $\gamma$ for $g_v=1+\mathfrak p_v^{m(v)}$

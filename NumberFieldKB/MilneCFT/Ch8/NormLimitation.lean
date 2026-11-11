@@ -5,6 +5,12 @@ import NumberFieldKB.MilneCFT.Ch7.KeyCase
 import NumberFieldKB.MilneCFT.Ch7.SUnitIndex
 import NumberFieldKB.MilneCFT.Ch7.IdelicExistence
 import NumberFieldKB.MilneCFT.Ch7.IdealExistence
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The norm limitation theorem in the form used by the existence theorem

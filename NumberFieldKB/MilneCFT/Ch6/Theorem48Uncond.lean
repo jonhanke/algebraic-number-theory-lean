@@ -1,6 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch6.SecondInequality
 import NumberFieldKB.MilneCFT.Ch5Density
 import NumberFieldKB.MilneCFT.Ch8.WeberLTauCeti
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.MulChar.Duality
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter VI, Theorem 4.8, proved unconditionally

@@ -1,5 +1,15 @@
 import NumberFieldKB.MilneCFT.Ch8.ExplicitPairingSteinberg
 import NumberFieldKB.MilneCFT.LocalCFT.Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Algebra.CharP.CharAndCard
+import Mathlib.FieldTheory.Finite.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.GroupWithZero.Submonoid.CancelMulZero
+import Mathlib.Data.Nat.Choose.Dvd
 
 /-!
 # The unit filtration of $\mathbb Q_p[\zeta_p]$ (for Milne, *CFT*, VIII, Prop. 5.12)

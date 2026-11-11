@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.ZMod.UnitsCyclic
+import Mathlib.Algebra.Order.Ring.Star
 import NumberFieldKB.MilneCFT.Ch8.Eighth
 
 /-!

@@ -2,6 +2,20 @@ import NumberFieldKB.MilneCFT.Ch5Ideles
 import NumberFieldKB.HeckeCharacter.Local
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
 import QuadFormsKB.Lattices.SAApprox
+import Mathlib.Computability.Reduce
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Complex
+import Mathlib.RingTheory.Henselian
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.Circle
+import Mathlib.Analysis.Convex.Contractible
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Characters of idèles and norms of idèles (Milne, *Class Field Theory*, Chapter V, §4, pp. 173–177)

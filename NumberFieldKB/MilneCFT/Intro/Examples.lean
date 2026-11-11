@@ -1,4 +1,5 @@
 import NumberFieldKB.MilneCFT.Intro.Theorems
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # Examples and exercises of the Introduction (Milne, *Class Field Theory*, Introduction)

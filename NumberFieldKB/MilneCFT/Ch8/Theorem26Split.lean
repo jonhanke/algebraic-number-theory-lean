@@ -1,6 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWang
 import NumberFieldKB.MilneCFT.Ch8.LocalRelBrTauCeti
 import NumberFieldKB.MilneCFT.Ch7.BrauerTauCeti
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.Algebra.BrauerGroup.Defs
+import Mathlib.NumberTheory.NumberField.Completion.LiesOverInstances
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
 
 /-!
 # Milne, *CFT*, VIII, Theorem 2.6: a cyclic splitting field of degree the period

@@ -1,6 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
 import NumberFieldKB.Chebotarev.DirichletHeckeRat
 import QuadFormsKB.Literature.HasseNorm.Reciprocity
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The main theorems in terms of idèles (Milne, *Class Field Theory*, Chapter V, §5, pp. 177–182)

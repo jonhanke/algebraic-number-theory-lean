@@ -3,6 +3,8 @@ import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbert
 import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbertClassFields.SmallHilbertClassFieldDegree
 import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbertClassFields.SmallHilbertClassFieldPrincipalization
 import NumberFieldKB.YamaguchiPort.GaloisCohomology.GroupTheory.Transfer.Witt
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # Theorem 3.19 and Remark 3.20 from Yamaguchi's library (Milne, *CFT*, V, pp. 163)

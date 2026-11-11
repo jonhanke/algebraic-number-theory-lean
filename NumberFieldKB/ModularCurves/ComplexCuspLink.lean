@@ -1,5 +1,12 @@
 import NumberFieldKB.ModularCurves.ComplexForward
 import NumberFieldKB.ModularCurves.ComplexQExp
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
 
 /-!
 # The cusp condition for representatives of cusp forms

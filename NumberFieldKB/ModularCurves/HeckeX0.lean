@@ -1,5 +1,9 @@
 import NumberFieldKB.ModularCurves.PlaceMaps
 import NumberFieldKB.ModularCurves.DivisorsX0
+import Mathlib.RingTheory.AdjoinRoot
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.DedekindDomain.Basic
+import Mathlib.RingTheory.Valuation.ValuationSubring
 
 /-!
 # The Hecke correspondence $T(p)$ on divisors of $X_0(N)$ over $\mathbb Q$

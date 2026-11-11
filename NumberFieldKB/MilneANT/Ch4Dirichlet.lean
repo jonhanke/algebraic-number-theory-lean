@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.MeasureTheory.Integral.Pi
+import Mathlib.Topology.Separation.CompletelyRegular
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Gamma.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Lemma 4.23: auxiliary results for Dirichlet's integral

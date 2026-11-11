@@ -2,6 +2,12 @@ import NumberFieldKB.ModularCurves.ComplexCuspLink
 import NumberFieldKB.ModularCurves.ComplexCuspDeriv
 import NumberFieldKB.ModularCurves.ComplexConverseCusp
 import NumberFieldKB.ModularCurves.GenusX0
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
 
 /-!
 # Milne, Corollary V.3.4: $\dim S_2(\Gamma_0(N)) = g(X_0(N))$

@@ -1,4 +1,13 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Polynomial.SpecificDegree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Discriminant.Basic
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch5CubicBound
 

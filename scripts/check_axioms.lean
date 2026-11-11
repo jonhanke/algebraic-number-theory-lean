@@ -4,10 +4,6 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Jonathan Hanke
 -/
 import Solution
-import NumberFieldKB.MilneCFT.Ch8.Theorem26Uncond
-import NumberFieldKB.MilneCFT.LubinTate.LocalKroneckerWeberCFT
-import NumberFieldKB.MilneCFT.Ch8.Eisenstein.Reciprocity
-import NumberFieldKB.MilneCFT.Ch8.Eisenstein.Furtwangler
 
 /-!
 # Axiom check for the headline theorems
@@ -51,10 +47,9 @@ fails if any other axiom (in particular `sorryAx`) appears.
 
 -- Milne, *Class Field Theory*
 #print axioms NumberFieldKB.Headlines.grunwaldWang
--- Library theorems in 0.2.0 (headlines in a later release)
-#print axioms NumberFieldKB.MilneCFT.Ch8.T26.theorem2_6
-#print axioms NumberFieldKB.MilneCFT.LocalCFT.localKroneckerWeber
-#print axioms NumberFieldKB.MilneCFT.Ch8.Eisenstein.eisensteinReciprocity
-#print axioms NumberFieldKB.MilneCFT.Ch8.Eisenstein.theorem5_14
+#print axioms NumberFieldKB.Headlines.centralDivisionAlgebra_cyclic
+#print axioms NumberFieldKB.Headlines.localKroneckerWeber_lubinTate
+#print axioms NumberFieldKB.Headlines.eisensteinReciprocity
+#print axioms NumberFieldKB.Headlines.furtwangler_fermat
 #print axioms NumberFieldKB.Headlines.gauss_cubicCurve_count
 #print axioms NumberFieldKB.Headlines.weberL_continuation

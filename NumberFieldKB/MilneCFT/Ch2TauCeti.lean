@@ -3,6 +3,13 @@ import NumberFieldKB.MilneCFT.Ch2Tate
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.GroupCohomology.InflationRestriction
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.GroupCohomology.Shapiro
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.GroupHomology.Transfer.Abelianization
+import Mathlib.GroupTheory.Transfer
+import Mathlib.RepresentationTheory.FiniteIndex
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Shapiro
+import Mathlib.RepresentationTheory.Homological.GroupHomology.Functoriality
+import Mathlib.RepresentationTheory.Homological.GroupHomology.Shapiro
 
 /-!
 # Milne, *Class Field Theory*, Chapter II: named statements proved from the Tau Ceti port

@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.FiniteRamification
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
 
 /-!
 # Germs invariant under an elliptic element

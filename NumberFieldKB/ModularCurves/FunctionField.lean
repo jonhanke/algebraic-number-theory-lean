@@ -1,6 +1,12 @@
 import NumberFieldKB.ModularCurves.Rationality
 import NumberFieldKB.ModularCurves.Fricke
 import NumberFieldKB.ModularCurves.ConstantField
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Basic
 
 /-!
 # The function field $\mathbb Q(X_0(N))$

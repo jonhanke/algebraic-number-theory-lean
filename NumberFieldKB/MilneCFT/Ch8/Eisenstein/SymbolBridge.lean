@@ -1,5 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.PowerResidueSymbol.Ideal
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.MulChar.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.EnoughRootsOfUnity
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne's power residue symbol and Tau Ceti's

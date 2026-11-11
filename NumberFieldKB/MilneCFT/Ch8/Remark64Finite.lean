@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark64
 import NumberFieldKB.WeilBNT.GaloisCompletionsGalois
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Remark VIII.6.4: the local Galois data at the finite places

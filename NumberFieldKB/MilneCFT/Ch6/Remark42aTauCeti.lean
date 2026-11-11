@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch6.Remark42aNatural
 import NumberFieldKB.TauCetiPort.NumberTheory.Chebotarev.PrimeCounting.PrimesCongruent
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne, *Class Field Theory*, VI, Remark 4.2 (a): the natural-density half, unconditionally

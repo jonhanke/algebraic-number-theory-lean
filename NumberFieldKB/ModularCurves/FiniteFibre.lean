@@ -1,6 +1,15 @@
 import NumberFieldKB.ModularCurves.JLocal
 import NumberFieldKB.ModularCurves.MeroGerm
 import NumberFieldKB.ModularCurves.CuspFibre
+import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
+import Mathlib.Analysis.Analytic.Polynomial
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
+import Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions
 
 /-!
 # The embeddings of $\mathbb Q(X_0(N))$ into the meromorphic germs at a point of $\mathbb H$

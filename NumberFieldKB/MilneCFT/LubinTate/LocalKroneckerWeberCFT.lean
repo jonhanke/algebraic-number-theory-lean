@@ -1,6 +1,13 @@
 import NumberFieldKB.MilneCFT.LubinTate.NormGroupTauCeti
 import NumberFieldKB.MilneCFT.LubinTate.ExponentDecompositionCFT
 import NumberFieldKB.MilneCFT.LocalCFT.UnitFiltrationIndex
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Theorem 4.8 (local Kronecker–Weber) (Milne, *CFT*, I, §4), proved

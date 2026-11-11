@@ -1,5 +1,9 @@
 import NumberFieldKB.WeilBNT.PadicIdeleCharacters
 import NumberFieldKB.WeilBNT.IdeleCharacterComplex
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, Corollary of Prop. 17, case (c): $\Gamma=K^\times$, $K$ a $p$-field

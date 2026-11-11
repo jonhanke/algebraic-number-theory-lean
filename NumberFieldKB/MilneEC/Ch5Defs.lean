@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.ModularForms.QExpansion
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 import QuadFormsKB.Citation
 
 /-!

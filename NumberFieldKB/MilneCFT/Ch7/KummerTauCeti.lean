@@ -7,6 +7,17 @@ import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.ExponentNo
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.LocalGlobal.DecompositionGroup
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Frobenius.DecompositionGroup
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.SplitsCompletely.GaloisClosure
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.EnoughRootsOfUnity
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6 and Appendix: the Kummer lemmas from the Tau Ceti port

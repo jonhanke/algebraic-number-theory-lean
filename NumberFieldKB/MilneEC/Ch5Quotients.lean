@@ -1,4 +1,20 @@
 import NumberFieldKB.MilneEC.Ch5ModularForms
+import Mathlib.NumberTheory.Modular
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.RemovableSingularity
+import Mathlib.LinearAlgebra.Matrix.FixedDetMatrices
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.NumberTheory.ModularForms.ProperlyDiscontinuous
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Metric
+import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+import Mathlib.Data.Nat.Dist
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §1: the Riemann surfaces $X_0(N)$

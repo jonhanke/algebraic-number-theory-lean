@@ -17,6 +17,8 @@ import QuadFormsKB.Witt.Cancellation
 import QuadFormsKB.Literature.LocalGlobal.HasseConventionsNF
 import NumberFieldKB.HeckeL.Basic
 import NumberFieldKB.MilneCFT.Intro.RayClass
+import Mathlib.LinearAlgebra.QuadraticForm.AlgClosed
+import Mathlib.LinearAlgebra.QuadraticForm.Real
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII: items formalized elsewhere (citations)

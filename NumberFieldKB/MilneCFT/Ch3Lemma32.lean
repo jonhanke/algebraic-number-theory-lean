@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.FieldTheory.AbsoluteGaloisGroup
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3ArtinMaps
 import NumberFieldKB.MilneCFT.LocalCFT.AutoCompatible

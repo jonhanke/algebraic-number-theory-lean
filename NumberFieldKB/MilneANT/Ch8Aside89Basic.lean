@@ -1,4 +1,5 @@
-import Mathlib
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.Algebra.Order.Star.Real
 import QuadFormsKB.Citation
 
 /-!

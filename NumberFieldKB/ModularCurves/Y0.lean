@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.Hecke
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The smooth affine curve $Y_0(N)$ over $\mathbb Q$: the normalization of the plane model

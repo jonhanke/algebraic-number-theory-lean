@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneEC.Ch3Defs
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.LocallyConvex.AbsConvexOpen
+import Mathlib.Analysis.Complex.UpperHalfPlane.MoebiusAction
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 
 /-!
 # Milne, Elliptic Curves, Chapter III §1–§2: lattices, bases, doubly periodic functions

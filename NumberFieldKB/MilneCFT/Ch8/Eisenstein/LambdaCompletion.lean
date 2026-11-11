@@ -1,5 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch8.Eisenstein.LocalGlobal
 import NumberFieldKB.MilneCFT.Ch8.Prop512
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 
 /-!
 # The completion of $\mathbb Q(\zeta_p)$ at $\lambda = (\zeta - 1)$

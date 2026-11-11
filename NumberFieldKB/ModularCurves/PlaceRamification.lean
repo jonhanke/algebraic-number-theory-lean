@@ -1,4 +1,9 @@
 import NumberFieldKB.ModularCurves.HeckeX0
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.RamificationInertia.Valuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Ramification indices of places of $X_0$ and of primes of $Y_0$

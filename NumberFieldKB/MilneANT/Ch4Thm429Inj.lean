@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.FractionalIdeal.Norm
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Embeddings
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch4Thm429Basic
 

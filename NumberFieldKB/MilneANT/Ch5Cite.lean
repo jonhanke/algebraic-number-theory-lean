@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.Algebra.ContinuedFractions.Basic
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.CMField
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Rat
 import QuadFormsKB.Citation
 
 /-!

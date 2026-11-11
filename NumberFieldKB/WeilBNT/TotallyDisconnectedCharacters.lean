@@ -1,4 +1,7 @@
 import NumberFieldKB.WeilBNT.IdeleCharacterComplex
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Topology.LocallyConstant.Basic
+import Mathlib.Topology.Algebra.Nonarchimedean.Basic
 
 /-!
 # Weil, *Basic Number Theory*, VII.§3, Lemma 4: representations of totally disconnected groups

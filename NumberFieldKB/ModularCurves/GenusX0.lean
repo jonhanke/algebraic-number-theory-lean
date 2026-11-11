@@ -1,5 +1,10 @@
 import NumberFieldKB.ModularCurves.Genus
 import NumberFieldKB.ModularCurves.DivisorsX0
+import Mathlib.RingTheory.AdjoinRoot
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The genus of $X_0(N)$ and its divisors of functions

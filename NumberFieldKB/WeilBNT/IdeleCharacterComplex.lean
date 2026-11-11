@@ -1,4 +1,10 @@
 import NumberFieldKB.WeilBNT.IdeleCharacterExtension
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, Corollary of Prop. 17, case (b): $\Gamma=\mathbb C^\times$

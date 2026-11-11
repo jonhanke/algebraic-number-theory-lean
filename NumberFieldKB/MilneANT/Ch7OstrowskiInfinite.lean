@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneANT.Ch7LocalFields
 import NumberFieldKB.MilneANT.Ch7Places
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.Analysis.Normed.Unbundled.RingSeminorm
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 open NumberField
 

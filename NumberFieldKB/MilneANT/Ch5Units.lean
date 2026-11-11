@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.Algebra.QuadraticAlgebra.Discriminant
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.LinearAlgebra.Dimension.Torsion.Finite
+import Mathlib.NumberTheory.NumberField.Units.DirichletTheorem
+import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 import QuadFormsKB.Citation
 import QuadFormsKB.Binary.FormAut
 import QuadFormsKB.Literature.HasseNorm.SUnits

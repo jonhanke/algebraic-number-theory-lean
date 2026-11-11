@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-!
 # Milne, *Class Field Theory*, VI, Remark 4.2 (a): real-variable lemmas for the Dirichlet-density half

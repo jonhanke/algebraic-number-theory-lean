@@ -1,5 +1,6 @@
 import NumberFieldKB.ModularCurves.ModularPolynomial
 import NumberFieldKB.MilneEC.Ch5LevelOne
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # The modular polynomial has rational coefficients (Milne, *Elliptic Curves*, Ch. V, Proposition 2.4)

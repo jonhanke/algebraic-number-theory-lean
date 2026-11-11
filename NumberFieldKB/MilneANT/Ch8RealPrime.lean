@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneANT.Ch8GaloisGroups
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Remark 8.24 (real primes)

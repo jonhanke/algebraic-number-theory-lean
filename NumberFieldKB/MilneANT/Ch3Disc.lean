@@ -1,4 +1,13 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Smooth.Field
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
 import QuadFormsKB.Citation
 
 /-!

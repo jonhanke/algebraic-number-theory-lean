@@ -1,4 +1,17 @@
 import NumberFieldKB.ModularCurves.Rotation
+import Mathlib.Analysis.Analytic.Polynomial
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Calculus.Deriv.Polynomial
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The fibres of $j : X_0(N) \to X_0(1)$ over $j = 0$ and $j = 1728$

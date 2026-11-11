@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.RingTheory.FractionalIdeal.Norm
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch4Thm429Surj
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.TotallyPositive

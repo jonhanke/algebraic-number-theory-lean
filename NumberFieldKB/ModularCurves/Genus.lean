@@ -2,6 +2,13 @@ import NumberFieldKB.ModularCurves.PlaceFundamental
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.Differential.CanonicalDivisor
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.Place.OfValuationSubring
 import NumberFieldKB.TauCetiPort.FieldTheory.FunctionField.RiemannRoch.RatFunc
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.RingTheory.Valuation.Discrete.Basic
 
 /-!
 # The genus of a function field of one variable over an arbitrary constant field

@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
+import Mathlib.Algebra.Order.Archimedean.Real.Basic
 import NumberFieldKB.TauCetiPort.NumberTheory.Chebotarev.PrimeCounting.FrobeniusPrimeCount
 import NumberFieldKB.TauCetiPort.NumberTheory.Chebotarev.FrobeniusPrimeSet
 

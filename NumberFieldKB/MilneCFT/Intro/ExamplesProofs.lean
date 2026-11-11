@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Intro.Examples
 import NumberFieldKB.MilneANT.Ch8Examples
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LegendreSymbol.JacobiSymbol
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Proof of Milne, *CFT*, Introduction, Exercise 0.11

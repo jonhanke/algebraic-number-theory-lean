@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneANT.Ch8Basic
+import Mathlib.RingTheory.Frobenius
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.RegularLocalRing.Defs
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: decomposition groups in towers; the Frobenius element

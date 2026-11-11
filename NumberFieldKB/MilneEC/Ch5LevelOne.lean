@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneEC.Ch5ModularForms
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §3: the graded algebra of modular forms of level one

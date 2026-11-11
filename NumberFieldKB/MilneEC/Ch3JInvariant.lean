@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneEC.Ch3Weierstrass
+import Mathlib.AlgebraicGeometry.EllipticCurve.IsomOfJ
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # Milne, Elliptic Curves, Chapter III §3: the `j`-invariant and Theorem 3.10

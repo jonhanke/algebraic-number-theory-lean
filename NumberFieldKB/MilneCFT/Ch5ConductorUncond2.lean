@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch5ConductorUncond
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 3.12 (the Takagi group), unconditional

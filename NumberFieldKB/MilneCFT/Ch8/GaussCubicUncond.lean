@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.LSeries
 import NumberFieldKB.MilneCFT.Ch8.CubicTauCeti
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.NumberTheory.JacobiSum.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Three
 
 /-!
 # Milne, *Class Field Theory*, VIII §10: Gauss's cubic point count, unconditionally

@@ -1,4 +1,14 @@
 import NumberFieldKB.MilneCFT.Ch8.Quadratic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.NumberTheory.NumberField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Normed.Field.Lemmas
 
 /-!
 # Milne, *Class Field Theory*, Remark VIII.3.2: the field $\mathbb Q(\sqrt{13}, \sqrt{17})$

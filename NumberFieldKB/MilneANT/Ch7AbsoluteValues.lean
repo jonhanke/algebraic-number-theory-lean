@@ -1,4 +1,16 @@
 import NumberFieldKB.MilneANT.Ch7Basic
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.AbsoluteValue.Equivalence
+import Mathlib.NumberTheory.Padics.Complex
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.GDelta.MetrizableSpace
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.SpecialFunctions.Log.Base
+import Mathlib.Topology.Algebra.Order.ArchimedeanDiscrete
+import Mathlib.RingTheory.Norm.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: absolute values

@@ -13,6 +13,7 @@ import NumberFieldKB.MilneCFT.Ch4H2
 import NumberFieldKB.MilneCFT.Ch4Special
 import NumberFieldKB.MilneCFT.Ch4Complements
 import NumberFieldKB.MilneCFT.Ch4Global
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, Class Field Theory, Chapter IV: Brauer groups

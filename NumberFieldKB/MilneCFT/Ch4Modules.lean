@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.LinearAlgebra.Matrix.Action
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleModule.WedderburnArtin
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
 
 /-!

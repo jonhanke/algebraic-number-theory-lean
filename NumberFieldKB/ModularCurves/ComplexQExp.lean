@@ -1,4 +1,6 @@
 import NumberFieldKB.ModularCurves.QExpTransfer
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.NumberTheory.ModularForms.QExpansion
 
 /-!
 # Complex polynomial identities and Laurent expansions

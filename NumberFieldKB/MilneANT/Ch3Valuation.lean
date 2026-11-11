@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.Order
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
 import QuadFormsKB.Citation
 
 /-!

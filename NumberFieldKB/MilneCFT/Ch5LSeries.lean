@@ -1,6 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
 import NumberFieldKB.MilneANT.Ch8
 import NumberFieldKB.HeckeL.DedekindCont
+import Mathlib.RingTheory.Frobenius
+import Mathlib.NumberTheory.LSeries.Nonvanishing
+import Mathlib.NumberTheory.NumberField.DedekindZeta
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # $L$-series and the density of primes in arithmetic progressions (Milne, *Class Field Theory*, Chapter V, §2)

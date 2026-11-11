@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.Tactic.MinImports
 import QuadFormsKB.Citation
 import QuadFormsKB.Tamagawa.Measure.Weil.QuatSplitIso
 

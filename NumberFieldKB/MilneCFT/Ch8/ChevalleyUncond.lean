@@ -2,6 +2,13 @@ import NumberFieldKB.MilneCFT.Ch8.ExistsUUncond
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyDescent
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyKummer
 import NumberFieldKB.MilneCFT.Ch8.ChevalleyTorsion
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Cyclotomic.PrimitiveRoots
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.Units.Basic
 
 /-!
 # Chevalley's congruence theorem for `S`-units, unconditionally

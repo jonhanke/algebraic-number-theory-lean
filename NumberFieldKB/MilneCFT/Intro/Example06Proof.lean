@@ -1,6 +1,18 @@
 import NumberFieldKB.MilneCFT.Intro.ExercisesProofs
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
 import NumberFieldKB.MilneANT.Ch2Examples
+import Mathlib.RingTheory.Henselian
+import Mathlib.Data.Finsupp.Pointwise
+import Mathlib.Data.Nat.Squarefree
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.Different
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.StablyFree.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Proof of Milne, *CFT*, Introduction, Example 0.6 / Exercise 0.14

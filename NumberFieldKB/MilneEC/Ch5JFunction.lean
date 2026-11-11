@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneEC.Ch5ModularForms
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.ModularForms.NormTrace
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §2: the modular invariant $j$ and $X_0(N)$ over $\mathbb Q$

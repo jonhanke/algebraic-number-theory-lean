@@ -1,4 +1,14 @@
 import NumberFieldKB.ModularCurves.ComplexElliptic
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.Analytic.Order
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
 
 /-!
 # $j : X_0(N) \to X_0(1)$ over $\mathbb C$ is unramified away from $0, 1728, \infty$

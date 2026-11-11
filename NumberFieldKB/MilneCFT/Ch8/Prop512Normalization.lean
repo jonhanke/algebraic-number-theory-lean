@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
 import NumberFieldKB.MilneCFT.Ch8.CyclotomicNormCongr
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Ideal
 
 /-!
 # Prop. VIII.5.12 (b): the normalization $(\zeta, 1 - \lambda^{p-1})_\lambda = \zeta$, via the product formula

@@ -2,6 +2,15 @@ import NumberFieldKB.MilneCFT.LubinTate.LocalKroneckerWeberCFT
 import NumberFieldKB.MilneCFT.LubinTate.RamificationQuotientTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.UnramifiedTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.TotallyRamifiedTauCeti
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Lemma 4.10 (Milne, *CFT*, I, §4), proved by a degree count

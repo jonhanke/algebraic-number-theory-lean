@@ -1,5 +1,7 @@
 import NumberFieldKB.WeilBNT.RayGroup
 import QuadFormsKB.Tamagawa.QuatOrderGlobal
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
 
 /-!
 # Weil, *Basic Number Theory*, II.§3, Prop. 8 (first assertions): $n$-th powers in $k_v^\times$, $n$ prime to $p$

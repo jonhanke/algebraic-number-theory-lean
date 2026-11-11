@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5Remark48Corrected
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.Approximation.Weak
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Topology.Separation.CompletelyRegular
+import Mathlib.Topology.Algebra.Group.Units
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8: the extension of an admissible homomorphism ($G$ complete Hausdorff)

@@ -1,5 +1,6 @@
 import NumberFieldKB.MilneCFT.Ch5Remark48Extend
 import NumberFieldKB.MilneCFT.Ch5Remark48Converse
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8: the corrected remark, proved

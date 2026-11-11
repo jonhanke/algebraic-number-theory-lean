@@ -1,5 +1,15 @@
 import NumberFieldKB.ModularCurves.Germs
 import NumberFieldKB.MilneEC.Ch5bCorrespondences
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.FieldTheory.RatFunc.AsPolynomial
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Algebra.Hom.Rat
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Manifold
+import Mathlib.Geometry.Manifold.MFDeriv.NormedSpace
 
 /-!
 # Degeneracy maps and the Hecke correspondences on $\mathbb Q(X_0(N))$ (algebraic half)

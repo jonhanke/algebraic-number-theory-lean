@@ -1,4 +1,11 @@
-import Mathlib
+import Mathlib.Computability.Reduce
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Algebra.Order.Star.Rat
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch5Cubic
 

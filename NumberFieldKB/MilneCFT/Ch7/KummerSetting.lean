@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch7.Kummer
 import NumberFieldKB.MilneCFT.Ch7.FirstInequality
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.SInteger
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6: the Kummer setting of the second inequality

@@ -1,6 +1,16 @@
 import NumberFieldKB.MilneEC.Ch3Elliptic
 import NumberFieldKB.MilneEC.Ch3JInvariant
 import NumberFieldKB.MilneEC.Ch3Torus
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Meromorphic.RCLike
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+import Mathlib.Analysis.Complex.Polynomial.Basic
+import Mathlib.Analysis.Complex.UpperHalfPlane.Basic
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
 
 /-!
 # Milne, Elliptic Curves, Chapter III §3: `ℂ/Λ ≅ E(Λ)(ℂ)`

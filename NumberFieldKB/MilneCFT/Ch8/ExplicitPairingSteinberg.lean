@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch8.ExplicitPairing
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, VIII, Proposition 5.12: what the Steinberg relation gives

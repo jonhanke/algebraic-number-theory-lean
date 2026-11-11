@@ -15,6 +15,7 @@ import NumberFieldKB.MilneANT.Ch3Split
 import NumberFieldKB.MilneANT.Ch4Cite
 import NumberFieldKB.MilneANT.Ch4
 import NumberFieldKB.MilneANT.ProseCite
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapters 1–4

@@ -5,6 +5,11 @@ import NumberFieldKB.ModularCurves.QExpTransfer
 import NumberFieldKB.ModularCurves.InftyEmbedding
 import NumberFieldKB.ModularCurves.LaurentSupport
 import NumberFieldKB.ModularCurves.CosetUpperTriangular
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.LaurentSeries
+import Mathlib.NumberTheory.ModularForms.Discriminant
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The fibre of $j : X_0(N) \to X_0(1)$ over the cusp: the cusps of $X_0(N)$ and their widths

@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RootsOfUnity.CyclotomicUnits
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 import QuadFormsKB.Citation
 
 /-!

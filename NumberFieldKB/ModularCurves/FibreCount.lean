@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.NormEmbeddings
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.Norm.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.RingTheory.Valuation.Discrete.Basic
 
 /-!
 # Counting the places over a place by embeddings into a valued field

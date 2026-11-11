@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneEC.Ch3Defs
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.Complex.CauchyIntegral
+import Mathlib.Analysis.Meromorphic.Order
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
 
 /-!
 # Milne, Elliptic Curves, Chapter III: residues and the residue theorem for rectangles

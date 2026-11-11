@@ -1,4 +1,14 @@
 import NumberFieldKB.MilneEC.Ch1Affine
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Group.Translate
+import Mathlib.Algebra.MvPolynomial.Monad
+import Mathlib.Algebra.MvPolynomial.PDeriv
+import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.NumberTheory.ModularForms.Cusps
+import Mathlib.RingTheory.MvPolynomial.IrreducibleQuadratic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.FieldTheory.Finite.Polynomial
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Section 1: intersection numbers

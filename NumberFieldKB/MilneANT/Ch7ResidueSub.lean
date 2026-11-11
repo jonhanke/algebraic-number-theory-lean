@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneANT.Ch7Remark753
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.IntegralClosure
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, proof of Proposition 7.50: the residue field of an intermediate field

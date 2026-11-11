@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch7.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.ClassGroup.ExtendedHom
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §4: Lemma 4.2

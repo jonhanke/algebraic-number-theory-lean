@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch8.Remark64Finite
 import NumberFieldKB.MilneCFT.Ch8.Remark64Infinite
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
 
 /-!
 # Milne, *Class Field Theory*, VIII, Remark 6.4 (finite Galois level, unconditional)

@@ -1,6 +1,10 @@
 import NumberFieldKB.Chebotarev.Basic
 import NumberFieldKB.Chebotarev.FrobeniusNF
 import NumberFieldKB.Chebotarev.FrobeniusEField
+import Mathlib.RingTheory.Frobenius
+import Mathlib.Algebra.Group.ConjFinite
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.Discriminant.Different
 
 /-!
 # Frobenius classes of primes of a number field

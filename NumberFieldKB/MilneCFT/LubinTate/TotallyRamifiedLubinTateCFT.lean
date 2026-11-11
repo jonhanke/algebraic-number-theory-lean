@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneCFT.LubinTate.LocalKroneckerWeberCFT
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Lemma 4.9 (Milne, *CFT*, I, §4), proved by norm groups

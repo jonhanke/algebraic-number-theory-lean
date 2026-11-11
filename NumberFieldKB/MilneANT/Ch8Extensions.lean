@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneANT.Ch8Basic
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.Charpoly.BaseChange
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
+import Mathlib.NumberTheory.NumberField.Discriminant.Basic
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: extending absolute values; finiteness theorems

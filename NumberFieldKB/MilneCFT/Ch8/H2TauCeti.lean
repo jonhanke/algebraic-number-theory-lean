@@ -1,6 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch8.Brauer
 import NumberFieldKB.Ideles.RelativeNormTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.ClassFormation
+import Mathlib.FieldTheory.KrullTopology
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.PicardGroup
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.AdicCompletion.Noetherian
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, Theorem 4.7, proved from Tau Ceti

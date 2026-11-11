@@ -1,6 +1,14 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.LinearAlgebra.FreeModule.PID
+import Mathlib.LinearAlgebra.Projectivization.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Trace.Basic
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.Algebra.Module.StablyFree.Basic
 import QuadFormsKB.Citation
-import NumberFieldKB.MilneEC.Ch1Maps
+import NumberFieldKB.MilneEC.Ch1MapsCounterexample
 
 /-!
 # Milne, Elliptic Curves, Chapter V §7: correspondences of curves
@@ -55,6 +63,27 @@ theorem remark_7_1 (h : Prop4_18) (k : Type) [Field k] [PerfectField k] (G F F' 
     ∃ (α : ProjRegularMap G F) (β : ProjRegularMap G F'), α.Extends f ∧ β.Extends g ∧
       (∀ α' : ProjRegularMap G F, α'.Extends f → ∀ (K : Type) [Field K] [Algebra k K], α'.toFun K = α.toFun K) ∧
       (∀ β' : ProjRegularMap G F', β'.Extends g → ∀ (K : Type) [Field K] [Algebra k K], β'.toFun K = β.toFun K) := by
+  obtain ⟨α, hα, hαu⟩ := h.extends_unique k G F hG hGn hF hFn hGX hFX f hf
+  obtain ⟨β, hβ, hβu⟩ := h.extends_unique k G F' hG hGn hF' hFn' hGX hFX' g hg
+  exact ⟨α, β, hα, hβ, hαu, hβu⟩
+
+/-- **Remark 7.1, corrected** (pdf p. 225), from the corrected Proposition 4.18 (`Prop4_18Corrected`; the named
+statement `Prop4_18` used by `remark_7_1` is false as stated, `not_prop4_18`): the correspondence extends, uniquely on
+the points over algebraically closed fields. -/
+@[kb "milne2006ec" "Ch. V, Remark 7.1, pdf p. 225 (from the corrected Prop. I.4.18)"]
+theorem remark_7_1_corrected (h : Prop4_18Corrected) (k : Type) [Field k] [PerfectField k]
+    (G F F' : MvPolynomial (Fin 3) k)
+    (hG : IsProjectivePlaneCurve G) (hGn : IsNonsingularProjCurve G) (hF : IsProjectivePlaneCurve F)
+    (hFn : IsNonsingularProjCurve F) (hF' : IsProjectivePlaneCurve F') (hFn' : IsNonsingularProjCurve F')
+    (hGX : ¬ G ∣ X 2) (hFX : ¬ F ∣ X 2) (hFX' : ¬ F' ∣ X 2)
+    (f : Fin 2 → coordinateRing (dehomogenize 2 G)) (hf : IsAffineRegularMap (dehomogenize 2 G) (dehomogenize 2 F) f)
+    (g : Fin 2 → coordinateRing (dehomogenize 2 G))
+    (hg : IsAffineRegularMap (dehomogenize 2 G) (dehomogenize 2 F') g) :
+    ∃ (α : ProjRegularMap G F) (β : ProjRegularMap G F'), α.Extends f ∧ β.Extends g ∧
+      (∀ α' : ProjRegularMap G F, α'.Extends f →
+        ∀ (K : Type) [Field K] [IsAlgClosed K] [Algebra k K], α'.toFun K = α.toFun K) ∧
+      (∀ β' : ProjRegularMap G F', β'.Extends g →
+        ∀ (K : Type) [Field K] [IsAlgClosed K] [Algebra k K], β'.toFun K = β.toFun K) := by
   obtain ⟨α, hα, hαu⟩ := h.extends_unique k G F hG hGn hF hFn hGX hFX f hf
   obtain ⟨β, hβ, hβu⟩ := h.extends_unique k G F' hG hGn hF' hFn' hGX hFX' g hg
   exact ⟨α, β, hα, hβ, hαu, hβu⟩

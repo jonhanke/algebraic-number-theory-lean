@@ -2,6 +2,11 @@ import NumberFieldKB.MilneCFT.Ch5Complements
 import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbertClassFields.SmallHilbertClassFieldExists
 import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbertClassFields.SmallHilbertClassFieldDegree
 import NumberFieldKB.YamaguchiPort.ClassFieldTheory.Theorems.FrobeniusAndHilbertClassFields.SmallHilbertClassFieldPrincipalization
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # The principal ideal theorem, from Yamaguchi's small Hilbert class field (Milne, *CFT*, V, Theorem 3.17)

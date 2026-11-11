@@ -2,6 +2,10 @@ import NumberFieldKB.MilneCFT.Ch2Example314
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.ClassFormation
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.UnitsLayer
 import NumberFieldKB.TauCetiPort.NumberTheory.LocalField.FiniteExtension.IntermediateField
+import Mathlib.FieldTheory.KrullTopology
+import Mathlib.FieldTheory.PurelyInseparable.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Functoriality
 
 /-!
 # Milne, *Class Field Theory*, Chapter II, Example 3.14, from Tau Ceti's local class formation

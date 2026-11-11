@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.Ch8.LSeries
+import Mathlib.Algebra.DirectSum.LinearMap
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.LinearAlgebra.Eigenspace.Semisimple
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.SpecialFunctions.Complex.CircleAddChar
 
 /-!
 # Artin's induction theorem, unconditionally (Milne, *CFT*, VIII, §10, p. 262)

@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch6.RayZeta
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Global.RayClass.Basic
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 /-!
 # Our moduli and ray class groups versus Tau Ceti's

@@ -1,4 +1,10 @@
 import NumberFieldKB.MilneANT.Ch8Dedekind
+import Mathlib.FieldTheory.PolynomialGaloisGroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8: Remark 8.40(d), second claim

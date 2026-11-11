@@ -15,6 +15,7 @@ import NumberFieldKB.MilneANT.Ch8Jordan
 import NumberFieldKB.MilneANT.Ch8VanDerWaerden
 import NumberFieldKB.MilneANT.Ch8LocalReducible
 import NumberFieldKB.MilneANT.Ch8Unconditional
+import Mathlib.Tactic.MinImports
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 8 (Global Fields)

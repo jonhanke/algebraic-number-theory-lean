@@ -8,7 +8,7 @@ import NumberFieldKB.HeckeL.RootNumber
 import NumberFieldKB.HeckeL.DedekindCont
 
 /-!
-# Headline statements of NumberFieldKB 0.2.0: Tate's thesis and Hecke L-functions, proved
+# Headline statements of NumberFieldKB 0.2.1: Tate's thesis and Hecke L-functions, proved
 
 The declarations of `Challenge.lean`, with the same names and statements, each proved by citing the library theorems
 named in its proof. `lake comparator` (configured by `comparator.json`) checks that every theorem here has exactly the

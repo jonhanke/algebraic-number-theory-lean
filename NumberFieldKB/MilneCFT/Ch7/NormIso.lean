@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch7.NormTransitivity
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 open IsDedekindDomain NumberField
 open QuadFormsKB.Tamagawa.Measure.Weil NumberFieldKB.Ideles

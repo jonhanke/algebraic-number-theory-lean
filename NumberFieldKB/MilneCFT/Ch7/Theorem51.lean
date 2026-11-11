@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.SecondInequalityPrime
 import NumberFieldKB.MilneCFT.Ch7.Reciprocity
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Theorem 5.1 (the second inequality) from §§5–6

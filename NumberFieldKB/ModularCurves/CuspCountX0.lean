@@ -1,5 +1,8 @@
 import NumberFieldKB.ModularCurves.CuspScale
 import NumberFieldKB.TauCetiPort.NumberTheory.ModularForms.CongruenceSubgroups.Cusp.Label
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # The number of cusps of $X_0(N)$

@@ -1,4 +1,6 @@
 import NumberFieldKB.MilneCFT.Intro.RayClass
+import Mathlib.NumberTheory.LSeries.DirichletContinuation
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §10: more on $L$-series

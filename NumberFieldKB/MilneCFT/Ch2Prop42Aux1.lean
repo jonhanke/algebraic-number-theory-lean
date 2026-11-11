@@ -1,7 +1,13 @@
-import Mathlib
+import Mathlib.Topology.Algebra.ClopenNhdofOne
+import Mathlib.Topology.Compactness.Paracompact
+import Mathlib.Topology.LocallyConstant.Basic
+import Mathlib.RepresentationTheory.Homological.ContCohomology.Basic
+import Mathlib.Topology.Algebra.Group.Torsor
 import NumberFieldKB.MilneCFT.Ch2Profinite
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.ContCohomology.CompactDiscrete
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.ContCohomology.Resolution.Basic
+import Mathlib.Algebra.Ring.Action.Pointwise.Finset
+import Mathlib.Topology.Algebra.Category.ProfiniteGrp.Basic
 
 /-!
 # Proposition 4.2, auxiliary file 1: cochains of the coinduced resolution as functions of tuples

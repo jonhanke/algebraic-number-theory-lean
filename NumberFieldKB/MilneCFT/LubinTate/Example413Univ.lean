@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.LubinTate.Example413Proof
 import NumberFieldKB.MilneCFT.LocalCFT.ArtinMapTransport
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Minpoly.IsIntegrallyClosed
+import Mathlib.NumberTheory.Padics.LocalField
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
 
 /-!
 # Example 4.13 for a separable closure in any universe

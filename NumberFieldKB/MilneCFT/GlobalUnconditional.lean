@@ -7,6 +7,10 @@ import NumberFieldKB.MilneCFT.Ch7.KeyCase
 import NumberFieldKB.MilneCFT.Ch8.ReciprocityLaw
 import NumberFieldKB.MilneCFT.Ch8.H2TauCeti
 import NumberFieldKB.HilbertClassField.TauCeti
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*: the global theorems without their discharged named inputs

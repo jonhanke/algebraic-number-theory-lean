@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.Analysis.LocallyConvex.AbsConvexOpen
+import Mathlib.Algebra.Module.ZLattice.Basic
 import QuadFormsKB.Citation
 
 /-!

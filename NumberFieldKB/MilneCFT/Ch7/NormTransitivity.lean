@@ -1,4 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch7.Lemma45Aux
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Transitivity of the idele norm in arbitrary towers

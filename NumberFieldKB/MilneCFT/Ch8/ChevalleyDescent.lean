@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Kummer descent along $K(\mu_N)/K$ up to roots of unity

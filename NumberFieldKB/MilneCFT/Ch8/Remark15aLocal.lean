@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.Minpoly
+import Mathlib.RingTheory.SimpleRing.Principal
 import NumberFieldKB.TauCetiPort.RingTheory.Frobenius.PowerResidue
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.Frobenius.Kummer.LocalUnit
 import NumberFieldKB.TauCetiPort.RingTheory.DedekindDomain.AdicValuation.Power

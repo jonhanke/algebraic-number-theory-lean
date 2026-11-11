@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneCFT.LocalCFT.UnconditionalYamaguchi
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Norm.Basic
 
 /-!
 # Local class field theory for a separable closure in any universe

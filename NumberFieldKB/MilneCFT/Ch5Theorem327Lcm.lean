@@ -1,5 +1,9 @@
 import NumberFieldKB.MilneCFT.Ch5CharactersUncond
 import NumberFieldKB.MilneCFT.Ch5ConductorUncond
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.GroupTheory.FiniteAbelian.Duality
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
 
 /-!
 # Milne, *Class Field Theory*, V Theorem 3.27: the conductor is the lcm of the character conductors

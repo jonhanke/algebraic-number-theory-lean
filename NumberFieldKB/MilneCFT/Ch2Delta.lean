@@ -1,4 +1,10 @@
-import Mathlib
+import Mathlib.RepresentationTheory.Coinvariants
+import Mathlib.RepresentationTheory.Invariants
+import Mathlib.Algebra.MonoidAlgebra.Cardinal
+import Mathlib.CategoryTheory.Abelian.RightDerived
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RepresentationTheory.Rep.Iso
+import Mathlib.Algebra.Category.ModuleCat.EnoughInjectives
 import QuadFormsKB.Citation
 
 /-!

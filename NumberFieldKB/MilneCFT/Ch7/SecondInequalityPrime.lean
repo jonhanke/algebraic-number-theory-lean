@@ -2,6 +2,11 @@ import NumberFieldKB.MilneCFT.Ch7.SecondInequalityKey
 import NumberFieldKB.MilneCFT.Ch7.KummerEmbed
 import NumberFieldKB.MilneCFT.Ch7.NormIso
 import NumberFieldKB.MilneCFT.Ch7.Reductions
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.DedekindDomain.SInteger
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §6: the second inequality for extensions of prime degree

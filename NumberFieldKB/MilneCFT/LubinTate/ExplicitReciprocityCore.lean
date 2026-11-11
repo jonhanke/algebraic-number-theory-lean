@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneCFT.LubinTate.ExplicitReciprocityEval
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.FormalGroup.Basic
+import Mathlib.RingTheory.PowerSeries.WeierstrassPreparation
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.GroupWithZero.Submonoid.CancelMulZero
 
 /-!
 # The core of the explicit reciprocity law (Milne, *Class Field Theory*, Chapter I, proof of Theorem 3.9)

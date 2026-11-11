@@ -5,6 +5,13 @@ import NumberFieldKB.MilneCFT.LocalCFT.ReciprocityTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.TotallyRamifiedTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.Uniqueness
 import NumberFieldKB.MilneCFT.LocalCFT.UnramifiedTauCeti
+import Mathlib.GroupTheory.Nilpotent
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Cyclotomic.Basic
+import Mathlib.NumberTheory.Padics.LocalField
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Example 4.13: a finite abelian extension of `ℚ_5` that is not a compositum `L_t L_u` (proved)

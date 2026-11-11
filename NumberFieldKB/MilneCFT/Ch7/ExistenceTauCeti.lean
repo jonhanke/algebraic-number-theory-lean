@@ -3,6 +3,11 @@ import NumberFieldKB.MilneCFT.Ch7.IdelicExistence
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.GlobalExistence.Existence
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.GlobalExistence.NormLimitation
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §9 (the existence theorem), proved from Tau Ceti

@@ -4,6 +4,14 @@ import NumberFieldKB.MilneCFT.Ch8.NormLimitationFormation
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.Restriction
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Local.ClassFormation
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.LocalExistence.NormSubgroup
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.FieldTheory.PurelyInseparable.Basic
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RepresentationTheory.Continuous.TopRep
+import Mathlib.RepresentationTheory.Rep.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter III, Theorem 3.5 (norm limitation), proved

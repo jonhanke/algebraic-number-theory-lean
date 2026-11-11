@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch8.Reciprocity
 import NumberFieldKB.MilneCFT.Ch5IdelicMain
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §5: the Hilbert symbol and the power reciprocity law

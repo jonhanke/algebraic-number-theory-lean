@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Module.ZLattice.Basic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point
+import Mathlib.Analysis.Complex.Polynomial.Basic
 import QuadFormsKB.Citation
 
 /-!

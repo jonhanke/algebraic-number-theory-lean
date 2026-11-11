@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.HeckePic
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.AsPolynomial
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The Fricke involution and the degeneracy maps

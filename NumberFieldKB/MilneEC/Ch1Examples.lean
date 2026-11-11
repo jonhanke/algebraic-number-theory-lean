@@ -1,4 +1,18 @@
 import NumberFieldKB.MilneEC.Ch1Intersection
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.UniqueSums
+import Mathlib.Algebra.Group.Translate
+import Mathlib.Algebra.MvPolynomial.PDeriv
+import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.MvPolynomial.IrreducibleQuadratic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Polynomial.Eval.Irreducible
+import Mathlib.RingTheory.Polynomial.Resultant.Basic
+import Mathlib.Geometry.Manifold.DerivationBundle
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Section 1: examples of affine plane curves

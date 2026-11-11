@@ -3,6 +3,15 @@ import NumberFieldKB.MilneCFT.Intro.ExercisesProofs
 import NumberFieldKB.MilneCFT.Intro.Examples
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.Coalgebra.IsFrobenius
+import Mathlib.RingTheory.DedekindDomain.Different
+import Mathlib.RingTheory.HopfAlgebra.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
 
 /-!
 # Proof of Milne, *CFT*, Introduction, Example 0.7

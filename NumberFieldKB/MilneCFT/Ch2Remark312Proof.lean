@@ -1,6 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch2Remark312
 import NumberFieldKB.MilneCFT.Ch2TensorCohomTrivial
 import NumberFieldKB.MilneCFT.Ch2TorInjective
+import Mathlib.RepresentationTheory.Induced
+import Mathlib.RingTheory.TotallySplit
+import Mathlib.CategoryTheory.Monoidal.Tor
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter II, Remark 3.12: proof of the tensor lemma

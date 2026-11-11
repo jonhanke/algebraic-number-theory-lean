@@ -1,4 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch8.GrunwaldWangUncond
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Ideal.Basic
+import Mathlib.Topology.Algebra.Group.Units
+import Mathlib.Topology.Algebra.Valued.ValuativeRel
 
 /-!
 # Grunwald–Wang in the special case: characters of exponent `n` when the local components kill `a₀`

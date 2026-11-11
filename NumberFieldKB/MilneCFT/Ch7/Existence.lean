@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneCFT.Ch7.KummerSetting
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.SInteger
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §9: the existence theorem

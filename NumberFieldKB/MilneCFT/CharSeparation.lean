@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.GroupTheory.FiniteAbelian.Basic
 
 open scoped DirectSum
 

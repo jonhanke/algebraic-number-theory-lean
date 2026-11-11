@@ -1,4 +1,5 @@
 import NumberFieldKB.MilneCFT.Ch5Ideles
+import Mathlib.NumberTheory.NumberField.AdeleRing
 
 /-!
 # Weil, *Basic Number Theory*, VII.§8, text p. 136: $G_P/G_P^0\cong I(P)$

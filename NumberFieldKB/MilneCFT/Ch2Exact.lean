@@ -1,5 +1,9 @@
-import Mathlib
+import Mathlib.GroupTheory.Coset.Card
+import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Algebra.Operations
+import Mathlib.Algebra.Group.EvenFunction
+import Mathlib.RingTheory.Finiteness.Defs
 
 /-!
 # Milne, *Class Field Theory*, Chapter II §3: Lemma 3.7

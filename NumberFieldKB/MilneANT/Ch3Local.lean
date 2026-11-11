@@ -1,5 +1,12 @@
-import Mathlib
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.FractionalIdeal.Extended
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 import QuadFormsKB.Citation
+import Mathlib.RingTheory.ClassGroup.ExtendedHom
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 3: localization and fractional ideals

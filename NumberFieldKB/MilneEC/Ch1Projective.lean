@@ -1,4 +1,13 @@
 import NumberFieldKB.MilneEC.Ch1Intersection
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.Group.Translate
+import Mathlib.FieldTheory.PurelyInseparable.Basic
+import Mathlib.LinearAlgebra.Projectivization.Basic
+import Mathlib.RingTheory.MvPolynomial.EulerIdentity
+import Mathlib.RingTheory.MvPolynomial.IrreducibleQuadratic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.MvPolynomial.Funext
 
 /-!
 # Milne, Elliptic Curves, Chapter I, Section 1: projective plane curves; Bezout's theorem

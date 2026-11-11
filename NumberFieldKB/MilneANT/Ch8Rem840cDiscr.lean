@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.Algebra.AffineMonoid.Basic
+import Mathlib.RingTheory.Adjoin.PowerBasis
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.NumberTheory.NumberField.Discriminant.Defs
+import Mathlib.RingTheory.Polynomial.Eisenstein.IsIntegral
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch8Rem840cBasic
 

@@ -1,4 +1,23 @@
 import NumberFieldKB.MilneANT.Ch7Basic
+import Mathlib.Computability.Reduce
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.Padics.Hensel
+import Mathlib.NumberTheory.Padics.ValuativeRel
+import Mathlib.RingTheory.AdicCompletion.Algebra
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Topology.Connected.Separation
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.Analysis.Normed.Group.Ultra
+import Mathlib.Analysis.Normed.Module.Completion
+import Mathlib.Analysis.Normed.Unbundled.RingSeminorm
+import Mathlib.Topology.Algebra.InfiniteSum.Nonarchimedean
+import Mathlib.Topology.Algebra.Valued.ValuativeRel
+import Mathlib.Topology.MetricSpace.Ultra.TotallySeparated
+import Mathlib.RingTheory.AdicCompletion.Functoriality
 
 /-!
 # Milne, *Algebraic Number Theory*, Chapter 7: completions in the nonarchimedean case

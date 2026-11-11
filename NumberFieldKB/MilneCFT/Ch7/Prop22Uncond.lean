@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch7.Cohomology
 import NumberFieldKB.MilneCFT.Ch8.H2TauCeti
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.RamificationInertia.Galois
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Proposition 2.2, proved unconditionally

@@ -7,6 +7,13 @@ import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Brauer.Archimedea
 import NumberFieldKB.TauCetiPort.NumberTheory.NumberField.InfinitePlace.Completion.DecompositionGroup
 import NumberFieldKB.TauCetiPort.RingTheory.DedekindDomain.AdicValuation.LocalDegree
 import NumberFieldKB.TauCetiPort.RingTheory.DedekindDomain.AdicValuation.ValuativeRel
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Completion.LiesOverInstances
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII, Corollary 2.6, proved from Tau Ceti

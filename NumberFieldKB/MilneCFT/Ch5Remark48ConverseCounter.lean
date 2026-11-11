@@ -1,5 +1,12 @@
 import NumberFieldKB.MilneCFT.Ch5Remark48Corrected
 import NumberFieldKB.HeckeCharacter.Basic
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.Analysis.Complex.Circle
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.NumberTheory.NumberField.InfinitePlace.TotallyRealComplex
 
 /-!
 # Milne, *Class Field Theory*, Chapter V, Remark 4.8: the second sentence fails for characters of infinite type

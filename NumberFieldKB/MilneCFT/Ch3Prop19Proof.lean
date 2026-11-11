@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.FieldTheory.IsSepClosed
+import Mathlib.RingTheory.Henselian
+import Mathlib.Tactic.Have
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneCFT.Ch3Prop19
 import NumberFieldKB.TauCetiPort.RepresentationTheory.Homological.TateCohomology.Connecting.LowDegree

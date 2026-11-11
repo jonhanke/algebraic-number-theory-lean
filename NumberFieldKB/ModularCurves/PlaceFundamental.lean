@@ -1,4 +1,13 @@
 import NumberFieldKB.ModularCurves.PlaceRamification
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.NumberTheory.RamificationInertia.Valuation
+import Mathlib.RingTheory.RamificationInertia.Basic
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
 
 /-!
 # The fundamental identity for places in a finite separable extension of function fields

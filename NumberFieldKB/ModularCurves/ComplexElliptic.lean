@@ -1,5 +1,18 @@
 import NumberFieldKB.ModularCurves.ComplexFinite
 import NumberFieldKB.ModularCurves.EllipticCount
+import Mathlib.RingTheory.Henselian
+import Mathlib.Analysis.CStarAlgebra.Classes
+import Mathlib.Analysis.InnerProductSpace.Basic
+import Mathlib.Analysis.Meromorphic.Basic
+import Mathlib.FieldTheory.RatFunc.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
+import Mathlib.Analysis.Complex.UpperHalfPlane.Topology
+import Mathlib.Order.Filter.Germ.Basic
 
 /-!
 # The fibres of $j$ over $0$ and $1728$ for $\mathbb C(X_0(N))$

@@ -1,4 +1,8 @@
 import NumberFieldKB.MilneEC.Ch5Defs
+import Mathlib.NumberTheory.ModularForms.NormTrace
+import Mathlib.Analysis.SpecialFunctions.Elliptic.Weierstrass
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
+import Mathlib.NumberTheory.ModularForms.LFunction
 
 /-!
 # Milne, *Elliptic Curves*, Chapter V §3: modular forms

@@ -1,5 +1,10 @@
 import NumberFieldKB.MilneCFT.Ch7.Basic
 import NumberFieldKB.MilneCFT.Ch7.Lemma73Aux
+import Mathlib.NumberTheory.Cyclotomic.Basic
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RamificationInertia.Ramification
+import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
+import Mathlib.RepresentationTheory.Homological.GroupCohomology.LowDegree
 
 /-!
 # Milne, *Class Field Theory*, Chapter VII §7: application to the Brauer group

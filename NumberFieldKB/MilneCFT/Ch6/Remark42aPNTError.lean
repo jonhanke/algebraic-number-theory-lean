@@ -1,5 +1,10 @@
 import NumberFieldKB.PNTPort.StrongPNT
 import NumberFieldKB.MilneCFT.Ch6.Remark42aDirichlet
+import Mathlib.NumberTheory.Chebyshev
+import Mathlib.Algebra.CharZero.Infinite
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.RingTheory.Ideal.Norm.AbsNorm
 
 /-!
 # Milne, *Class Field Theory*, VI, Remark 4.2 (a), unconditionally: the error-term prime number theorem

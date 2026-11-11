@@ -8,7 +8,7 @@ import NumberFieldKB.HeckeL.RootNumber
 import NumberFieldKB.HeckeL.DedekindCont
 
 /-!
-# Headline statements of NumberFieldKB 0.2.0: Tate's thesis and Hecke L-functions
+# Headline statements of NumberFieldKB 0.2.1: Tate's thesis and Hecke L-functions
 
 The main results of the library, one theorem each, with every proof a deliberate `sorry`: to check what is claimed,
 read this file. `Solution.lean` proves the same statements from the library, and `lake comparator` (configured by
@@ -72,7 +72,12 @@ on); a reader checking a statement should check these too:
 * `NumberFieldKB.MilneEC.V.g4`
 * `NumberFieldKB.MilneEC.V.g6`
 * `NumberFieldKB.MilneEC.V.discr`
+* `NumberFieldKB.MilneCFT.Ch4.BrauerGroup`
+* `NumberFieldKB.MilneCFT.Ch4.BrauerGroup.mk`
+* `NumberFieldKB.MilneCFT.LocalCFT.FiniteAbelianExt`
+* `NumberFieldKB.MilneCFT.LocalCFT.ltTower`
 * `NumberFieldKB.MilneCFT.LocalCFT.ltField`
+* `NumberFieldKB.MilneCFT.LocalCFT.unramifiedClosure`
 * `NumberFieldKB.MilneCFT.Ch8.cubicAffineCount`
 * `NumberFieldKB.MilneCFT.Modulus`
 * `NumberFieldKB.MilneCFT.RayClassGroup`

@@ -3,6 +3,13 @@ import NumberFieldKB.MilneCFT.Ch8.Eighth
 import NumberFieldKB.MilneCFT.Ch8.Brauer
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.Global.ExponentNorms
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.NumberTheory.Padics.HeightOneSpectrum
+import Mathlib.NumberTheory.RamificationInertia.Galois
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, Example 2.2, proved from Tau Ceti

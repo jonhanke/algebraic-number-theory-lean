@@ -1,5 +1,7 @@
 import NumberFieldKB.MilneCFT.Ch5RayClassOrder
 import NumberFieldKB.MilneCFT.Ch5Ideles
+import Mathlib.NumberTheory.NumberField.ClassNumber
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
 
 /-!
 # Remaining claims of Milne, *Class Field Theory*, Chapter V (named statements)

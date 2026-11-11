@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.Algebra.Order.Star.Real
+import Mathlib.Analysis.Normed.Field.Instances
+import Mathlib.Analysis.Normed.Field.WithAbs
+import Mathlib.Analysis.Normed.Module.Completion
+import Mathlib.Analysis.Normed.Module.FiniteDimension
+import Mathlib.Analysis.SpecialFunctions.Log.Base
 import QuadFormsKB.Citation
 import NumberFieldKB.MilneANT.Ch8Aside89Basic
 

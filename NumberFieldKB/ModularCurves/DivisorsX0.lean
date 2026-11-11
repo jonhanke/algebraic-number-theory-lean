@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.Cusps
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
 
 /-!
 # Divisors of functions on $X_0(N)$ over $\mathbb Q$

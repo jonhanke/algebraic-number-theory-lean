@@ -1,4 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch5Artin
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.RingTheory.ClassGroup.Basic
+import Mathlib.RingTheory.DedekindDomain.AdicValuation
+import Mathlib.RingTheory.DedekindDomain.Factorization
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
 
 /-!
 # The main theorems in terms of ideals (Milne, *Class Field Theory*, Chapter V, §3, pp. 157–160)

@@ -7,6 +7,10 @@ import NumberFieldKB.MilneCFT.LocalCFT.ExistenceTauCeti
 import NumberFieldKB.MilneCFT.LocalCFT.Complements
 import NumberFieldKB.MilneCFT.Ch3Artin
 import NumberFieldKB.MilneCFT.Ch5IdelesChar
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.RingTheory.IntegralClosure.IntegralRestrict
+import Mathlib.RepresentationTheory.Homological.TateCohomology.Basic
 
 /-!
 # Consequences of the named statements proved from Tau Ceti

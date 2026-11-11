@@ -1,5 +1,6 @@
 import Mathlib.NumberTheory.ModularForms.RamanujanFormula
 import NumberFieldKB.MilneEC.Ch5JFunction
+import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 /-!
 # The local behaviour of $j$ at a point of $\mathbb H$

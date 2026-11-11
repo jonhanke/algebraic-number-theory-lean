@@ -1,4 +1,18 @@
 import NumberFieldKB.MilneCFT.Ch8.Reciprocity
+import Mathlib.Order.CompletePartialOrder
+import Mathlib.RingTheory.Frobenius
+import Mathlib.RingTheory.Henselian
+import Mathlib.FieldTheory.Galois.IsGaloisGroup
+import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
+import Mathlib.NumberTheory.Cyclotomic.Gal
+import Mathlib.NumberTheory.NumberField.DirichletDensity
+import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
+import Mathlib.RingTheory.Flat.TorsionFree
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.ZMod.UnitsCyclic
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Algebra.Order.Star.Int
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII §1: when are local $n$th powers global $n$th powers?

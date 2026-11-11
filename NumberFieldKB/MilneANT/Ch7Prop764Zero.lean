@@ -1,4 +1,7 @@
 import NumberFieldKB.MilneANT.Ch7Prop764
+import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
+import Mathlib.RingTheory.DiscreteValuationRing.Basic
+import Mathlib.RingTheory.LocalRing.ResidueField.Defs
 
 /-!
 # Milne, Proposition 7.64: reduction of the named statement to its degree-zero case

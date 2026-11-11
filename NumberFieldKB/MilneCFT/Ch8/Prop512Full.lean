@@ -1,5 +1,11 @@
 import NumberFieldKB.MilneCFT.Ch8.Prop512
 import NumberFieldKB.MilneCFT.Ch8.Prop512Normalization
+import Mathlib.RingTheory.Henselian
+import Mathlib.NumberTheory.LocalField.Basic
+import Mathlib.NumberTheory.NumberField.AdeleRing
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic
 
 /-!
 # Milne, *Class Field Theory*, VIII, Proposition 5.12 in full, from local–global compatibility

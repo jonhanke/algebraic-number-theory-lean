@@ -2,6 +2,9 @@ import NumberFieldKB.HilbertClassField.Artin
 import NumberFieldKB.MilneCFT.Ch7.IdealReciprocityKer
 import NumberFieldKB.MilneCFT.Ch5IdelicReciprocityTauCeti
 import NumberFieldKB.TauCetiPort.NumberTheory.ClassFieldTheory.ClassFields.RayClassField
+import Mathlib.Algebra.Lie.OfAssociative
+import Mathlib.FieldTheory.Galois.Abelian
+import Mathlib.NumberTheory.NumberField.ClassNumber
 
 /-!
 # The Hilbert class field, unconditionally (from Tau Ceti's class field theory)

@@ -1,4 +1,9 @@
 import NumberFieldKB.ModularCurves.Ramification
+import Mathlib.NumberTheory.FunctionField
+import Mathlib.Data.Finsupp.Pointwise
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.RingTheory.RamificationInertia.Inertia
+import Mathlib.RingTheory.RamificationInertia.Ramification
 
 /-!
 # The Hecke correspondence $T(p)$ on divisors of $Y_0(N)$ over $\mathbb Q$

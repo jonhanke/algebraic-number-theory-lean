@@ -1,4 +1,10 @@
 import NumberFieldKB.ModularCurves.PlaceFundamental
+import Mathlib.RingTheory.Henselian
+import Mathlib.RingTheory.RegularLocalRing.Defs
+import Mathlib.RingTheory.SimpleRing.Principal
+import Mathlib.RingTheory.Valuation.LocalSubring
+import Mathlib.RingTheory.Ideal.Norm.RelNorm
+import Mathlib.RingTheory.Valuation.Discrete.IsDiscreteValuationRing
 
 /-!
 # Orders of norms: $\operatorname{ord}_P(N_{L/K}\,g) = \sum_{Q \mid P} f(Q/P)\operatorname{ord}_Q(g)$

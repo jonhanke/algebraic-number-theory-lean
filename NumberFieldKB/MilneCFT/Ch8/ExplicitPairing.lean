@@ -1,5 +1,6 @@
-import Mathlib
+import Mathlib.Algebra.Group.Subgroup.Lattice
 import QuadFormsKB.Citation
+import Mathlib.Algebra.Group.Pointwise.Set.Basic
 
 /-!
 # Milne, *Class Field Theory*, Chapter VIII, Proposition 5.12: uniqueness of the explicit Hilbert pairing
