@@ -601,3 +601,33 @@ Mathlib): `TauCeti.IsEisensteinPrimary` and the primary normalisation `ζ ^ c α
 `NumberFieldKB.MilneCFT.Ch8.EisensteinReciprocity` and `Ch8.theorem5_14_of_eisensteinReciprocity`
 (`MilneCFT/Ch8/FurtwanglerEisenstein.lean`).
 
+# Port of Tau Ceti's division-polynomial multiplication formula
+
+Source: Tau Ceti, main `7ac17318810667a200f543cc646d98451c5327f3` (2026-11-15), Apache License 2.0, copyright the Tau
+Ceti contributors (headers kept). Same conventions as above.
+
+Contents (24 new files; 3 of the closure were already ported): the import closure of
+`AlgebraicGeometry/EllipticCurve/DivisionPolynomial/ZSMul.lean` (`WeierstrassCurve.zsmul_point_eq_smulEval`: over a
+field, `n • (x, y)` has Jacobian coordinates `(φₙ : ωₙ : ψₙ)` evaluated at `(x, y)`, every `n`, every characteristic)
+and of `DivisionPolynomial/Coprimality.lean` (`isCoprime_Φ_ΨSq`, `ΨSq_ne_zero_of_Δ_ne_zero`), including
+`NumberTheory/EllipticDivisibilitySequence/*`, `EllipticCurve/Universal.lean`, `Affine/IsAlgClosed.lean`,
+`Integrality.lean`, `Denominator.lean`, `RingTheory/Polynomial/IsIntegral.lean`.
+
+Changes for Mathlib v4.35.0 (proofs and imports only; no statement changed):
+- New `MathlibBackport/EllipticDivisibilitySequence.lean`: the declarations of
+  `Mathlib/NumberTheory/EllipticDivisibilitySequence.lean` at Mathlib `e8ba86fa` (Tau Ceti's pin; authors David
+  Kurniadi Angdinata, Junyan Xu) that v4.35.0 lacks, in the same namespaces with the same statements and the upstream
+  proofs: Stange's theorem `IsEllipticNet.normEDS` with `IsEllipticNet.of_even_odd`, `atom_mul_atomRel`,
+  `atomRel_perm`, `atomRel_of_even_odd`, `IsEllipticSequence.{zero, neg, isEllipticNet, of_even_odd, ext, normEDS}`,
+  `IsDvdSequence.normEDS`, `IsEllipticDvdSequence.{normEDS, eq_smul_normEDS}`, `normEDS_rel_even`, `normEDS_rel_odd`,
+  `normEDS_mul_complEDS` and the `*_two_three_two` lemmas. `Tuple.sortDesc` and `Tuple.antitone_sortDesc` (absent in
+  v4.35.0) are defined there as `Tuple.sort (OrderDual.toDual ∘ f)` with a proof from `monotone_sort` (not Mathlib's
+  text).
+- That backport is imported by `NumberTheory/EllipticDivisibilitySequence/{Six, Complement, ComplAux, Universal,
+  Invariant/Basic}.lean` and `AlgebraicGeometry/EllipticCurve/DivisionPolynomial/NormEDS.lean`.
+- `AlgebraicGeometry/EllipticCurve/Universal.lean`: `single_eq_monomial` (absent in v4.35.0) dropped from two `simp`
+  lists.
+
+Consumers: `NumberFieldKB.MilneEC.lemma2_1`, `III.divisionPolynomialFormula`, `III.torsionBaseChange`
+(`MilneEC/Ch4Lemma21.lean`) and `II.corollary_4_2` (`MilneEC/Ch2Corollary42.lean`).
+

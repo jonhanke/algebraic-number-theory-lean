@@ -13,7 +13,8 @@ import Mathlib.NumberTheory.ModularForms.LevelOne.GradedRing
 
 Source: J. S. Milne, *Elliptic Curves* (`milne2006ec`), Chapter V, §4, pdf pp. 201–206: Dirichlet series, the
 $L$-series of an elliptic curve (Mathlib's `WeierstrassCurve.LFunction`), $L$-series and isogeny classes
-(Theorem 4.1, Corollary 4.2 and Ramanujan's conjecture are cited results, not part of this release), the $L$-series of a cusp form (Mathlib's `ModularForm.L`),
+(Theorem 4.1, Corollary 4.2: named statements, in `NumberFieldKB.MilneEC.Ch5LSeriesStatements` with Ramanujan's
+conjecture), the $L$-series of a cusp form (Mathlib's `ModularForm.L`),
 Remark 4.3, the involution $w_N$ and Hecke's Theorem 4.4 (proved from Mathlib's functional equation for
 `WeakFEPair`s), the Ramanujan function $\tau$.
 

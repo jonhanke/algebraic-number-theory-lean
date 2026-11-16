@@ -1,0 +1,20 @@
+{
+  "challenge_module": "Challenge_MilneEC",
+  "solution_module": "Solution_MilneEC",
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true,
+  "theorem_names": [
+    "NumberFieldKB.Headlines.bezout",
+    "NumberFieldKB.Headlines.chordTangent_assoc",
+    "NumberFieldKB.Headlines.rank_bound_twoDescent",
+    "NumberFieldKB.Headlines.points_x3_sub_x",
+    "NumberFieldKB.Headlines.one_not_congruent",
+    "NumberFieldKB.Headlines.lang_H1_eq_zero",
+    "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD"
+  ]
+}

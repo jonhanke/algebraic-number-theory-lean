@@ -34,8 +34,9 @@ statements are equivalent to Milne's.
   elements of $G$ (`IsFrobeniusAt`, p. 230), the field $K_S$ (`fieldKS`, p. 231).
 * Example 8.2 (`example_8_2`), Definition 8.4 (`IsModularRep`, `IsModularRepModL`, corrected
   `IsModularRepModLChar`), Conjecture 8.5 (`SerreConjecture`, a definition, not assumed).
-* Proposition 7.5, Corollary 7.6, Proposition 8.1, Proposition 8.3, Theorem 8.6 and Theorem 9.1 (cited results,
-  not proved in this library) are not part of this release.
+* The named statements of these sections (Proposition 7.5 `Prop7_5` with Corollary 7.6 `cor_7_6` proved from it,
+  Proposition 8.1 `Prop8_1`, `TorsionFreeRankTwo`, Proposition 8.3 `Prop8_3`, Theorem 8.6 `Thm8_6`, Theorem 9.1
+  `Thm9_1`) are in `NumberFieldKB.MilneEC.Ch5bGaloisStatements`.
 -/
 
 open WeierstrassCurve WeierstrassCurve.Affine

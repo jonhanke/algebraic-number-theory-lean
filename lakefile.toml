@@ -1,6 +1,6 @@
 name = "algebraic_number_theory_lean"
-version = "0.2.1"
-defaultTargets = ["NumberFieldKB", "Challenge", "Solution", "Challenge_MilneANT", "Solution_MilneANT", "Challenge_WeilBNT", "Solution_WeilBNT", "Challenge_Tate", "Solution_Tate", "Challenge_Pontryagin", "Solution_Pontryagin", "Challenge_ModularCurves", "Solution_ModularCurves", "Challenge_MilneCFT", "Solution_MilneCFT"]
+version = "0.3.0"
+defaultTargets = ["NumberFieldKB", "Challenge", "Solution", "Challenge_MilneANT", "Solution_MilneANT", "Challenge_WeilBNT", "Solution_WeilBNT", "Challenge_Tate", "Solution_Tate", "Challenge_Pontryagin", "Solution_Pontryagin", "Challenge_ModularCurves", "Solution_ModularCurves", "Challenge_MilneCFT", "Solution_MilneCFT", "Challenge_MilneEC", "Solution_MilneEC"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -76,3 +76,11 @@ roots = ["Challenge_MilneCFT"]
 [[lean_lib]]
 name = "Solution_MilneCFT"
 roots = ["Solution_MilneCFT"]
+
+[[lean_lib]]
+name = "Challenge_MilneEC"
+roots = ["Challenge_MilneEC"]
+
+[[lean_lib]]
+name = "Solution_MilneEC"
+roots = ["Solution_MilneEC"]

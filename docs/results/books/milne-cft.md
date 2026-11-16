@@ -4,7 +4,7 @@ Version 4.03 (2020), available at jmilne.org. Items as numbered in the notes; *D
 
 Each row is a result of the book, the Lean declaration that formalizes it, and its status. *Proved* means proved in Lean with only the standard axioms, assuming no unproved input (a hypothesis that is a condition of the statement, such as "$K$ is a local field", is not an input); *conditional* names the unproved inputs it still assumes; *in Mathlib* means Mathlib (v4.35.0, on which this library is built) already has the result, and the Lean name is Mathlib's; *not formalized* means the library does not state it. Rows that are not results (examples, history, comments, computations) are omitted and only counted. The statements in the middle column are short descriptions, not quotations; read the book for the exact wording. Items that the library states in a generalized form are mapped to the general statement.
 
-Rows: 513. proved: 338; proved (in the quadratic-forms library, a dependency): 7; proved, corrected form (erratum of the book): 3; formalized (a definition): 58; in Mathlib: 105; formalized, not in this release: 1; stated in the book without proof: 1. Not results (omitted): 25.
+Rows: 513. proved: 338; proved (in the quadratic-forms library, a dependency): 7; proved, corrected form (erratum of the book): 3; formalized (a definition): 59; in Mathlib: 105; stated in the book without proof: 1. Not results (omitted): 25.
 
 Errata of the book. Three statements of Chapter V are false as printed; the author of this library confirmed them as errata of the book. Each row shows the corrected form, proved, and the counterexample to the printed form where there is one: Theorem V.2.4(b) ("converges" for $\mathrm{Re}\,s>0$ should read "extends"; for $[K:\mathbb Q]\ge2$ convergence can fail), Exercise V.3.15 (the existence clause needs the primes of $S$ in $H$) and Remark V.4.8 (the first sentence needs $G$ complete; the second also needs $\varphi$ trivial on the identity component of $K_\infty^\times$, which excludes Hecke characters of nontrivial infinity type). Other deviations from the text (misprints, missing hypotheses) are stated in the docstrings of the Lean declarations.
 
@@ -757,4 +757,4 @@ Open predicates: `MilneCFT.Ch7.IsGlobalArtinMap`, `MilneCFT.Ch7.KummerSetting`, 
 
 | Item | Page | Statement | Lean declaration | Status |
 |---|---|---|---|---|
-| Definition (prose): first cohomology set of a group acting on a nonabelian group | 274 | For a group G acting on a (not necessarily commutative) group A, crossed homomorphisms modulo equivalence form the pointed set H^1(G, A). | — | formalized, not in this release |
+| Definition (prose): first cohomology set of a group acting on a nonabelian group | 274 | For a group G acting on a (not necessarily commutative) group A, crossed homomorphisms modulo equivalence form the pointed set H^1(G, A). | `MilneEC.NonabelianH1` | formalized (a definition) |

@@ -1,0 +1,354 @@
+# J. S. Milne, *Elliptic Curves*: map to the Lean library
+
+J. S. Milne, *Elliptic Curves*, 2nd edition (World Scientific, 2020; the notes are also at jmilne.org). Items as numbered in the book; *Definition (prose)* is a definition given in the running text. Pages are those of the PDF. Chapter V §§1–3 and §7 (the curves $X_0(N)$ and the Hecke correspondences) are in the map of the modular curves ([modular-curves.md](modular-curves.md)).
+
+Each row is a result of the book, the Lean declaration that formalizes it, and its status. *Proved* means proved in Lean with only the standard axioms, assuming no unproved input (a hypothesis that is a condition of the statement, such as "$K$ is a local field", is not an input); *conditional* names the unproved inputs it still assumes; *in Mathlib* means Mathlib (v4.35.0, on which this library is built) already has the result, and the Lean name is Mathlib's; *not formalized* means the library does not state it. Rows that are not results (examples, history, comments, computations) are omitted and only counted. The statements in the middle column are short descriptions, not quotations; read the book for the exact wording. Items that the library states in a generalized form are mapped to the general statement.
+
+Rows: 314. proved: 221; proved, conditional: 7; formalized (a definition): 45; in Mathlib: 10; in Tau Ceti, not in this library: 1; not formalized: 11; stated (not proved): 19. Not results (omitted): 38.
+
+Named statements of the library for this book: results stated as Lean structures (a cited result is never assumed silently; it is a named structure, and a theorem assuming it lists it as a hypothesis), counted by a kernel-level audit of the hypotheses of every declaration. An *open predicate* is a condition used in statements, not a result to prove.
+
+| part of the library | named statements | proved unconditionally | open inputs | refuted | open predicates |
+|---|---|---|---|---|---|
+| `NumberFieldKB.MilneEC` | 107 | 37 | 65 | 1 | 4 |
+
+Open predicates: `MilneEC.III.IsSc`, `MilneEC.III.IsVC`, `MilneEC.NeronModel.IsCompleteNeronModel`, `MilneEC.V.FreyHyp`.
+
+## Chapter I: Plane curves (with the Introduction)
+
+| Item | Page | Statement | Lean declaration | Status |
+|---|---|---|---|---|
+| Definition (prose) | 10 | A natural number is congruent if it is the area of a right triangle with rational sides | `MilneEC.isCongruentNumber_iff`, `MilneEC.not_isCongruentNumber_one` | proved |
+| Example 1.1 | 14 | A polynomial irreducible over $\mathbb{Q}[\sqrt2]$ times its conjugate lies in $\mathbb{Q}[X,Y]$, giving a curve irreducible over $\mathbb{Q}$ but not geometrically irreducible, e.g. $X^2-2Y^2=0$ | `MilneEC.example_1_1`, `MilneEC.example_1_1_X_sq_sub_two_Y_sq` | proved |
+| Example 1.2 | 14 | In characteristic $p$ over an imperfect field, $X^p+aY^p$ is irreducible but a $p$-th power over the algebraic closure, so it defines no curve | `MilneEC.example_1_2` | proved |
+| Definition (prose) | 14 | An affine plane curve over a field is a nonconstant polynomial in two variables with no repeated factor over the algebraic closure, up to scalar; it is irreducible, or geometrically irreducible, if the polynomial is, with components given by factors | `MilneEC.affinePoints_eq_iUnion_components` | proved |
+| Definition (prose) | 14 | A point of a plane curve is nonsingular if a partial derivative is nonzero there, and then the tangent line is given by the gradient | `MilneEC.isNonsingularPoint_weierstrassPoly_iff` | proved |
+| Remark 1.4 | 15 | A point on two irreducible components of a plane curve is singular | `MilneEC.remark_1_4` | proved |
+| Example 1.5 | 15 | For $Y^2=X^3+aX+b$ with characteristic not 2, the curve is nonsingular iff the cubic has no repeated root iff $4a^3+27b^2\neq0$; in characteristic 2 there is always a singular point | `MilneEC.example_1_5`, `MilneEC.example_1_5_char_two`, `MilneEC.example_1_5_discr` | proved |
+| Definition (prose) | 15 | A curve is nonsingular if all points over the algebraic closure are nonsingular | `MilneEC.IsNonsingularCurve` | formalized (a definition) |
+| Example 1.6 | 16 | $Y^2=X^3+aX^2$ has a node at the origin with tangents $Y=\pm\sqrt a X$ if $a\neq0$ and a cusp if $a=0$ | `MilneEC.example_1_6`, `MilneEC.example_1_6_node` | proved |
+| Proposition 1.8 | 16 | There is a unique intersection-number map on pairs of coprime polynomials with axioms (a)-(e) | `MilneEC.prop_1_8'`, `MilneEC.intersectionNumber_unique`, `MilneEC.prop1_8_holds` | proved |
+| Definition (prose) | 16 | Multiplicity of a point on a plane curve is the lowest degree of the Taylor expansion; multiplicity 2 is a double point | `MilneEC.multiplicityAt` | formalized (a definition) |
+| Definition (prose) | 16 | Tangent lines at a singular point are the distinct linear factors of the lowest-degree form, with multiplicities | `MilneEC.IsTangentAt` | formalized (a definition) |
+| Definition (prose) | 16 | An ordinary singularity has distinct tangent lines, and an ordinary double point is a node | `MilneEC.IsOrdinarySingularity`, `MilneEC.IsNode` | formalized (a definition) |
+| Remark 1.9 | 17 | The intersection number is the dimension of $k[X,Y]_{(0,0)}/(f,g)$ and is unchanged by field extension | `MilneEC.remark_1_9` | proved |
+| Example 1.10 | 17 | The intersection number of $Y^2-X^2(X+1)$ and $X$ at the origin is 2 | `MilneEC.example_1_10` | proved |
+| Lemma 1.11 | 18 | If $f(0)=0$ then $I(Y-f(X),g(X,Y))=m$ where $X^m$ is the exact power of $X$ dividing $g(X,f(X))$ | `MilneEC.lemma_1_11` | proved |
+| Example 1.12 | 18 | For the cusp $Y^2=X^3$ the tangent line $Y=0$ has intersection number 3 at the origin | `MilneEC.example_1_12`, `MilneEC.example_1_12_isCusp'` | proved |
+| Definition (prose) | 18 | Intersection number of two plane curves at a point, via translation to the origin when there is no common component through the point | `MilneEC.intersectionNumberAt`, `MilneEC.IsIsolatedPoint` | formalized (a definition) |
+| Remark 1.13 | 19 | Intersection number at $P$ is 1 iff both curves are nonsingular at $P$ with distinct tangents; in general $I\ge m_P(C)m_P(D)$ with equality iff no common tangent | `MilneEC.remark_1_13_eq_one_iff` | proved |
+| Example 1.15 | 20 | The curve $Y^2Z=X^3+aXZ^2+bZ^3$ meets the line at infinity only at $(0:1:0)$ | `MilneEC.example_1_15` | proved |
+| Example 1.16 | 20 | The curve $Y^2Z=X^3+aXZ^2+bZ^3$ is covered by two affine pieces rather than three | `MilneEC.example_1_16` | proved |
+| Definition (prose) | 20 | A projective plane curve is defined by a nonconstant homogeneous polynomial with no repeated factor, and its degree is the degree of the polynomial | `MilneEC.IsProjectivePlaneCurve`, `MilneEC.projectivePoints`, `MilneEC.curveDegree` | formalized (a definition) |
+| Exercise 1.17 | 21 | A point of a projective plane curve is singular on some affine piece iff $F$ and its three partial derivatives vanish there; the tangent line is the polar line | `MilneEC.exercise_1_17_singular`, `MilneEC.exercise_1_17_tangent` | proved |
+| Theorem 1.18 | 21 | Bezout: two projective plane curves of degrees $m,n$ with no common component meet in exactly $mn$ points over the algebraic closure counted with multiplicity | `MilneEC.thm1_18`, `MilneEC.Thm1_18`, `MilneEC.Bezout.bezout_of_isAlgClosed` | proved |
+| Example 1.20 | 22 | The curve $Y^2Z=X^3+aXZ^2+bZ^3$ meets the line at infinity at $(0:1:0)$ with multiplicity 3, a point of inflection | `MilneEC.example_1_20'` | proved |
+| Remark 1.21 | 22 | Any two components of a projective plane curve meet in a singular point, so a nonsingular projective plane curve is geometrically irreducible | `MilneEC.remark_1_21'`, `MilneEC.remark_1_21_singular'`, `MilneEC.remark_1_21`, `MilneEC.remark_1_21_singular` | proved |
+| Definition (prose) | 22 | The resultant of two one-variable polynomials is the determinant of their Sylvester matrix | `Polynomial.resultant`, `Polynomial.sylvester` | in Mathlib |
+| Proposition 1.22 | 23 | The resultant of two polynomials vanishes iff both leading coefficients vanish or they have a common root over the algebraic closure | `MilneEC.prop_1_22`, `MilneEC.prop_1_22_common_root_iff` | proved |
+| Example 1.23 | 23 | For monic $f$ of degree $m$, $\mathrm{Res}(f,f')=(-1)^{m(m-1)/2}\,\mathrm{disc}(f)$ | `MilneEC.example_1_23` | proved |
+| Proposition 1.24 | 24 | The resultant in $Y$ gives $af+bg=r(X)$ with degree bounds, and $r=0$ iff $f,g$ have a common factor in $k[X,Y]$ | `MilneEC.prop_1_24_a`, `MilneEC.prop_1_24_b`, `MilneEC.prop_1_24_b_counterexample` | proved |
+| Corollary 1.25 | 24 | Polynomials with no common factor in $k[X,Y]$ have none over any extension field | `MilneEC.corollary_1_25` | proved |
+| Proposition 1.26 | 25 | The resultant of two binary forms vanishes iff they have a common nontrivial zero in the projective line over the algebraic closure | `MilneEC.prop_1_26` | proved |
+| Theorem 2.1 | 28 | Mordell: for a nonsingular cubic over the rationals, every rational point is obtained from finitely many by chord and tangent constructions (finite generation of the group) | `MilneEC.fg_of_thm2_1'`, `MilneEC.fg_of_thm2_1` | proved, conditional on `MilneEC.Thm2_1` |
+| Remark 2.2 | 28 | For a singular cubic the nonsingular points form a group such as the additive or multiplicative group of the rationals, not finitely generated | `MilneEC.remark_2_2` | proved |
+| Definition (prose) | 28 | Height of a rational projective point is the maximum of the absolute values of coprime integer coordinates | `MilneEC.height_eq_max_abs` | proved |
+| Theorem 2.5 | 29 | The $p$-adic numbers form a complete field into which the rationals embed injectively and densely | `Padic.complete`, `Padic.denseRange_ratCast` | in Mathlib |
+| Definition (prose) | 29 | The $p$-adic absolute value on the rationals | `padicNorm` | in Mathlib |
+| Remark 2.6 | 30 | The $p$-adic integers equal the closure of the integers, the unit ball, the digit series, and the inverse limit of $\mathbb{Z}/p^m$ | `MilneEC.remark_2_6_closure`, `MilneEC.remark_2_6_digits`, `MilneEC.remark_2_6_digits_padic`, `MilneEC.remark_2_6_inverse_limit` | proved |
+| Theorem 2.8 | 30 | Legendre: a ternary quadratic form over the rationals has a nontrivial zero iff it has one over the reals and every $p$-adic field | `MilneEC.theorem_2_8` | proved |
+| Remark 2.9 | 31 | The Hasse-Minkowski theorem holds for quadratic forms in any number of variables over any number field | `MilneEC.remark_2_9` | proved |
+| Lemma 2.10 | 31 | Multivariable Hensel step: approximate zero mod $p^{2m+1}$ with a partial derivative nonzero mod $p^{m+1}$ lifts to a zero mod $p^{2m+2}$ | `MilneEC.lemma_2_10` | proved |
+| Remark 2.11 | 32 | Refinement of Lemma 2.10 with $p^{2m+r}$ | `MilneEC.remark_2_11` | proved |
+| Theorem 2.12 | 32 | Hensel: under the hypotheses of the lemma there is an exact zero in $\mathbb{Z}_p^n$ congruent to $a$ mod $p^{m+1}$ | `MilneEC.theorem_2_12` | proved |
+| Example 2.13 | 32 | A simple root of the reduction mod $p$ of an integer polynomial lifts to a root in $\mathbb{Z}_p$ | `MilneEC.example_2_13` | proved |
+| Example 2.14 | 33 | A nonsingular point mod $p$ of a plane projective curve lifts to a point over $\mathbb{Z}_p$ | `MilneEC.example_2_14` | proved |
+| Example 2.15 | 33 | An integral ternary quadratic form with discriminant prime to $p$ has a nontrivial $p$-adic zero, and otherwise one iff an approximate zero exists | `MilneEC.example_2_15`, `MilneEC.example_2_15_approx` | proved |
+| Exercise 2.17 | 33 | The point $(0,0)$ on $Y^2=X^3+p$ mod $p$ does not lift to $\mathbb{Z}_p^2$, yet this does not violate Hensel because the curve is singular there | `MilneEC.exercise_2_17` | proved |
+| Theorem 3.1 | 34 | The chord and tangent construction makes the points of a nonsingular cubic with a chosen point into a commutative group | `MilneEC.exists_unique_isThirdPoint`, `MilneEC.theorem_3_1_comm_zero_neg`, `MilneEC.thm3_1`, `MilneEC.Thm3_1` | proved |
+| Proposition 3.2 | 35 | If two cubic curves meet in nine points, every cubic through eight of them passes through the ninth | `MilneEC.prop3_2`, `MilneEC.Prop3_2` | proved |
+| Definition (prose) | 37 | The coordinate ring of an affine plane curve is $k[X,Y]/(f)$, its elements are the regular functions, and its fraction field consists of rational functions | `MilneEC.vanishes_on_curve_iff` | proved |
+| Remark 4.2 | 39 | Rational functions on the affine piece correspond bijectively to rational functions on the projective curve | `MilneEC.remark_4_2` | proved |
+| Definition (prose) | 39 | Rational functions on a projective plane curve are quotients of homogeneous elements of equal degree of $k[X,Y,Z]/(F)$, regular on the complement of the poles | `MilneEC.projFunctionField_eq` | proved |
+| Example 4.4 | 40 | Meromorphic functions on the Riemann surface of a nonsingular projective complex curve are exactly the rational functions | — | not formalized |
+| Definition (prose) | 40 | A divisor on a curve is a finite integer combination of points; the divisor of a rational function records zeros and poles with intersection multiplicities | `MilneEC.PrincipalDivisors`, `MilneEC.principalDivisors_holds` | proved |
+| Theorem 4.5 | 41 | Riemann: there is an integer $g$ with $\ell(D)\ge\deg D+1-g$ for all divisors, with equality for large degree | `MilneEC.theorem_4_5`, `MilneEC.Thm4_13`, `MilneEC.thm4_13`, `MilneEC.theorem_4_5_unconditional` | proved |
+| Example 4.6 | 41 | The projective line has genus 0 | `MilneEC.example_4_6` | proved |
+| Remark 4.7 | 41 | Riemann-Roch: $\ell(D)=\deg D+1-g+\ell(W-D)$ for canonical $W$ of degree $2g-2$, also for compact Riemann surfaces | `MilneEC.Remark4_7`, `MilneEC.remark4_7`, `MilneEC.remark_4_7_eq`, `MilneEC.remark_4_7_eq_unconditional` | proved |
+| Definition (prose) | 41 | For a divisor $D$, $L(D)$ is the space of rational functions $\varphi$ with $\mathrm{div}(\varphi)+D\ge0$, of dimension $\ell(D)$ | `MilneEC.Divisor.L`, `MilneEC.Divisor.ell` | formalized (a definition) |
+| Definition (prose) | 41 | The genus of a curve is the integer $g$ in Riemann's theorem | `MilneEC.GenusFormula`, `MilneEC.genusFormula` | proved |
+| Aside 4.8 | 42 | Genus of a plane curve with ordinary multiple points is $(d-1)(d-2)/2$ minus a sum of $m(m-1)/2$; every curve maps birationally onto a plane curve | `MilneEC.Aside4_8` | stated (not proved) |
+| Aside 4.9 | 42 | For a nonsingular affine curve the Picard group is the ideal class group of the coordinate ring | `MilneEC.Aside4_9` | stated (not proved) |
+| Definition (prose) | 42 | Principal divisors, linear equivalence, and the Picard groups $\mathrm{Pic}(C)$ and $\mathrm{Pic}^0(C)$ of a curve | `MilneEC.principalDivisors`, `MilneEC.LinearlyEquivalent`, `MilneEC.Pic`, `MilneEC.Pic0` | formalized (a definition) |
+| Proposition 4.10 | 43 | For a nonsingular projective curve of genus 1 with a point $O$, the map $P\mapsto[P]-[O]$ to the degree-zero Picard group is bijective | `MilneEC.Prop4_10` | stated (not proved) |
+| Remark 4.11 | 43 | Changing the zero $O$ translates the group law | `MilneEC.remark_4_11'`, `MilneEC.remark_4_11` | proved |
+| Theorem 4.13 | 45 | Weak Riemann-Roch over a perfect field: there is $g$ with $\ell(D)\ge\deg D+1-g$, equality for $\deg D>2g-2$ | `MilneEC.Thm4_13`, `MilneEC.thm4_13` | proved |
+| Definition (prose) | 45 | A prime divisor of a curve over a perfect field is a discrete valuation ring of the function field containing the base field, with degree the residue degree | `MilneEC.PrimeDivisor`, `MilneEC.PrimeDivisor.deg` | formalized (a definition) |
+| Remark 4.14 | 46 | Over an infinite field not every degree-zero class is represented by a divisor defined over the field | `MilneEC.Example110.remark_4_14_obstruction`, `MilneEC.Example110.example_1_10_epi_of_isZero` | proved |
+| Lemma 4.15 | 47 | A pair of regular functions on one affine plane curve maps into another affine plane curve iff the second curve's equation vanishes on the pair | `MilneEC.lemma_4_15` | proved |
+| Proposition 4.16 | 47 | Regular maps of affine plane curves correspond to pairs of regular functions, to functorial maps, and to algebra homomorphisms of coordinate rings | `MilneEC.affineRegularMap_ext` | proved |
+| Definition (prose) | 47 | A regular map of plane curves is given locally by polynomials of the same degree not all vanishing | `MilneEC.ProjRegularMap`, `MilneEC.IsAffineRegularMap` | formalized (a definition) |
+| Example 4.17 | 48 | The complex conic $X^2+Y^2=Z^2$ is isomorphic to the projective line | `MilneEC.example_4_17`, `MilneEC.example_4_17_circle` | proved |
+| Proposition 4.18 | 48 | A regular map of affine pieces of nonsingular projective plane curves extends uniquely to the projective curves | `MilneEC.not_prop4_18` | proved |
+| Remark 4.19 | 48 | The extension result holds for singular curves with singularities in the pieces, and for any nonsingular projective curves | `MilneEC.Remark4_19` | stated (not proved) |
+| Example 4.20 | 49 | Every regular map between affine Weierstrass curves extends uniquely to the projective curves, and fixes the point at infinity if it preserves vertical lines | `MilneEC.not_example_4_20_conclusion` | proved |
+| Definition 4.21 | 49 | A regular map of curves is constant, dominating or surjective as specified | `MilneEC.ProjRegularMap.IsConstant`, `MilneEC.ProjRegularMap.IsDominating`, `MilneEC.ProjRegularMap.IsSurjective` | formalized (a definition) |
+| Proposition 4.23 | 49 | A regular map of geometrically irreducible curves is dominating or constant; a dominating map of projective curves is surjective | `MilneEC.Prop4_23` | stated (not proved) |
+| Proposition 4.24 | 49 | A separable dominating map has degree-many preimages generically, and a degree 1 map of nonsingular projective curves is an isomorphism | `MilneEC.Prop4_24` | stated (not proved) |
+| Definition (prose) | 49 | The degree of a dominating regular map of curves is the degree of the function field extension | `MilneEC.pullbackDegree`, `MilneEC.ProjRegularMap.IsPullback` | formalized (a definition) |
+| Example 4.25 | 50 | The projection $(x,y)\mapsto x$ of $Y^2=X^3+aX+b$ has degree 2, two-to-one when the characteristic is not 2 and one-to-one in characteristic 2 | `MilneEC.example_4_25`, `MilneEC.example_4_25_points` | proved |
+| Remark 4.26 | 50 | A surjective map pulls back divisors multiplying degree by the map degree; a map is separable if it is an isomorphism on some tangent space | `MilneEC.Remark4_26` | stated (not proved) |
+| Example 5.1 | 50 | $X^2+Y^2=\pm1$ are isomorphic over the complex numbers but not the reals; an elliptic curve over an extension comes from the subfield iff its $j$-invariant lies in it | `MilneEC.example_5_1_a`, `MilneEC.example_5_1_b` | proved |
+| Definition (prose) | 50 | A curve over a subfield $k$ of $\Omega$ is defined by polynomial equations with coefficients in $k$ and base-changes to a curve over $\Omega$ | `MilneEC.RegularAction` | proved |
+| Proposition 5.2 | 51 | Base change to $\Omega$ with its canonical descent system is fully faithful with image the effective descent systems | `MilneEC.Prop5_2` | stated (not proved) |
+| Proposition 5.3 | 51 | A descent system is effective if a finite rigidifying set of points is fixed by an open subgroup | `MilneEC.Prop5_3` | stated (not proved) |
+| Remark 5.4 | 52 | Nonsingular projective curves of genus 0, 1, above 1 over an algebraically closed field are rigidified by a finite set | `MilneEC.Rigidifies` | formalized (a definition) |
+| Proposition 5.5 | 52 | Over an algebraically closed extension, curves over the subfield are equivalent to curves with a continuous regular Galois action on points | `MilneEC.prop_5_5_natural` | proved |
+
+## Chapter II: Basic theory of elliptic curves
+
+| Item | Page | Statement | Lean declaration | Status |
+|---|---|---|---|---|
+| Definition 1.1 | 53 | An elliptic curve over a perfect field $k$ is a nonsingular projective cubic with a rational point (variants: inflection point; Weierstrass form (10); genus 1 curve with a rational point). | `MilneEC.II.weierstrass_pointO_isInflectionPoint`, `MilneEC.II.proposition_1_2` | proved |
+| Proposition 1.2 | 54 | A nonsingular plane cubic with a rational inflection point $O$ can be moved by a linear change of variables to Weierstrass form (10) with $O=(0:1:0)$ and tangent line $Z=0$. | `MilneEC.II.proposition_1_2_a`, `MilneEC.II.proposition_1_2_b`, `MilneEC.II.proposition_1_2` | proved |
+| Definition (prose) | 57 | Two elliptic curves are isogenous if there is a nonconstant regular map between them; such a map is an isogeny. | `MilneEC.II.Isogenous` | formalized (a definition) |
+| Aside 1.3 | 57 | For a field of characteristic not 2, a nonsingular point of a plane curve is an inflection point iff the Hessian determinant vanishes there; a nonsingular cubic has 3 inflection points over the algebraic closure (cited from Fulton) | `MilneEC.II.hessian_isHomogeneous` | proved |
+| Theorem 2.1 | 58 | Over a field of characteristic not 2 or 3, every elliptic curve is isomorphic to $Y^2Z=X^3+aXZ^2+bZ^3$, which is nonsingular iff $4a^3+27b^2\neq0$; isomorphisms are $(x:y:z)\mapsto(c^2x:c^3y:z)$; the $j$-invariant is an isomorphism invariant and classifies curves over the algebraic closure | `MilneEC.II.theorem_2_1_a`, `MilneEC.II.theorem_2_1_a_nonsingular`, `MilneEC.II.theorem_2_1_b`, `MilneEC.II.theorem_2_1_b_converse` | proved |
+| Remark 2.2 | 60 | Curves with equal $j$-invariant need not be isomorphic over the base field: $Y^2Z=X^3+ac^2XZ^2+bc^3Z^3$ with $c$ a non-square is not isomorphic to $E(a,b)$ | `MilneEC.II.remark_2_2`, `MilneEC.II.remark_2_2_j`, `MilneEC.II.remark_2_2_counterexample` | proved |
+| Remark 2.3 | 60 | For every $j$ in the field there is an elliptic curve with $j$-invariant $j$, given by explicit Weierstrass equations | `MilneEC.II.remark_2_3`, `MilneEC.II.remark_2_3_zero`, `MilneEC.II.remark_2_3_1728` | proved |
+| Theorem 2.4 | 61 | Every elliptic curve over a field is isomorphic to a Weierstrass curve (nonsingular iff $\Delta\neq 0$); isomorphisms between Weierstrass curves are exactly the changes $(u,r,s,t)$; $j=c_4^3/\Delta$ classifies curves up to isomorphism over the algebraic closure. | `MilneEC.II.theorem_2_4_a_nonsingular`, `MilneEC.II.theorem_2_4_b`, `MilneEC.II.variableChange_eq_iff`, `MilneEC.II.theorem_2_4_c` | proved |
+| Example 3.1 | 63 | Over $\mathbb F_q$, $\mathbb G_a$ has $q$ points, $\mathbb G_m$ has $q-1$, and the twisted torus $\mathbb G_m[a]$ has $q+1$. | `MilneEC.II.example_3_1` | proved |
+| Definition (prose) | 63 | The twisted multiplicative group $\mathbb G_m[a]$ is the affine conic $X^2-aY^2=1$ with the norm-one group law. | `MilneEC.II.twistedMulGroup_iso_mul_sq`, `MilneEC.II.twistedMulGroup_iso_units_of_sq` | proved |
+| Definition (prose) | 67 | The reduction of $Y^2Z=X^3+aXZ^2+bZ^3$ modulo $p$ is the same equation with $a,b$ reduced to $\mathbb F_p$. | `MilneEC.II.curveFp` | formalized (a definition) |
+| Definition (prose) | 68 | A Weierstrass equation with integral coefficients is minimal if the absolute value of its discriminant is minimal. | `WeierstrassCurve.IsMinimal`, `WeierstrassCurve.exists_isMinimal` | in Mathlib |
+| Theorem 4.1 | 70 | For $E$ over $\mathbb Q_p$, the filtration $E\supset E^0\supset E^1\supset\cdots$ has finite index $E/E^0$, $E^0/E^1\cong\bar E_{ns}(\mathbb F_p)$, $E^n/E^{n+1}\cong\mathbb F_p$, and is exhaustive. | `MilneEC.II.theorem_4_1_a`, `MilneEC.II.theorem_4_1_b`, `MilneEC.II.theorem_4_1_c`, `MilneEC.II.theorem_4_1_d` | proved |
+| Definition (prose) | 70 | The subgroups $E^0(\mathbb Q_p)$ (nonsingular reduction), $E^1(\mathbb Q_p)$ (kernel of reduction) and $E^n(\mathbb Q_p)$ ($x/y\in p^n\mathbb Z_p$). | `MilneEC.II.E0`, `MilneEC.II.E1`, `MilneEC.II.En`, `MilneEC.II.reducePoint` | formalized (a definition) |
+| Corollary 4.2 | 71 | For $m$ prime to $p$, multiplication by $m$ is a bijection on $E^1(\mathbb Q_p)$. | `MilneEC.II.corollary_4_2_injective`, `MilneEC.II.Corollary4_2`, `MilneEC.II.corollary_4_2` | proved |
+| Remark 4.3 | 72 | Formal groups over a ring; an elliptic curve over $\mathbb Q_p$ gives a formal group over $\mathbb Z_p$ whose points on $p\mathbb Z_p$ are $E^1(\mathbb Q_p)$. | `MilneEC.II.Remark4_3` | stated (not proved) |
+| Theorem 5.1 | 72 | (Lutz-Nagell) A rational torsion point $(x:y:1)$ on $Y^2=X^3+aX+b$ has integer coordinates and $y=0$ or $y^2$ divides the discriminant. | `MilneEC.II.theorem_5_1` | proved |
+| Proposition 5.4 | 73 | The group $E^1(\mathbb Q_p)$ is torsion-free. | `MilneEC.II.proposition_5_4` | proved |
+| Proposition 5.3 | 73 | If $P=(x_1:y_1:1)$ and $2P$ on $y^2=x^3+ax+b$ over $\mathbb{Q}$ have integer coordinates, then $y_1=0$ or $y_1$ divides the discriminant | `MilneEC.II.proposition_5_3` | proved |
+| Corollary 5.5 | 74 | A torsion point $(x:y:1)\in E(\mathbb Q_p)$ has $x,y\in\mathbb Z_p$. | `MilneEC.II.corollary_5_5` | proved |
+| Corollary 5.6 | 74 | A rational torsion point $(x:y:1)$ has $x,y\in\mathbb Z$. | `MilneEC.II.corollary_5_6` | proved |
+| Corollary 5.7 | 74 | If $E$ has good reduction at $p$ then reduction is injective on $E(\mathbb Q)_{tors}$. | `MilneEC.II.corollary_5_7`, `MilneEC.II.corollary_5_7_unconditional` | proved |
+| Lemma 5.9 | 75 | If $P_1+P_2+P_3=O$ and $P_1,P_2\in E^n(\mathbb Q_p)$ then $P_3\in E^n$ and $x'(P_1)+x'(P_2)+x'(P_3)\in p^{5n}\mathbb Z_p$. | `MilneEC.II.lemma_5_9` | proved |
+| Remark 5.11 | 76 | (Mazur) $E(\mathbb Q)_{tors}$ is one of 15 specific groups. | `MilneEC.II.card_torsion_le_sixteen` | proved, conditional on `MilneEC.II.MazurTorsion` |
+| Definition (prose) | 77 | The Weierstrass minimal model of $E$ over $\mathbb Z_p$ is the scheme given by a minimal equation. | — | in Tau Ceti, not in this library |
+| Definition (prose) | 82 | The complete Neron (minimal) model is the minimal regular proper scheme over $\mathbb Z_p$ with generic fibre $E$. | `MilneEC.NeronModel.IsCompleteNeronModel`, `MilneEC.NeronModel.IsGenericFibreOf`, `MilneEC.NeronModel.IsRegularScheme` | formalized (a definition) |
+
+## Chapter III: Elliptic curves over the complex numbers
+
+| Item | Page | Statement | Lean declaration | Status |
+|---|---|---|---|---|
+| Proposition 1.1 | 90 | Lattices in $\mathbb C$ correspond bijectively to $SL_2(\mathbb Z)$-orbits of oriented bases, and lattices modulo scaling to $SL_2(\mathbb Z)\backslash\mathbb H$. | `MilneEC.III.prop_1_1_lattice_eq_iff`, `MilneEC.III.prop_1_1_exists`, `MilneEC.III.lattice_homothetic_iff`, `MilneEC.III.ratio_eq_iff` | proved |
+| Definition (prose) | 90 | A fundamental domain (period parallelogram) of a lattice is the interior of a parallelogram with vertices $z_0,z_0+\omega_1,z_0+\omega_2,z_0+\omega_1+\omega_2$. | `MilneEC.III.periodParallelogram_eq` | proved |
+| Definition (prose) | 90 | A meromorphic function $f$ on $\mathbb C$ is doubly periodic for $\Lambda$ if $f(z+\omega)=f(z)$ for all $\omega\in\Lambda$. | `MilneEC.III.isPeriodicFor_iff` | proved |
+| Proposition 2.1 | 91 | A nonzero doubly periodic function has residue sum zero, order sum zero, and zero-and-pole sum in the lattice. | `MilneEC.III.prop_2_1`, `MilneEC.III.rectIntegral_eq_two_pi_I_mul_sum_residue` | proved |
+| Corollary 2.2 | 91 | A nonconstant doubly periodic function has at least two poles or one double pole. | `MilneEC.III.cor_2_2`, `MilneEC.III.isDoublyPeriodic_const_of_nonneg_order` | proved |
+| Lemma 2.3 | 92 | For a lattice $\Lambda\subset\mathbb C$, $\sum_{\omega\neq 0}1/\lvert\omega\rvert^3$ converges. | `MilneEC.III.lemma_2_3` | proved |
+| Proposition 2.4 | 93 | The series for $\wp$ and $\wp'$ converge normally on compact sets to doubly periodic meromorphic functions with $\wp'=d\wp/dz$. | `PeriodPair.hasSumLocallyUniformly_weierstrassP`, `PeriodPair.hasSumLocallyUniformly_derivWeierstrassP`, `PeriodPair.periodic_weierstrassP`, `PeriodPair.periodic_derivWeierstrassP`, `PeriodPair.meromorphic_weierstrassP`, `PeriodPair.meromorphic_derivWeierstrassP`, `PeriodPair.deriv_weierstrassP` | in Mathlib |
+| Definition (prose) | 93 | The Weierstrass function $\wp(z)=z^{-2}+\sum_{\omega\neq0}\bigl((z-\omega)^{-2}-\omega^{-2}\bigr)$. | `PeriodPair.weierstrassP` | in Mathlib |
+| Proposition 2.5 | 94 | For $k\ge 2$ the Eisenstein series $G_{2k}(z)=\sum_{(m,n)\neq 0}(mz+n)^{-2k}$ is holomorphic on the upper half-plane. | `MilneEC.III.prop_2_5`, `MilneEC.III.eisensteinG_eq_E` | proved |
+| Proposition 2.6 | 94 | $\wp'^2=4\wp^3-g_4\wp-g_6$ with $g_4=60G_4$, $g_6=140G_6$. | `MilneEC.III.prop_2_6` | proved |
+| Definition (prose) | 94 | The Eisenstein series of a lattice $G_{2k}(\Lambda)=\sum_{\omega\neq0}\omega^{-2k}$, and $G_{2k}(z)$ for $z\in\mathbb H$. | `MilneEC.III.eisensteinG_eq_G` | proved |
+| Proposition 2.7 | 95 | The field of doubly periodic meromorphic functions is $\mathbb C(\wp,\wp')$. | `MilneEC.III.prop_2_7`, `MilneEC.III.even_mem_ratFunc_weierstrassP`, `MilneEC.III.eval_weierstrassP_eq_zero_iff`, `MilneEC.III.weierstrassP_transcendental` | proved |
+| Definition (prose) | 97 | A Riemann surface is a connected Hausdorff second-countable space with a complex structure (equivalence class of compatible coordinate coverings). | `ChartedSpace`, `IsManifold` | in Mathlib |
+| Example 3.2 | 98 | Stereographic projections give the unit sphere a complex structure, the Riemann sphere, identified with $\mathbb P^1(\mathbb C)$. | `MilneEC.III.example_3_2_bijOn`, `MilneEC.III.example_3_2_transition`, `MilneEC.III.example_3_2_proj` | proved |
+| Proposition 3.3 | 99 | Holomorphic maps $\mathbb C/\Lambda\to\mathbb C/\Lambda'$ fixing $0$ are $[z]\mapsto[\alpha z]$ with $\alpha\Lambda\subset\Lambda'$, uniquely. | `MilneEC.III.prop_3_3`, `MilneEC.III.prop_3_3_holomorphic` | proved |
+| Corollary 3.4 | 99 | $\mathbb C/\Lambda\cong\mathbb C/\Lambda'$ as Riemann surfaces iff $\Lambda'=\alpha\Lambda$. | `MilneEC.III.cor_3_4` | proved |
+| Corollary 3.5 | 99 | Every holomorphic map $\mathbb C/\Lambda\to\mathbb C/\Lambda'$ fixing $0$ is a group homomorphism. | `MilneEC.III.cor_3_5` | proved |
+| Lemma 3.6 | 99 | $4X^3-g_4(\Lambda)X-g_6(\Lambda)$ has distinct roots. | `MilneEC.III.lemma_3_6`, `MilneEC.III.g₂_cube_sub_g₃_sq_ne_zero` | proved |
+| Proposition 3.7 | 100 | $z\mapsto(\wp(z):\wp'(z):1)$ is an isomorphism of Riemann surfaces $\mathbb C/\Lambda\to E(\Lambda)(\mathbb C)$. | `MilneEC.III.prop_3_7_bijective`, `MilneEC.III.prop_3_7_local` | proved |
+| Proposition 3.8 | 101 | $\wp(z+z')=\tfrac14\bigl(\tfrac{\wp'(z)-\wp'(z')}{\wp(z)-\wp(z')}\bigr)^2-\wp(z)-\wp(z')$. | `MilneEC.III.prop_3_8` | proved |
+| Corollary 3.9 | 101 | $z\mapsto(\wp(z):\wp'(z):1)$ is a group homomorphism $\mathbb C/\Lambda\to E(\Lambda)$. | `MilneEC.III.cor_3_9` | proved |
+| Theorem 3.10 | 101 | Every elliptic curve over $\mathbb C$ is isomorphic to $E(\Lambda)$ for some lattice $\Lambda$. | `MilneEC.III.thm_3_10`, `MilneEC.III.jFun_surjective`, `MilneEC.III.j_curveOf`, `MilneEC.III.jFun_smul` | proved |
+| Remark 3.11 | 102 | Under $\mathbb C/\Lambda\cong E(\mathbb C)$, $dz$ corresponds to $dx/y$; lattices correspond to pairs (curve, holomorphic differential). | `MilneEC.III.remark_3_11_dx_div_y`, `MilneEC.III.remark_3_11` | proved |
+| Theorem 3.12 | 103 | For an elliptic curve over an algebraically closed field of characteristic zero, $E[n]$ is free of rank 2 over $\mathbb Z/n\mathbb Z$. | `MilneEC.III.thm_3_12_complex`, `MilneEC.III.thm_3_12`, `MilneEC.III.torsionBy_quotient` | proved |
+| Proposition 3.13 | 103 | For algebraically closed $k\subset\Omega$, $E(k)\to E(\Omega)$ is an isomorphism on torsion. | `MilneEC.III.prop_3_13`, `MilneEC.III.TorsionBaseChange`, `MilneEC.III.torsionBaseChange` | proved |
+| Lemma 3.14 | 103 | Division-polynomial formula for the coordinates of $nP$ on $Y^2=X^3+aX+b$. | `MilneEC.III.DivisionPolynomialFormula`, `MilneEC.III.divisionPolynomialFormula`, `MilneEC.zsmul_some_eq_of_evalEval_ψ_ne_zero`, `MilneEC.III.ψ_milne_three` | proved |
+| Lemma 3.15 | 104 | If $F,G$ over $k$ have no common factor, common zeros over a larger algebraically closed field already lie in $k$. | `MilneEC.III.lemma_3_15` | proved |
+| Remark 3.16 | 104 | Theorem 3.12 holds in characteristic $p$ for $n$ prime to $p$; supersingular and ordinary cases for $p$-power torsion. | `MilneEC.III.TorsionCharP` | stated (not proved) |
+| Definition (prose) | 104 | An element of a number field is an algebraic integer if it satisfies a monic polynomial over $\mathbb Z$; they form a ring $\mathcal O_K$. | `IsIntegral`, `NumberField.RingOfIntegers` | in Mathlib |
+| Proposition 3.17 | 105 | For $\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2$, $\mathrm{End}(\mathbb C/\Lambda)$ is $\mathbb Z$ unless $\mathbb Q(\tau)$ is quadratic, in which case it is an order of rank 2. | `MilneEC.III.prop_3_17`, `MilneEC.III.holomorphic_endo_iff` | proved |
+| Lemma 3.20 | 106 | For a nonzero-determinant endomorphism $\alpha$ of a lattice $\Lambda$, $\lvert\mathrm{coker}\,\alpha\rvert=\lvert\det\alpha\rvert$ and the kernel of $\alpha$ on $(\Lambda\otimes\mathbb Q)/\Lambda$ has the same order. | `MilneEC.III.lemma_3_20_a`, `MilneEC.III.lemma_3_20_b` | proved |
+| Definition (prose) | 106 | A complex number is algebraic if algebraic over $\mathbb Q$, else transcendental. | `IsAlgebraic`, `Transcendental` | in Mathlib |
+| Proposition 3.21 | 107 | The degree of a nonzero endomorphism of $E(\mathbb C)=\mathbb C/\Lambda$ is the determinant of its action on $\Lambda$. | `MilneEC.III.prop_3_21` | proved |
+| Definition (prose) | 107 | The Tate module $T_\ell E=\varprojlim E[\ell^n]$. | `MilneEC.III.tateModule_quotient_equiv` | proved |
+| Proposition 3.22 | 108 | For a nonzero endomorphism $\alpha$, $\det(\alpha\mid T_\ell E)=\deg\alpha$. | `MilneEC.III.prop_3_22` | proved |
+| Corollary 3.23 | 108 | The characteristic polynomial $X^2+cX+d$ of $\alpha$ on $T_\ell E$ has integer coefficients independent of $\ell$, $c^2-4d\le 0$, and $\alpha^2+c\alpha+d=0$. | `MilneEC.III.cor_3_23` | proved |
+| Exercise 3.24 | 108 | (a) The $3\times3$ determinant with rows $(\wp(z_i),\wp'(z_i),1)$ for $z_1,z_2,z_1+z_2$ vanishes; (b) verify Proposition 2.6 by Laurent expansion. | `MilneEC.III.exercise_3_24_a` | proved |
+
+## Chapter IV: The arithmetic of elliptic curves
+
+| Item | Page | Statement | Lean declaration | Status |
+|---|---|---|---|---|
+| Definition (prose) | 110 | For a $G$-module $M$, $H^0(G,M)=M^G$, the invariants. | `MilneEC.h0Iso` | formalized (a definition) |
+| Example 1.1 | 110 | For a finite Galois extension $L/K$ with group $G$ and an elliptic curve $E/K$, the groups $L$, $L^\times$ and $E(L)$ are $G$-modules | `MilneEC.pointsRep`, `MilneEC.pointsRepresentation` | formalized (a definition) |
+| Proposition 1.3 | 111 | For a finite Galois extension $L/K$ with group $G$, $H^1(G, L^\times)=0$ (every crossed homomorphism $G\to L^\times$ is principal; Hilbert's Theorem 90). | `MilneEC.prop_1_3` | proved |
+| Definition (prose) | 111 | Crossed homomorphisms $G\to M$, principal ones, and $H^1(G,M)$ as their quotient, for a finite group. | `MilneEC.h1_eq_crossed_mod_principal` | proved |
+| Example 1.2 | 111 | If $G$ acts trivially on $M$, then crossed homomorphisms are homomorphisms, principal ones are zero, and $H^1(G,M)=\mathrm{Hom}(G,M)$ | `MilneEC.example_1_2_trivialH1` | formalized (a definition) |
+| Corollary 1.4 | 112 | A point of projective $n$-space over $L$ is fixed by the Galois group exactly when it has a representative with all coordinates in $K$. | `MilneEC.cor_1_4` | proved |
+| Proposition 1.5 | 112 | A short exact sequence of $G$-modules gives a canonical exact sequence $0\to H^0(M)\to H^0(N)\to H^0(P)\to H^1(M)\to H^1(N)\to H^1(P)$. | `MilneEC.V.prop_1_5`, `MilneEC.h0_map_injective` | proved |
+| Proposition 1.6 | 113 | If the finite group $G$ has order $m$, then $m\,H^1(G,M)=0$. | `MilneEC.prop_1_6` | proved |
+| Remark 1.7 | 113 | For a normal subgroup $H$ of $G$, the inflation-restriction sequence $0\to H^1(G/H,M^H)\to H^1(G,M)\to H^1(H,M)$ is exact. | `MilneEC.remark_1_7` | proved |
+| Definition (prose) | 113 | The Galois group of an algebraic closure over a perfect field with its Krull topology. | `MilneEC.galois_compact_and_isOpen_iff` | proved |
+| Definition (prose) | 113 | A $G$-module is discrete if the action map from $G\times M$ is continuous for the discrete topology on $M$. | `MilneEC.isDiscreteModule_iff` | proved |
+| Example 1.8 | 114 | For the absolute Galois group of a perfect field: $H^1(G,k^{al\times})=0$, $H^1(G,\mu_n)\cong k^\times/k^{\times n}$ (infinite for number fields), and $H^1$ for trivial action is continuous homomorphisms. | `MilneEC.example_1_8_a`, `MilneEC.example1_8a`, `MilneEC.example_1_8_b`, `MilneEC.example_1_8_b_infinite` | proved |
+| Definition (prose) | 114 | For an infinite Galois group and a discrete module, $H^1$ is continuous crossed homomorphisms modulo principal ones. | `MilneEC.mem_H1cont_iff_exists_inflation`, `MilneEC.H1cont_torsion`, `MilneEC.continuous_iff_exists_openNormalSubgroup` | proved |
+| Lemma 2.1 | 116 | For an elliptic curve over an algebraically closed field, multiplication by $n$ is surjective on points. | `MilneEC.Lemma2_1`, `MilneEC.lemma2_1`, `MilneEC.kummerComplex_shortExact` | proved |
+| Example 1.10 | 116 | For a curve $C$ over a perfect field $k$ there is an exact sequence $k(C)^\times\to\mathrm{Div}(C)\to\mathrm{Pic}(C)\to H^2(\Gamma,\bar k^\times)$, so $\mathrm{Pic}(C)$ is divisors modulo principal divisors when the Brauer group of $k$ vanishes | `MilneEC.Example110.example_1_10_exact_div`, `MilneEC.Example110.example_1_10_exact_pic`, `MilneEC.Example110.example_1_10_epi_of_isZero` | proved |
+| Definition (prose) | 117 | The $n$-Selmer group $S^{(n)}(E/\mathbb{Q})$: classes in $H^1(\mathbb{Q},E_n)$ whose image in $H^1(\mathbb{Q}_p,E)$ vanishes for every place $p$. | `MilneEC.selmerGroup`, `MilneEC.selmerGroupOf`, `MilneEC.locTorsion` | formalized (a definition) |
+| Definition (prose) | 117 | The Tate-Shafarevich group of $E$ over the rationals: classes in $H^1(\mathbb{Q},E)$ locally trivial at all places. | `MilneEC.tateShafarevich_torsion` | proved |
+| Lemma 2.2 | 118 | For maps $A\to B\to C$ of abelian groups there is an exact kernel-cokernel sequence $0\to\ker\alpha\to\ker\beta\alpha\to\ker\beta\to\operatorname{coker}\alpha\to\operatorname{coker}\beta\alpha\to\operatorname{coker}\beta\to0$. | `MilneEC.lemma_2_2` | proved |
+| Theorem 3.1 | 118 | For an elliptic curve $E$ over a number field and an integer $n$, the $n$-Selmer group $S^{(n)}(E/\mathbb{Q})$ is finite | `MilneEC.weak_finite_basis`, `MilneEC.finite_basis` | proved, conditional on `MilneEC.Thm3_1_Selmer` |
+| Lemma 3.2 | 119 | For an elliptic curve over $\mathbb{Q}_p$ with good reduction and $p\nmid n$, a point is an $n$-th multiple iff its reduction is an $n$-th multiple in the finite field points. | `MilneEC.II.lemma_3_2_short` | proved |
+| Lemma 3.3 | 119 | For every finite extension $k$ of $\mathbb{F}_p$ there is an unramified extension $K$ of $\mathbb{Q}_p$ of degree $[k:\mathbb{F}_p]$ with residue field $k$. | `MilneEC.Lemma3_3`, `MilneEC.lemma_3_3`, `MilneEC.isUnramifiedOverQp_iff` | proved |
+| Remark 3.4 | 119 | In an unramified extension $K$ of $\mathbb{Q}_p$ Hensel's lemma holds, so $K$ is the splitting field of $X^q-X$. | `MilneEC.Remark3_4`, `MilneEC.remark_3_4`, `MilneANT.Remark753.hensel_integralClosure` | proved |
+| Definition (prose) | 119 | A finite extension $K$ of $\mathbb{Q}_p$ is unramified if the ramification index is 1. | `MilneEC.IsUnramifiedOverQp` | formalized (a definition) |
+| Lemma 3.5 | 120 | For good reduction and $p\nmid n$, every point of $E(\mathbb{Q}_p)$ becomes an $n$-th multiple over some finite unramified extension. | `MilneEC.Lemma3_5` | stated (not proved) |
+| Proposition 3.6 | 120 | A Selmer class of an elliptic curve over the rationals dies in $H^1(K,E_n)$ for a finite unramified extension $K$ of $\mathbb{Q}_p$, for each prime $p$ not dividing $2n\Delta$. | `MilneEC.resToLocalField` | formalized (a definition) |
+| Remark 3.7 | 121 | When all 2-torsion is rational, $E(\mathbb{Q})/2E(\mathbb{Q})$ is finite via the explicit maps $\varphi_\alpha,\varphi_\beta$ to $\mathbb{Q}^\times/\mathbb{Q}^{\times2}$. | `MilneEC.remark_3_7`, `MilneEC.Remark3_7`, `MilneEC.finite_quot_two_cubic`, `MilneEC.fg_cubicCurve` | proved |
+| Lemma 3.8 | 122 | For a finite Galois extension $L$ of the rationals, the kernel of $S^{(n)}(E/\mathbb{Q})\to S^{(n)}(E/L)$ is finite. | `MilneEC.lemma_3_8` | proved |
+| Definition (prose) | 122 | The Selmer group $S^{(n)}(E/L)$ over a number field $L$ is the kernel of $H^1(L,E_n)\to\prod_{v}H^1(L_v,E)$ over all places. | `MilneEC.selmerGroup` | formalized (a definition) |
+| Theorem 3.9 | 123 | Every nonzero ideal of the ring of integers of a number field is uniquely a product of prime ideals (Dedekind). | `MilneEC.thm_3_9` | proved |
+| Definition (prose) | 123 | The ideal class group is the cokernel of $L^\times\to\bigoplus_{\mathfrak p}\mathbb{Z}$, $x\mapsto(\operatorname{ord}_{\mathfrak p}x)$. | `MilneEC.III.thm_3_10` | proved |
+| Theorem 3.10 | 123 | The ideal class group of a number field is finite | `MilneEC.III.thm_3_10` | proved |
+| Theorem 3.11 | 124 | The unit group of the ring of integers of a number field is finitely generated (Dirichlet unit theorem). | `MilneEC.thm_3_11` | proved |
+| Corollary 3.12 | 124 | For a finite set $T$ of primes, the $T$-units $U_T$ are finitely generated and the group $C_T$ (class group modulo classes of $T$) is finite. | `MilneEC.cor_3_12` | proved |
+| Lemma 3.13 | 125 | There is an exact sequence $0\to U_T/U_T^n\to N\to (C_T)[n]$ where $N$ is the kernel of valuations mod $n$ on $L^\times/L^{\times n}$. | `MilneEC.lemma_3_13` | proved |
+| Proposition 4.1 | 126 | If two degree-$m$ binary forms $F,G$ have no common zero, then $∣h(\varphi(P))-m\,h(P)∣\le B$ on the projective line over the rationals. | `MilneEC.prop_4_1` | proved |
+| Definition (prose) | 126 | The height $H(P)=\max∣a_i∣$ of a rational projective point via a primitive integral representative, and logarithmic height $h=\log H$. | `MilneEC.mulHeight_rat_eq_max_abs`, `MilneEC.remark_4_12` | proved |
+| Lemma 4.2 | 127 | The height of the Veronese image of $(P,Q)$ lies between $\tfrac12 H(P)H(Q)$ and $2H(P)H(Q)$. | `MilneEC.lemma_4_2` | proved |
+| Lemma 4.3 | 128 | For every $B$, only finitely many points of $E(\mathbb{Q})$ have height below $B$. | `MilneEC.lemma_4_3` | proved |
+| Proposition 4.4 | 128 | There is a constant $A$ with $∣h(2P)-4h(P)∣\le A$ on $E(\mathbb{Q})$. | `MilneEC.prop_4_4` | proved |
+| Proposition 4.5 | 129 | There is at most one function $\hat h:E(\mathbb{Q})\to\mathbb{R}$ with $\hat h-h$ bounded and $\hat h(2P)=4\hat h(P)$. | `MilneEC.V.prop_4_5` | proved |
+| Lemma 4.6 | 129 | The sequence $h(2^nP)/4^n$ is Cauchy. | `MilneEC.lemma_4_6` | proved |
+| Theorem 4.7 | 130 | The limit $\hat h$ is a Neron-Tate height: finitely many points below any bound, and $\hat h\ge0$ with equality iff $P$ is torsion. | `MilneEC.thm_4_7`, `MilneEC.thm_4_7_a`, `MilneEC.thm_4_7_b`, `MilneEC.canonicalHeight_nonneg` | proved |
+| Lemma 4.8 | 131 | A function from an abelian group to a field of characteristic not 2 satisfying the parallelogram law is a quadratic form. | `MilneEC.lemma_4_8` | proved |
+| Proposition 4.9 | 131 | The canonical height $\hat h:E(\mathbb{Q})\to\mathbb{R}$ is a quadratic form. | `MilneEC.prop_4_9` | proved |
+| Definition (prose) | 131 | A quadratic form on an abelian group with values in a field of characteristic not 2: $f(2x)=4f(x)$ and $f(x+y)-f(x)-f(y)$ bi-additive. | `MilneEC.isQuadraticForm_iff_exists_quadraticMap` | proved |
+| Lemma 4.10 | 132 | There is a constant $C$ with $H(P_1+P_2)H(P_1-P_2)\le C\,H(P_1)^2H(P_2)^2$ for all rational points. | `MilneEC.lemma_4_10` | proved |
+| Lemma 4.11 | 132 | The canonical height satisfies the parallelogram law $\hat h(P+Q)+\hat h(P-Q)=2\hat h(P)+2\hat h(Q)$. | `MilneEC.lemma_4_11` | proved |
+| Remark 4.12 | 133 | Over a number field the height of a projective point is the product over normalized places of the maximum absolute value of coordinates, independent of representative via the product formula. | `MilneEC.remark_4_12` | proved |
+| Proposition 4.13 | 133 | If the points of canonical height at most $C$ contain coset representatives of $2E(K)$ in $E(K)$, they generate $E(K)$. | `MilneEC.prop_4_13`, `MilneEC.fg_of_finite_quotient_two` | proved |
+| Proposition 5.1 | 135 | $E(\mathbb{Q})/2E(\mathbb{Q})$ lies in the intersection of the images $S^{(2,n)}$ of the $2^n$-Selmer groups, with equality iff no nonzero element of Sha is divisible by all powers of 2. | `MilneEC.prop_5_1_unconditional`, `MilneEC.prop_5_1` | proved |
+| Remark 5.2 | 135 | If no nonzero element of the Tate-Shafarevich group is divisible by all powers of 2, then the 2-primary part is finite and $S^{(2,n_0)}=E(\mathbb{Q})/2E(\mathbb{Q})$ for large $n_0$; this gives a strategy for computing the rank | `MilneEC.remark_5_2` | proved, conditional on `MilneEC.Thm3_1_Selmer` |
+| Remark 5.4 | 136 | Cassels: if the Tate-Shafarevich group is finite it carries a nondegenerate alternating form, so its order is a square; and the Cassels-Tate dual exact sequence holds | `MilneEC.card_isSquare_of_alternating` | proved |
+| Conjecture 5.3 | 135 | The Tate-Shafarevich group of an elliptic curve over a number field is finite. | `MilneEC.Conjecture5_3`, `FormalConjectures.tateShafarevich` | formalized (a definition) |
+| Proposition 5.6 | 137 | For $Y^2Z=(X-\alpha Z)(X-\beta Z)(X-\gamma Z)$ with distinct integers, the rank satisfies $r\le t_1+2t_2-1$ ($t_1$ nodal bad primes, $t_2$ cuspidal). | `MilneEC.prop_5_6_unconditional`, `MilneEC.prop_5_6_local`, `MilneEC.Prop5_6Local` | proved |
+| Proposition 5.5 | 137 | For $y^2=(x-\alpha)(x-\beta)(x-\gamma)$ over $\mathbb{Q}$ with distinct integer roots, the rank $r$ satisfies $r\le 2\cdot\#\{p\mid 2\Delta\}$ | `MilneEC.prop_5_5_rank_unconditional` | proved |
+| Example 5.7 | 138 | For $Y^2Z=X^3-XZ^2$, the rank is 0 and $E(\mathbb{Q})\cong(\mathbb{Z}/2)^2$. | `MilneEC.example_5_7_unconditional`, `MilneEC.example_5_7_rank_unconditional`, `MilneEC.not_isCongruentNumber_one` | proved |
+| Exercise 5.9 | 139 | Show $E(\mathbb{Q})$ is finite for $Y^2=X^3-4X$, and bound the rank for $Y^2=X^3-p^2X$ by congruence class of $p$ mod 8. | `MilneEC.Exercise5_9_1`, `MilneEC.Exercise5_9_2` | stated (not proved) |
+| Theorem 6.1 | 139 | The Neron-Tate pairing on $E(\mathbb{Q})\otimes\mathbb{R}$ is positive definite, hence nondegenerate. | `MilneEC.thm_6_1`, `MilneEC.thm_6_1_det_ne_zero` | proved |
+| Definition (prose) | 139 | A lattice in a real vector space is the $\mathbb{Z}$-span of a basis. | `MilneEC.isZLattice_iff_exists_basis` | proved |
+| Lemma 6.2 | 140 | A quadratic form on a real vector space that is finite on bounded sets and vanishes only at 0 on a full lattice is positive definite. | `MilneEC.lemma_6_2` | proved |
+| Theorem 6.3 | 140 | Minkowski: a compact convex symmetric set of volume at least $2^n$ times the covolume of a lattice in $\mathbb{R}^n$ contains a nonzero lattice point. | `MilneEC.thm_6_3` | proved |
+| Example 7.1 | 142 | An abelian group $A$ acting on itself by addition is a principal homogeneous space (torsor) for $A$; a principal homogeneous space for a vector space is an affine space. | `MilneEC.example_7_1` | proved |
+| Definition (prose) | 142 | A principal homogeneous space for a commutative group $A$: nonempty set with a simply transitive action. | `AddTorsor` | in Mathlib |
+| 7.2 | 142 | For principal homogeneous spaces of sets: a unique morphism sends a given point to a given point, and every morphism is an isomorphism. | `MilneEC.statement_7_2_a`, `MilneEC.statement_7_2_b` | proved |
+| 7.3 | 142 | Morphisms from A to W, and Aut(W) = A. | `MilneEC.statement_7_3_a`, `MilneEC.statement_7_3_b` | proved |
+| Definition (prose) | 143 | A principal homogeneous space for an elliptic curve is trivial if isomorphic to the curve acting on itself by translation. | `MilneEC.GaloisTorsor.trivial`, `MilneEC.GaloisTorsor.IsTrivial`, `MilneEC.GaloisTorsor` | formalized (a definition) |
+| 7.4 | 143 | Addition makes E a principal homogeneous space for E, the trivial one. | `MilneEC.GaloisTorsor.trivial` | formalized (a definition) |
+| 7.5 | 143 | Unique morphism of principal homogeneous spaces for E sending w0 to w0'; every morphism is an isomorphism. | `MilneEC.statement_7_2_a`, `MilneEC.statement_7_2_b` | proved |
+| 7.6 | 143 | W is trivial if and only if W(k) is nonempty. | `MilneEC.GaloisTorsor.statement_7_6` | proved |
+| 7.7 | 143 | The automorphisms of W over k are the translations by points of E(k). | `MilneEC.GaloisTorsor.statement_7_7` | proved |
+| Theorem 7.8 | 144 | For an elliptic curve $E$ over a field $k$, isomorphism classes of principal homogeneous spaces for $E$ correspond bijectively to $H^1(k,E)$, trivial space going to $0$. | `MilneEC.GaloisTorsor.theorem_7_8` | proved |
+| Aside 7.9 | 145 | The bijection of Theorem 7.8 makes the set of classes of principal homogeneous spaces a commutative group, with sum given by the quotient $W \wedge W'$ by the diagonal action. | `MilneEC.GaloisTorsor.aside_7_9`, `MilneEC.GaloisTorsor.cls_wedgeDiag` | proved |
+| Theorem 7.10 | 145 | Isomorphism classes of $n$-coverings of $E$ correspond bijectively to $H^1(k,E_n)$ (via the cocycle of a base point). | `MilneEC.NCovering.theorem_7_10` | proved |
+| Example 7.12 | 146 | For $d$ nonzero in a field $k$ of characteristic not 2 or 3, the curve $dY^2Z=X^3+aXZ^2+bZ^3$ is an elliptic curve becoming isomorphic to $E(a,b)$ over $k(\sqrt d)$. | `MilneEC.example_7_12`, `MilneEC.quadTwist_equation_iff` | proved |
+| Proposition 7.13 | 147 | The automorphism group of $(E,O)$ is $\{\pm1\}$ unless $j(E)=0$ or $1728$, when it is cyclic of order 6 or 4 (characteristic not 2 or 3). | `MilneEC.prop_7_13` | proved |
+| Remark 7.14 | 147 | (a) Consistency with the units of imaginary quadratic orders; (b) in characteristic 2 or 3 the group of automorphisms fixing $O$ is still $\{\pm1\}$ for $j\neq 0,1728$, and has at most 24 elements otherwise. | `MilneEC.Remark7_14b` | stated (not proved) |
+| Theorem 7.15 | 148 | Twists of $E_0$ over $k$ correspond bijectively to $H^1(\mathrm{Gal}(k^{al}/k),\mathrm{Aut}_{k^{al}}(E_0))$. | `MilneEC.theorem_7_15`, `MilneEC.theorem_7_15_injective`, `MilneEC.theorem_7_15_surjective`, `MilneEC.Example1_8a` | proved |
+| Corollary 7.16 | 148 | If $j(E_0)\neq 0,1728$, every twist of $E_0$ is a quadratic twist $E_d$. | `MilneEC.cor_7_16` | proved |
+| Remark 7.17 | 148 | Twisted forms of the multiplicative group $\mathbb G_m$ are classified by $H^1(k,\{\pm1\})=k^\times/k^{\times2}$. | `MilneEC.Remark717.remark_7_17_end`, `MilneEC.Remark717.remark_7_17_aut`, `MilneEC.Remark717.remark_7_17_descent` | proved |
+| Remark 7.18 | 148 | The automorphism group of an elliptic curve is the semidirect product of $E(k)$ (translations) by $\mathrm{Aut}(E,O)$. | `MilneEC.remark_7_18`, `MilneEC.remark_7_18_conj` | proved |
+| Theorem 7.19 | 149 | Every nonsingular projective curve of genus 1 over $k$ is a principal homogeneous space for an elliptic curve over $k$, its jacobian, unique up to isomorphism. | `MilneEC.CurveForm.theorem_7_19_galois`, `MilneEC.CurveForm.u_mul` | proved |
+| Remark 7.20 | 150 | Definition of $H^1(G,M)$ as a pointed set for a possibly noncommutative group $M$, via crossed homomorphisms modulo equivalence. | `MilneEC.NonabelianH1`, `MilneEC.IsContCrossedHom`, `MilneEC.crossedHomSetoid` | formalized (a definition) |
+| 7.21 | 150 | Every rational number is a j-invariant; same j-invariant iff isomorphic over the algebraic closure. | `MilneEC.statement_7_21` | proved |
+| 7.22 | 150 | For j not 0 or 1728 the curves with invariant j are the twists E_d, classified by k^x/k^x2. | `MilneEC.statement_7_22` | proved |
+| Definition (prose) | 150 | The jacobian of a genus 1 curve $W$ is the elliptic curve $E_0$ with $W$ a principal homogeneous space under it, characterized by a cocycle condition. | `MilneEC.isJacobianOf_iff` | proved |
+| 7.23 | 151 | The genus 1 curves with jacobian E are the principal homogeneous spaces for E, classified by H^1(Q, E). | `MilneEC.isJacobianOf_iff`, `MilneEC.GaloisTorsor.theorem_7_8` | proved |
+| 7.24 | 151 | Every curve of genus 1 over Q has a jacobian and is a principal homogeneous space for it. | `MilneEC.CurveForm.theorem_7_19_galois` | proved |
+| Proposition 8.1 | 151 | For a prime $p\equiv1 \bmod 8$, the 2-Selmer group of $Y^2Z=X^3+pXZ^2$ over the rationals is $(\mathbb Z/2)^3$. | `MilneEC.curveP_isElliptic` | proved |
+| Proposition 8.2 | 152 | If 2 is not a fourth power modulo $p$ (with $p\equiv1\bmod 8$), the curve of 8.1 has rank 0 and its Tate-Shafarevich 2-torsion is $(\mathbb Z/2)^2$. | `MilneEC.prop_8_2_hyp_17`, `MilneEC.not_fourth_power_two` | proved |
+| Remark 8.3 | 152 | An odd prime is a sum of two squares iff $p\equiv1\bmod4$; Gauss: for $p\equiv1\bmod8$, 2 is a fourth power mod $p$ iff $8$ divides $AB$ where $p=A^2+B^2$. | `MilneEC.remark_8_3_sum_two_squares`, `MilneEC.remark_8_3_examples`, `MilneEC.gaussQuarticCriterion_holds` | proved |
+| Remark 8.4 | 153 | The genus-1 quartic $Y^2=aX^4+\cdots+e$ has a singular projective closure resolved to a smooth curve; the curve $Y^2=2-2pX^4$ has real and all $p$-adic points but no rational point. | `MilneEC.remark_8_4_no_rational_point` | proved |
+| Theorem 8.5 | 153 | Quadratic reciprocity for odd primes, and the formula $(2/p)=(-1)^{(p^2-1)/8}$. | `MilneEC.theorem_8_5` | proved |
+| Proposition 9.1 | 156 | The Frobenius map $(x:y:z)\mapsto(x^p:y^p:z^p)$ on a plane curve over the field with $p$ elements has degree $p$ and acts as zero on the tangent space. | `MilneEC.prop_9_1_a` | proved |
+| Definition (prose) | 156 | The Frobenius map on a projective plane curve over the field with $p$ elements raises coordinates to the $p$-th power. | `MilneEC.frobenius_mem_curve` | proved |
+| Proposition 9.2 | 157 | For an elliptic curve $E$ over the field with $p$ elements, $H^1(\mathbb F_p,E)=0$. | `MilneEC.prop_9_2_unconditional`, `MilneEC.langFrobenius`, `MilneEC.prop_9_2`, `MilneEC.LangFrobenius` | proved |
+| Corollary 9.3 | 157 | A nonsingular projective curve of genus 1 over the field with $p$ elements has a rational point. | `MilneEC.cor_9_3_unconditional`, `MilneEC.cor_9_3` | proved |
+| Theorem 9.4 | 157 | Hasse bound: $\left∣\#E(\mathbb F_p)-(p+1)\right∣\le 2\sqrt p$ for an elliptic curve over the field with $p$ elements. | `MilneEC.Theorem9_4` | stated (not proved) |
+| Aside 9.5 | 158 | Sato-Tate conjecture (announced proved): the angles of the Frobenius eigenvalues of a non-CM elliptic curve over the rationals are distributed with density $\frac2\pi\sin^2 t$. | `MilneEC.HasComplexMultiplication`, `MilneEC.frobeniusAngle` | formalized (a definition) |
+| Definition (prose) | 159 | The zeta function of an affine plane curve over the field with $p$ elements is the Euler product over nonzero prime ideals of the coordinate ring of $(1-N\mathfrak p^{-s})^{-1}$. | `MilneEC.eulerZeta`, `MilneEC.maxDeg` | formalized (a definition) |
+| Example 9.7 | 160 | The zeta function of the affine line over the field with $p$ elements is $Z(\mathbb A^1,T)=1/(1-pT)$. | `MilneEC.example_9_7`, `MilneEC.example_9_7_unconditional` | proved |
+| Proposition 9.8 | 162 | For an affine curve $C$ over a finite field, $\log Z(C,T)=\sum_{m\ge1}N_m T^m/m$ with $N_m=\#C(\mathbb F_{p^m})$. | `MilneEC.Prop9_8`, `MilneEC.prop9_8`, `MilneEC.eulerZeta_eq_expSeries` | proved |
+| Proposition 9.9 | 162 | An elliptic curve over the field with $p$ elements has exactly $\#E(\mathbb F_p)(p^m-1)/(p-1)$ positive divisors of degree $m\ge1$. | `MilneEC.Prop9_9`, `MilneEC.prop9_9`, `MilneEC.card_inf_Vn` | proved |
+| Definition (prose) | 162 | The zeta function of a projective plane curve over the field with $p$ elements is $\exp\sum N_mT^m/m$ with $N_m=\#C(\mathbb F_{p^m})$. | `MilneEC.zetaSeries`, `MilneEC.numPoints` | formalized (a definition) |
+| Theorem 9.10 | 163 | $Z(E,T)=\dfrac{1+(N_1-p-1)T+pT^2}{(1-T)(1-pT)}$ for an elliptic curve over the field with $p$ elements. | `MilneEC.theorem_9_10`, `MilneEC.Theorem9_10`, `MilneEC.theorem_9_10_unconditional` | proved |
+| Remark 9.11 | 164 | With $1+(N_1-p-1)T+pT^2=(1-\alpha T)(1-\beta T)$ one has $N_m=1+p^m-\alpha^m-\beta^m$, and the Riemann hypothesis for $E$ is equivalent to the Hasse bound. | `MilneEC.remark_9_11_a`, `MilneEC.remark_9_11_a_unconditional`, `MilneEC.remark_9_11_b` | proved |
+| Conjecture 10.1 | 169 | For an elliptic curve over the rationals, $\prod_{p\le P}N_p/p\sim C(\log P)^r$ with $r$ the rank. | `MilneEC.Conjecture10_1`, `MilneEC.bsdPartialProduct` | formalized (a definition) |
+| Definition (prose) | 170 | A projective variety over the rationals has good reduction at $p$ if the reduced equations define a nonsingular variety over the field with $p$ elements. | `MilneEC.VarietyZeta.goodReduction_weierstrass_iff` | proved |
+| Definition (prose) | 170 | The zeta function of a variety over the rationals is the product over good primes of the zeta functions of its reductions. | `MilneEC.VarietyZeta.zeta_point` | proved |
+| Conjecture 10.2 (Hasse-Weil) | 170 | The zeta function of a nonsingular projective variety over the rationals continues meromorphically to the plane and satisfies a functional equation relating $s$ and $d+1-s$. | `MilneEC.Conjecture10_2`, `MilneEC.VarietyZeta.varietyZeta` | formalized (a definition) |
+| Definition (prose) | 172 | An elliptic curve over the rationals is modular if there is a nonconstant map of Riemann surfaces from the quotient of the upper half-plane by $\Gamma_0(N)$ to $E(\mathbb C)$. | — | not formalized |
+| Conjecture 10.3 | 172 | $\Lambda(E,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(E,s)$ continues meromorphically to the plane and $\Lambda(E,s)=w_E\Lambda(E,2-s)$, $w_E=\pm1$. | `MilneEC.completedLHasMeromorphicContinuation_iff`, `MilneEC.conjecture10_3_existsMeromorphicContinuationRat`, `MilneEC.existsAnalyticContinuationRat_completedL` | proved |
+| Conjecture 10.5 (Birch and Swinnerton-Dyer) | 173 | For $P_1,\dots,P_r$ linearly independent, $L(E,s)\sim\Omega\prod_{p\text{ bad}}c_p[Ш]\det\langle P_i,P_j\rangle/(E(\mathbb Q):\sum\mathbb ZP_i)^2\,(s-1)^r$ as $s\to1$. | `MilneEC.regulatorQuotient_eq_two_pow_mul_regulator` | proved |
+| Remark 10.6 | 173 | The regulator-over-index quotient equals discriminant of the height pairing over squared torsion order; $\int_{E(\mathbb Q_p)}∣\omega∣=c_pN_p/p$-type identities. | `MilneEC.remark_10_6_b_independent`, `MilneEC.remark_10_6_b_basis`, `MilneEC.regulatorQuotient_eq_two_pow_mul_regulator` | proved |
+| Aside 10.7 | 174 | Goldfeld: for modular $E$, an asymptotic for $\prod_{p\le x}N_p/p$ implies the Birch-Swinnerton-Dyer asymptotic and the generalized Riemann hypothesis. | `MilneEC.numPointsAt` | formalized (a definition) |
+| Definition (prose) | 175 | The sign $w_E=\pm1$ in the functional equation of the $L$-function of a modular elliptic curve over the rationals. | `MilneEC.IsSignOfFunctionalEquation` | formalized (a definition) |
+| Proposition 11.1 | 177 | For a constant elliptic curve over a function field of a curve over a finite field, the conjecture of Birch and Swinnerton-Dyer is equivalent to a rank formula and a formula for the regulator times order of the Tate-Shafarevich group. | — | not formalized |
+| Theorem 11.2 | 177 | The conjecture of Birch and Swinnerton-Dyer holds for constant elliptic curves over function fields of curves over a finite field. | `MilneEC.FunctionFieldBSD.mordellWeilRank`, `MilneEC.FunctionFieldBSD.frobRoots`, `MilneEC.FunctionFieldBSD.IsWeilMultiset` | formalized (a definition) |
+| Lemma 11.3 | 178 | The Fermat curve $X^{q+1}+Y^{q+1}+Z^{q+1}=0$ over the field with $q^2$ elements is nonsingular of genus $q(q-1)/2$, has $q^3+1$ points, and zeta function $(1+qT)^{q(q-1)}/((1-T)(1-q^2T))$. | `MilneEC.lemma_11_3_a`, `MilneEC.lemma_11_3_b` | proved |
+| Proposition 11.4 | 179 | The Mordell-Weil lattice of the maximal elliptic curve over that function field has rank $2q(q-1)$, minimal norm at least $2(q-1)$, and the stated discriminant and density bounds. | `MilneEC.FunctionFieldBSD.prop_11_4_d`, `MilneEC.FunctionFieldBSD.weil_eq_replicate`, `MilneEC.FunctionFieldBSD.frobRoots_eq_of_card` | proved |
+
+## Chapter V: Elliptic curves and modular forms
+
+| Item | Page | Statement | Lean declaration | Status |
+|---|---|---|---|---|
+| Definition (prose) | 203 | Two elliptic curves are isogenous if there is a nonconstant regular map from one to the other; isogeny is an equivalence relation. | `MilneEC.II.Isogenous` | formalized (a definition) |
+| Theorem 4.1 | 203 | Two elliptic curves over $\mathbb{Q}$ are isogenous iff they have the same number of points modulo $p$ for sufficiently many good primes $p$ (Tate conjecture, proved by Faltings) | `MilneEC.V.Thm4_1` | stated (not proved) |
+| Corollary 4.2 | 204 | Two elliptic curves over $\mathbb{Q}$ are isogenous iff their $L$-series coincide | `MilneEC.V.Cor4_2.isogenous_symm` | proved, conditional on `MilneEC.V.Cor4_2` |
+| Theorem 4.4 (Hecke) | 205 | For a cusp form in the $\varepsilon$-eigenspace of $w_N$ on $S_{2k}(\Gamma_0(N))$, $L(f,s)$ extends to an entire function with $\Lambda(f,s)=\varepsilon(-1)^k\Lambda(f,k-s)$. | `MilneEC.V.thm_4_4`, `MilneEC.V.wN_cuspForm`, `MilneEC.V.wN_wN`, `MilneEC.V.wN_eigen_decomposition` | proved |
+| Definition (prose) | 205 | The Mellin transform $g(s)=\int_0^\infty f(iy)y^{s}\,dy/y$ of a cusp form, with $g(s)=(2\pi)^{-s}\Gamma(s)L(f,s)$. | `MilneEC.V.remark_4_3` | proved |
+| Remark 4.3 | 205 | The Mellin transform of a cusp form $f=\sum c(n)q^n$ along the imaginary axis equals $(2\pi)^{-s}\Gamma(s)L(f,s)$ | `MilneEC.V.remark_4_3` | proved |
+| Definition (prose) | 206 | The Ramanujan function $\tau(n)$ is the coefficient of $q^n$ in $q\prod(1-q^n)^{24}$. | `MilneEC.V.hasSum_tau`, `MilneEC.V.tau_small` | proved |
+| Proposition 4.5 | 206 | The Dirichlet series of a modular form with coefficients $c(n)$ has an Euler product with local factors $(1-c(p)p^{-s})^{-1}$ for $p\mid N$ and $(1-c(p)p^{-s}+p^{2k-1-2s})^{-1}$ otherwise iff the $c(n)$ are weakly multiplicative and satisfy the Hecke recurrence | `MilneEC.V.prop_4_5` | proved |
+| Remark 4.6 | 207 | $L(f,s)$ is an Euler product of the stated form iff the coefficients are weakly multiplicative and satisfy the recurrence; with $c(1)=1$ they are determined by the $c(p)$. | `MilneEC.V.remark_4_6` | proved |
+| Theorem 4.8 | 207 | A cusp form of weight $2k$ for $\Gamma_0(N)$ that is an eigenvector of all $T(n)$ with eigenvalue $\lambda(n)$ has $c(n)=\lambda(n)c(1)$. | `MilneEC.V.thm_4_8`, `MilneEC.V.coeff_one_ne_zero_of_eigen` | proved |
+| Theorem 4.7 | 207 | The Hecke operators $T(n)$ on $S_{2k}(\Gamma_0(N))$ satisfy $T(mn)=T(m)T(n)$ for coprime $m,n$, the recurrence at primes not dividing $N$, $T(p^r)=T(p)^r$ for $p\mid N$, and they commute | `MilneEC.V.thm_4_7_level_one`, `MilneEC.V.thm4_7_one`, `MilneEC.V.Thm4_7` | proved |
+| Corollary 4.9 | 208 | A normalized Hecke eigenform has $L(f,s)=\prod_{p\mid N}(1-c(p)p^{-s})^{-1}\prod_{p\nmid N}(1-c(p)p^{-s}+p^{2k-1-2s})^{-1}$. | `MilneEC.V.cor_4_9` | proved |
+| Example 4.10 | 208 | $S_{12}(\mathrm{SL}_2(\mathbb Z))$ is one-dimensional so $\Delta$ is an eigenform of all $T(n)$, giving Ramanujan's multiplicativity and recurrence for $\tau$. | `MilneEC.V.example_4_10` | proved |
+| Proposition 4.11 | 209 | On the free abelian group of lattices, $T(mn)=T(m)T(n)$ for coprime $m,n$ and $T(p^r)T(p)=T(p^{r+1})+pR(p)T(p^{r-1})$. | `MilneEC.V.prop_4_11` | proved |
+| Corollary 4.12 | 210 | $T(m)T(n)=\sum_{d\mid\gcd(m,n)}d\,R(d)\,T(mn/d^2)$. | `MilneEC.V.cor_4_12` | proved |
+| Corollary 4.13 | 210 | The subalgebra generated by $T(p)$, $R(p)$ is commutative and contains all $T(n)$. | `MilneEC.V.cor_4_13` | proved |
+| Proposition 4.14 | 210 | If $F$ on lattices is homogeneous of weight $-2k$ then so is $T(n)F$, and $T(mn)F=T(m)T(n)F$ (coprime), $T(p)T(p^r)F=T(p^{r+1})F+p^{1-2k}T(p^{r-1})F$. | `MilneEC.V.prop_4_14`, `MilneEC.V.lattice_correspondence` | proved |
+| Definition (prose) | 210 | The Hecke operator $T(n)$ on weight-$2k$ modular forms: $(T(n)f)(z)=n^{2k-1}(T(n)F)(\Lambda(z,1))$ for the associated function $F$ on lattices. | `MilneEC.V.heckeOpLevelOne_eq` | proved |
+| Lemma 4.15 | 211 | Every integer $2\times2$ matrix $A$ of determinant $n$ can be reduced by a unimodular matrix $U$ to the unique form $\begin{pmatrix}a&b\\0&d\end{pmatrix}$ with $ad=n$, $a\ge1$, $0\le b<d$ | `MilneEC.V.lemma_4_15`, `MilneEC.V.sublatticesOfIndex_ofH` | proved |
+| Theorem 4.16 (Spectral theorem) | 212 | On a finite-dimensional complex inner product space a self-adjoint map is diagonalizable, and a commuting family of self-adjoint maps has a common eigenbasis. | `MilneEC.V.thm_4_16` | proved |
+| Proposition 4.17 | 213 | The measure $dx\,dy/y^2$ on the upper half-plane is invariant under $\mathrm{SL}_2(\mathbb R)$. | `MilneEC.V.prop_4_17` | proved |
+| Lemma 4.18 | 213 | A holomorphic map $z\mapsto w(z)$ multiplies area by $\lvert w'(z)\rvert^2$. | `MilneEC.V.lemma_4_18`, `MilneEC.V.lemma_4_18_area` | proved |
+| Theorem 4.19 (Petersson) | 214 | The Petersson integral converges when one form is a cusp form, gives a positive-definite hermitian form on $S_{2k}(\Gamma_0(N))$, and $T(n)$ with $\gcd(n,N)=1$ is self-adjoint. | `MilneEC.V.peterssonProduct`, `MilneEC.V.finiteDimensional_cuspForm_Gamma0` | formalized (a definition) |
+| Theorem 4.20 (Atkin-Lehner) | 215 | The simultaneous eigenspaces in the space of newforms $S_{2k}^{\mathrm{new}}(\Gamma_0(N))$ for the $T(n)$ with $\gcd(n,N)=1$ are one-dimensional. | `MilneEC.V.newform_properties` | proved, conditional on `MilneEC.V.Thm4_20`, `MilneEC.V.WNProperties` |
+| Exercise 4.21 | 215 | For the Frey curve $Y^2Z=X(X-\alpha^\ell Z)(X-\beta^\ell Z)$ the discriminant is $16\alpha^{2\ell}\beta^{2\ell}\gamma^{2\ell}$, with good reduction at primes not dividing $\alpha\beta\gamma$ and at worst nodal reduction at all primes (including 2). | `MilneEC.V.exercise_4_21_a`, `MilneEC.V.exercise_4_21_b`, `MilneEC.V.exercise_4_21_c`, `MilneEC.V.exercise_4_21_d` | proved |
+| Definition (prose) | 215 | Old forms are cusp forms coming from lower levels $M\mid N$; the orthogonal complement is the space of new forms $S^{\mathrm{new}}_{2k}(\Gamma_0(N))$. | `MilneEC.V.oldforms`, `MilneEC.V.newforms` | formalized (a definition) |
+| Theorem 5.2 (Eichler-Shimura) | 216 | A normalized newform on $\Gamma_0(N)$ with integer coefficients has an elliptic curve $E_f$ over $\mathbb Q$ of conductor $N$ with $L(E_f,s)=L(f,s)$. | `MilneEC.Vb.conj_5_1_if` | proved, conditional on `MilneEC.Vb.Thm5_2` |
+| Conjecture 5.1 (modularity) | 216 | A Dirichlet series with integer coefficients is L(E, s) for E of conductor N iff it is L(f, s) for a normalized newform for Gamma_0(N) | `MilneEC.Vb.ModularityConjecture` | formalized (a definition) |
+| Proposition 6.1 | 222 | The Hecke operators act canonically on $H_1(X_0(N),\mathbb Z)$ compatibly with the map to the dual of the holomorphic differentials, hence on the Jacobian. | — | not formalized |
+| Remark 6.2 | 222 | The characteristic polynomial of $T(n)$ on $H_1(X_0(N),\mathbb Z)$ is $Q(Y)\overline{Q}(Y)$, with $Q$ the characteristic polynomial on the differentials. | `MilneEC.Vb.remark_6_2_lattice` | proved |
+| Definition (prose) | 223 | $E_f$ is the largest quotient of $\mathrm{Jac}(X_0(N))$ on which $T(n)$ and $c(n)$ agree for $n$ prime to $N$ (Theorem 6.3). | — | not formalized |
+| Theorem 6.3 | 223 | For a newform $f\in S_2(\Gamma_0(N))$ with integer coefficients there is an elliptic curve $E_f$ over $\mathbb{Q}$ and a map $X_0(N)\to E_f$ factoring through the Jacobian as the largest quotient on which $T(n)$ and $c(n)$ agree | — | not formalized |
+| Definition (prose) | 224 | The ring of correspondences $A(X)$ of a projective nonsingular curve is the subring of $\mathrm{End}(J(X))$ generated by the maps coming from correspondences. | — | not formalized |
+| Example 8.2 | 231 | The field generated by the 2-torsion of $Y^2Z=X^3+aXZ^2+bZ^3$ is the splitting field of $X^3+aX+b$, unramified away from the discriminant and 2. | `MilneEC.Vb.example_8_2` | proved |
+| Definition (prose) | 231 | The Tate module $T_\ell E$ of an elliptic curve over a field $k$ is the inverse limit of $E(k^{al})[\ell^n]$. | `MilneEC.Vb.tateModuleVb`, `MilneEC.Vb.tateModuleOf` | formalized (a definition) |
+| Proposition 8.1 | 231 | For an elliptic curve $E$ over $\mathbb{Q}$, a prime $\ell$ and $S$ the bad primes together with $\ell$, all points of order $\ell^n$ have coordinates in the maximal extension of $\mathbb{Q}$ unramified outside $S$ | `MilneEC.Vb.fieldKS` | formalized (a definition) |
+| Proposition 8.3 | 232 | For $p\notin S$, the trace of $\rho_\ell(\mathrm{Frob}_p)$ on $T_\ell E$ equals $p+1-N_p(E)$. | `MilneEC.Vb.Prop8_3`, `MilneEC.Vb.TorsionFreeRankTwo` | stated (not proved) |
+| Definition 8.4 | 232 | A continuous representation $G_S\to\mathrm{GL}_2(\mathbb Z_\ell)$ is modular if traces of Frobenius are integers and equal $c(p)$ for a cusp form in $S_{2k}(\Gamma_0(N))$. | `MilneEC.Vb.IsModularRep`, `MilneEC.Vb.IsModularRepModL` | formalized (a definition) |
+| Conjecture 8.5 (Serre) | 232 | Every odd irreducible representation G_S -> GL_2(F_l) is modular | `MilneEC.Vb.SerreConjecture` | formalized (a definition) |
+| Theorem 8.6 (Langlands, Tunnell) | 232 | Every odd irreducible representation $G_S\to\mathrm{GL}_2(\mathbb F_3)$ is modular. | `MilneEC.Vb.Thm8_6` | stated (not proved) |
+| Theorem 8.7 (Wiles) | 233 | The map from the universal deformation ring to the Hecke ring is an isomorphism, so every deformation of a modular residual representation is modular. | — | not formalized |
+| Theorem 9.1 | 234 | An elliptic curve has good reduction at $p$ iff the Galois action on $E[\ell^n]$ is unramified at $p$ for all $n$ (with $\ell\ne p$). | `MilneEC.Vb.Thm9_1` | stated (not proved) |
+| Theorem 9.2 | 234 | An elliptic curve has good reduction at $\ell$ iff the Galois action on $E[\ell^n]$ is flat for all $n$. | — | not formalized |
+| Definition (prose) | 234 | A continuous representation $G\to\mathrm{Aut}(M)$ is unramified at $p$ if $p$ is unramified in the fixed field of its kernel. | `MilneEC.Vb.IsUnramifiedRepAt` | formalized (a definition) |
+| Conjecture 9.3 (refined Serre) | 235 | Every odd irreducible representation is modular for a specific weight and level | — | not formalized |
+| Theorem 9.4 | 235 | (Ribet and others) A modular representation $G\to\mathrm{GL}_2(\mathbb{F}_\ell)$ comes from a cusp form of the weight and level predicted by Serre | — | not formalized |
