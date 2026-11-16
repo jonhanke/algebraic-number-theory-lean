@@ -323,7 +323,7 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   VIII.10.1 (a cubic Hecke character of $`\mathbb{Q}(\zeta_3)`$) are proved; Theorem V.3.33 is marked as stated
   in the book without proof; more rows of the $`X_0(N)`$ map are proved (Exercise 1.10 (a), (b); (c) conditional on
   a named input). No file of the library imports all of Mathlib any more: each imports the Mathlib modules it uses.
-- **[v0.3.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.3.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:ZENODO-DOI-v0.3.0](https://doi.org/ZENODO-DOI-v0.3.0):
+- **[v0.3.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.3.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24283324](https://doi.org/10.5281/zenodo.24283324):
   Milne's *Elliptic Curves* as a seventh book (see "What's new in 0.3.0"): its map, six new unconditional headlines
   (Bézout's theorem, associativity of the group law on every plane cubic, the rank bound of explicit 2-descent,
   $`y^2 = x^3 - x`$ and the congruent number 1, Lang's theorem), a conditional theorem comparing Milne's form of the
