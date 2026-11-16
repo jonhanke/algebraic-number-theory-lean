@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./scripts/verify-comparator.sh BOOK      (BOOK: MilneANT, WeilBNT, Tate, Pontryagin, ModularCurves or MilneCFT)
+# Usage: ./scripts/verify-comparator.sh BOOK      (BOOK: MilneANT, WeilBNT, Tate, Pontryagin, ModularCurves, MilneCFT or MilneEC)
 #
 # Judge Solution_BOOK against Challenge_BOOK the way Palomar does: with the `lake comparator` that ships in this
 # project's own toolchain, replaying the proof through Lean's kernel and the toolchain's bundled independent kernels

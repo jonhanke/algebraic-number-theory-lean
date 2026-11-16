@@ -53,3 +53,12 @@ fails if any other axiom (in particular `sorryAx`) appears.
 #print axioms NumberFieldKB.Headlines.furtwangler_fermat
 #print axioms NumberFieldKB.Headlines.gauss_cubicCurve_count
 #print axioms NumberFieldKB.Headlines.weberL_continuation
+
+-- Milne, *Elliptic Curves*
+#print axioms NumberFieldKB.Headlines.bezout
+#print axioms NumberFieldKB.Headlines.chordTangent_assoc
+#print axioms NumberFieldKB.Headlines.rank_bound_twoDescent
+#print axioms NumberFieldKB.Headlines.points_x3_sub_x
+#print axioms NumberFieldKB.Headlines.one_not_congruent
+#print axioms NumberFieldKB.Headlines.lang_H1_eq_zero
+#print axioms NumberFieldKB.Headlines.bsd_milne_iff_strongBSD

@@ -15,3 +15,8 @@ The files under NumberFieldKB/PNTPort/ are derived from PrimeNumberTheoremAnd
 (https://github.com/AlexKontorovich/PrimeNumberTheoremAnd), Copyright the PrimeNumberTheoremAnd contributors,
 licensed under the Apache License, Version 2.0; NumberFieldKB/PNTPort/README.md lists the source commit and the
 changes.
+
+The file NumberFieldKB/FormalConjectures/EllipticCurve.lean is derived from Formal Conjectures
+(https://github.com/google-deepmind/formal-conjectures, commit e028240a), Copyright 2026 The Formal Conjectures
+Authors, licensed under the Apache License, Version 2.0; its header lists the changes. Its regulator definitions are
+adapted there from Tau Ceti (Copyright the Tau Ceti contributors, Apache License, Version 2.0).

@@ -11,7 +11,7 @@ import NumberFieldKB.ModularCurves.Theorem23
 import NumberFieldKB.ModularCurves.Cor34
 
 /-!
-# Headline statements of NumberFieldKB 0.2.1: The modular curves X_0(N)
+# Headline statements of NumberFieldKB 0.3.0: The modular curves X_0(N)
 
 The main results of the library, one theorem each, with every proof a deliberate `sorry`: to check what is claimed,
 read this file. `Solution.lean` proves the same statements from the library, and `lake comparator` (configured by
@@ -86,6 +86,33 @@ on); a reader checking a statement should check these too:
 * `NumberFieldKB.MilneCFT.RayClassGroup`
 * `NumberFieldKB.MilneCFT.weberLSeries`
 * `NumberFieldKB.MilneCFT.idealRayClass`
+* `NumberFieldKB.MilneEC.IsProjectivePlaneCurve`
+* `NumberFieldKB.MilneEC.NoCommonComponent`
+* `NumberFieldKB.MilneEC.projectivePoints`
+* `NumberFieldKB.MilneEC.projIntersectionNumber`
+* `NumberFieldKB.MilneEC.curveDegree`
+* `NumberFieldKB.MilneEC.IsNonsingularCubic`
+* `NumberFieldKB.MilneEC.CurvePoints`
+* `NumberFieldKB.MilneEC.chordAdd`
+* `NumberFieldKB.MilneEC.thirdPoint`
+* `NumberFieldKB.MilneEC.cubicCurve`
+* `NumberFieldKB.MilneEC.cubicDisc`
+* `NumberFieldKB.MilneEC.rank`
+* `NumberFieldKB.MilneEC.ContH1`
+* `NumberFieldKB.MilneEC.contCocycles`
+* `NumberFieldKB.MilneEC.contCoboundaries`
+* `NumberFieldKB.MilneEC.Conjecture10_5Corrected`
+* `NumberFieldKB.MilneEC.milneBSDConstant`
+* `NumberFieldKB.MilneEC.realPeriodOf`
+* `NumberFieldKB.MilneEC.tamagawaProductBad`
+* `NumberFieldKB.MilneEC.neronTateBilin`
+* `NumberFieldKB.MilneEC.IsMinimalOverRat`
+* `NumberFieldKB.MilneEC.ShaComparison`
+* `NumberFieldKB.MilneEC.PeriodComparison`
+* `NumberFieldKB.MilneEC.TamagawaComparison`
+* `NumberFieldKB.FormalConjectures.StrongBSD`
+* `NumberFieldKB.FormalConjectures.bsdQuotient`
+* `NumberFieldKB.FormalConjectures.HasMeromorphicContinuation`
 -/
 
 noncomputable section

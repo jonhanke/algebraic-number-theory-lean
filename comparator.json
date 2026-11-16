@@ -42,6 +42,13 @@
       "challenge_module": "Challenge_MilneCFT",
       "solution_module": "Solution_MilneCFT",
       "theorems": 7
+    },
+    {
+      "book": "MilneEC",
+      "config": "comparator/MilneEC.json",
+      "challenge_module": "Challenge_MilneEC",
+      "solution_module": "Solution_MilneEC",
+      "theorems": 7
     }
   ]
 }

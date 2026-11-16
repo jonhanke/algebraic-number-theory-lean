@@ -11,6 +11,15 @@ The class field theory headlines (three in release 0.2.0; Theorem VIII.2.6, loca
 theory (`NumberTheory/ClassFieldTheory/`: the global Artin map and reciprocity, global and local existence, the
 Kronecker–Weber theorem, ray class fields, the inequalities), so those theorems are not headlines here.
 
+The headlines of Milne's *Elliptic Curves* (new in 0.3.0) were compared on 2026-11-15 with Mathlib master at commit
+`4cf60f1d` and Tau Ceti main at commit `4caf68dc`. Mathlib master adds no elliptic-curve declaration to v4.35.0. Tau
+Ceti proves much of the arithmetic of the book (Mordell–Weil over every number field, finiteness of Selmer groups, the
+Néron–Tate height, the Weil pairing, the torsion structure, the Hasse bound and the zeta function over finite fields,
+Nagell–Lutz, complex uniformization, Tate's algorithm); those results are cited in the map, not re-proved, and are not
+headlines here. The statements of Birch and Swinnerton-Dyer were compared with
+[Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) at commit `e028240a`, whose definitions
+are vendored (`NumberFieldKB/FormalConjectures/`).
+
 A search of two large libraries can miss a result stated under another name or in another form; corrections are
 welcome.
 
@@ -45,6 +54,13 @@ welcome.
 | `furtwangler_fermat` | Fermat's Last Theorem for the exponents 3 and 4 | — (its `Furtwängler` files are the transfer theorem behind the principal ideal theorem, a different result) | new: Furtwängler's congruence $q^{p-1} \equiv 1 \pmod{p^2}$ for primes dividing a first-case solution (Milne VIII.5.14) |
 | `gauss_cubicCurve_count` | Jacobi sums (`jacobiSum_mul_jacobiSum_inv`) | Jacobi sums are Eisenstein-primary (`isPrimaryEisenstein_jacobiSum`) | new: Gauss's count of the points of $X^3 + Y^3 + Z^3 = 0$ over $\mathbb F_p$ |
 | `weberL_continuation` | $L(1,\chi) \ne 0$ for Dirichlet characters over $\mathbb Q$ (`DirichletCharacter.LFunction_apply_one_ne_zero`) | Hecke $L$-functions of ray class characters as the canonical meromorphic continuation (`heckeLFunctionC`), analytic on $\operatorname{Re} s > 1$, with no continuation proved; non-vanishing at $s = 1$ assuming a continuation (`ne_zero_of_eqOn_LSeries_galoisCharacterWeight`) | stronger: for every number field and every nontrivial ray class character, the Weber series continues to $\operatorname{Re} s > 0$ (in fact the continuation is entire) and $L(1,\chi) \ne 0$ (Milne V.2.4(b), corrected) |
+| `bezout` | resultants (`Polynomial.resultant`); no intersection numbers of plane curves | — | new: Bézout's theorem for projective plane curves over every field, with intersection numbers over $k^{\mathrm{al}}$ (Milne I.1.18) |
+| `chordTangent_assoc` | the group law of a Weierstrass curve (`WeierstrassCurve.Affine.Point`) | the group law of Weierstrass curves | new: associativity of the chord–tangent law on every nonsingular plane cubic, not necessarily in Weierstrass form (Milne I.3.1) |
+| `rank_bound_twoDescent` | — | Mordell–Weil over every number field (`WeierstrassCurve.Affine.fg_point_of_numberField`) and finiteness of Selmer groups (`WeierstrassCurve.finite_selmerGroup`); no explicit rank bound | new: the rank bound $r \le 2\,\#\{p \mid 2\Delta\}$ of explicit 2-descent (Milne IV.5.5), with finite generation proved by Milne's descent |
+| `points_x3_sub_x` | — | Nagell–Lutz (`WeierstrassCurve.lutz_nagell`), which bounds torsion, not the rank | new: $E(\mathbb Q) \cong (\mathbb Z/2)^2$ for $y^2 = x^3 - x$ (Milne IV.5.7) |
+| `one_not_congruent` | Fermat's Last Theorem for the exponent 4 (`fermatLastTheoremFour`), a classically equivalent statement in another form | — | new in this form: no right triangle with rational sides has area 1 |
+| `lang_H1_eq_zero` | Galois cohomology in low degrees | the Frobenius endomorphism of $E$ over a finite field; no vanishing of $H^1$ | new: $H^1(k, E) = 0$ over every finite field $k$ (Lang; Milne IV.9.2) |
+| `bsd_milne_iff_strongBSD` (conditional) | the $L$-series of an elliptic curve as a Dirichlet series | a statement of the conjecture (`BirchSwinnertonDyer`) | new: Milne's Conjecture IV.10.5 (standard normalization) is equivalent to Formal Conjectures' `StrongBSD`, given three named comparisons |
 
 ## Results of the books that are proved here but are not headlines, because Tau Ceti has them
 
@@ -63,6 +79,10 @@ welcome.
 | The fundamental exact sequence of Brauer groups (Milne VIII.4.2) | `MilneCFT.Ch8.theorem_4_2'` (for Mathlib's Brauer group of central simple algebras) | `brLocalization_injective`, `range_brLocalization`, `sumLocalInv_surjective` (for the cohomological Brauer group) |
 | Cubic reciprocity (Milne VIII, Example 5.13) | `MilneCFT.Ch8.example5_13` | `IsPrimaryEisenstein.cubic_reciprocity` |
 | The Chebotarev density theorem with Dirichlet density (Milne V.2.5) | `Chebotarev.chebotarev_unconditional` | `hasDirichletDensity_frobeniusPrimeSet` |
+| The Lutz–Nagell theorem (Milne, *Elliptic Curves*, II.5) | `MilneEC.II.theorem_5_1` | `WeierstrassCurve.lutz_nagell` |
+| Uniformization of complex elliptic curves (Milne, *Elliptic Curves*, III) | `MilneEC.III.thm_3_10` | `exists_periodPair_nonempty_addEquiv` |
+| Rationality of the zeta function of an elliptic curve over a finite field (Milne, *Elliptic Curves*, IV.9.10), here by Milne's count of positive divisors | `MilneEC.theorem_9_10_unconditional` | `WeierstrassCurve.zetaFunction_eq_mul_inv` |
+| Mordell's theorem for elliptic curves over $\mathbb Q$ with rational 2-torsion, by explicit descent | `MilneEC.fg_cubicCurve` | over every number field: `WeierstrassCurve.Affine.fg_point_of_numberField` |
 
 ## By book and chapter
 
@@ -131,6 +151,20 @@ Mathlib has the Pontryagin dual of a topological group, the duality for finite a
 "compact implies discrete dual" and "discrete implies compact dual". Tau Ceti has Bochner's theorem and the Peter–Weyl
 theorem (both ported here and used in the proof), but not the duality theorem, Fourier inversion on a general locally
 compact abelian group, or the dual measure. Everything in [the Pontryagin map](books/pontryagin.md) beyond these is new.
+
+### Milne, *Elliptic Curves*
+
+Mathlib (v4.35.0 and master) has Weierstrass curves with the group law, changes of variables, minimal models and
+reduction, division polynomials, the $L$-series as a Dirichlet series, the Weierstrass $\wp$-function, Eisenstein series
+and the level-one dimension formula; no isogenies, torsion structure, Mordell–Weil, heights, Hasse bound or Tate module.
+Tau Ceti (checked at `4caf68dc`) has the results listed above; the map ([books/milne-ec.md](books/milne-ec.md)) names
+the Tau Ceti declaration for each item proved there and not here. New here: the plane-curve foundations of Chapter I
+(intersection numbers, Bézout, the nine-point lemma, associativity on every cubic), Milne's explicit 2-descent and its
+examples, Lemma IV.2.1 in every characteristic (Tau Ceti: $n$ prime to the characteristic), Lang's theorem, the zeta
+function through point counts and divisor counts, and Milne's conjectures of Chapter IV as statements compared with
+Formal Conjectures. Not formalized anywhere checked: Nagell's reduction of a plane cubic to Weierstrass form, Milne's
+descent over $\mathbb Q$ by unramified extensions (Lemma IV.3.5, Proposition IV.3.6), the explicit Tate–Shafarevich
+groups of IV §8, and the Eichler–Shimura theory of Chapter V.
 
 ### The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V)
 

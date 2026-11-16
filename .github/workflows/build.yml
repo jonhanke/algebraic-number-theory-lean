@@ -113,7 +113,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        book: [MilneANT, WeilBNT, Tate, Pontryagin, ModularCurves, MilneCFT]
+        book: [MilneANT, WeilBNT, Tate, Pontryagin, ModularCurves, MilneCFT, MilneEC]
     steps:
       - name: Free disk space (the comparator exports need it)
         run: |
