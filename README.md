@@ -372,7 +372,7 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   $`y^2 = x^3 - x`$ and the congruent number 1, Lang's theorem), a conditional theorem comparing Milne's form of the
   conjecture of Birch and Swinnerton-Dyer with Formal Conjectures' `StrongBSD`, and the conjectures of Chapter IV
   as statements; the 27 headlines of v0.2.1 are unchanged.
-- **[v0.4.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.4.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:ZENODO-DOI-v0.4.0](https://doi.org/ZENODO-DOI-v0.4.0):
+- **[v0.4.0](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.4.0)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24317205](https://doi.org/10.5281/zenodo.24317205):
   the arithmetic of elliptic curves over $`\mathbb{Q}`$ (see "What's new in 0.4.0"): five new unconditional headlines
   ($`Ш[2] \cong (\mathbb{Z}/2)^2`$ and the 2-Selmer group of $`y^2 = x^3 + px`$, the local Tamagawa measure of
   $`E_0(\mathbb{Q}_p)`$ at every reduction type and of $`E(\mathbb{Q}_p)`$ at good reduction, the real period through the
