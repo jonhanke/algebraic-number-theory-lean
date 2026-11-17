@@ -25,8 +25,9 @@ namespace NumberFieldKB.MilneANT
 namespace Example754
 
 variable (A : Type u) [CommRing A] [IsDomain A] [IsDiscreteValuationRing A] [IsAdicComplete (maximalIdeal A) A]
-  (K : Type v) [Field K] [Algebra A K] [IsFractionRing A K] [CharZero K] [Finite (ResidueField A)]
+  (K : Type v) [Field K] [Algebra A K] [IsFractionRing A K] [Finite (ResidueField A)]
   (L : Type v) [Field L] [Algebra K L] [Algebra A L] [IsScalarTower A K L] [FiniteDimensional K L]
+  [Algebra.IsSeparable K L]
 
 include K in
 theorem finrank_res (hL : IsUnramifiedMilne A K L) :
@@ -160,7 +161,7 @@ theorem gen_of_residue (hL : IsUnramifiedMilne A K L) (γ : integralClosure A L)
 
 include K in
 theorem unique_part (L' : Type v) [Field L'] [Algebra K L'] [Algebra A L'] [IsScalarTower A K L']
-    [FiniteDimensional K L'] (hn : Module.finrank K L = Module.finrank K L')
+    [FiniteDimensional K L'] [Algebra.IsSeparable K L'] (hn : Module.finrank K L = Module.finrank K L')
     (hL : IsUnramifiedMilne A K L) (hL' : IsUnramifiedMilne A K L') : Nonempty (L ≃ₐ[K] L') := by
   classical
   have hfinB : Module.Finite A (integralClosure A L) := IsIntegralClosure.finite A K L _
@@ -184,7 +185,6 @@ include K in
 theorem isSplittingField_part (_hn : 0 < Module.finrank K L) (hL : IsUnramifiedMilne A K L) :
     IsSplittingField K L (X ^ (Nat.card (ResidueField A) ^ Module.finrank K L) - X) := by
   classical
-  have hsep : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
   have hfinB : Module.Finite A (integralClosure A L) := IsIntegralClosure.finite A K L _
   have : Module.Finite (ResidueField A) (ResidueField (integralClosure A L)) := inferInstance
   have : Finite (ResidueField (integralClosure A L)) := Module.finite_of_finite (ResidueField A)
@@ -292,12 +292,16 @@ theorem example_7_54 (A : Type u) [CommRing A] [IsDomain A] [IsDiscreteValuation
   · intro L _ _ _ _ L' _ _ _ _ hn hpos hL hL'
     have : FiniteDimensional K L := Module.finite_of_finrank_pos hpos
     have : FiniteDimensional K L' := Module.finite_of_finrank_pos (hn ▸ hpos)
+    have : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
+    have : Algebra.IsSeparable K L' := Algebra.IsAlgebraic.isSeparable_of_perfectField
     exact unique_part A K L L' hn hL hL'
   · intro L _ _ _ _ hpos hL
     have : FiniteDimensional K L := Module.finite_of_finrank_pos hpos
+    have : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
     exact isSplittingField_part A K L hpos hL
   · intro L _ _ _ _ hpos hL
     have : FiniteDimensional K L := Module.finite_of_finrank_pos hpos
+    have : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
     exact frobenius_part A K L hL
 
 end NumberFieldKB.MilneANT

@@ -62,3 +62,10 @@ fails if any other axiom (in particular `sorryAx`) appears.
 #print axioms NumberFieldKB.Headlines.one_not_congruent
 #print axioms NumberFieldKB.Headlines.lang_H1_eq_zero
 #print axioms NumberFieldKB.Headlines.bsd_milne_iff_strongBSD
+#print axioms NumberFieldKB.Headlines.selmer_sha_x3_add_px
+#print axioms NumberFieldKB.Headlines.omega_measure_zeroComponent
+#print axioms NumberFieldKB.Headlines.omega_measure_goodReduction
+#print axioms NumberFieldKB.Headlines.realPeriod_eq_latticePeriod
+#print axioms NumberFieldKB.Headlines.mazur_torsion_realized
+#print axioms NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_rat
+#print axioms NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex

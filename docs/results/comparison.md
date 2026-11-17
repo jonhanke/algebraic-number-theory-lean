@@ -20,6 +20,15 @@ headlines here. The statements of Birch and Swinnerton-Dyer were compared with
 [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) at commit `e028240a`, whose definitions
 are vendored (`NumberFieldKB/FormalConjectures/`).
 
+The headlines new in 0.4.0 were compared on 2026-11-17 with Mathlib master at commit `d9a73ae1` and Tau Ceti main at
+commit `7b4d5f70`. Mathlib master still adds nothing on the arithmetic of elliptic curves to v4.35.0 (it has heights,
+`NumberTheory/Height/EllipticCurve.lean`). Tau Ceti main has, besides the results listed above, Tate's algorithm with
+the local Tamagawa number (`WeierstrassCurve.tamagawaNumber_eq_tateLocalIndex`), the real period as an integral
+(`WeierstrassCurve.realPeriod`), its own statement of Birch and Swinnerton-Dyer (`WeierstrassCurve.BirchSwinnertonDyer`),
+and the explicit unramified local Artin map (`TauCeti.ClassFieldTheory.localArtinMap_eq_frobenius_pow_valuation`); it has no measure of
+$`E(\mathbb Q_p)`$, no lattice of the real period, no Tate–Shafarevich group of a specific curve and no list of the
+torsion groups that occur.
+
 A search of two large libraries can miss a result stated under another name or in another form; corrections are
 welcome.
 
@@ -61,6 +70,13 @@ welcome.
 | `one_not_congruent` | Fermat's Last Theorem for the exponent 4 (`fermatLastTheoremFour`), a classically equivalent statement in another form | — | new in this form: no right triangle with rational sides has area 1 |
 | `lang_H1_eq_zero` | Galois cohomology in low degrees | the Frobenius endomorphism of $E$ over a finite field; no vanishing of $H^1$ | new: $H^1(k, E) = 0$ over every finite field $k$ (Lang; Milne IV.9.2) |
 | `bsd_milne_iff_strongBSD` (conditional) | the $L$-series of an elliptic curve as a Dirichlet series | a statement of the conjecture (`BirchSwinnertonDyer`) | new: Milne's Conjecture IV.10.5 (standard normalization) is equivalent to Formal Conjectures' `StrongBSD`, given three named comparisons |
+| `selmer_sha_x3_add_px` (new in 0.4.0) | — | Selmer groups and $Ш$ over every number field, finiteness of $Ш[m]$ (`WeierstrassCurve.finite_torsionBy_sha`); no Selmer or Tate–Shafarevich group of a specific curve | new: for $y^2 = x^3 + px$, $p \equiv 1 \pmod 8$: $S^{(2)} \cong (\mathbb Z/2)^3$, and rank 0 with $Ш[2] \cong (\mathbb Z/2)^2$ when 2 is not a fourth power mod $p$ (Milne IV.8.1, IV.8.2; Silverman X.6.2) |
+| `omega_measure_zeroComponent` (new in 0.4.0) | Haar measure on $\mathbb Q_p$; minimal models and reduction types | Tamagawa numbers and Tate's algorithm (`tamagawaNumber_eq_tateLocalIndex`); no measure on $E(\mathbb Q_p)$ | new: $\int_{E_0(\mathbb Q_p)}\lvert\omega\rvert = N_p/p$ for every reduction type, $p$ odd (Milne IV.10.6 (a), second step) |
+| `omega_measure_goodReduction` (new in 0.4.0) | as above | as above | new: $\int_{E(\mathbb Q_p)}\lvert\omega\rvert = c_p N_p/p$ at good reduction, $p$ odd |
+| `realPeriod_eq_latticePeriod` (new in 0.4.0) | the Weierstrass $\wp$-function of a lattice (`PeriodPair`) | the real period as an integral, its behaviour under isogenies (`WeierstrassCurve.realPeriod`); no lattice | new: the real period is the least positive real period of the lattice times the number of real components |
+| `mazur_torsion_realized` (new in 0.4.0) | — | Nagell–Lutz; torsion of a few worked examples (`MordellWeil/WorkedExamples/`) | new: each of Mazur's fifteen groups is $E(\mathbb Q)_{\mathrm{tors}}$ for an explicit curve (Milne II.5.11, the realization half) |
+| `bsd_milne_iff_strongBSD_rat` (conditional, new in 0.4.0) | as for `bsd_milne_iff_strongBSD` | a statement of the conjecture (`WeierstrassCurve.BirchSwinnertonDyer`); Mordell–Weil over number fields | new: the equivalence with `StrongBSD` over $\mathbb Q$ with Mordell–Weil proved, given one named local statement (`LocalPointsInjective`) |
+| `omega_measure_of_zeroComponentIndex` (conditional, new in 0.4.0) | as for `omega_measure_zeroComponent` | as above | new: $\int_{E(\mathbb Q_p)}\lvert\omega\rvert = c_p N_p/p$ at every reduction type, $p$ odd, given Milne's translation step (`ZeroComponentIndex`) |
 
 ## Results of the books that are proved here but are not headlines, because Tau Ceti has them
 
@@ -83,6 +99,9 @@ welcome.
 | Uniformization of complex elliptic curves (Milne, *Elliptic Curves*, III) | `MilneEC.III.thm_3_10` | `exists_periodPair_nonempty_addEquiv` |
 | Rationality of the zeta function of an elliptic curve over a finite field (Milne, *Elliptic Curves*, IV.9.10), here by Milne's count of positive divisors | `MilneEC.theorem_9_10_unconditional` | `WeierstrassCurve.zetaFunction_eq_mul_inv` |
 | Mordell's theorem for elliptic curves over $\mathbb Q$ with rational 2-torsion, by explicit descent | `MilneEC.fg_cubicCurve` | over every number field: `WeierstrassCurve.Affine.fg_point_of_numberField` |
+| Mordell–Weil over $\mathbb Q$ by Milne's descent (new in 0.4.0) | `MilneEC.mordell_weil_rat` | over every number field: `WeierstrassCurve.Affine.fg_point_of_numberField` |
+| Finiteness of the Selmer groups and of $Ш[n]$ over $\mathbb Q$ (Milne IV.3.1 for $K = \mathbb Q$; new in 0.4.0) | `MilneEC.thm_3_1_selmer_rat`, `MilneEC.finite_sha_torsion` | over every number field: `WeierstrassCurve.finite_selmerGroup`, `WeierstrassCurve.finite_torsionBy_sha` |
+| The explicit unramified local Artin map $a \mapsto \mathrm{Frob}^{\operatorname{ord}(a)}$ (Milne CFT I.1.1, III.3.7; new in 0.4.0) | `MilneCFT.LocalUnramified.tauCetiArtin_eq_unramifiedArtin` | `TauCeti.ClassFieldTheory.localArtinMap_eq_frobenius_pow_valuation` |
 
 ## By book and chapter
 
@@ -162,9 +181,12 @@ the Tau Ceti declaration for each item proved there and not here. New here: the 
 (intersection numbers, Bézout, the nine-point lemma, associativity on every cubic), Milne's explicit 2-descent and its
 examples, Lemma IV.2.1 in every characteristic (Tau Ceti: $n$ prime to the characteristic), Lang's theorem, the zeta
 function through point counts and divisor counts, and Milne's conjectures of Chapter IV as statements compared with
-Formal Conjectures. Not formalized anywhere checked: Nagell's reduction of a plane cubic to Weierstrass form, Milne's
-descent over $\mathbb Q$ by unramified extensions (Lemma IV.3.5, Proposition IV.3.6), the explicit Tate–Shafarevich
-groups of IV §8, and the Eichler–Shimura theory of Chapter V.
+Formal Conjectures. New in 0.4.0: Milne's descent over $\mathbb Q$ by unramified extensions (Lemma IV.3.5,
+Proposition IV.3.6) and Mordell–Weil over $\mathbb Q$ by it, the explicit Selmer and Tate–Shafarevich groups of IV §8,
+the local Tamagawa measure of Remark IV.10.6, the real period through the lattice, the realization of Mazur's torsion
+groups, and the comparison of Milne's period, Tamagawa numbers and Tate–Shafarevich group with Formal Conjectures'.
+Not formalized anywhere checked: Nagell's reduction of a plane cubic to Weierstrass form and the Eichler–Shimura
+theory of Chapter V.
 
 ### The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V)
 

@@ -9,9 +9,15 @@ import NumberFieldKB.MilneEC.Ch4TwoDescent
 import NumberFieldKB.MilneEC.Ch4Example57
 import NumberFieldKB.MilneEC.Ch4bLangUnconditional
 import NumberFieldKB.MilneEC.Ch4BSD
+import NumberFieldKB.MilneEC.Ch4Prop81
+import NumberFieldKB.MilneEC.Ch4LocalPeriodBad
+import NumberFieldKB.MilneEC.Ch4LocalPeriodRemark
+import NumberFieldKB.MilneEC.Ch3RealPeriod
+import NumberFieldKB.MilneEC.Ch2MazurRealization
+import NumberFieldKB.MilneEC.ShaComparison
 
 /-!
-# Headline statements of NumberFieldKB 0.3.0: Milne, Elliptic Curves, proved
+# Headline statements of NumberFieldKB 0.4.0: Milne, Elliptic Curves, proved
 
 The declarations of `Challenge.lean`, with the same names and statements, each proved by citing the library theorems
 named in its proof. `lake comparator` (configured by `comparator.json`) checks that every theorem here has exactly the
@@ -112,5 +118,113 @@ theorem bsd_milne_iff_strongBSD (E : WeierstrassCurve ℚ) [E.IsElliptic] [Modul
     (hSha : ShaComparison) (hΩ : PeriodComparison) (hc : TamagawaComparison) (hmin : IsMinimalOverRat E) :
     Conjecture10_5Corrected E ↔ NumberFieldKB.FormalConjectures.StrongBSD E.toAffine :=
   NumberFieldKB.MilneEC.conjecture10_5Corrected_iff_strongBSD E hSha hΩ hc hmin
+
+open WeierstrassCurve in
+open NumberFieldKB.MilneEC in
+/-- **Propositions IV.8.1 and IV.8.2** (Milne, *Elliptic Curves*; Silverman, *The Arithmetic of Elliptic Curves*,
+X.6.2): let $p \equiv 1 \pmod 8$ be a prime and $E : Y^2 = X^3 + pX$ over $\mathbb Q$. Then the $2$-Selmer group
+$S^{(2)}(E/\mathbb Q)$ is isomorphic to $(\mathbb Z/2)^3$; if moreover $2$ is not a fourth power modulo $p$, then
+$E(\mathbb Q)$ has rank $0$ and the $2$-torsion of the Tate–Shafarevich group, $Ш(E/\mathbb Q)[2]$, is isomorphic to
+$(\mathbb Z/2)^2$. The Selmer and Tate–Shafarevich groups are Milne's: continuous classes in
+$H^1(\operatorname{Gal}(\mathbb Q^{\mathrm{al}}/\mathbb Q), -)$ whose images in $H^1(\mathbb Q_v, E)$ vanish at every place
+$v$, finite and infinite. Proved directly on the Galois-cohomological Selmer group, by Kummer theory for
+$\mathbb Z/2$ and the local conditions at $2$, $p$ and $\infty$. (The library's statements are the fields of the
+structures `Prop8_1` and `Prop8_2`, unfolded here; `rank` is `Module.finrank ℤ` of the group of rational points.) -/
+theorem selmer_sha_x3_add_px (p : ℕ) (hp : p.Prime) (h8 : p % 8 = 1) :
+    Nonempty (selmerGroup ℚ (curveP p) 2 ≃+ (Fin 3 → ZMod 2)) ∧
+      ((¬ ∃ x : ZMod p, x ^ 4 = 2) →
+        rank (curveP p) = 0 ∧ Nonempty (shaTwoTorsion (curveP p) ≃+ (Fin 2 → ZMod 2))) :=
+  ⟨NumberFieldKB.MilneEC.prop_8_1.selmer p hp h8, fun h4 =>
+      ⟨NumberFieldKB.MilneEC.prop_8_2.rank_eq_zero p hp h8 h4, NumberFieldKB.MilneEC.prop_8_2.sha_two p hp h8 h4⟩⟩
+
+open MeasureTheory QuadFormsKB.Analysis in
+open scoped ENNReal in
+open NumberFieldKB.MilneEC.LocalPeriod in
+/-- **The local measure of $E_0(\mathbb Q_p)$** (Milne, *Elliptic Curves*, Remark IV.10.6 (a), the step that does
+not involve $c_p$): let $p$ be an odd prime and $W$ a minimal Weierstrass equation over $\mathbb Q_p$, with good,
+multiplicative or additive reduction. Then $\int_{E_0(\mathbb Q_p)}|\omega|_p = N_p/p$, where
+$\omega = dx/(2y + a_1x + a_3)$, $E_0(\mathbb Q_p)$ is the set of points with non-singular reduction and $N_p$ is the
+number of non-singular points of the reduction over $\mathbb F_p$ (Mathlib's `Point` type of `W.reduction`, which
+includes the point at infinity). The measure is read on the $x$-line: `omegaDensity W x` is the number of square
+roots $\psi$ of $\Psi_2^2(x) = 4x^3 + b_2x^2 + 2b_4x + b_6$ in $\mathbb Q_p$ divided by $|\psi|_p$, `zeroComponentX W`
+is the image of $E_0(\mathbb Q_p)$ under $x$, and `haarP p` is the Haar measure on $\mathbb Q_p$ with
+$\operatorname{vol}(\mathbb Z_p) = 1$ (from quadratic-forms-lean). -/
+theorem omega_measure_zeroComponent (p : ℕ) [Fact p.Prime] (hp2 : p ≠ 2) (W : WeierstrassCurve ℚ_[p]) [W.IsMinimal ℤ_[p]] :
+    ∫⁻ x in zeroComponentX W, omegaDensity W x ∂haarP p =
+      (Nat.card (W.reduction ℤ_[p]).toAffine.Point : ℝ≥0∞) / p :=
+  NumberFieldKB.MilneEC.LocalPeriod.omegaVolume_zeroComponent hp2 W
+
+open MeasureTheory QuadFormsKB.Analysis in
+open scoped ENNReal in
+open NumberFieldKB.MilneEC.LocalPeriod in
+/-- **The local Tamagawa measure at good reduction** (Milne, *Elliptic Curves*, Remark IV.10.6 (a)): for an odd
+prime $p$ and a Weierstrass equation $W$ over $\mathbb Q_p$ with good reduction (Mathlib's `HasGoodReduction`, which
+includes minimality), $\int_{E(\mathbb Q_p)}|\omega|_p = c_p N_p/p$, with $c_p$ the local Tamagawa number of Formal
+Conjectures (`tamagawaNumber`, the number of translates of $E_0(\mathbb Q_p)$; here $c_p = 1$) and
+$N_p = \#\tilde E(\mathbb F_p)$. The measure `omegaVolume W` is the integral of `omegaDensity W` over $\mathbb Q_p$ for
+the Haar measure with $\operatorname{vol}(\mathbb Z_p) = 1$ (see `omega_measure_zeroComponent`). -/
+theorem omega_measure_goodReduction (p : ℕ) [Fact p.Prime] (hp2 : p ≠ 2) (W : WeierstrassCurve ℚ_[p]) [W.HasGoodReduction ℤ_[p]] :
+    omegaVolume W = (NumberFieldKB.FormalConjectures.tamagawaNumber ℚ_[p] (W.integralModel ℤ_[p]).toProjective :
+      ℝ≥0∞) * Nat.card (W.reduction ℤ_[p]).toAffine.Point / p :=
+  NumberFieldKB.MilneEC.LocalPeriod.remark_10_6_a_good_cp hp2 W
+
+open NumberFieldKB.MilneEC.III in
+/-- **The real period through the uniformization** (Milne, *Elliptic Curves*, the period $\Omega$ of Conjecture
+IV.10.5, through Chapter III): for every elliptic curve $W$ over $\mathbb R$ there is a lattice $\Lambda$ with real
+invariants $g_2, g_3$ (Mathlib's `PeriodPair`) and a change of variables with $u = 1$ taking $W$ to
+$E(\Lambda) : y^2 = x^3 - \tfrac{g_2}4x - \tfrac{g_3}4$; for it, the real period of Formal Conjectures,
+$\Omega(W) = \int_{E(\mathbb R)}|\omega| = 2\int_{\mathbb R}dx/\sqrt{\Psi_2^2(x)}$, equals the number of connected
+components of $E(\mathbb R)$ (2 if $\Delta > 0$, else 1) times the least positive real element of $\Lambda$. Proved
+by the substitution $x = \wp(t)$. -/
+theorem realPeriod_eq_latticePeriod (W : WeierstrassCurve ℝ) [W.IsElliptic] :
+    ∃ L : PeriodPair, HasRealInvariants L ∧
+      ∃ C : WeierstrassCurve.VariableChange ℝ, C.u = 1 ∧ C • W = realCurveOf L ∧
+        NumberFieldKB.FormalConjectures.realPeriod W = realComponentCount W * leastRealPeriod L :=
+  NumberFieldKB.MilneEC.III.rp1_real_period W
+
+/-- **Mazur's list is attained** (Milne, *Elliptic Curves*, Remark II.5.11, the realization half; Mazur's theorem,
+the other half, is not formalized): each of the groups $\mathbb Z/m$ ($1 \le m \le 10$ or $m = 12$) and
+$\mathbb Z/2 \times \mathbb Z/2m$ ($1 \le m \le 4$) is the torsion subgroup of $E(\mathbb Q)$ for an explicit
+elliptic curve $E$ over $\mathbb Q$. For each curve the torsion is computed by exhibiting points of the right orders
+and bounding the torsion by reduction modulo a prime of good reduction. -/
+theorem mazur_torsion_realized :
+    (∀ m : ℕ, (1 ≤ m ∧ m ≤ 10 ∨ m = 12) → ∃ W : WeierstrassCurve ℚ, W.IsElliptic ∧
+        Nonempty (AddCommGroup.torsion W.toAffine.Point ≃+ ZMod m)) ∧
+      ∀ m : ℕ, 1 ≤ m ∧ m ≤ 4 → ∃ W : WeierstrassCurve ℚ, W.IsElliptic ∧
+        Nonempty (AddCommGroup.torsion W.toAffine.Point ≃+ ZMod 2 × ZMod (2 * m)) :=
+  NumberFieldKB.MilneEC.II.mazur_groups_realized
+
+open WeierstrassCurve in
+open NumberFieldKB.MilneEC in
+/-- **Milne's Conjecture IV.10.5 against Formal Conjectures, over $\mathbb Q$** (conditional on one named local
+statement; no conjecture is assumed): for an elliptic curve $E$ over $\mathbb Q$ given by a minimal equation,
+Milne's form of the conjecture of Birch and Swinnerton-Dyer with the standard normalization of the height pairing
+(`Conjecture10_5Corrected`) is equivalent to Formal Conjectures' `StrongBSD`. Unlike `bsd_milne_iff_strongBSD`, the
+finite generation of $E(\mathbb Q)$ is the library's Mordell–Weil theorem over $\mathbb Q$ (`mordell_weil_rat`, by
+Milne's descent), not an instance argument; the period and Tamagawa comparisons are proved; and the comparison of the
+two Tate–Shafarevich groups is proved from one named input, `LocalPointsInjective`: at every place $v$ of
+$\mathbb Q$, a continuous class of $\operatorname{Gal}(\bar{\mathbb Q}_v/\mathbb Q_v)$ with values in
+$E(\bar{\mathbb Q})$ that becomes trivial in $E(\bar{\mathbb Q}_v)$ is trivial (Milne, *Arithmetic Duality
+Theorems*, Remark I.3.10, by Greenberg approximation at the finite places). -/
+theorem bsd_milne_iff_strongBSD_rat (E : WeierstrassCurve ℚ) [E.IsElliptic] (hloc : LocalPointsInjective) (hmin : IsMinimalOverRat E) :
+    haveI := NumberFieldKB.MilneEC.mordell_weil_rat E
+    Conjecture10_5Corrected E ↔ NumberFieldKB.FormalConjectures.StrongBSD E.toAffine :=
+  NumberFieldKB.MilneEC.conjecture10_5Corrected_iff_strongBSD_of_localPointsInjective E hloc hmin
+
+open MeasureTheory QuadFormsKB.Analysis in
+open scoped ENNReal in
+open NumberFieldKB.MilneEC.LocalPeriod in
+/-- **The local Tamagawa measure at every reduction type** (Milne, *Elliptic Curves*, Remark IV.10.6 (a);
+conditional on one named input): for an odd prime $p$ and a minimal equation $W$ of an elliptic curve over
+$\mathbb Q_p$, $\int_{E(\mathbb Q_p)}|\omega|_p = c_p N_p/p$, with $c_p$ Formal Conjectures' local Tamagawa number
+and $N_p$ the number of non-singular points of the reduction. The named input `ZeroComponentIndex` is Milne's first
+step, $\int_{E(\mathbb Q_p)}|\omega|_p = c_p\int_{E_0(\mathbb Q_p)}|\omega|_p$ ($|\omega|_p$ is invariant under
+translation and $E(\mathbb Q_p)$ is the union of $c_p$ translates of $E_0(\mathbb Q_p)$); the second step,
+$\int_{E_0(\mathbb Q_p)}|\omega|_p = N_p/p$, is the unconditional headline `omega_measure_zeroComponent`. -/
+theorem omega_measure_of_zeroComponentIndex (hI : ZeroComponentIndex) (p : ℕ) [Fact p.Prime] (hp2 : p ≠ 2) (W : WeierstrassCurve ℚ_[p])
+    [W.IsElliptic] [W.IsMinimal ℤ_[p]] :
+    omegaVolume W = (NumberFieldKB.FormalConjectures.tamagawaNumber ℚ_[p] (W.integralModel ℤ_[p]).toProjective :
+      ℝ≥0∞) * Nat.card (W.reduction ℤ_[p]).toAffine.Point / p :=
+  NumberFieldKB.MilneEC.LocalPeriod.remark_10_6_a_of_index hI hp2 W
 
 end NumberFieldKB.Headlines

@@ -48,7 +48,7 @@
       "config": "comparator/MilneEC.json",
       "challenge_module": "Challenge_MilneEC",
       "solution_module": "Solution_MilneEC",
-      "theorems": 7
+      "theorems": 14
     }
   ]
 }

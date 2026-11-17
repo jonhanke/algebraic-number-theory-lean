@@ -20,10 +20,14 @@ project:
     reciprocity law, Furtwangler's theorem, Gauss's point count for x^3 + y^3 + z^3 = 0 and the continuation of
     Weber L-series with L(1, chi) != 0; from elliptic curves, Bezout's theorem for plane curves, associativity of
     the chord-tangent law on every nonsingular plane cubic, the rank bound of explicit 2-descent over Q, the rational
-    points of y^2 = x^3 - x (so 1 is not a congruent number) and Lang's theorem H^1(k, E) = 0 over finite fields; and,
-    conditional on three named comparisons, the equivalence of Milne's form of the Birch and Swinnerton-Dyer
-    conjecture with Formal Conjectures' StrongBSD (the conjectures are stated, never assumed). Each item of the books is mapped to its Lean declaration and status in
-    docs/results/books/. This file describes release 0.3.0.
+    points of y^2 = x^3 - x (so 1 is not a congruent number), Lang's theorem H^1(k, E) = 0 over finite fields, the
+    2-Selmer group (Z/2)^3 and Sha[2] = (Z/2)^2 of y^2 = x^3 + px (p = 1 mod 8, 2 not a fourth power mod p), the local
+    Tamagawa measure of E_0(Q_p) (every reduction type, p odd) and of E(Q_p) at good reduction, the real period as the
+    lattice period times the number of real components, and the fifteen torsion groups of Mazur's list realized over
+    Q; and, conditional on named inputs, the equivalence of Milne's form of the Birch and Swinnerton-Dyer conjecture
+    with Formal Conjectures' StrongBSD (in 0.4.0 with Mordell-Weil over Q proved and one local input) and the local
+    Tamagawa measure at every reduction type (the conjectures are stated, never assumed). Each item of the books is
+    mapped to its Lean declaration and status in docs/results/books/. This file describes release 0.4.0.
   authors:
     - "Jonathan Hanke"
   license: "Apache-2.0"
@@ -90,7 +94,7 @@ sources:
 related_formalizations:
   - id: "https://github.com/leanprover-community/mathlib4"
     relationship: "builds-on"
-    note: "Built on Mathlib v4.35.0. docs/results/comparison.md says what each headline adds to Mathlib master (df6966d0d, 2026-11-07)."
+    note: "Built on Mathlib v4.35.0. docs/results/comparison.md says what each headline adds to Mathlib master (df6966d0d, 2026-11-07; the headlines new in 0.4.0: d9a73ae1, 2026-11-17)."
   - id: "https://github.com/jonhanke/quadratic-forms-lean"
     relationship: "builds-on"
     note: "A Lake dependency (tag v0.3.0): local Fourier analysis, self-dual measures, adelic Poisson summation, local zeta integrals and the @[kb] citation attribute."
@@ -104,7 +108,8 @@ related_formalizations:
       proved here too but are not headlines. docs/results/comparison.md compares each headline with Tau Ceti main
       (d7b47803c, 2026-11-07); the class field theory headlines were compared with Tau Ceti 686d0d7f, which has
       global and local class field theory (those theorems are proved here too, partly from the ported files, but
-      are not headlines).
+      are not headlines). The headlines new in 0.4.0 were compared with Tau Ceti main 7b4d5f70 (2026-11-17), which has
+      Mordell-Weil over every number field, so Mordell-Weil over Q by Milne's descent is not a headline here.
   - id: "https://github.com/n-yamaguchi-0729/ClassFieldTheory"
     relationship: "builds-on"
     note: "Files of N. Yamaguchi's class field theory library (local existence, local Kronecker-Weber over Q_p,
@@ -122,8 +127,8 @@ related_formalizations:
 
 status:
   scope: >-
-    Formalized (the 34 statements of Challenge.lean, proved in Solution.lean; checked by lake comparator once per book): Milne ANT 3, Milne CFT 7,
-    Milne EC 7 (one of them conditional on three named comparison statements), Weil 4 (number fields 2, function
+    Formalized (the 41 statements of Challenge.lean, proved in Solution.lean; checked by lake comparator once per book): Milne ANT 3, Milne CFT 7,
+    Milne EC 14 (three of them conditional on named inputs), Weil 4 (number fields 2, function
     fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The conjectures of Milne EC,
     Chapter IV, are stated as Prop definitions and never assumed. The book maps give the status of every item of the
     seven texts. The library also ships the files of its Chebotarev, non-vanishing and Hilbert class field topics that these books import; those topics are not
@@ -174,10 +179,16 @@ fidelity:
     the corrected one. (9) Milne EC Conjecture IV.10.2 is stated for complete intersections, without the functional
     equation that the book leaves unspecified; in Conjectures IV.10.3 and IV.10.5 the conductor is existentially
     quantified and finite generation of E(Q) is an instance argument. (10) Milne EC, Example IV.5.7 is stated for
-    Mathlib's Weierstrass curve with a_4 = -1 and the other coefficients 0.
+    Mathlib's Weierstrass curve with a_4 = -1 and the other coefficients 0. (11) The measure of E(Q_p) for |omega|
+    (Milne EC, Remark IV.10.6) is defined by its formula on the x-line (the push-forward of |omega| to the
+    x-coordinate, as Formal Conjectures' real period is over R), not as a measure on the p-adic manifold E(Q_p); the
+    headlines omega_measure_* are for p odd. (12) Propositions IV.8.1 and IV.8.2 are stated by unfolding the named
+    structures Prop8_1 and Prop8_2 into one headline. (13) The statement of bsd_milne_iff_strongBSD_rat instantiates
+    finite generation of E(Q) with the library's theorem mordell_weil_rat (`haveI` in the statement), where Formal
+    Conjectures and the 0.3.0 headline take it as an instance argument.
 
 review:
-  status: "not yet reviewed: the 34 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 41 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -328,6 +339,39 @@ alignment:
       module: "Challenge / Solution"
       status: "conditional"
       note: "Conditional on the named inputs ShaComparison, PeriodComparison, TamagawaComparison; Milne's constant with the standard normalization of the height pairing."
+    - source: "Milne, Elliptic Curves, IV, Propositions 8.1 and 8.2; Silverman, The Arithmetic of Elliptic Curves, X.6.2"
+      lean: "NumberFieldKB.Headlines.selmer_sha_x3_add_px"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, IV, Remark 10.6 (a), measure of E_0(Q_p)"
+      lean: "NumberFieldKB.Headlines.omega_measure_zeroComponent"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "p odd, every reduction type."
+    - source: "Milne, Elliptic Curves, IV, Remark 10.6 (a), good reduction"
+      lean: "NumberFieldKB.Headlines.omega_measure_goodReduction"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "p odd."
+    - source: "Milne, Elliptic Curves, IV, section 10 (the period Omega) with III, Theorem 3.10"
+      lean: "NumberFieldKB.Headlines.realPeriod_eq_latticePeriod"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, II, Remark 5.11 (the groups of Mazur's list occur)"
+      lean: "NumberFieldKB.Headlines.mazur_torsion_realized"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "The realization half only; Mazur's theorem is not formalized."
+    - source: "Milne, Elliptic Curves, IV, Conjecture 10.5, against Formal Conjectures StrongBSD, over Q"
+      lean: "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_rat"
+      module: "Challenge / Solution"
+      status: "conditional"
+      note: "Conditional on the named input LocalPointsInjective; finite generation of E(Q) from the library's Mordell-Weil theorem."
+    - source: "Milne, Elliptic Curves, IV, Remark 10.6 (a), every reduction type"
+      lean: "NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex"
+      module: "Challenge / Solution"
+      status: "conditional"
+      note: "p odd; conditional on the named input ZeroComponentIndex (Milne's translation step)."
 
 acknowledgements: >-
   Mathlib and its contributors; the Tau Ceti contributors, whose files are ported in NumberFieldKB/TauCetiPort/; Naganori Yamaguchi, whose

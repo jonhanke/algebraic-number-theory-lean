@@ -435,11 +435,8 @@ theorem prop_5_1 (h21 : Lemma2_1) [W.IsElliptic] :
       obtain ⟨y, hyS, -, hxy⟩ := (mem_selmerImage_iff W h21 n x).1 (hx n)
       exact ⟨y, hyS, hxy.symm⟩
 
-/-- **Remark 5.2** (pdf p. 135).  If no nonzero element of $Ш(E/K)$ of 2-power order is divisible in $Ш(E/K)$ by
-all powers of 2, then the 2-primary component of $Ш(E/K)$ is finite, and $S^{(2,n)}(E/K)$ equals the image of
-$E(K)/2E(K)$ for all large $n$. -/
-@[kb "milne2006ec" "Ch. IV, Remark 5.2, pdf p. 135"]
-theorem remark_5_2 (h21 : Lemma2_1) (h31 : Thm3_1_Selmer) [W.IsElliptic]
+/-- Remark 5.2 given only the finiteness of $S^{(2)}(E/K)$ (the only use of Theorem 3.1 in its proof). -/
+theorem remark_5_2_of_finite (h21 : Lemma2_1) [W.IsElliptic] (hfin : Finite (selmerGroup K W 2))
     (hdiv : ∀ z ∈ tateShafarevich K W, (∃ k : ℕ, (2 : ℤ) ^ k • z = 0) →
       (∀ n : ℕ, ∃ y ∈ tateShafarevich K W, (2 : ℤ) ^ n • y = z) → z = 0) :
     {z | z ∈ tateShafarevich K W ∧ ∃ k : ℕ, (2 : ℤ) ^ k • z = 0}.Finite ∧
@@ -452,7 +449,7 @@ theorem remark_5_2 (h21 : Lemma2_1) (h31 : Thm3_1_Selmer) [W.IsElliptic]
   -- the 2-torsion of the Tate-Shafarevich group is finite
   have hF2 : {z | z ∈ tateShafarevich K W ∧ (2 : ℤ) • z = 0}.Finite := by
     obtain ⟨-, hB, -⟩ := exact_23 K W h21 2 two_ne_zero
-    have : Finite (selmerGroup K W 2) := h31.finite K W 2 two_ne_zero
+    have : Finite (selmerGroup K W 2) := hfin
     refine ((Set.toFinite (selmerGroup K W 2 : Set _)).image
       (torsionToPointsH1 W (AlgebraicClosure K) 2)).subset ?_
     intro z hz
@@ -502,6 +499,17 @@ theorem remark_5_2 (h21 : Lemma2_1) (h31 : Thm3_1_Selmer) [W.IsElliptic]
     have := hT y hyS ⟨m + 1, hy0⟩
     obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hm
     rw [pow_add, mul_comm, mul_smul, this, zsmul_zero]
+
+/-- **Remark 5.2** (pdf p. 135).  If no nonzero element of $Ш(E/K)$ of 2-power order is divisible in $Ш(E/K)$ by
+all powers of 2, then the 2-primary component of $Ш(E/K)$ is finite, and $S^{(2,n)}(E/K)$ equals the image of
+$E(K)/2E(K)$ for all large $n$. -/
+@[kb "milne2006ec" "Ch. IV, Remark 5.2, pdf p. 135"]
+theorem remark_5_2 (h21 : Lemma2_1) (h31 : Thm3_1_Selmer) [W.IsElliptic]
+    (hdiv : ∀ z ∈ tateShafarevich K W, (∃ k : ℕ, (2 : ℤ) ^ k • z = 0) →
+      (∀ n : ℕ, ∃ y ∈ tateShafarevich K W, (2 : ℤ) ^ n • y = z) → z = 0) :
+    {z | z ∈ tateShafarevich K W ∧ ∃ k : ℕ, (2 : ℤ) ^ k • z = 0}.Finite ∧
+      ∃ m₀ : ℕ, ∀ m ≥ m₀, selmerImage W m = (kummerMap W h21 2 two_ne_zero).range :=
+  remark_5_2_of_finite W h21 (h31.finite K W 2 two_ne_zero) hdiv
 
 end Selmer
 
