@@ -8,7 +8,7 @@ import NumberFieldKB.HeckeL.RootNumber
 import NumberFieldKB.HeckeL.DedekindCont
 
 /-!
-# Headline statements of NumberFieldKB 0.3.0: Tate's thesis and Hecke L-functions
+# Headline statements of NumberFieldKB 0.4.0: Tate's thesis and Hecke L-functions
 
 The main results of the library, one theorem each, with every proof a deliberate `sorry`: to check what is claimed,
 read this file. `Solution.lean` proves the same statements from the library, and `lake comparator` (configured by
@@ -110,6 +110,36 @@ on); a reader checking a statement should check these too:
 * `NumberFieldKB.FormalConjectures.StrongBSD`
 * `NumberFieldKB.FormalConjectures.bsdQuotient`
 * `NumberFieldKB.FormalConjectures.HasMeromorphicContinuation`
+* `NumberFieldKB.MilneEC.curveP`
+* `NumberFieldKB.MilneEC.selmerGroup`
+* `NumberFieldKB.MilneEC.selmerGroupOf`
+* `NumberFieldKB.MilneEC.shaTwoTorsion`
+* `NumberFieldKB.MilneEC.tateShafarevich`
+* `NumberFieldKB.MilneEC.tateShafarevichOf`
+* `NumberFieldKB.MilneEC.H1cont`
+* `NumberFieldKB.MilneEC.locPoints`
+* `NumberFieldKB.MilneEC.locTorsion`
+* `NumberFieldKB.MilneEC.pointsRep`
+* `NumberFieldKB.MilneEC.torsionRep`
+* `NumberFieldKB.MilneEC.LocalPeriod.zeroComponentX`
+* `NumberFieldKB.MilneEC.LocalPeriod.reductionZMod`
+* `NumberFieldKB.MilneEC.LocalPeriod.GoodFibre`
+* `NumberFieldKB.MilneEC.LocalPeriod.omegaDensity`
+* `NumberFieldKB.MilneEC.LocalPeriod.sqrtDensity`
+* `QuadFormsKB.Analysis.haarP`
+* `NumberFieldKB.MilneEC.LocalPeriod.omegaVolume`
+* `NumberFieldKB.FormalConjectures.tamagawaNumber`
+* `NumberFieldKB.FormalConjectures.nonsingularReduction`
+* `NumberFieldKB.MilneEC.III.HasRealInvariants`
+* `NumberFieldKB.MilneEC.III.realCurveOf`
+* `NumberFieldKB.MilneEC.III.realComponentCount`
+* `NumberFieldKB.MilneEC.III.leastRealPeriod`
+* `NumberFieldKB.FormalConjectures.realPeriod`
+* `NumberFieldKB.FormalConjectures.realPeriodIntegrand`
+* `NumberFieldKB.MilneEC.LocalPointsInjective`
+* `NumberFieldKB.MilneEC.LocalPointsInjectiveEverywhere`
+* `NumberFieldKB.MilneEC.LocalPointsInjectiveAt`
+* `NumberFieldKB.MilneEC.LocalPeriod.ZeroComponentIndex`
 -/
 
 noncomputable section

@@ -15,6 +15,13 @@
     "NumberFieldKB.Headlines.points_x3_sub_x",
     "NumberFieldKB.Headlines.one_not_congruent",
     "NumberFieldKB.Headlines.lang_H1_eq_zero",
-    "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD"
+    "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD",
+    "NumberFieldKB.Headlines.selmer_sha_x3_add_px",
+    "NumberFieldKB.Headlines.omega_measure_zeroComponent",
+    "NumberFieldKB.Headlines.omega_measure_goodReduction",
+    "NumberFieldKB.Headlines.realPeriod_eq_latticePeriod",
+    "NumberFieldKB.Headlines.mazur_torsion_realized",
+    "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_rat",
+    "NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex"
   ]
 }

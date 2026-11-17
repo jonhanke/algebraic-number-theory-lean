@@ -213,8 +213,8 @@ variable (k' : Type u) [Field k'] [Algebra (ResidueField A) k'] [FiniteDimension
 
 /-- Core of the lifting: `L = K[X]/(g)` for a monic lift `g` of the minimal polynomial of a primitive element of
 `k'` is unramified with residue field `k'`. -/
-theorem lift_core [PerfectField K] (L : Type v) [Field L] [Algebra K L] [Algebra A L]
-    [IsScalarTower A K L] [FiniteDimensional K L]
+theorem lift_core (L : Type v) [Field L] [Algebra K L] [Algebra A L]
+    [IsScalarTower A K L] [FiniteDimensional K L] [Algebra.IsSeparable K L]
     (g : A[X]) (hgmon : g.Monic) (α : L) (hα : aeval α g = 0)
     (pb : PowerBasis (ResidueField A) k')
     (hg : g.map (algebraMap A (ResidueField A)) = minpoly (ResidueField A) pb.gen)
@@ -222,7 +222,6 @@ theorem lift_core [PerfectField K] (L : Type v) [Field L] [Algebra K L] [Algebra
     IsUnramifiedMilne A K L ∧
       Nonempty (ResidueField (integralClosure A L) ≃ₐ[ResidueField A] k') := by
   classical
-  have hsep : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
   have hfin : Module.Finite A (integralClosure A L) := IsIntegralClosure.finite A K L (integralClosure A L)
   have : Module.Finite (ResidueField A) (ResidueField (integralClosure A L)) := inferInstance
   have hαint : IsIntegral A α := ⟨g, hgmon, by rwa [← aeval_def]⟩
@@ -291,6 +290,8 @@ theorem exists_lift [PerfectField K] :
     rw [hgmon.natDegree_map]
   have hα : aeval (AdjoinRoot.root (g.map (algebraMap A K))) g = 0 := by
     rw [← Polynomial.aeval_map_algebraMap K, AdjoinRoot.aeval_eq, AdjoinRoot.mk_self]
+  have : Algebra.IsSeparable K (AdjoinRoot (g.map (algebraMap A K))) :=
+    Algebra.IsAlgebraic.isSeparable_of_perfectField
   obtain ⟨hU, hiso⟩ := lift_core A K k' (AdjoinRoot (g.map (algebraMap A K))) g hgmon _ hα pb hgmap hdeg
   exact ⟨AdjoinRoot (g.map (algebraMap A K)), inferInstance, inferInstance, inferInstance, inferInstance,
     inferInstance, hU, hiso⟩
@@ -441,15 +442,13 @@ theorem exists_generator [Algebra.IsSeparable K L] [PerfectField (ResidueField A
 
 /-- **Full faithfulness**: for finite unramified `L, L'`, reduction is a bijection
 `Hom_K(L, L') → Hom_k(l, l')`. -/
-theorem hom_equiv [PerfectField K] [PerfectField (ResidueField A)]
+theorem hom_equiv [Algebra.IsSeparable K L] [Algebra.IsSeparable K L'] [PerfectField (ResidueField A)]
     (hL : IsUnramifiedMilne A K L) (hL' : IsUnramifiedMilne A K L') :
     ∃ Φ : (L →ₐ[K] L') ≃
         (ResidueField (integralClosure A L) →ₐ[ResidueField A] ResidueField (integralClosure A L')),
       ∀ (σ : L →ₐ[K] L') (b : integralClosure A L) (b' : integralClosure A L'), (b' : L') = σ b →
         Φ σ (residue _ b) = residue _ b' := by
   classical
-  have hsep : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
-  have hsep' : Algebra.IsSeparable K L' := Algebra.IsAlgebraic.isSeparable_of_perfectField
   have hfinB : Module.Finite A (integralClosure A L) := IsIntegralClosure.finite A K L _
   have : Module.Finite (ResidueField A) (ResidueField (integralClosure A L)) := inferInstance
   obtain ⟨α, hαK, hαk, hsepg⟩ := exists_generator A K L hL
@@ -539,7 +538,10 @@ surjective (`Remark753.exists_lift`). Discharges the named statement `Remark7_53
 theorem remark_7_53 (A : Type u) [CommRing A] [IsDomain A] [IsDiscreteValuationRing A]
     [IsAdicComplete (maximalIdeal A) A] (K : Type v) [Field K] [Algebra A K] [IsFractionRing A K]
     [PerfectField K] [PerfectField (ResidueField A)] : Remark7_53 A K :=
-  ⟨fun L _ _ _ _ _ L' _ _ _ _ _ hL hL' => Remark753.hom_equiv A K L L' hL hL',
+  ⟨fun L _ _ _ _ _ L' _ _ _ _ _ hL hL' =>
+    have : Algebra.IsSeparable K L := Algebra.IsAlgebraic.isSeparable_of_perfectField
+    have : Algebra.IsSeparable K L' := Algebra.IsAlgebraic.isSeparable_of_perfectField
+    Remark753.hom_equiv A K L L' hL hL',
     fun k' _ _ _ _ => Remark753.exists_lift A K k'⟩
 
 end NumberFieldKB.MilneANT
