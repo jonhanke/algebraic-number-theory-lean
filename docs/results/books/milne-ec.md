@@ -10,7 +10,7 @@ Named statements of the library for this book: results stated as Lean structures
 
 | part of the library | named statements | proved unconditionally | open inputs | refuted | open predicates |
 |---|---|---|---|---|---|
-| `NumberFieldKB.MilneEC` | 116 | 49 | 62 | 1 | 4 |
+| `NumberFieldKB.MilneEC` | 117 | 52 | 60 | 1 | 4 |
 
 Open predicates: `MilneEC.III.IsSc`, `MilneEC.III.IsVC`, `MilneEC.NeronModel.IsCompleteNeronModel`, `MilneEC.V.FreyHyp`.
 
@@ -296,7 +296,7 @@ Open predicates: `MilneEC.III.IsSc`, `MilneEC.III.IsVC`, `MilneEC.NeronModel.IsC
 | Conjecture 10.2 (Hasse-Weil) | 170 | The zeta function of a nonsingular projective variety over the rationals continues meromorphically to the plane and satisfies a functional equation relating $s$ and $d+1-s$. | `MilneEC.Conjecture10_2`, `MilneEC.VarietyZeta.varietyZeta` | formalized (a definition) |
 | Definition (prose) | 172 | An elliptic curve over the rationals is modular if there is a nonconstant map of Riemann surfaces from the quotient of the upper half-plane by $\Gamma_0(N)$ to $E(\mathbb C)$. | — | not formalized |
 | Conjecture 10.3 | 172 | $\Lambda(E,s)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(E,s)$ continues meromorphically to the plane and $\Lambda(E,s)=w_E\Lambda(E,2-s)$, $w_E=\pm1$. | `MilneEC.completedLHasMeromorphicContinuation_iff`, `MilneEC.conjecture10_3_existsMeromorphicContinuationRat`, `MilneEC.existsAnalyticContinuationRat_completedL` | proved |
-| Conjecture 10.5 (Birch and Swinnerton-Dyer) | 173 | For $P_1,\dots,P_r$ linearly independent, $L(E,s)\sim\Omega\prod_{p\text{ bad}}c_p[Ш]\det\langle P_i,P_j\rangle/(E(\mathbb Q):\sum\mathbb ZP_i)^2\,(s-1)^r$ as $s\to1$. | `MilneEC.regulatorQuotient_eq_two_pow_mul_regulator`, `MilneEC.periodComparison`, `MilneEC.tamagawaComparison` | proved |
+| Conjecture 10.5 (Birch and Swinnerton-Dyer) | 173 | For $P_1,\dots,P_r$ linearly independent, $L(E,s)\sim\Omega\prod_{p\text{ bad}}c_p[Ш]\det\langle P_i,P_j\rangle/(E(\mathbb Q):\sum\mathbb ZP_i)^2\,(s-1)^r$ as $s\to1$. | `MilneEC.conjecture10_5Corrected_iff_strongBSD`, `MilneEC.conjecture10_5_iff_strongBSD_of_rank_eq_zero`, `MilneEC.not_conjecture10_5_of_strongBSD`, `MilneEC.regulatorQuotient_eq_two_pow_mul_regulator` | proved |
 | new (plan row TA3) | 173 | $c_p = 1$ at a prime of good reduction; the local Tamagawa number does not depend on the minimal model and is the same over $\mathbb Q_p$ and over the adic completion of $\mathbb Q$ at $p$ | `MilneEC.tamagawaNumberAt_eq_one_of_isGoodPrime`, `MilneEC.Tamagawa.tamagawaNumber_eq_one_of_hasGoodReduction`, `MilneEC.Tamagawa.tamagawaNumber_minimal_eq`, `MilneEC.Tamagawa.tamagawaNumber_map_ringEquiv` | proved |
 | Remark 10.6 | 173 | The regulator-over-index quotient equals discriminant of the height pairing over squared torsion order; $\int_{E(\mathbb Q_p)}∣\omega∣=c_pN_p/p$-type identities. | `MilneEC.remark_10_6_b_independent`, `MilneEC.remark_10_6_b_basis`, `MilneEC.regulatorQuotient_eq_two_pow_mul_regulator` | proved |
 | Aside 10.7 | 174 | Goldfeld: for modular $E$, an asymptotic for $\prod_{p\le x}N_p/p$ implies the Birch-Swinnerton-Dyer asymptotic and the generalized Riemann hypothesis. | `MilneEC.numPointsAt` | formalized (a definition) |

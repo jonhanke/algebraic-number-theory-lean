@@ -69,3 +69,9 @@ fails if any other axiom (in particular `sorryAx`) appears.
 #print axioms NumberFieldKB.Headlines.mazur_torsion_realized
 #print axioms NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_rat
 #print axioms NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex
+#print axioms NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_unconditional
+#print axioms NumberFieldKB.Headlines.bsd_milne_printed_iff_strongBSD_rank_zero
+#print axioms NumberFieldKB.Headlines.strongBSD_refutes_milne_printed_positive_rank
+#print axioms NumberFieldKB.Headlines.sha_milne_equiv_formalConjectures
+#print axioms NumberFieldKB.Headlines.localPoints_injective_rat
+#print axioms NumberFieldKB.Headlines.kummer_approx_padic
