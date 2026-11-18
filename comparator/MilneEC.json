@@ -22,6 +22,12 @@
     "NumberFieldKB.Headlines.realPeriod_eq_latticePeriod",
     "NumberFieldKB.Headlines.mazur_torsion_realized",
     "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_rat",
-    "NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex"
+    "NumberFieldKB.Headlines.omega_measure_of_zeroComponentIndex",
+    "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_unconditional",
+    "NumberFieldKB.Headlines.bsd_milne_printed_iff_strongBSD_rank_zero",
+    "NumberFieldKB.Headlines.strongBSD_refutes_milne_printed_positive_rank",
+    "NumberFieldKB.Headlines.sha_milne_equiv_formalConjectures",
+    "NumberFieldKB.Headlines.localPoints_injective_rat",
+    "NumberFieldKB.Headlines.kummer_approx_padic"
   ]
 }

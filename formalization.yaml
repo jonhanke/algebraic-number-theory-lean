@@ -23,11 +23,15 @@ project:
     points of y^2 = x^3 - x (so 1 is not a congruent number), Lang's theorem H^1(k, E) = 0 over finite fields, the
     2-Selmer group (Z/2)^3 and Sha[2] = (Z/2)^2 of y^2 = x^3 + px (p = 1 mod 8, 2 not a fourth power mod p), the local
     Tamagawa measure of E_0(Q_p) (every reduction type, p odd) and of E(Q_p) at good reduction, the real period as the
-    lattice period times the number of real components, and the fifteen torsion groups of Mazur's list realized over
-    Q; and, conditional on named inputs, the equivalence of Milne's form of the Birch and Swinnerton-Dyer conjecture
-    with Formal Conjectures' StrongBSD (in 0.4.0 with Mordell-Weil over Q proved and one local input) and the local
-    Tamagawa measure at every reduction type (the conjectures are stated, never assumed). Each item of the books is
-    mapped to its Lean declaration and status in docs/results/books/. This file describes release 0.4.0.
+    lattice period times the number of real components, the fifteen torsion groups of Mazur's list realized over
+    Q, Kummer approximation over Q_p at every prime p including 2, local injectivity of H^1 at every place of Q, the
+    isomorphism of Milne's and Formal Conjectures' Tate-Shafarevich groups, and, with no named input, the equivalence
+    of Milne's corrected form of the Birch and Swinnerton-Dyer conjecture with Formal Conjectures' StrongBSD for every
+    elliptic curve over Q with a minimal equation (in rank 0 also of the printed form; in positive rank StrongBSD
+    refutes the printed form); and, conditional on named inputs, the same equivalence in its 0.3.0 and 0.4.0 forms
+    (kept unchanged; their inputs are now proved) and the local Tamagawa measure at every reduction type (the
+    conjectures are stated, never assumed). Each item of the books is mapped to its Lean declaration and status in
+    docs/results/books/. This file describes release 0.4.1.
   authors:
     - "Jonathan Hanke"
   license: "Apache-2.0"
@@ -94,7 +98,7 @@ sources:
 related_formalizations:
   - id: "https://github.com/leanprover-community/mathlib4"
     relationship: "builds-on"
-    note: "Built on Mathlib v4.35.0. docs/results/comparison.md says what each headline adds to Mathlib master (df6966d0d, 2026-11-07; the headlines new in 0.4.0: d9a73ae1, 2026-11-17)."
+    note: "Built on Mathlib v4.35.0. docs/results/comparison.md says what each headline adds to Mathlib master (df6966d0d, 2026-11-07; the headlines new in 0.4.0: d9a73ae1, 2026-11-17; in 0.4.1: ce8351d4, 2026-11-18)."
   - id: "https://github.com/jonhanke/quadratic-forms-lean"
     relationship: "builds-on"
     note: "A Lake dependency (tag v0.3.0): local Fourier analysis, self-dual measures, adelic Poisson summation, local zeta integrals and the @[kb] citation attribute."
@@ -110,6 +114,9 @@ related_formalizations:
       global and local class field theory (those theorems are proved here too, partly from the ported files, but
       are not headlines). The headlines new in 0.4.0 were compared with Tau Ceti main 7b4d5f70 (2026-11-17), which has
       Mordell-Weil over every number field, so Mordell-Weil over Q by Milne's descent is not a headline here.
+      The headlines new in 0.4.1 were compared with Tau Ceti main cd41bffc (2026-11-18), which has its own statement
+      of the Birch and Swinnerton-Dyer conjecture and its own Tate-Shafarevich group, but neither the comparison with
+      Milne's or Formal Conjectures' formalizations nor Kummer approximation or local injectivity.
   - id: "https://github.com/n-yamaguchi-0729/ClassFieldTheory"
     relationship: "builds-on"
     note: "Files of N. Yamaguchi's class field theory library (local existence, local Kronecker-Weber over Q_p,
@@ -127,8 +134,8 @@ related_formalizations:
 
 status:
   scope: >-
-    Formalized (the 41 statements of Challenge.lean, proved in Solution.lean; checked by lake comparator once per book): Milne ANT 3, Milne CFT 7,
-    Milne EC 14 (three of them conditional on named inputs), Weil 4 (number fields 2, function
+    Formalized (the 47 statements of Challenge.lean, proved in Solution.lean; checked by lake comparator once per book): Milne ANT 3, Milne CFT 7,
+    Milne EC 20 (three of them conditional on named inputs), Weil 4 (number fields 2, function
     fields 2), Tate's thesis 5, Pontryagin duality 4, the modular curves X_0(N) 4. The conjectures of Milne EC,
     Chapter IV, are stated as Prop definitions and never assumed. The book maps give the status of every item of the
     seven texts. The library also ships the files of its Chebotarev, non-vanishing and Hilbert class field topics that these books import; those topics are not
@@ -185,10 +192,17 @@ fidelity:
     headlines omega_measure_* are for p odd. (12) Propositions IV.8.1 and IV.8.2 are stated by unfolding the named
     structures Prop8_1 and Prop8_2 into one headline. (13) The statement of bsd_milne_iff_strongBSD_rat instantiates
     finite generation of E(Q) with the library's theorem mordell_weil_rat (`haveI` in the statement), where Formal
-    Conjectures and the 0.3.0 headline take it as an instance argument.
+    Conjectures and the 0.3.0 headline take it as an instance argument; so do the 0.4.1 headlines
+    bsd_milne_iff_strongBSD_unconditional, bsd_milne_printed_iff_strongBSD_rank_zero and
+    strongBSD_refutes_milne_printed_positive_rank. (14) The 0.4.1 headlines localPoints_injective_rat,
+    sha_milne_equiv_formalConjectures and kummer_approx_padic unfold the library's named statements
+    LocalPointsInjective, ShaComparison and FiniteKummerPrime (now proved); localPoints_injective_rat and
+    kummer_approx_padic are read with the completions' own Q-algebra structure (the generic instance
+    DivisionRing.toRatAlgebra switched off, as in the library; the two structures are equal). Kummer approximation is
+    stated for prime l, as the named statement FiniteKummerPrime.
 
 review:
-  status: "not yet reviewed: the 41 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
+  status: "not yet reviewed: the 47 headline statements of Challenge.lean and the definitions they use have not yet been reviewed by a human"
   reviewers: []
   notes: >-
     The headline statements and the definitions they use have not yet been reviewed by a human; that review is
@@ -372,6 +386,33 @@ alignment:
       module: "Challenge / Solution"
       status: "conditional"
       note: "p odd; conditional on the named input ZeroComponentIndex (Milne's translation step)."
+    - source: "Milne, Elliptic Curves, IV, Conjecture 10.5 (standard normalization), against Formal Conjectures StrongBSD, over Q"
+      lean: "NumberFieldKB.Headlines.bsd_milne_iff_strongBSD_unconditional"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "No named input; minimal equation; finite generation of E(Q) from the library's Mordell-Weil theorem."
+    - source: "Milne, Elliptic Curves, IV, Conjecture 10.5 as printed, rank 0, against Formal Conjectures StrongBSD"
+      lean: "NumberFieldKB.Headlines.bsd_milne_printed_iff_strongBSD_rank_zero"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, IV, Conjecture 10.5 as printed, positive rank: refuted by StrongBSD"
+      lean: "NumberFieldKB.Headlines.strongBSD_refutes_milne_printed_positive_rank"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Elliptic Curves, IV, the Tate-Shafarevich group, against Formal Conjectures tateShafarevich"
+      lean: "NumberFieldKB.Headlines.sha_milne_equiv_formalConjectures"
+      module: "Challenge / Solution"
+      status: "proved"
+    - source: "Milne, Arithmetic Duality Theorems, Remark I.3.10, for elliptic curves over Q (local injectivity of H^1)"
+      lean: "NumberFieldKB.Headlines.localPoints_injective_rat"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "Every finite place and the infinite place of Q; proved from Kummer approximation."
+    - source: "Kummer approximation over Q_p for elliptic curves over Q (every p, prime l)"
+      lean: "NumberFieldKB.Headlines.kummer_approx_padic"
+      module: "Challenge / Solution"
+      status: "proved"
+      note: "Hensel's lemma on the division polynomials as in Milne, Elliptic Curves, Corollary II.4.2, and density of the algebraic points."
 
 acknowledgements: >-
   Mathlib and its contributors; the Tau Ceti contributors, whose files are ported in NumberFieldKB/TauCetiPort/; Naganori Yamaguchi, whose

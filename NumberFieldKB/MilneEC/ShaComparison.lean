@@ -62,7 +62,8 @@ def LocalPointsInjectiveEverywhere (K : Type) [Field K] [DecidableEq K] [NumberF
   (∀ v : HeightOneSpectrum (𝓞 K), LocalPointsInjectiveAt W (v.adicCompletion K)) ∧
     ∀ w : InfinitePlace K, LocalPointsInjectiveAt W w.Completion
 
-/-- **Local injectivity for elliptic curves over $\mathbb Q$** (named statement, not proved here):
+/-- **Local injectivity for elliptic curves over $\mathbb Q$** (named statement, proved as
+`localPointsInjective` in `LocalPointsPadic.lean`):
 `LocalPointsInjectiveAt` at every finite place (the adic completions) and the infinite place. Milne,
 *Arithmetic Duality Theorems*, Remark I.3.10 (Greenberg approximation) at the finite places; at the real place it
 follows from the Tarski–Seidenberg transfer between the real algebraic numbers and $\mathbb R$. -/

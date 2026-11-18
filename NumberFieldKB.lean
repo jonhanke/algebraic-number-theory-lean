@@ -3508,6 +3508,14 @@ import NumberFieldKB.MilneEC.Ch4Lemma32General
 import NumberFieldKB.MilneEC.Ch4BSDUncond
 import NumberFieldKB.MilneEC.ContH1
 import NumberFieldKB.MilneEC.ShaComparison
+import NumberFieldKB.MilneEC.LocalPoints
+import NumberFieldKB.MilneEC.LocalPointsAlg
+import NumberFieldKB.MilneEC.LocalPointsQ
+import NumberFieldKB.MilneEC.LocalPointsReal
+import NumberFieldKB.MilneEC.LocalPointsPadic
+import NumberFieldKB.MilneEC.PadicApprox
+import NumberFieldKB.MilneEC.RealApprox
+import NumberFieldKB.MilneEC.RealHalving
 import NumberFieldKB.MilneEC.Ch2MazurRealizationA
 import NumberFieldKB.MilneEC.Ch2MazurRealizationB
 import NumberFieldKB.MilneEC.Ch2MazurRealizationC

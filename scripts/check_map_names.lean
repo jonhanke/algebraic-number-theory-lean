@@ -1826,6 +1826,8 @@ import Mathlib.Topology.Algebra.Category.ProfiniteGrp.Completion
 #check @NumberFieldKB.MilneEC.card_isSquare_of_alternating
 #check @NumberFieldKB.MilneEC.completedLHasMeromorphicContinuation_iff
 #check @NumberFieldKB.MilneEC.conjecture10_3_existsMeromorphicContinuationRat
+#check @NumberFieldKB.MilneEC.conjecture10_5Corrected_iff_strongBSD
+#check @NumberFieldKB.MilneEC.conjecture10_5_iff_strongBSD_of_rank_eq_zero
 #check @NumberFieldKB.MilneEC.continuous_iff_exists_openNormalSubgroup
 #check @NumberFieldKB.MilneEC.cor_1_4
 #check @NumberFieldKB.MilneEC.cor_3_12
@@ -1940,12 +1942,12 @@ import Mathlib.Topology.Algebra.Category.ProfiniteGrp.Completion
 #check @NumberFieldKB.MilneEC.mordell_weil_rat
 #check @NumberFieldKB.MilneEC.mulHeight_rat_eq_max_abs
 #check @NumberFieldKB.MilneEC.multiplicityAt
+#check @NumberFieldKB.MilneEC.not_conjecture10_5_of_strongBSD
 #check @NumberFieldKB.MilneEC.not_example_4_20_conclusion
 #check @NumberFieldKB.MilneEC.not_isCongruentNumber_one
 #check @NumberFieldKB.MilneEC.not_prop4_18
 #check @NumberFieldKB.MilneEC.numPoints
 #check @NumberFieldKB.MilneEC.numPointsAt
-#check @NumberFieldKB.MilneEC.periodComparison
 #check @NumberFieldKB.MilneEC.pointsRep
 #check @NumberFieldKB.MilneEC.pointsRepresentation
 #check @NumberFieldKB.MilneEC.principalDivisors
@@ -2039,7 +2041,6 @@ import Mathlib.Topology.Algebra.Category.ProfiniteGrp.Completion
 #check @NumberFieldKB.MilneEC.statement_7_2_b
 #check @NumberFieldKB.MilneEC.statement_7_3_a
 #check @NumberFieldKB.MilneEC.statement_7_3_b
-#check @NumberFieldKB.MilneEC.tamagawaComparison
 #check @NumberFieldKB.MilneEC.tamagawaNumberAt_eq_one_of_isGoodPrime
 #check @NumberFieldKB.MilneEC.tateShafarevich_torsion
 #check @NumberFieldKB.MilneEC.theorem_2_12

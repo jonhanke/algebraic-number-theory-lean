@@ -29,6 +29,15 @@ and the explicit unramified local Artin map (`TauCeti.ClassFieldTheory.localArti
 $`E(\mathbb Q_p)`$, no lattice of the real period, no Tate–Shafarevich group of a specific curve and no list of the
 torsion groups that occur.
 
+The headlines new in 0.4.1 were compared on 2026-11-18 with Mathlib master at commit `ce8351d4` and Tau Ceti main at
+commit `cd41bffc`. Mathlib master has the Tate–Shafarevich group of a Galois module
+(`RepresentationTheory/Homological/ContCohomology/Sha.lean`), nothing on the arithmetic of elliptic curves beyond
+v4.35.0. Tau Ceti main has its own Tate–Shafarevich and Selmer groups over number fields (with their independence of
+the chosen embedding of separable closures), the Kummer map $E(K)/mE(K) \to H^1(K, E[m])$ and its own statement of
+Birch and Swinnerton-Dyer; it has no comparison of these with Milne's or Formal Conjectures' formalizations, no
+injectivity of $H^1(\operatorname{Gal}(\bar K_v/K_v), E(\bar K)) \to H^1(\operatorname{Gal}(\bar K_v/K_v), E(\bar K_v))$,
+and no approximation of local points by algebraic points.
+
 A search of two large libraries can miss a result stated under another name or in another form; corrections are
 welcome.
 
@@ -77,6 +86,12 @@ welcome.
 | `mazur_torsion_realized` (new in 0.4.0) | — | Nagell–Lutz; torsion of a few worked examples (`MordellWeil/WorkedExamples/`) | new: each of Mazur's fifteen groups is $E(\mathbb Q)_{\mathrm{tors}}$ for an explicit curve (Milne II.5.11, the realization half) |
 | `bsd_milne_iff_strongBSD_rat` (conditional, new in 0.4.0) | as for `bsd_milne_iff_strongBSD` | a statement of the conjecture (`WeierstrassCurve.BirchSwinnertonDyer`); Mordell–Weil over number fields | new: the equivalence with `StrongBSD` over $\mathbb Q$ with Mordell–Weil proved, given one named local statement (`LocalPointsInjective`) |
 | `omega_measure_of_zeroComponentIndex` (conditional, new in 0.4.0) | as for `omega_measure_zeroComponent` | as above | new: $\int_{E(\mathbb Q_p)}\lvert\omega\rvert = c_p N_p/p$ at every reduction type, $p$ odd, given Milne's translation step (`ZeroComponentIndex`) |
+| `bsd_milne_iff_strongBSD_unconditional` (new in 0.4.1) | as for `bsd_milne_iff_strongBSD` | its own statement of the conjecture (`WeierstrassCurve.BirchSwinnertonDyer`), not compared with Milne's or Formal Conjectures' | new: for every elliptic curve over $\mathbb Q$ with a minimal equation, Milne's Conjecture IV.10.5 (standard normalization) is equivalent to `StrongBSD`, with no named input |
+| `bsd_milne_printed_iff_strongBSD_rank_zero` (new in 0.4.1) | as above | as above | new: in rank 0, Conjecture IV.10.5 as printed is equivalent to `StrongBSD` |
+| `strongBSD_refutes_milne_printed_positive_rank` (new in 0.4.1) | as above | as above | new: in positive rank, `StrongBSD` refutes Conjecture IV.10.5 as printed |
+| `sha_milne_equiv_formalConjectures` (new in 0.4.1) | the Tate–Shafarevich group of a Galois module (`ContCohomology/Sha.lean`, master) | its own $Ш$ over number fields; no comparison with other formalizations | new: Milne's $Ш(E/\mathbb Q)$ and Formal Conjectures' are isomorphic for every elliptic curve over $\mathbb Q$ |
+| `localPoints_injective_rat` (new in 0.4.1) | continuous group cohomology | restriction maps of $H^1$ along field extensions; no local injectivity | new: $H^1(\operatorname{Gal}(\bar{\mathbb Q}_v/\mathbb Q_v), E(\bar{\mathbb Q})) \to H^1(\operatorname{Gal}(\bar{\mathbb Q}_v/\mathbb Q_v), E(\bar{\mathbb Q}_v))$ is injective at every place of $\mathbb Q$ (Milne, *Arithmetic Duality Theorems*, I.3.10) |
+| `kummer_approx_padic` (new in 0.4.1) | Hensel's lemma; division polynomials | the Kummer map; no approximation by algebraic points | new: $E(\mathbb Q_p) = \ell E(\mathbb Q_p) + \{\text{algebraic points}\}$ for every elliptic curve over $\mathbb Q$, every $p$ (including 2) and every prime $\ell$ |
 
 ## Results of the books that are proved here but are not headlines, because Tau Ceti has them
 
@@ -185,6 +200,9 @@ Formal Conjectures. New in 0.4.0: Milne's descent over $\mathbb Q$ by unramified
 Proposition IV.3.6) and Mordell–Weil over $\mathbb Q$ by it, the explicit Selmer and Tate–Shafarevich groups of IV §8,
 the local Tamagawa measure of Remark IV.10.6, the real period through the lattice, the realization of Mazur's torsion
 groups, and the comparison of Milne's period, Tamagawa numbers and Tate–Shafarevich group with Formal Conjectures'.
+New in 0.4.1: Kummer approximation over $\mathbb Q_p$ (every $p$) and $\mathbb R$, local injectivity of $H^1$ at every
+place of $\mathbb Q$, and with them the comparison of the Tate–Shafarevich groups and of Conjecture IV.10.5 with
+`StrongBSD` without named inputs.
 Not formalized anywhere checked: Nagell's reduction of a plane cubic to Weierstrass form and the Eichler–Shimura
 theory of Chapter V.
 

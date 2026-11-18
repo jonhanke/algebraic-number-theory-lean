@@ -23,6 +23,32 @@ Fourier analysis, self-dual measures, adelic Poisson summation and local zeta in
 - **Comparison**: [docs/results/comparison.md](docs/results/comparison.md) says, for each headline and each chapter,
   what Mathlib and [Tau Ceti](https://github.com/TauCetiProject/TauCeti) already have and what this library adds.
 
+## What's new in 0.4.1
+
+The comparison of Milne's form of the conjecture of Birch and Swinnerton-Dyer with Formal Conjectures' `StrongBSD`
+is now unconditional:
+
+- **Kummer approximation at every prime, $`p = 2`$ included:** for every elliptic curve $`E`$ over $`\mathbb{Q}`$,
+  every prime $`p`$ and every prime $`\ell`$, $`E(\mathbb{Q}_p) = \ell E(\mathbb{Q}_p) + \{\text{points algebraic over } \mathbb{Q}\}`$
+  (`kummer_approx_padic`). Multiplication by $`m \ne 0`$ is onto the points with $`\lVert x\rVert > \lVert m\rVert^{-4}`$,
+  by Hensel's lemma on the division polynomials as in Milne's Corollary II.4.2 (no formal group), and the algebraic
+  points are dense. At the real place, points with large $`x`$ are doubles and the algebraic points are dense.
+- **Local injectivity at every place of $`\mathbb{Q}`$:** the map
+  $`H^1(\operatorname{Gal}(\bar{\mathbb{Q}}_v/\mathbb{Q}_v), E(\bar{\mathbb{Q}})) \to H^1(\operatorname{Gal}(\bar{\mathbb{Q}}_v/\mathbb{Q}_v), E(\bar{\mathbb{Q}}_v))`$
+  is injective on continuous classes (`localPoints_injective_rat`; the named input `LocalPointsInjective` of 0.4.0, now
+  proved, from Kummer approximation rather than Greenberg approximation).
+- **The two Tate–Shafarevich groups agree:** Milne's $`Ш(E/\mathbb{Q})`$ and Formal Conjectures' are isomorphic for
+  every elliptic curve over $`\mathbb{Q}`$ (`sha_milne_equiv_formalConjectures`; the named input `ShaComparison` of
+  0.3.0, now proved).
+- **Birch and Swinnerton-Dyer, compared with no named input:** for every elliptic curve over $`\mathbb{Q}`$ given by a
+  minimal equation, Milne's Conjecture IV.10.5 with the standard normalization of the height pairing is equivalent to
+  `StrongBSD` (`bsd_milne_iff_strongBSD_unconditional`); in rank 0 the printed form is equivalent to `StrongBSD`
+  (`bsd_milne_printed_iff_strongBSD_rank_zero`); in positive rank `StrongBSD` refutes the printed form
+  (`strongBSD_refutes_milne_printed_positive_rank`). No conjecture is assumed.
+- **Headlines:** six new unconditional (47 in all: 44 unconditional, 3 conditional). The 41 headlines of 0.4.0 are
+  unchanged, statement for statement; the conditional `bsd_milne_iff_strongBSD_rat` of 0.4.0 is kept as it was (it is
+  still true, and its input is now proved).
+
 ## What's new in 0.4.0
 
 The arithmetic of elliptic curves over $`\mathbb{Q}`$ (Milne's *Elliptic Curves*, Chapter IV), toward the conjecture
@@ -70,7 +96,7 @@ of Birch and Swinnerton-Dyer:
 |---|---|---|---|---|---|---|
 | [J. S. Milne, *Algebraic Number Theory*](docs/results/books/milne-ant.md) | 328 | 132 | 17 | 179 | 0 | 0 |
 | [J. S. Milne, *Class Field Theory*](docs/results/books/milne-cft.md) | 513 | 348 | 59 | 105 | 0 | 1 |
-| [J. S. Milne, *Elliptic Curves*](docs/results/books/milne-ec.md) | 314 | 221 | 45 | 10 | 7 | 31 |
+| [J. S. Milne, *Elliptic Curves*](docs/results/books/milne-ec.md) | 318 | 230 | 44 | 10 | 5 | 29 |
 | [A. Weil, *Basic Number Theory* (number fields and function fields)](docs/results/books/weil-bnt.md) | 371 | 272 | 24 | 74 | 0 | 1 |
 | [J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV)](docs/results/books/tate-thesis.md) | 80 | 57 | 23 | 0 | 0 | 0 |
 | [Pontryagin duality (Folland, *A Course in Abstract Harmonic Analysis*, Chapter 4; Weil II.§5, VII.§2)](docs/results/books/pontryagin.md) | 24 | 22 | 2 | 0 | 0 | 0 |
@@ -115,6 +141,10 @@ reviewed by a human** (see Provenance).
 - **The local Tamagawa measure** (new in 0.4.0): for an odd prime $`p`$ and a minimal equation over $`\mathbb{Q}_p`$, $`\int_{E_0(\mathbb{Q}_p)}|\omega| = N_p/p`$ at every reduction type (`omega_measure_zeroComponent`), and $`\int_{E(\mathbb{Q}_p)}|\omega| = c_p N_p/p`$ at good reduction (`omega_measure_goodReduction`).
 - **The real period** (new in 0.4.0): for an elliptic curve over $`\mathbb{R}`$, $`\int_{E(\mathbb{R})}|\omega|`$ is the least positive real period of the lattice of its uniformization times the number of connected components of $`E(\mathbb{R})`$ (`realPeriod_eq_latticePeriod`; Tau Ceti has the real period as an integral, not its lattice).
 - **Mazur's groups occur** (new in 0.4.0): each of the fifteen groups $`\mathbb{Z}/m`$ ($`m \le 10`$ or $`m = 12`$) and $`\mathbb{Z}/2 \times \mathbb{Z}/2m`$ ($`m \le 4`$) is $`E(\mathbb{Q})_{\mathrm{tors}}`$ for some elliptic curve over $`\mathbb{Q}`$ (`mazur_torsion_realized`).
+- **Milne's Birch and Swinnerton-Dyer conjecture is `StrongBSD`** (new in 0.4.1): for every elliptic curve $`E`$ over $`\mathbb{Q}`$ given by a minimal equation, Milne's Conjecture IV.10.5 with the standard normalization of the height pairing (`Conjecture10_5Corrected`) holds if and only if the statement `StrongBSD` of [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) holds, with no named input and with $`E(\mathbb{Q})`$ finitely generated by the library's Mordell–Weil theorem (`bsd_milne_iff_strongBSD_unconditional`). In rank 0 the printed form is equivalent to `StrongBSD` (`bsd_milne_printed_iff_strongBSD_rank_zero`); in positive rank `StrongBSD` refutes it (`strongBSD_refutes_milne_printed_positive_rank`).
+- **The Tate–Shafarevich groups agree** (new in 0.4.1): for every elliptic curve over $`\mathbb{Q}`$, Milne's $`Ш(E/\mathbb{Q})`$ (Galois cohomology, locally trivial in $`E(\bar{\mathbb{Q}}_v)`$) is isomorphic to Formal Conjectures' (locally trivial in $`E(\bar{\mathbb{Q}})`$) (`sha_milne_equiv_formalConjectures`).
+- **Local injectivity** (new in 0.4.1): at every place $`v`$ of $`\mathbb{Q}`$, a continuous class of $`\operatorname{Gal}(\bar{\mathbb{Q}}_v/\mathbb{Q}_v)`$ with values in $`E(\bar{\mathbb{Q}})`$ that is trivial in $`E(\bar{\mathbb{Q}}_v)`$ is trivial (`localPoints_injective_rat`; Milne, *Arithmetic Duality Theorems*, Remark I.3.10).
+- **Kummer approximation** (new in 0.4.1): for every elliptic curve $`E`$ over $`\mathbb{Q}`$, every prime $`p`$ (including 2) and every prime $`\ell`$, every point of $`E(\mathbb{Q}_p)`$ is $`\ell S + T`$ with $`S \in E(\mathbb{Q}_p)`$ and $`T`$ algebraic over $`\mathbb{Q}`$ (`kummer_approx_padic`).
 
 **Weil, *Basic Number Theory*: number fields**
 
@@ -198,9 +228,10 @@ the comparator with the others of their book).
   Conjectures for a minimal equation) and `TamagawaComparison` (Milne's product of the Tamagawa numbers $`c_p`$ at the
   bad primes is Formal Conjectures' Tamagawa product). Finite generation of $`E(\mathbb{Q})`$ is an instance argument,
   as in Formal Conjectures. With the same inputs, in positive rank `StrongBSD` refutes the printed form of
-  Conjecture IV.10.5 (`NumberFieldKB.MilneEC.not_conjecture10_5_of_strongBSD`). Kept as in 0.3.0; two of its three
-  inputs are now proved (`NumberFieldKB.MilneEC.periodComparison`, `NumberFieldKB.MilneEC.tamagawaComparison`), and the
-  next theorem needs neither them nor the instance argument.
+  Conjecture IV.10.5 (`NumberFieldKB.MilneEC.not_conjecture10_5_of_strongBSD`). Kept as in 0.3.0; all three of its
+  inputs are now proved (`NumberFieldKB.MilneEC.periodComparison`, `NumberFieldKB.MilneEC.tamagawaComparison` in 0.4.0,
+  `NumberFieldKB.MilneEC.shaComparison` in 0.4.1), and the unconditional headline
+  `bsd_milne_iff_strongBSD_unconditional` needs neither them nor the instance argument.
 - **The same equivalence over $`\mathbb{Q}`$ with Mordell–Weil proved and one local input** (new in 0.4.0): for an
   elliptic curve $`E`$ over $`\mathbb{Q}`$ given by a minimal equation, `Conjecture10_5Corrected` holds if and only if
   `StrongBSD` holds, with the finite generation of $`E(\mathbb{Q})`$ supplied by the library's Mordell–Weil theorem
@@ -208,7 +239,9 @@ the comparator with the others of their book).
   continuous class of $`\operatorname{Gal}(\bar{\mathbb{Q}}_v/\mathbb{Q}_v)`$ with values in $`E(\bar{\mathbb{Q}})`$ that
   is trivial in $`E(\bar{\mathbb{Q}}_v)`$ is trivial; Milne, *Arithmetic Duality Theorems*, Remark I.3.10, by Greenberg
   approximation), from which the comparison of the two Tate–Shafarevich groups is proved. Formal Conjectures' group
-  embeds in Milne's unconditionally.
+  embeds in Milne's unconditionally. Kept as in 0.4.0; its input is now proved (`localPoints_injective_rat`, new in
+  0.4.1, from Kummer approximation), and the same equivalence without it is the headline
+  `bsd_milne_iff_strongBSD_unconditional`.
 - **The local Tamagawa measure at every reduction type** (new in 0.4.0): for an odd prime $`p`$ and a minimal
   equation of an elliptic curve over $`\mathbb{Q}_p`$, $`\int_{E(\mathbb{Q}_p)}|\omega| = c_p N_p/p`$, with $`c_p`$ Formal
   Conjectures' local Tamagawa number (`omega_measure_of_zeroComponentIndex`). Named input: `ZeroComponentIndex`
@@ -237,7 +270,8 @@ one among its hypotheses except the comparisons listed here, which prove relatio
   `Conjecture10_5All`, for all curves over $`\mathbb{Q}`$ given by minimal equations) and with the standard
   normalization (`Conjecture10_5Corrected`). Proved comparisons: the two forms agree in rank 0
   (`conjecture10_5_iff_corrected_of_rank_eq_zero`) and contradict each other in positive rank
-  (`not_conjecture10_5_and_corrected`); for the conditional comparison with `StrongBSD` see above.
+  (`not_conjecture10_5_and_corrected`); for the comparison with `StrongBSD` see the Highlights (unconditional) and
+  the conditional theorems above.
 
 **Formal Conjectures** (vendored definitions, namespace `NumberFieldKB.FormalConjectures`, Apache 2.0; see
 [NOTICE](NOTICE)): `WeakBSD`, `StrongBSD` (with `bsdQuotient`, `regulator`, `tamagawaProduct`, `period`,
@@ -254,9 +288,10 @@ Restrictions of the statements of this release beyond those of the sources, and 
   maps list them).
 - Milne, *Elliptic Curves*, Conjecture IV.10.5 as printed: the leading coefficient is off by $`2^r`$ (the
   normalization above); both forms are stated.
-- The named inputs of the conditional theorems are not proved here: `ShaComparison` (of the 0.3.0 theorem; it follows
-  from `LocalPointsInjective`), `LocalPointsInjective` and `ZeroComponentIndex`. The 0.3.0 theorem also takes
-  `PeriodComparison` and `TamagawaComparison`, which are now proved.
+- The named input `ZeroComponentIndex` of the conditional local Tamagawa measure theorem is not proved here. The
+  inputs of the two conditional comparisons with `StrongBSD` (`ShaComparison`, `PeriodComparison`,
+  `TamagawaComparison`, `LocalPointsInjective`) are all proved now; those two theorems are kept, unchanged, next to the
+  unconditional `bsd_milne_iff_strongBSD_unconditional`.
 - The measure $`\int_{E(\mathbb{Q}_p)}|\omega|`$ is defined by its formula on the $`x`$-line (the push-forward of
   $`|\omega|`$ to the $`x`$-coordinate, as for Formal Conjectures' real period), not as a measure on the $`p`$-adic
   manifold $`E(\mathbb{Q}_p)`$, which Mathlib does not have; the measure formula at $`p = 2`$ is a named input.
@@ -268,7 +303,14 @@ Restrictions of the statements of this release beyond those of the sources, and 
 - Conjecture IV.10.2 is stated for complete intersections and without a functional equation.
 - In Conjectures IV.10.3 and IV.10.5 the conductor is existentially quantified among the integers satisfying Milne's
   description (Ogg's formula at 2 and 3 is not formalized), and finite generation of $`E(\mathbb{Q})`$ is an instance
-  argument of the statements; the comparison `bsd_milne_iff_strongBSD_rat` supplies it from Mordell–Weil.
+  argument of the statements; the comparisons `bsd_milne_iff_strongBSD_rat` and
+  `bsd_milne_iff_strongBSD_unconditional` (and the two in rank 0 and in positive rank) supply it from Mordell–Weil.
+- Kummer approximation (`kummer_approx_padic`) and local injectivity are proved for elliptic curves over
+  $`\mathbb{Q}`$ only, not over every number field; Kummer approximation at the finite places is stated for prime
+  $`\ell`$ (the library proves every $`\ell \ge 1`$ over $`\mathbb{Q}_p`$).
+- In the statements of `localPoints_injective_rat` and `kummer_approx_padic`, the completions of $`\mathbb{Q}`$ carry
+  their own $`\mathbb{Q}`$-algebra structure (the generic one of a division ring of characteristic zero is switched
+  off, as in the library); the two structures are equal, so this only fixes the term that is written.
 
 ## Layout
 
@@ -319,10 +361,10 @@ lake env lean scripts/check_axioms.lean   # axioms of the headline theorems
 
 The quadratic-forms dependency and this library are built from source (about 4,000 modules besides Mathlib's
 prebuilt cache, most of them the ported class field theory files). A cold build took about two hours on 8 cores, with
-at most 9.7 GB of memory in use (the largest single Lean process 9.3 GB); the CI workflow adds swap space to GitHub's
-runner (4 cores, 16 GB), where it takes longer. `lake comparator` took 4 to 16 minutes per book on 8 cores (at most
-8.1 GB of memory; Milne's *Elliptic Curves*, with 14 headlines, the longest), except for Milne's *Class Field Theory*:
-about 37 minutes and 9.6 GB, most of it in the Lean kernel's replay of the class field theory behind its headlines.
+at most 9.8 GB of memory in use (the largest single Lean process 7.9 GB); the CI workflow adds swap space to GitHub's
+runner (4 cores, 16 GB), where it takes longer. `lake comparator` took 4 to 17 minutes per book on 8 cores (at most
+8.1 GB of memory; Milne's *Elliptic Curves*, with 20 headlines, the longest), except for Milne's *Class Field Theory*:
+about 38 minutes and 9.5 GB, most of it in the Lean kernel's replay of the class field theory behind its headlines.
 
 ## Provenance
 
@@ -334,7 +376,7 @@ N. Yamaguchi and by the PrimeNumberTheoremAnd contributors; each port lists its 
 definitions under `NumberFieldKB/FormalConjectures/` are vendored from Formal Conjectures (Google DeepMind), with the
 changes listed in the file header.
 The proofs are checked by the Lean kernel, and CI checks that the headline theorems use only the standard axioms.
-The 41 headline statements of this release in `Challenge.lean` (38 unconditional, 3 conditional), the conjecture
+The 47 headline statements of this release in `Challenge.lean` (44 unconditional, 3 conditional), the conjecture
 statements and the definitions they use have **not yet been
 reviewed** by a human; that review is planned for a later release. `lake comparator` (once per book) checks that
 `Solution.lean` proves exactly the statements of `Challenge.lean`. The rest of the library (its other definitions and intermediate
@@ -380,6 +422,13 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   Swinnerton-Dyer conjecture equivalent to `StrongBSD` with Mordell–Weil proved and one local input; the local
   Tamagawa measure at every reduction type), and Mordell–Weil over $`\mathbb{Q}`$ by Milne's descent; the 34 headlines
   of v0.3.0 are unchanged.
+- **[v0.4.1](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.4.1)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:ZENODO-DOI-v0.4.1](https://doi.org/ZENODO-DOI-v0.4.1):
+  the comparison with `StrongBSD` made unconditional (see "What's new in 0.4.1"): six new unconditional headlines
+  (Kummer approximation over $`\mathbb{Q}_p`$ at every prime including 2, local injectivity at every place of
+  $`\mathbb{Q}`$, the isomorphism of the two Tate–Shafarevich groups, and, for every elliptic curve over $`\mathbb{Q}`$
+  with a minimal equation and no named input, Milne's corrected Conjecture IV.10.5 equivalent to `StrongBSD`, the
+  printed form equivalent to it in rank 0 and refuted by it in positive rank); the 41 headlines of v0.4.0 are
+  unchanged.
 
 **Not in this release** (planned for a later release): an item-by-item audit of Tate's thesis and of Folland's
 Chapter 4 (their maps are built from the library's citations).
