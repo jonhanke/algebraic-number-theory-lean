@@ -422,7 +422,7 @@ Releases are tagged with semantic versions; `main` continues to develop. The DOI
   Swinnerton-Dyer conjecture equivalent to `StrongBSD` with Mordell–Weil proved and one local input; the local
   Tamagawa measure at every reduction type), and Mordell–Weil over $`\mathbb{Q}`$ by Milne's descent; the 34 headlines
   of v0.3.0 are unchanged.
-- **[v0.4.1](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.4.1)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:ZENODO-DOI-v0.4.1](https://doi.org/ZENODO-DOI-v0.4.1):
+- **[v0.4.1](https://github.com/jonhanke/algebraic-number-theory-lean/releases/tag/v0.4.1)** (Lean and Mathlib v4.35.0), archived on Zenodo as [doi:10.5281/zenodo.24344156](https://doi.org/10.5281/zenodo.24344156):
   the comparison with `StrongBSD` made unconditional (see "What's new in 0.4.1"): six new unconditional headlines
   (Kummer approximation over $`\mathbb{Q}_p`$ at every prime including 2, local injectivity at every place of
   $`\mathbb{Q}`$, the isomorphism of the two Tate–Shafarevich groups, and, for every elliptic curve over $`\mathbb{Q}`$
