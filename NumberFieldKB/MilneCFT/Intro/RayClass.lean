@@ -354,9 +354,13 @@ def idealRayClass (m : Modulus K) (𝔞 : Ideal (𝓞 K)) (h0 : 𝔞 ≠ ⊥) (h
     simpa using this⟩
 
 open Classical in
-/-- **The Weber $L$-series** of a character $\chi$ of a ray class group $C_\mathfrak m$ (Milne, *CFT*,
-Introduction, p. 8): $L(s,\chi) = \sum_{(\mathfrak a, \mathfrak m) = 1} \chi(\mathfrak a)\,N\mathfrak a^{-s}$, the sum over
-nonzero integral ideals prime to $\mathfrak m_0$ (absolutely convergent for $\mathrm{Re}\, s > 1$). -/
+/-- **The Weber $L$-series** of a character $\chi$ of the ray class group $C_\mathfrak m$ of a modulus $\mathfrak m$ of the
+number field $K$ (Milne, *CFT*, Introduction, p. 8): for a complex number $s$,
+$L(s,\chi) = \sum_{(\mathfrak a, \mathfrak m_0) = 1} \chi([\mathfrak a])\,N\mathfrak a^{-s}$, the sum over the nonzero integral
+ideals $\mathfrak a$ of $\mathcal O_K$ prime to the finite part $\mathfrak m_0$ of $\mathfrak m$, where $[\mathfrak a]$ is the ray
+class of $\mathfrak a$ and $N\mathfrak a$ its absolute norm. The series converges absolutely for $\mathrm{Re}\, s > 1$.
+**Restriction:** this is the series (Lean's `tsum`), not its analytic continuation: where the series does not converge
+(for example $\mathrm{Re}\, s \le 1$ when $\chi$ is trivial), the value is $0$ by Lean's convention for `tsum`. -/
 @[kb "milne2020cft" "Introduction, p. 8 (Weber L-series)"]
 def weberLSeries (m : Modulus K) (χ : RayClassGroup m →* ℂˣ) (s : ℂ) : ℂ :=
   ∑' 𝔞 : Ideal (𝓞 K),
