@@ -86,7 +86,10 @@ noncomputable def localZeta {n r : ℕ} (p : ℕ) [Fact p.Prime] (F : Fin r → 
 
 open Classical in
 /-- **The zeta function of a projective variety over $\mathbb Q$** (Milne pdf p. 170): $\zeta(V, s) =
-\prod_{p \text{ good}} \zeta(V_p, s)$, the reduction $V_p$ computed from a primitive integral scaling. -/
+\prod_{p \text{ good}} \zeta(V_p, s)$, the reduction $V_p$ computed from a primitive integral scaling.
+**Restriction:** the Euler product is multipliable for $\operatorname{Re} s > n + 1$ (`varietyZeta_converges`);
+where it is not, the value is 1 by Lean's `∏'` convention, not the analytic continuation of $\zeta(V, s)$. Each
+factor `localZeta` is `exp` of a `∑'`, so it is 1 where that series diverges. -/
 @[kb "milne2006ec" "Ch. IV, §10, the zeta function of a variety over Q (definition in prose), pdf p. 170"]
 noncomputable def varietyZeta {n r : ℕ} (F : Fin r → MvPolynomial (Fin (n + 1)) ℚ) (s : ℂ) : ℂ :=
   ∏' p : Nat.Primes, haveI : Fact (p : ℕ).Prime := ⟨p.2⟩

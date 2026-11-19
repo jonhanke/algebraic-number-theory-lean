@@ -111,7 +111,9 @@ variable {F : Type} [Field F] [NumberField F]
 
 /-! ### The prime sum and the logarithm of the Euler product -/
 
-/-- **The prime sum** $P_a(s) = \sum_va(v)N(v)^{-s}$. -/
+/-- **The prime sum** $P_a(s) = \sum_va(v)N(v)^{-s}$.
+**Restriction:** for bounded `a` the sum converges (absolutely) for $\operatorname{Re} s>1$; where it is not
+summable the value is 0 by Lean's `∑'` convention, not the analytic continuation. -/
 def primeSum (a : HeightOneSpectrum (𝓞 F) → ℂ) (s : ℂ) : ℂ := ∑' v, a v * nps v s
 
 /-- The constant $\sum_vN(v)^{-2}$ bounding the prime-power part of $\log L$. -/

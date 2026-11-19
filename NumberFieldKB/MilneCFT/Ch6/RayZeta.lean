@@ -39,7 +39,9 @@ variable {K : Type} [Field K] [NumberField K]
 
 /-- **The partial zeta function** of a ray class (Milne, *CFT*, Chapter VI, p. 189): for $k\in C_\mathfrak m$,
 $\zeta(s,k) = \sum N\mathfrak a^{-s}$, the sum over the nonzero integral ideals $\mathfrak a$ prime to $\mathfrak m_0$
-whose class in $C_\mathfrak m$ is $k$. -/
+whose class in $C_\mathfrak m$ is $k$.
+**Restriction:** the series converges (absolutely) only for $\operatorname{Re} s>1$; elsewhere the value is 0 by
+Lean's `∑'` convention, not the analytic continuation of $\zeta(s,k)$. -/
 @[kb "milne2020cft" "Ch. VI, §2, p. 189 (partial zeta function ζ(s, k))"]
 def partialZeta (m : Modulus K) (k : RayClassGroup m) (s : ℂ) : ℂ :=
   ∑' 𝔞 : Ideal (𝓞 K),
