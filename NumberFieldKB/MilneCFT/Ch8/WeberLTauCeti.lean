@@ -50,7 +50,10 @@ section Sieve
 
 open Classical
 
-/-- The sieve sum $\sum_{\mathfrak a \text{ prime to } T} g(\mathfrak a)$. -/
+/-- The sieve sum $\sum_{\mathfrak a \text{ prime to } T} g(\mathfrak a)$.
+**Restriction:** for arbitrary `g` nothing is assumed; the sum equals the series only where it is summable (e.g.
+under a bound $\|g(\mathfrak a)\|\le N\mathfrak a^{-s}$ with $s>1$), and otherwise the value is 0 by Lean's `∑'`
+convention. -/
 def sieveC (g : Ideal (𝓞 K) → ℂ) (T : Finset (HeightOneSpectrum (𝓞 K))) : ℂ :=
   ∑' I, (coprimeTo T).indicator g I
 

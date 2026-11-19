@@ -109,7 +109,9 @@ noncomputable def periodPairOf (τ : ℍ) : PeriodPair where
     exact ⟨rfl, h2⟩
 
 /-- Milne's `G_{2k}(z) = ∑_{(m,n) ≠ (0,0)} (mz + n)^{-2k}` (pdf p. 94), as a function on `ℂ`
-(the term `(0,0)` is `0⁻¹ = 0`).  Here `k` is the weight (Milne's `2k`). -/
+(the term `(0,0)` is `0⁻¹ = 0`).  Here `k` is the weight (Milne's `2k`).
+**Restriction:** the series converges absolutely only for weight `k ≥ 3` and `z` not real (`Im z ≠ 0`, in
+particular on the upper half plane); otherwise the value is 0 by Lean's `∑'` convention, not the intended value. -/
 @[kb "milne2006ec" "Ch. III, §2, def. of Eisenstein series G_2k(z), pdf p. 94"]
 noncomputable def eisensteinG (k : ℕ) (z : ℂ) : ℂ := ∑' v : ℤ × ℤ, ((v.1 * z + v.2) ^ k)⁻¹
 

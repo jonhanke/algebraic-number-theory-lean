@@ -130,7 +130,9 @@ theorem neg_logDeriv_eq {a : HeightOneSpectrum (𝓞 F) → ℂ} (ha : ∀ v, �
   have := Complex.exp_ne_zero (logEuler a s)
   field_simp
 
-/-- **$H(s) = \sum_v\lambda_vw_v(s)^2/(1-w_v(s))$**, the prime-power part of $-L'/L$. -/
+/-- **$H(s) = \sum_v\lambda_vw_v(s)^2/(1-w_v(s))$**, the prime-power part of $-L'/L$.
+**Restriction:** for `‖a v‖ ≤ 1` the sum converges (absolutely) for $\operatorname{Re} s>1/2$; where it is not
+summable the value is 0 by Lean's `∑'` convention, not the intended value. -/
 def hFun (a : HeightOneSpectrum (𝓞 F) → ℂ) (s : ℂ) : ℂ :=
   ∑' v, Real.log (normP v) * (a v * nps v s) ^ 2 / (1 - a v * nps v s)
 

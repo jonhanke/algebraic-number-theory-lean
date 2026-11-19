@@ -79,7 +79,9 @@ section Real41
 
 open Asymptotics QuadFormsKB.NFEuler
 
-/-- Helper: the real Euler product $\prod_{\mathfrak p\in T}(1-N\mathfrak p^{-s})^{-1}$. -/
+/-- Helper: the real Euler product $\prod_{\mathfrak p\in T}(1-N\mathfrak p^{-s})^{-1}$.
+**Restriction:** the product converges for $s>1$; where it is not multipliable the value is 1 by Lean's `∏'`
+convention, not the intended value. -/
 def realZeta (T : Set (HeightOneSpectrum (𝓞 K))) (s : ℝ) : ℝ :=
   ∏' p : T, (1 - ((normP p.1 : ℕ) : ℝ) ^ (-s))⁻¹
 

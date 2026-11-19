@@ -132,7 +132,10 @@ lemma localExponent_norm_le (p : ℕ) [Fact p.Prime] {n r : ℕ}
   nlinarith
 
 open Classical in
-/-- The exponent of the factor at `p` of `varietyZeta`: the logarithm of `varietyZetaFactor`. -/
+/-- The exponent of the factor at `p` of `varietyZeta`: the logarithm of `varietyZetaFactor`.
+**Restriction:** the series over `m` converges only for $\operatorname{Re} s$ sufficiently large (where
+$N_m p^{-ms}$ is geometrically bounded); elsewhere the value is 0 by Lean's `∑'` convention, not the intended
+value. -/
 noncomputable def zetaExponent {n r : ℕ} (F : Fin r → MvPolynomial (Fin (n + 1)) ℚ) (s : ℂ)
     (p : Nat.Primes) : ℂ :=
   haveI : Fact (p : ℕ).Prime := ⟨p.2⟩

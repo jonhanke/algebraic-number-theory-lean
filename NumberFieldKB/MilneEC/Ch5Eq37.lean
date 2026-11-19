@@ -179,7 +179,9 @@ lemma contDiff_PP (N : ℕ) : ContDiff ℂ ⊤ (PP N) := by
   unfold PP
   fun_prop
 
-/-- The product `∏' (1 - q^(n+1))`. -/
+/-- The product `∏' (1 - q^(n+1))`.
+**Restriction:** the product converges for `‖q‖ < 1`; for `q` a root of unity a factor vanishes and the value is
+0; for all other `q` it is not multipliable and the value is 1 by Lean's `∏'` convention, not the intended value. -/
 noncomputable def P1 (q : ℂ) : ℂ := ∏' n : ℕ, (1 - q ^ (n + 1))
 
 /-- Every derivative of the partial products converges locally uniformly on the unit disc to that of the infinite product. -/
@@ -245,7 +247,9 @@ lemma P1_ne_zero {q : ℂ} (hq : ‖q‖ < 1) : P1 q ≠ 0 := by
   have h := tprod_one_add_ne_zero_of_summable (ι := ℕ) (f := fun n => -q ^ (n + 1)) hne hsum
   simpa [P1, sub_eq_add_neg] using h
 
-/-- The product `∏' (1 - q^(n+1))^24`. -/
+/-- The product `∏' (1 - q^(n+1))^24`.
+**Restriction:** the product converges for `‖q‖ < 1`; for `q` a root of unity a factor vanishes and the value is
+0; for all other `q` it is not multipliable and the value is 1 by Lean's `∏'` convention, not the intended value. -/
 noncomputable def P24 (q : ℂ) : ℂ := ∏' n : ℕ, (1 - q ^ (n + 1)) ^ 24
 
 /-- For $|q| < 1$, $\prod (1-q^{n+1})^{24} = \left(\prod (1-q^{n+1})\right)^{24}$. -/
