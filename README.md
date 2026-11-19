@@ -94,13 +94,13 @@ of Birch and Swinnerton-Dyer:
 
 | book | rows | proved | definitions | in Mathlib | conditional | other |
 |---|---|---|---|---|---|---|
-| [J. S. Milne, *Algebraic Number Theory*](docs/results/books/milne-ant.md) | 328 | 132 | 17 | 179 | 0 | 0 |
-| [J. S. Milne, *Class Field Theory*](docs/results/books/milne-cft.md) | 513 | 348 | 59 | 105 | 0 | 1 |
-| [J. S. Milne, *Elliptic Curves*](docs/results/books/milne-ec.md) | 318 | 230 | 44 | 10 | 5 | 29 |
-| [A. Weil, *Basic Number Theory* (number fields and function fields)](docs/results/books/weil-bnt.md) | 371 | 272 | 24 | 74 | 0 | 1 |
-| [J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV)](docs/results/books/tate-thesis.md) | 80 | 57 | 23 | 0 | 0 | 0 |
+| J. S. Milne, *Algebraic Number Theory* | 328 | 132 | 17 | 179 | 0 | 0 |
+| J. S. Milne, *Class Field Theory* | 513 | 348 | 59 | 105 | 0 | 1 |
+| J. S. Milne, *Elliptic Curves* | 318 | 230 | 44 | 10 | 5 | 29 |
+| A. Weil, *Basic Number Theory* (number fields and function fields) | 371 | 272 | 24 | 74 | 0 | 1 |
+| J. Tate, *Fourier analysis in number fields and Hecke's zeta-functions* (Cassels–Fröhlich, Chapter XV) | 80 | 57 | 23 | 0 | 0 | 0 |
 | [Pontryagin duality (Folland, *A Course in Abstract Harmonic Analysis*, Chapter 4; Weil II.§5, VII.§2)](docs/results/books/pontryagin.md) | 24 | 22 | 2 | 0 | 0 | 0 |
-| [The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V)](docs/results/books/modular-curves.md) | 43 | 29 | 4 | 1 | 1 | 8 |
+| The modular curves $X_0(N)$ (Milne, *Elliptic Curves*, Chapter V) | 43 | 29 | 4 | 1 | 1 | 8 |
 
 *Proved* counts the items proved in Lean with only the standard axioms and no unproved input; *in Mathlib* the items
 that Mathlib already has (the map names the Mathlib declaration); rows that are definitions, items in Tau Ceti only,
@@ -201,7 +201,7 @@ $`a \mapsto \mathrm{Frob}^{\operatorname{ord}(a)}`$ (see the [comparison](docs/r
 series need not converge on $`\operatorname{Re} s > 0`$; it extends there), Exercise 3.15 (the existence clause needs
 the primes of $`S`$ in $`H`$) and Remark 4.8 (the first sentence needs $`G`$ complete; the second also needs the
 character to be trivial on the identity component of $`K_\infty^\times`$). The corrected forms are proved, and the
-printed forms of Exercise 3.15 and Remark 4.8 are refuted in Lean; the [map of the book](docs/results/books/milne-cft.md)
+printed forms of Exercise 3.15 and Remark 4.8 are refuted in Lean; the map of the book
 marks these rows.
 
 **A normalization in Milne's *Elliptic Curves*.** In Conjecture IV.10.5 (Birch and Swinnerton-Dyer) the height
