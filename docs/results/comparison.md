@@ -154,7 +154,7 @@ independence of the prime element, $K^{\mathrm{ab}} = K_\pi K^{\mathrm{un}}$), t
 of central division algebras over number fields, the Eisenstein reciprocity law and Furtwängler's theorem, Gauss's
 point count, Weber $L$-series of ray class characters (continuation and $L(1,\chi) \ne 0$), and the item-by-item
 statements of the book. Three statements of Chapter V are errata of the book; the map
-([books/milne-cft.md](books/milne-cft.md)) shows the corrected forms, proved, and the counterexamples to the printed
+(the Milne map, kept privately until licensing is confirmed) shows the corrected forms, proved, and the counterexamples to the printed
 forms.
 
 ### Weil, *Basic Number Theory* (Chapters I–VII)
@@ -191,7 +191,7 @@ compact abelian group, or the dual measure. Everything in [the Pontryagin map](b
 Mathlib (v4.35.0 and master) has Weierstrass curves with the group law, changes of variables, minimal models and
 reduction, division polynomials, the $L$-series as a Dirichlet series, the Weierstrass $\wp$-function, Eisenstein series
 and the level-one dimension formula; no isogenies, torsion structure, Mordell–Weil, heights, Hasse bound or Tate module.
-Tau Ceti (checked at `4caf68dc`) has the results listed above; the map ([books/milne-ec.md](books/milne-ec.md)) names
+Tau Ceti (checked at `4caf68dc`) has the results listed above; the map (kept privately until licensing is confirmed) names
 the Tau Ceti declaration for each item proved there and not here. New here: the plane-curve foundations of Chapter I
 (intersection numbers, Bézout, the nine-point lemma, associativity on every cubic), Milne's explicit 2-descent and its
 examples, Lemma IV.2.1 in every characteristic (Tau Ceti: $n$ prime to the characteristic), Lang's theorem, the zeta
